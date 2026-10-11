@@ -1,13 +1,11 @@
 ---
 name: implementing-code-signing-for-artifacts
-description: 'Implements code signing for build artifacts (binaries, packages, containers)
-  using GPG, Sigstore, and platform-specific signing tools, establishing trust chains
-  and verifying signatures in deployment pipelines. Use when establishing artifact
-  integrity checks against supply-chain tampering, proving authenticity to customers,
-  building zero-trust pipelines that reject unsigned artifacts, or meeting SLSA Level
-  2+ provenance requirements.
-
-  '
+description: 'Implements code signing for build artifacts (binaries, packages, containers) using GPG,
+  Sigstore, and platform-specific signing tools, establishing trust chains and verifying signatures
+  in deployment pipelines. Use when establishing artifact integrity checks against supply-chain tampering,
+  proving authenticity to customers, building zero-trust pipelines that reject unsigned artifacts, or
+  meeting SLSA Level 2+ provenance requirements. Do not use for signing specifically with the Sigstore
+  keyless flow - use implementing-sigstore-for-software-signing.'
 domain: cybersecurity
 subdomain: devsecops
 tags:

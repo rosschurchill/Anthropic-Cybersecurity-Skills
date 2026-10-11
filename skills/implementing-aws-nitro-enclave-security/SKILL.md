@@ -1,12 +1,10 @@
 ---
 name: implementing-aws-nitro-enclave-security
-description: 'Build AWS Nitro Enclave confidential computing environments using nitro-cli
-  to create enclave images, configure attestation-aware KMS policies with PCR condition
-  keys, validate attestation documents against the Nitro PKI root, and set up vsock/kmstool-enclave-cli
-  pipelines for processing PII, keys, and health records. Use for Nitro Enclave setup,
-  attestation validation, or scoping KMS to an enclave image hash.
-
-  '
+description: 'Build AWS Nitro Enclave confidential computing environments using nitro-cli to create
+  enclave images, configure attestation-aware KMS policies with PCR condition keys, validate attestation
+  documents against the Nitro PKI root, and set up vsock/kmstool-enclave-cli pipelines for processing
+  PII, keys, and health records. Use for Nitro Enclave setup, attestation validation, or scoping KMS
+  to an enclave image hash. Do not use for host-level TPM measured-boot attestation - use validating-tpm-measured-boot-attestation.'
 domain: cybersecurity
 subdomain: cloud-security
 tags:

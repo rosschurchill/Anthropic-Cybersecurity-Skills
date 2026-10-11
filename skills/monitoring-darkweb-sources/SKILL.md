@@ -6,7 +6,7 @@ description: 'Monitors dark web forums, marketplaces, paste sites, and ransomwar
   Use when establishing dark web monitoring coverage, investigating specific data
   breach claims, or enriching incident investigations with dark web context. Activates
   for requests involving dark web OSINT, leak site monitoring, credential exposure,
-  Recorded Future dark web, or Tor hidden service intelligence.
+  Recorded Future dark web, or Tor hidden service intelligence. Do not use for focused paste-site credential-leak monitoring - use performing-paste-site-monitoring-for-credentials.
 
   '
 domain: cybersecurity

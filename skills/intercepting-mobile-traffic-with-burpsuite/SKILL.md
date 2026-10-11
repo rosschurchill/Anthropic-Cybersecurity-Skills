@@ -5,7 +5,7 @@ description: 'Intercepts and analyzes HTTP/HTTPS traffic from mobile application
   data leakage, and server-side vulnerabilities. Use when performing mobile application
   penetration testing, assessing API security, or evaluating client-server communication
   patterns. Activates for requests involving mobile traffic interception, Burp Suite
-  mobile proxy, API security testing, or mobile HTTPS analysis.
+  mobile proxy, API security testing, or mobile HTTPS analysis. Do not use for static code analysis of the app binary - use performing-android-app-static-analysis-with-mobsf.
 
   '
 domain: cybersecurity

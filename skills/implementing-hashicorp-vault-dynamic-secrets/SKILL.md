@@ -1,13 +1,11 @@
 ---
 name: implementing-hashicorp-vault-dynamic-secrets
-description: 'Configures HashiCorp Vault dynamic secrets engines for database credentials,
-  AWS IAM keys, and PKI certificates, with automatic generation, lease management,
-  and rotation to eliminate static secrets in application configuration. Use when
-  eliminating long-lived static credentials, configuring a Vault secrets engine,
-  generating ephemeral database or cloud credentials, or automating credential rotation
-  for compliance (PCI-DSS, NIST 800-53 IA-5).
-
-  '
+description: 'Configures HashiCorp Vault dynamic secrets engines for database credentials, AWS IAM
+  keys, and PKI certificates, with automatic generation, lease management, and rotation to eliminate
+  static secrets in application configuration. Use when eliminating long-lived static credentials, configuring
+  a Vault secrets engine, generating ephemeral database or cloud credentials, or automating credential
+  rotation for compliance (PCI-DSS, NIST 800-53 IA-5). Do not use for a commercial PAM vault with session
+  recording - use implementing-delinea-secret-server-for-pam.'
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

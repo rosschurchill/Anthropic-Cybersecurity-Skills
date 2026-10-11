@@ -1,11 +1,10 @@
 ---
 name: implementing-cloud-workload-protection
-description: 'Implements cloud workload protection using boto3 and google-cloud APIs
-  for runtime security monitoring, process anomaly detection, and file integrity checking
-  on EC2/GCE instances. Scans for cryptomining, reverse shells, and unauthorized binaries.
-  Use when building runtime security controls for cloud compute workloads.
-
-  '
+description: 'Implements cloud workload protection using boto3 and google-cloud APIs for runtime security
+  monitoring, process anomaly detection, and file integrity checking on EC2/GCE instances. Scans for
+  cryptomining, reverse shells, and unauthorized binaries. Use when building runtime security controls
+  for cloud compute workloads. Do not use for scanning cloud configuration for misconfiguration-driven
+  vulnerabilities - use implementing-cloud-vulnerability-posture-management.'
 domain: cybersecurity
 subdomain: cloud-security
 tags:

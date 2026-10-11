@@ -1,11 +1,12 @@
 ---
 name: implementing-just-in-time-access-provisioning
 description: >-
-  Implements Just-In-Time (JIT) access provisioning to eliminate standing
-  privileges by granting temporary, time-bound access, covering approval
-  workflows, automatic expiration/revocation, and PAM/IGA integration. Use when
-  designing access approval workflows or replacing standing privileged accounts
-  with time-bound, zero-trust-aligned grants.
+  Implements Just-In-Time (JIT) access provisioning to eliminate standing privileges by
+  granting temporary, time-bound access, covering approval workflows, automatic
+  expiration/revocation, and PAM/IGA integration. Use when designing access approval workflows
+  or replacing standing privileged accounts with time-bound, zero-trust-aligned grants. Do not
+  use for the CyberArk zero-standing-privilege implementation - use
+  implementing-zero-standing-privilege-with-cyberark.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

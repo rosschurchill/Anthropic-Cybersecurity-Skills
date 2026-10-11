@@ -1,6 +1,10 @@
 ---
 name: implementing-google-workspace-phishing-protection
-description: Configures Google Workspace advanced phishing and malware protection settings in the Admin Console — pre-delivery message scanning, attachment protection, spoofing/impersonation detection, and Enhanced Safe Browsing enforcement. Use when hardening Gmail against phishing, spoofing, and malware, or when tuning Workspace email security policies.
+description: 'Configures Google Workspace advanced phishing and malware protection settings in the
+  Admin Console — pre-delivery message scanning, attachment protection, spoofing/impersonation detection,
+  and Enhanced Safe Browsing enforcement. Use when hardening Gmail against phishing, spoofing, and malware,
+  or when tuning Workspace email security policies. Do not use for broad tenant hardening across MFA,
+  OAuth, and sharing - use implementing-google-workspace-admin-security.'
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

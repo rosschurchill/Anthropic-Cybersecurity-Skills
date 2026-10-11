@@ -5,7 +5,7 @@ description: >-
   Azure, and GCP, deploy phishing-resistant MFA with Okta FastPass, automate user
   provisioning/deprovisioning, and enforce adaptive access policies on device posture
   and risk signals. Use when standing up Okta SSO, rolling out FastPass MFA, automating
-  identity lifecycle, or building risk-based conditional access for cloud environments.
+  identity lifecycle, or building risk-based conditional access for cloud environments. Do not use for the specific SAML SSO application integration with Okta - use implementing-saml-sso-with-okta.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

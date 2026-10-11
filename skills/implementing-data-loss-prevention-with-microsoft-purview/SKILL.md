@@ -1,13 +1,11 @@
 ---
 name: implementing-data-loss-prevention-with-microsoft-purview
-description: 'Implements DLP policies using Microsoft Purview PowerShell cmdlets and
-  the Graph API to protect data across Exchange Online, SharePoint, OneDrive, Teams,
-  endpoints, and Power BI, including sensitivity labels, custom sensitive information
-  types with regex, endpoint DLP rules, and Activity Explorer monitoring. Use when
-  stopping PII/PHI/PCI exfiltration, configuring sensitivity labels, or investigating
-  DLP incidents for policy tuning.
-
-  '
+description: 'Implements DLP policies using Microsoft Purview PowerShell cmdlets and the Graph API
+  to protect data across Exchange Online, SharePoint, OneDrive, Teams, endpoints, and Power BI, including
+  sensitivity labels, custom sensitive information types with regex, endpoint DLP rules, and Activity
+  Explorer monitoring. Use when stopping PII/PHI/PCI exfiltration, configuring sensitivity labels, or
+  investigating DLP incidents for policy tuning. Do not use for DLP enforced by agents at the endpoint
+  - use implementing-endpoint-dlp-controls.'
 domain: cybersecurity
 subdomain: data-protection
 tags:

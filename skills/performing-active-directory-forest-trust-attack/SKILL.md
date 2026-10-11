@@ -4,7 +4,7 @@ description: Enumerate and audit Active Directory forest trust relationships usi
   Impacket for SID filtering analysis, trust key extraction, cross-forest SID history
   abuse detection, and inter-realm Kerberos ticket assessment. Use when red-teaming
   multi-forest AD environments or auditing forest trusts for cross-forest privilege
-  escalation and trust ticket forgery exposure.
+  escalation and trust ticket forgery exposure. Do not use for single-domain AD attack-path enumeration and privilege escalation - use performing-active-directory-penetration-test.
 domain: cybersecurity
 subdomain: red-team
 tags:

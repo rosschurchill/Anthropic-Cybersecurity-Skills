@@ -4,7 +4,7 @@ description: Configure and execute access recertification campaigns in Saviynt E
   Identity Cloud to validate user entitlements, revoke excessive access, and maintain
   compliance with SOX, SOC 2, and HIPAA. Use when launching or managing certification
   campaigns for users/entitlements, remediating access review findings, or documenting
-  identity governance evidence for an audit.
+  identity governance evidence for an audit. Do not use for the tool-agnostic access review campaign methodology - use performing-access-review-and-certification.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

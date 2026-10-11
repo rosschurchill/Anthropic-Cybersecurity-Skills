@@ -4,7 +4,7 @@ description: 'Implements threat modeling using the MITRE ATT&CK framework to map
   TTPs against organizational assets, assess detection coverage gaps, and prioritize
   defensive investments. Use when SOC teams need to align detection engineering with
   threat landscape, conduct threat assessments for new environments, or justify security
-  tool procurement.
+  tool procurement. Do not use for building an ATT&CK detection-coverage heatmap - use implementing-mitre-attack-coverage-mapping.
 
   '
 domain: cybersecurity

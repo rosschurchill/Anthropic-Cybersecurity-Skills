@@ -1,6 +1,10 @@
 ---
 name: implementing-gcp-binary-authorization
-description: Implements GCP Binary Authorization end to end, including creating KMS-backed attestors, Container Analysis notes, deploy-time policies, and signing image attestations, so that only trusted, verified images deploy to GKE and Cloud Run. Use when enforcing container supply-chain integrity or deploy-time attestation checks on GCP.
+description: 'Implements GCP Binary Authorization end to end, including creating KMS-backed attestors,
+  Container Analysis notes, deploy-time policies, and signing image attestations, so that only trusted,
+  verified images deploy to GKE and Cloud Run. Use when enforcing container supply-chain integrity or
+  deploy-time attestation checks on GCP. Do not use for signing artifacts with GPG or Sigstore outside
+  a deploy-time gate - use implementing-code-signing-for-artifacts.'
 domain: cybersecurity
 subdomain: cloud-security
 tags:

@@ -6,7 +6,7 @@ description: 'Manages the end-to-end cyber threat intelligence lifecycle from pl
   Use when establishing or maturing a CTI program, defining intelligence requirements
   with business stakeholders, or building feedback loops between intelligence consumers
   and producers. Activates for requests involving CTI program maturity, intelligence
-  requirements, PIRs, or intelligence lifecycle management.
+  requirements, PIRs, or intelligence lifecycle management. Do not use for building out the collection-to-dissemination pipeline and tooling - use implementing-threat-intelligence-lifecycle-management.
 
   '
 domain: cybersecurity

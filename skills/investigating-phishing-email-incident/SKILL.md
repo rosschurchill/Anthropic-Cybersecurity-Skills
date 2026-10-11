@@ -4,7 +4,7 @@ description: 'Investigates phishing email incidents from initial user report thr
   header analysis, URL/attachment detonation, impacted user identification, and containment
   actions using SOC tools like Splunk, Microsoft Defender, and sandbox analysis platforms.
   Use when a reported phishing email requires full incident investigation to determine
-  scope and impact.
+  scope and impact. Do not use for isolated email header forensic analysis - use analyzing-email-headers-for-phishing-investigation.
 
   '
 domain: cybersecurity

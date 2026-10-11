@@ -1,13 +1,12 @@
 ---
 name: implementing-ot-network-traffic-analysis-with-nozomi
-description: 'Deploy Nozomi Networks Guardian sensors for passive OT network traffic
-  analysis, providing asset visibility, behavioral anomaly detection, protocol-aware
-  monitoring, and vulnerability assessment across industrial control systems without
-  disrupting operations. Use when deploying OT/ICS network monitoring, configuring
-  Guardian sensors, or building real-time threat detection for SCADA and industrial
-  environments.
-
-  '
+description: >-
+  Deploy Nozomi Networks Guardian sensors for passive OT network traffic analysis, providing
+  asset visibility, behavioral anomaly detection, protocol-aware monitoring, and vulnerability
+  assessment across industrial control systems without disrupting operations. Use when
+  deploying OT/ICS network monitoring, configuring Guardian sensors, or building real-time
+  threat detection for SCADA and industrial environments. Do not use for the Dragos Platform
+  OT monitoring deployment - use implementing-dragos-platform-for-ot-monitoring.
 domain: cybersecurity
 subdomain: ot-ics-security
 tags:
