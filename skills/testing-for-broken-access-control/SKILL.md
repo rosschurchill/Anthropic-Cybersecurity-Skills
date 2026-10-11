@@ -4,7 +4,7 @@ description: Systematically tests web applications and APIs for broken access co
   (OWASP A01:2021), including privilege escalation, missing function-level checks, insecure
   direct object references, and multi-tenant data leakage, using Burp Suite with the
   Authorize extension. Use during authorized penetration tests or RBAC/multi-tenant
-  authorization audits.
+  authorization audits. Do not use for API object-level authorization testing - use testing-api-for-broken-object-level-authorization.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

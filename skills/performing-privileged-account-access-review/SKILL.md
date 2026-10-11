@@ -4,7 +4,7 @@ description: Conducts systematic reviews of privileged accounts to validate acce
   rights, identify excessive or stale permissions, and enforce least privilege across
   PAM infrastructure. Use when auditing privileged access for compliance, periodic
   access recertification, or investigating whether privileged entitlements are still
-  justified.
+  justified. Do not use for discovering and inventorying privileged accounts - use performing-privileged-account-discovery.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

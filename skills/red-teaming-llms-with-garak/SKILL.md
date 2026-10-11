@@ -5,7 +5,7 @@ description: Runs NVIDIA garak probe suites (jailbreak, prompt injection, data
   APIs, or Bedrock - then interprets the resulting hit-rate report for triage. Use
   when baselining LLM security before/after deployment, validating that a guardrail
   or fine-tune reduces jailbreak/injection success rates, or producing evidence
-  for an AI risk assessment.
+  for an AI risk assessment. Do not use for continuous red-teaming with Promptfoo - use continuous-llm-red-teaming-with-promptfoo.
 domain: cybersecurity
 subdomain: ai-security
 tags:

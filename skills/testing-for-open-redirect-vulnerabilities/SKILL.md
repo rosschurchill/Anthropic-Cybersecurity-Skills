@@ -4,7 +4,7 @@ description: Identifies and exploits open redirect vulnerabilities by analyzing 
   redirection parameters (next, url, redirect, return, goto), applying bypass techniques,
   and chaining findings into phishing or token-theft exploits, using Burp Suite/OWASP ZAP
   and Burp Collaborator. Use when testing login/logout flows, OAuth redirect_uri handling,
-  or SSO redirect validation.
+  or SSO redirect validation. Do not use for server-side request forgery - use exploiting-server-side-request-forgery.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

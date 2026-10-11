@@ -5,7 +5,7 @@ description: 'Processes STIX 2.1 threat intelligence bundles delivered via TAXII
   consuming systems. Use when onboarding new TAXII collection endpoints, automating
   bi-directional intelligence sharing with ISACs, or building pipeline validation
   for malformed STIX bundles. Activates for requests involving OASIS STIX, TAXII server
-  configuration, MISP TAXII, or Cortex XSOAR feed integrations.
+  configuration, MISP TAXII, or Cortex XSOAR feed integrations. Do not use for standing up a TAXII server - use implementing-taxii-server-with-opentaxii.
 
   '
 domain: cybersecurity

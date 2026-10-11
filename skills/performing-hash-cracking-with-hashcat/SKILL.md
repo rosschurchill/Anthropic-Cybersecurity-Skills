@@ -1,9 +1,6 @@
 ---
 name: performing-hash-cracking-with-hashcat
-description: Cracks password hashes with Hashcat, covering hash-type identification,
-  dictionary/brute-force/rule-based attack modes, custom rule creation, GPU benchmarking,
-  and password-strength/compliance reporting. Use for authorized penetration testing
-  or security audits that need to evaluate password strength or crack captured hashes.
+description: 'Cracks password hashes with Hashcat, covering hash-type identification, dictionary/brute-force/rule-based attack modes, custom rule creation, GPU benchmarking, and password-strength/compliance reporting. Use for authorized penetration testing or security audits that need to evaluate password strength or crack captured hashes. Do not use for Wi-Fi/WPA handshake cracking - use performing-wifi-password-cracking-with-aircrack.'
 domain: cybersecurity
 subdomain: cryptography
 tags:

@@ -6,7 +6,7 @@ description: >-
   mapping attack vectors and MITRE ATT&CK TTPs with the attackcti/pandas
   Python stack, and analyzing exploited CVEs and incident trends from ISAC
   and vendor reports. Use when producing CTI for risk management or
-  board-level reporting on an industry's threat exposure.
+  board-level reporting on an industry's threat exposure. Do not use for profiling an individual threat actor group - use profiling-threat-actor-groups.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

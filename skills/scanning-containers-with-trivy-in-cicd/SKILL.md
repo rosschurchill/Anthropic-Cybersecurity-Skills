@@ -5,7 +5,7 @@ description: 'Integrates Aqua Security''s Trivy scanner into CI/CD pipelines to 
   in filesystems or git repositories, and to enforce severity-based quality gates that
   block vulnerable images from being deployed. Use when building Docker images in
   CI/CD and needing automated vulnerability scanning and pass/fail gates before registry
-  push or production deployment.
+  push or production deployment. Do not use for scanning IaC files with Trivy - use scanning-iac-and-images-with-trivy.
 
   '
 domain: cybersecurity

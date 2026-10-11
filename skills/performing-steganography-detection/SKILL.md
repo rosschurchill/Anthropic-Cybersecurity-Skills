@@ -6,7 +6,7 @@ description: >-
   binwalk, steghide, and OpenStego to uncover covert communication channels.
   Use when investigating suspected data hiding or exfiltration via media
   files, espionage/insider-threat cases, or anomalies in media file
-  properties found during standard file analysis.
+  properties found during standard file analysis. Do not use for extracting and analyzing firmware images - use performing-firmware-extraction-with-binwalk.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

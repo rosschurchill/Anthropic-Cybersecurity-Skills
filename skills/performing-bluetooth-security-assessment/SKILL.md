@@ -1,10 +1,6 @@
 ---
 name: performing-bluetooth-security-assessment
-description: Assess Bluetooth Low Energy (BLE) device security using Python's bleak asyncio
-  library to discover nearby devices, enumerate GATT services and characteristics, and flag
-  unencrypted or unauthenticated read/write access to sensitive data. Use when auditing IoT,
-  healthcare, fitness, or smart-home BLE devices for weak pairing configurations or known
-  vulnerable device fingerprints.
+description: 'Assess Bluetooth Low Energy (BLE) device security using Python''s bleak asyncio library to discover nearby devices, enumerate GATT services and characteristics, and flag unencrypted or unauthenticated read/write access to sensitive data. Use when auditing IoT, healthcare, fitness, or smart-home BLE devices for weak pairing configurations or known vulnerable device fingerprints. Do not use for Wi-Fi wireless network penetration testing - use conducting-wireless-network-penetration-test.'
 domain: cybersecurity
 subdomain: wireless-security
 tags:

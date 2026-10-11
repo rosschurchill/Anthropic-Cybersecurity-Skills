@@ -4,7 +4,7 @@ description: Tests JWT implementations for algorithm confusion, "none" algorithm
   kid/jku parameter injection, and weak secret exploitation using jwt_tool and Burp Suite's
   JWT Editor extension, aiming to achieve authentication bypass and privilege escalation.
   Use when assessing JWT-based auth/session management, OAuth2/OIDC token handling, or
-  SSO systems during a security engagement.
+  SSO systems during a security engagement. Do not use for the standalone algorithm-confusion attack - use exploiting-jwt-algorithm-confusion-attack.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

@@ -4,7 +4,7 @@ description: Guides manual enumeration and automated tooling to escalate from a 
   Linux user to root by exploiting misconfigurations, vulnerable services, kernel exploits,
   and weak permissions, mapped to MITRE ATT&CK. Use during authorized red team engagements
   or penetration tests once initial low-privilege access on a Linux host is obtained
-  and root-level access is needed.
+  and root-level access is needed. Do not use for the general cross-platform privilege-escalation assessment - use performing-privilege-escalation-assessment.
 domain: cybersecurity
 subdomain: red-teaming
 tags:

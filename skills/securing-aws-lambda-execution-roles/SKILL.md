@@ -5,7 +5,7 @@ description: 'Hardens AWS Lambda execution roles by writing least-privilege IAM 
   permissions with IAM Access Analyzer, and enforcing role scoping through SCPs. Use
   when deploying new Lambda functions, remediating overly permissive Lambda roles found
   in an audit, or building reusable least-privilege IAM role templates for serverless
-  teams.
+  teams. Do not use for broader serverless function hardening - use securing-serverless-functions.
 
   '
 domain: cybersecurity

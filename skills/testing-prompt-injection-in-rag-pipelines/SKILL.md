@@ -4,7 +4,7 @@ description: Probes Retrieval-Augmented Generation pipelines for indirect prompt
   via poisoned retrieved documents and embedding-space manipulation, using NVIDIA garak,
   Promptfoo red-team plugins, and Microsoft PyRIT against vector stores like FAISS,
   Chroma, Pinecone, or pgvector. Use when security-testing a RAG chatbot or document-Q&A
-  system, validating retrieval guardrails, or gating CI/CD on prompt-template/retriever changes.
+  system, validating retrieval guardrails, or gating CI/CD on prompt-template/retriever changes. Do not use for detecting indirect prompt injection in production - use detecting-indirect-prompt-injection.
 domain: cybersecurity
 subdomain: ai-security
 tags:

@@ -5,7 +5,7 @@ description: 'Tests Android inter-process communication (IPC) through intents fo
   sniffing, pending intent hijacking, and content provider data leakage. Use when
   assessing Android app attack surface through exported components, testing intent-based
   data flows, or evaluating IPC security. Activates for requests involving Android
-  intent security, IPC testing, exported component analysis, or Drozer assessment.
+  intent security, IPC testing, exported component analysis, or Drozer assessment. Do not use for deeplink vulnerability exploitation - use exploiting-deeplink-vulnerabilities.
 
   '
 domain: cybersecurity

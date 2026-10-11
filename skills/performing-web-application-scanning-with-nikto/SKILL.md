@@ -5,7 +5,7 @@ description: Runs Nikto, an open-source web server and web application scanner,
   across 1,250+ servers, and identify XSS, SQL injection, misconfigurations, default
   credentials, and vulnerable CGI scripts. Use when performing web application vulnerability
   scanning, security assessments, scheduled security testing, or validating web
-  server security controls.
+  server security controls. Do not use for a full manual web application penetration test - use performing-web-application-penetration-test.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

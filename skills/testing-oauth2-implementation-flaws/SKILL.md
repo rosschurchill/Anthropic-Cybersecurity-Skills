@@ -4,7 +4,7 @@ description: Tests OAuth 2.0 and OpenID Connect implementations for authorizatio
   interception, redirect URI manipulation, CSRF in OAuth flows, token leakage, scope
   escalation, and PKCE bypass, using Burp Suite Professional and the EsPReSSO extension
   to probe the authorization server, client, and token handling. Use when assessing OAuth2/OIDC
-  flows or SSO systems for misconfigurations enabling account takeover.
+  flows or SSO systems for misconfigurations enabling account takeover. Do not use for OAuth device-code phishing attacks - use attacking-oauth-with-device-code-phishing.
 domain: cybersecurity
 subdomain: api-security
 tags:

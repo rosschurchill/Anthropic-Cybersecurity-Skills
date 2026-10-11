@@ -6,7 +6,7 @@ description: 'Develops comprehensive threat actor profiles for APT groups, crimi
   sources. Use when briefing executives on sector-specific threats, updating threat
   model assumptions, or prioritizing defensive controls against specific adversaries.
   Activates for requests involving MITRE ATT&CK Groups, Mandiant APT profiles, CrowdStrike
-  adversary naming, or sector-specific threat briefings.
+  adversary naming, or sector-specific threat briefings. Do not use for building a profile from OSINT - use building-threat-actor-profile-from-osint.
 
   '
 domain: cybersecurity

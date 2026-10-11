@@ -6,7 +6,7 @@ description: >-
   effectiveness and switch port security. Use during an authorized
   penetration test to validate trunk port hardening, confirm DTP is disabled
   on access ports, and demonstrate Layer 2 segmentation bypass risk to
-  network teams.
+  network teams. Do not use for ARP spoofing attack simulation - use performing-arp-spoofing-attack-simulation.
 domain: cybersecurity
 subdomain: network-security
 tags:

@@ -4,7 +4,7 @@ description: 'Secures AWS API Gateway endpoints with AWS WAF by configuring mana
   rule groups for OWASP Top 10 protection, custom rate-limiting rules, bot control,
   IP reputation filtering, and WAF metric monitoring. Use when deploying API Gateway
   endpoints that need protection against common web attacks, or when implementing
-  rate limiting and throttling to prevent API abuse and DDoS.
+  rate limiting and throttling to prevent API abuse and DDoS. Do not use for general API gateway auth and access controls - use implementing-api-gateway-security-controls.
 
   '
 domain: cybersecurity

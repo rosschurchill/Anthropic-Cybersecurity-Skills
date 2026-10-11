@@ -6,7 +6,7 @@ description: 'Assesses organizational readiness for post-quantum cryptography mi
   configurations with X25519MLKEM768, and validates CRYSTALS-Kyber (ML-KEM) and CRYSTALS-Dilithium
   (ML-DSA) readiness. Implements crypto-agility assessment using oqs-provider for
   OpenSSL. Use when planning or executing the transition from classical to post-quantum
-  cryptographic algorithms across enterprise infrastructure.
+  cryptographic algorithms across enterprise infrastructure. Do not use for executing the hands-on cryptographic migration - use migrating-to-post-quantum-cryptography.
 
   '
 domain: cybersecurity

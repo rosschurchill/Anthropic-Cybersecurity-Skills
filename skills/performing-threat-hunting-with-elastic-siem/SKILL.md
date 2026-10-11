@@ -4,7 +4,7 @@ description: 'Performs proactive threat hunting in Elastic Security SIEM using K
   queries, detection rules, and Timeline investigation to identify threats that evade
   automated detection. Use when SOC teams need to hunt for specific ATT&CK techniques,
   investigate anomalous behaviors, or validate detection coverage gaps using Elasticsearch
-  and Kibana Security.
+  and Kibana Security. Do not use for triaging alerts in Elastic SIEM - use performing-alert-triage-with-elastic-siem.
 
   '
 domain: cybersecurity

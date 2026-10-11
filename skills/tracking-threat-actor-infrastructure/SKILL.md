@@ -5,7 +5,7 @@ description: Discovers and maps adversary-controlled infrastructure (C2 servers,
   DNS, certificate transparency logs, Shodan/Censys scans, WHOIS records, and network
   fingerprints (JARM/JA3S). Use when tracking threat actor infrastructure, expanding
   a known IOC into related assets, or producing STIX-based threat intelligence during
-  a CTI investigation.
+  a CTI investigation. Do not use for building an automated infrastructure-tracking system - use building-adversary-infrastructure-tracking-system.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

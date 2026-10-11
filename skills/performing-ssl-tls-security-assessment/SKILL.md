@@ -6,7 +6,7 @@ description: >-
   certificate chain validation, HSTS enforcement, OCSP stapling, and known
   vulnerabilities such as Heartbleed and ROBOT. Use when conducting a security
   assessment of a server's TLS configuration or verifying remediation of
-  cipher/certificate weaknesses.
+  cipher/certificate weaknesses. Do not use for managing the certificate issuance and renewal lifecycle - use performing-ssl-certificate-lifecycle-management.
 domain: cybersecurity
 subdomain: network-security
 tags:

@@ -5,7 +5,7 @@ description: 'Provides step-by-step procedures for remediating Amazon S3 bucket
   auditing bucket policies and ACLs, enforcing encryption, configuring access logging,
   and deploying automated remediation with AWS Config and Lambda. Use when AWS Config
   or Security Hub flags public or unencrypted S3 buckets, or preparing audit evidence
-  for storage security controls.
+  for storage security controls. Do not use for auditing S3 bucket permissions - use auditing-aws-s3-bucket-permissions.
 
   '
 domain: cybersecurity

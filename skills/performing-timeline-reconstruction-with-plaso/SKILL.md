@@ -6,7 +6,7 @@ description: >-
   history, and registry artifacts into a unified chronological view. Use
   during complex forensic investigations that need cross-source event
   correlation, or when standard log analysis is insufficient to establish the
-  sequence of activities for reporting findings.
+  sequence of activities for reporting findings. Do not use for collaborative timeline analysis in Timesketch - use building-incident-timeline-with-timesketch.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

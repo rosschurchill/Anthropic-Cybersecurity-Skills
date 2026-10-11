@@ -4,7 +4,7 @@ description: Manually identifies flaws in application business logic - price man
   multi-step workflow bypass, and privilege escalation - by intercepting and modifying
   requests with Burp Suite, going beyond what automated vulnerability scanners detect.
   Use for e-commerce checkout/cart flows, voucher and rewards systems, or any assessment
-  where scanners find little but business rules need scrutiny.
+  where scanners find little but business rules need scrutiny. Do not use for race condition exploitation - use exploiting-race-condition-vulnerabilities.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

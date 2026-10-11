@@ -5,7 +5,7 @@ description: Perform forensic investigation of Linux system logs including syslo
   to reconstruct user sessions, identify unauthorized access and privilege escalation,
   trace lateral movement, and establish event timelines. Use when investigating a
   suspected compromise of a Linux system and needing to analyze SSH, sudo, cron, or
-  kernel-level activity from plain-text or systemd journal logs.
+  kernel-level activity from plain-text or systemd journal logs. Do not use for deep auditd log intrusion detection - use analyzing-linux-audit-logs-for-intrusion.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

@@ -4,7 +4,7 @@ description: 'Triages security alerts in Splunk Enterprise Security by classifyi
   severity, investigating notable events, correlating related telemetry, and making
   escalation or closure decisions using SPL queries and the Incident Review dashboard.
   Use when SOC analysts face queued alerts from correlation searches, need to prioritize
-  investigation order, or must document triage decisions for handoff to Tier 2/3 analysts.
+  investigation order, or must document triage decisions for handoff to Tier 2/3 analysts. Do not use for alert triage in Elastic SIEM - use performing-alert-triage-with-elastic-siem.
 
   '
 domain: cybersecurity

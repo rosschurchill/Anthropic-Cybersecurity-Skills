@@ -4,7 +4,7 @@ description: Uses Impacket's ntlmrelayx.py with a coercion tool (PetitPotam, Coe
   printerbug) to relay NTLM authentication from a coerced domain controller into
   the AD CS HTTP web-enrollment endpoint (ESC8), obtaining a DC certificate usable
   via Certipy for PKINIT/DCSync. Use during internal AD penetration tests or purple-team
-  exercises when AD CS Web Enrollment lacks Extended Protection for Authentication.
+  exercises when AD CS Web Enrollment lacks Extended Protection for Authentication. Do not use for the ESC1 certificate template path - use exploiting-active-directory-certificate-services-esc1.
 domain: cybersecurity
 subdomain: red-teaming
 tags:

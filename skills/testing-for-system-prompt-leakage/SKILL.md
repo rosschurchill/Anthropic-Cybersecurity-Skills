@@ -4,7 +4,7 @@ description: Extracts LLM system prompts using direct requests, jailbreak/instru
   framing, translation/encoding tricks, and few-shot replay, combining manual payloads with
   automated garak and Promptfoo scanners to surface embedded secrets, routing logic, and
   policy leakage (OWASP LLM07:2025). Use during LLM application red-team engagements or
-  when validating that no credentials or authorization logic live in the system prompt.
+  when validating that no credentials or authorization logic live in the system prompt. Do not use for prompt injection testing in RAG pipelines - use testing-prompt-injection-in-rag-pipelines.
 domain: cybersecurity
 subdomain: ai-security
 tags:

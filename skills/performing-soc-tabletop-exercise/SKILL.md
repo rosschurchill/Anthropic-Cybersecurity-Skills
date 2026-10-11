@@ -4,7 +4,7 @@ description: 'Performs tabletop exercises for SOC teams simulating security inci
   through discussion-based scenarios to test incident response procedures, communication
   workflows, and decision-making under pressure without impacting production systems.
   Use when organizations need to validate IR playbooks, train analysts, or meet compliance
-  requirements for incident response testing.
+  requirements for incident response testing. Do not use for a ransomware-specific tabletop scenario - use performing-ransomware-tabletop-exercise.
 
   '
 domain: cybersecurity

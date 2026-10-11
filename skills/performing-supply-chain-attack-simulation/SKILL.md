@@ -6,7 +6,7 @@ description: >-
   dependency confusion testing against private registries, SHA-256 package
   hash verification, and known-CVE scanning with pip-audit. Use when auditing
   a project's dependencies for malicious or confused packages, or when
-  assessing package-registry supply-chain risk.
+  assessing package-registry supply-chain risk. Do not use for detecting typosquatting packages in npm and PyPI registries - use detecting-typosquatting-packages-in-npm-pypi.
 domain: cybersecurity
 subdomain: application-security
 tags:

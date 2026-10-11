@@ -5,7 +5,7 @@ description: Triages and prioritizes vulnerabilities with CISA's Stakeholder-Spe
   (via the CISA KEV catalog and FIRST EPSS API), technical impact, automatability,
   and mission prevalence to output Track/Track*/Attend/Act decisions. Use when
   prioritizing vulnerability scan results (OpenVAS, Nessus, Qualys) for remediation
-  planning beyond raw CVSS scores.
+  planning beyond raw CVSS scores. Do not use for CVSS-based vulnerability scoring - use prioritizing-vulnerabilities-with-cvss-scoring.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

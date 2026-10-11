@@ -4,7 +4,7 @@ description: 'Plans and facilitates tabletop exercises simulating ransomware inc
   using realistic scenarios based on threat actors like LockBit and ALPHV/BlackCat
   with injects covering double extortion and backup destruction, then evaluates responses
   against NIST CSF and CISA guidelines. Use when planning or running a ransomware
-  tabletop exercise or incident response readiness drill.
+  tabletop exercise or incident response readiness drill. Do not use for responding to an active, live ransomware incident - use performing-ransomware-response.
 
   '
 domain: cybersecurity
