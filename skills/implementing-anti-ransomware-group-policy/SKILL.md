@@ -1,11 +1,11 @@
 ---
 name: implementing-anti-ransomware-group-policy
-description: 'Configures Windows Group Policy Objects to block ransomware execution
-  and lateral spread, covering AppLocker rules, Software Restriction Policies, Controlled
-  Folder Access, attack surface reduction rules, and network protection settings.
-  Use when hardening Windows endpoints against ransomware via GPO, configuring AppLocker
-  or Controlled Folder Access, or building endpoint protection policies through Group
-  Policy.'
+description: Configures Windows Group Policy Objects to block ransomware execution and lateral
+  spread, covering AppLocker rules, Software Restriction Policies, Controlled Folder Access, attack
+  surface reduction rules, and network protection settings. Use when hardening Windows endpoints
+  against ransomware via GPO, configuring AppLocker or Controlled Folder Access, or building endpoint
+  protection policies through Group Policy. Do not use for ransomware backup and recovery strategy
+  - use implementing-ransomware-backup-strategy.
 domain: cybersecurity
 subdomain: ransomware-defense
 tags:

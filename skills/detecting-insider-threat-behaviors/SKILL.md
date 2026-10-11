@@ -1,10 +1,11 @@
 ---
 name: detecting-insider-threat-behaviors
-description: Detect insider threat behavioral indicators including unusual data access,
-  off-hours activity, mass file downloads, privilege abuse, and resignation-correlated
-  data theft. Use when proactively threat-hunting for malicious or negligent insider
-  activity, or when investigating a departing or disgruntled employee for potential
-  data theft.
+description: >-
+  Detect insider threat behavioral indicators including unusual data access, off-hours activity,
+  mass file downloads, privilege abuse, and resignation-correlated data theft. Use when
+  proactively threat-hunting for malicious or negligent insider activity, or when investigating a
+  departing or disgruntled employee for potential data theft. Do not use for building or tuning
+  an automated UEBA baselining pipeline - use detecting-insider-threat-with-ueba.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

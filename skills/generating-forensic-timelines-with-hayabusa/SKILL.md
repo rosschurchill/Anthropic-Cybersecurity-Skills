@@ -1,6 +1,11 @@
 ---
 name: generating-forensic-timelines-with-hayabusa
-description: Run Hayabusa against collected Windows EVTX files to apply Sigma detection rules and produce a prioritized, chronological CSV/JSON timeline with severity levels, MITRE ATT&CK mappings, and per-host/per-Event-ID metrics. Use during DFIR triage to turn raw event logs into a fast, SIEM-free incident timeline, or to export results into Timesketch or Timeline Explorer for collaborative analysis.
+description: Run Hayabusa against collected Windows EVTX files to apply Sigma detection rules
+  and produce a prioritized, chronological CSV/JSON timeline with severity levels, MITRE ATT&CK
+  mappings, and per-host/per-Event-ID metrics. Use during DFIR triage to turn raw event logs into
+  a fast, SIEM-free incident timeline, or to export results into Timesketch or Timeline Explorer
+  for collaborative analysis. Do not use for keyword/Sigma rule hunting over EVTX without building
+  a timeline - use hunting-evtx-with-chainsaw.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

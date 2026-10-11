@@ -1,6 +1,12 @@
 ---
 name: fleet-hunting-with-velociraptor
-description: Deploy a Velociraptor server and agents, then author VQL (Velociraptor Query Language) artifacts and run them as fleet-wide hunts, on-demand forensic collections, or standalone offline collectors. Use when hunting a TTP across hundreds or thousands of endpoints, collecting forensic artifacts during incident response without re-imaging, or generating collectors for unmanaged/air-gapped hosts.
+description: >-
+  Deploy a Velociraptor server and agents, then author VQL (Velociraptor Query Language)
+  artifacts and run them as fleet-wide hunts, on-demand forensic collections, or standalone
+  offline collectors. Use when hunting a TTP across hundreds or thousands of endpoints,
+  collecting forensic artifacts during incident response without re-imaging, or generating
+  collectors for unmanaged/air-gapped hosts. Do not use for targeted incident-response forensic
+  collection with Velociraptor - use implementing-velociraptor-for-ir-collection.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

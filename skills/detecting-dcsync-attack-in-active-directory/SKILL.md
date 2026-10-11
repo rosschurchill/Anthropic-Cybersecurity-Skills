@@ -1,6 +1,13 @@
 ---
 name: detecting-dcsync-attack-in-active-directory
-description: Detect DCSync attacks (MITRE T1003.006) where adversaries abuse Active Directory replication privileges to extract password hashes, by auditing Event ID 4662 for the DS-Replication-Get-Changes GUIDs and flagging non-domain-controller accounts issuing DsGetNCChanges RPC calls. Use when hunting for credential theft via Mimikatz lsadump::dcsync or Impacket secretsdump, investigating lateral movement with domain admin credentials, or auditing AD replication permissions.
+description: >-
+  Detect DCSync attacks (MITRE T1003.006) where adversaries abuse Active Directory replication
+  privileges to extract password hashes, by auditing Event ID 4662 for the
+  DS-Replication-Get-Changes GUIDs and flagging non-domain-controller accounts issuing
+  DsGetNCChanges RPC calls. Use when hunting for credential theft via Mimikatz lsadump::dcsync or
+  Impacket secretsdump, investigating lateral movement with domain admin credentials, or auditing
+  AD replication permissions. Do not use for proactively hunting DCSync attacks - use
+  hunting-for-dcsync-attacks.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

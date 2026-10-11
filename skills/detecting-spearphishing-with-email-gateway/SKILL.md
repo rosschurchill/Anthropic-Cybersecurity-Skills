@@ -1,11 +1,13 @@
 ---
 name: detecting-spearphishing-with-email-gateway
-description: Detect and block spearphishing emails that use personalized, researched
-  content to evade generic spam filters, by configuring email security gateway
-  (SEG) impersonation protection, URL rewriting, attachment sandboxing, and
-  custom detection rules in Microsoft Defender for Office 365, Proofpoint,
-  Mimecast, or Barracuda. Use when hardening a mail gateway against targeted
-  phishing or investigating a suspected spearphishing campaign.
+description: >-
+  Detect and block spearphishing emails that use personalized, researched content to evade
+  generic spam filters, by configuring email security gateway (SEG) impersonation protection, URL
+  rewriting, attachment sandboxing, and custom detection rules in Microsoft Defender for Office
+  365, Proofpoint, Mimecast, or Barracuda. Use when hardening a mail gateway against targeted
+  phishing or investigating a suspected spearphishing campaign. Do not use for threat-hunting
+  spearphishing indicators in mail and endpoint telemetry - use
+  hunting-for-spearphishing-indicators.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

@@ -1,6 +1,12 @@
 ---
 name: detecting-mimikatz-execution-patterns
-description: Detect Mimikatz credential-dumping activity via command-line pattern matching, LSASS access signatures, binary/hash indicators, and in-memory detection of known Mimikatz modules. Use when threat hunting for T1003 credential access, triaging EDR/SIEM alerts on LSASS access, scoping compromise during incident response, or validating detection coverage in a purple team exercise.
+description: >-
+  Detect Mimikatz credential-dumping activity via command-line pattern matching, LSASS access
+  signatures, binary/hash indicators, and in-memory detection of known Mimikatz modules. Use when
+  threat hunting for T1003 credential access, triaging EDR/SIEM alerts on LSASS access, scoping
+  compromise during incident response, or validating detection coverage in a purple team
+  exercise. Do not use for general LSASS, SAM, or NTDS credential-dumping detection beyond
+  Mimikatz - use detecting-credential-dumping-techniques.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

@@ -1,6 +1,12 @@
 ---
 name: detecting-privilege-escalation-attempts
-description: Detect privilege escalation attempts across Windows and Linux, including access token manipulation, UAC bypass, unquoted service path abuse, kernel exploits, and sudo/doas abuse. Use when threat hunting for T1068-style privilege escalation, triaging EDR/SIEM alerts on suspicious privilege changes, scoping compromise during incident response, or validating detection coverage in a purple team exercise.
+description: >-
+  Detect privilege escalation attempts across Windows and Linux, including access token
+  manipulation, UAC bypass, unquoted service path abuse, kernel exploits, and sudo/doas abuse.
+  Use when threat hunting for T1068-style privilege escalation, triaging EDR/SIEM alerts on
+  suspicious privilege changes, scoping compromise during incident response, or validating
+  detection coverage in a purple team exercise. Do not use for performing an authorized
+  privilege-escalation assessment - use performing-privilege-escalation-assessment.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

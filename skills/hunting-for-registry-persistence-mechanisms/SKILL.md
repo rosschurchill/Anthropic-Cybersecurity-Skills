@@ -1,10 +1,10 @@
 ---
 name: hunting-for-registry-persistence-mechanisms
-description: Hunts for registry-based persistence mechanisms (MITRE T1547) in Windows
-  environments, including Run/RunOnce keys, Winlogon Shell/Userinit modifications, Image
-  File Execution Options (IFEO) debugger injection, and COM hijacking via CLSID overrides.
-  Use when auditing the registry for persistence artifacts or building detections for
-  registry-based malware autostart techniques.
+description: Hunts for registry-based persistence mechanisms (MITRE T1547) in Windows environments,
+  including Run/RunOnce keys, Winlogon Shell/Userinit modifications, Image File Execution Options
+  (IFEO) debugger injection, and COM hijacking via CLSID overrides. Use when auditing the registry
+  for persistence artifacts or building detections for registry-based malware autostart techniques.
+  Do not use for narrowly Run/RunOnce autostart key persistence - use hunting-for-registry-run-key-persistence.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

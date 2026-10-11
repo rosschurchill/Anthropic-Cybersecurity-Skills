@@ -1,11 +1,11 @@
 ---
 name: implementing-attack-path-analysis-with-xm-cyber
-description: Deploys XM Cyber's continuous exposure management platform to build
-  attack graphs that chain vulnerabilities, misconfigurations, identity risks, and
-  credential weaknesses toward critical assets, identifying the small fraction of
-  exposures sitting on converging "choke points". Use when mapping attack paths
-  across an environment or prioritizing remediation within a continuous threat exposure
-  management (CTEM) program.
+description: Deploys XM Cyber's continuous exposure management platform to build attack graphs
+  that chain vulnerabilities, misconfigurations, identity risks, and credential weaknesses toward
+  critical assets, identifying the small fraction of exposures sitting on converging "choke points".
+  Use when mapping attack paths across an environment or prioritizing remediation within a continuous
+  threat exposure management (CTEM) program. Do not use for Active Directory attack-path mapping
+  with BloodHound - use mapping-attack-paths-with-bloodhound-ce.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

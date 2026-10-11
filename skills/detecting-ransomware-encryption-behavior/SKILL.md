@@ -1,13 +1,13 @@
 ---
 name: detecting-ransomware-encryption-behavior
-description: 'Detects ransomware encryption activity in real time using entropy
-  analysis, file system I/O monitoring (Sysmon, watchdog, psutil), and behavioral
-  scoring to identify mass file modification, abnormal entropy spikes in written
-  data, and suspicious process behavior characteristic of encryption routines.
-  Use when building real-time ransomware detection, tuning entropy thresholds,
-  or investigating suspected active encryption on an endpoint.
-
-  '
+description: >-
+  Detects ransomware encryption activity in real time using entropy analysis, file system I/O
+  monitoring (Sysmon, watchdog, psutil), and behavioral scoring to identify mass file
+  modification, abnormal entropy spikes in written data, and suspicious process behavior
+  characteristic of encryption routines. Use when building real-time ransomware detection, tuning
+  entropy thresholds, or investigating suspected active encryption on an endpoint. Do not use for
+  reverse-engineering a ransomware sample's encryption routine - use
+  reverse-engineering-ransomware-encryption-routine.
 domain: cybersecurity
 subdomain: ransomware-defense
 tags:
