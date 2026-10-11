@@ -1,6 +1,15 @@
 ---
 name: investigating-ransomware-attack-artifacts
-description: Forensically preserve memory and disk, collect ransom notes and encrypted file samples, and identify the ransomware variant using tools such as ID Ransomware, Volatility, and Chainsaw/Hayabusa to determine the initial access vector and recovery options. Use immediately after discovering ransomware encryption, when scoping the incident forensically, or when documenting evidence for law enforcement and insurance claims.
+description: >-
+  Forensically preserve memory and disk, collect ransom notes and encrypted file samples, and
+  identify the ransomware variant using tools such as ID Ransomware, Volatility, and
+  Chainsaw/Hayabusa to determine the initial access vector and recovery options. Use when
+  ransomware encryption has just been discovered and evidence must be preserved, when scoping
+  the incident forensically, identifying the variant and decryptability, tracing the attack
+  chain from initial access to encryption, or documenting evidence for law enforcement and
+  insurance. Keywords: ransom note, encrypted sample, ID Ransomware, Volatility, Chainsaw,
+  Hayabusa, variant identification, initial access. Do not use for operational incident
+  containment and response — use performing-ransomware-response.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

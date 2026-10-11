@@ -1,12 +1,14 @@
 ---
 name: detecting-cryptomining-in-cloud
-description: 'This skill teaches security teams how to detect and respond to unauthorized
-  cryptocurrency mining operations in cloud environments. It covers identifying cryptomining
-  indicators through compute usage anomalies, network traffic patterns to mining pools,
-  GuardDuty CryptoCurrency findings, and runtime process monitoring on EC2, ECS, EKS,
-  and Azure Automation workloads.
-
-  '
+description: >-
+  Detects and responds to unauthorized cryptocurrency mining in cloud environments by identifying
+  compute-usage anomalies, mining-pool network traffic, GuardDuty CryptoCurrency findings, and
+  runtime process activity on EC2, ECS, EKS, and Azure Automation. Use when billing spikes or
+  GuardDuty CryptoCurrency/Impact findings suggest cryptojacking, investigating compromised
+  credentials used to launch miners, or building proactive resource-hijacking detections.
+  Keywords: cryptomining, cryptojacking, GuardDuty CryptoCurrency, mining pool, compute anomaly,
+  EC2/ECS/EKS, resource hijacking. Do not use for general CloudTrail API-call anomaly detection -
+  use detecting-aws-cloudtrail-anomalies.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

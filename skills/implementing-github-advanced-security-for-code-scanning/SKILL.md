@@ -1,6 +1,11 @@
 ---
 name: implementing-github-advanced-security-for-code-scanning
-description: Configures GitHub Advanced Security (code scanning with CodeQL, secret scanning, dependency review, and Dependabot alerts) to perform automated static analysis and vulnerability detection across repositories at enterprise scale, including custom CodeQL queries and CI workflow integration. Use when setting up or tuning code scanning, rolling out CodeQL across an organization, or shifting SAST left into pull request workflows.
+description: 'Configures GitHub Advanced Security (code scanning with CodeQL, secret scanning, dependency
+  review, and Dependabot alerts) to perform automated static analysis and vulnerability detection across
+  repositories at enterprise scale, including custom CodeQL queries and CI workflow integration. Use
+  when setting up or tuning code scanning, rolling out CodeQL across an organization, or shifting SAST
+  left into pull request workflows. Do not use for tool-agnostic SAST, DAST, and SCA across any CI/CD
+  pipeline - use implementing-devsecops-security-scanning.'
 domain: cybersecurity
 subdomain: devsecops
 tags:

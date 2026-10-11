@@ -1,12 +1,12 @@
 ---
 name: detecting-command-and-control-over-dns
-description: 'Detect command-and-control (C2) traffic tunneled over DNS from tools like
-  Iodine, dnscat2, dns2tcp, and Cobalt Strike DNS beacon, using Shannon entropy analysis
-  of query subdomains, ML-based DGA classification, passive DNS correlation, and Zeek/Suricata
-  signatures. Use when investigating suspected DNS tunneling, classifying DGA domains,
-  detecting DNS beaconing, or building DNS anomaly rules for a SOC/SIEM.
-
-  '
+description: >-
+  Detect command-and-control (C2) traffic tunneled over DNS from tools like Iodine, dnscat2,
+  dns2tcp, and Cobalt Strike DNS beacon, using Shannon entropy analysis of query subdomains,
+  ML-based DGA classification, passive DNS correlation, and Zeek/Suricata signatures. Use when
+  investigating suspected DNS tunneling, classifying DGA domains, detecting DNS beaconing, or
+  building DNS anomaly rules for a SOC/SIEM. Do not use for data exfiltration tunneled over DNS -
+  use detecting-exfiltration-over-dns-with-zeek.
 domain: cybersecurity
 subdomain: network-security
 tags:

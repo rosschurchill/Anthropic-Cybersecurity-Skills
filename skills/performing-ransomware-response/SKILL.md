@@ -4,7 +4,7 @@ description: 'Executes a structured ransomware incident response from detection 
   containment, forensic analysis, decryption assessment, recovery, and post-incident
   hardening, covering ransom negotiation, backup integrity verification, and regulatory
   notification. Use when actively responding to a ransomware outbreak or crypto-ransomware
-  infection, or deciding on ransom payment and containment steps.
+  infection, or deciding on ransom payment and containment steps. Do not use for the backup restoration and recovery phase alone - use recovering-from-ransomware-attack.
 
   '
 domain: cybersecurity

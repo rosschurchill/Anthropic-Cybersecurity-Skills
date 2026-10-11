@@ -1,12 +1,11 @@
 ---
 name: implementing-security-information-sharing-with-stix2
-description: 'Create, validate, and share STIX 2.1 threat intelligence objects (indicators,
-  malware, campaigns, relationships, bundles) using the stix2 Python library, and
-  publish them over TAXII 2.1. Use when building or exchanging structured threat
-  intelligence, modeling relationships between threat objects, or publishing/consuming
-  a TAXII 2.1 feed.
-
-  '
+description: >-
+  Create, validate, and share STIX 2.1 threat intelligence objects (indicators, malware,
+  campaigns, relationships, bundles) using the stix2 Python library, and publish them over
+  TAXII 2.1. Use when building or exchanging structured threat intelligence, modeling
+  relationships between threat objects, or publishing/consuming a TAXII 2.1 feed. Do not use
+  for standing up a TAXII 2.1 server - use implementing-taxii-server-with-opentaxii.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

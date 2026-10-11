@@ -1,13 +1,13 @@
 ---
 name: implementing-llm-guardrails-for-security
-description: 'Implements input/output validation guardrails for LLM applications using
-  NVIDIA NeMo Guardrails (Colang), custom Python validators for PII detection, and
-  the Guardrails AI framework, intercepting user inputs (prompt injection, PII,
-  off-topic queries) and model outputs (hallucinations, toxic content, schema
-  compliance). Use when adding safety controls to an LLM app/chatbot/RAG pipeline
-  or validating outputs conform to expected schemas.
-
-  '
+description: >-
+  Implements input/output validation guardrails for LLM applications using NVIDIA NeMo
+  Guardrails (Colang), custom Python validators for PII detection, and the Guardrails AI
+  framework, intercepting user inputs (prompt injection, PII, off-topic queries) and model
+  outputs (hallucinations, toxic content, schema compliance). Use when adding safety controls
+  to an LLM app/chatbot/RAG pipeline or validating outputs conform to expected schemas. Do not
+  use for deploying prebuilt runtime safety classifiers like Llama Guard 3 - use
+  defending-llms-with-guardrails.
 domain: cybersecurity
 subdomain: ai-security
 tags:

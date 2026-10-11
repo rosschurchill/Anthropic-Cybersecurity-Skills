@@ -4,7 +4,7 @@ description: Classifies and prioritizes security incidents using structured IR
   playbooks and SIEM/case-management queries (Splunk, TheHive) to determine severity,
   assign response teams, and initiate the appropriate response procedures. Use when
   a new SOC alert needs triage, multiple concurrent incidents require prioritization,
-  or automated triage rules need validation or tuning.
+  or automated triage rules need validation or tuning. Do not use for framework-based triage without tooling - use triaging-security-incident.
 domain: cybersecurity
 subdomain: incident-response
 tags:

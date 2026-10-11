@@ -1,9 +1,11 @@
 ---
 name: implementing-scim-provisioning-with-okta
-description: Implement automated user lifecycle provisioning and deprovisioning using
-  the SCIM 2.0 protocol with Okta as the identity provider. Use when automating account
-  creation, attribute sync, or deactivation across downstream applications through
-  Okta SCIM integration, or when troubleshooting SCIM provisioning failures.
+description: >-
+  Implement automated user lifecycle provisioning and deprovisioning using the SCIM 2.0
+  protocol with Okta as the identity provider. Use when automating account creation, attribute
+  sync, or deactivation across downstream applications through Okta SCIM integration, or when
+  troubleshooting SCIM provisioning failures. Do not use for SAML single sign-on configuration
+  - use implementing-saml-sso-with-okta.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

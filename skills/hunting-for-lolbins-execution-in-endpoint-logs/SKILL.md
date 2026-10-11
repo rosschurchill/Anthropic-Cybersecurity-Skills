@@ -1,10 +1,10 @@
 ---
 name: hunting-for-lolbins-execution-in-endpoint-logs
-description: Hunts for LOLBins (Living Off the Land Binaries) abuse, mapped to MITRE
-  T1218, by analyzing endpoint process-creation logs for suspicious execution patterns
-  of legitimate Windows system binaries used for malicious purposes. Use when reviewing
-  endpoint process telemetry for LOLBins-based defense evasion or building detections
-  for signed-binary proxy execution.
+description: Hunts for LOLBins (Living Off the Land Binaries) abuse, mapped to MITRE T1218, by
+  analyzing endpoint process-creation logs for suspicious execution patterns of legitimate Windows
+  system binaries used for malicious purposes. Use when reviewing endpoint process telemetry for
+  LOLBins-based defense evasion or building detections for signed-binary proxy execution. Do not
+  use for the broader living-off-the-land binary hunting methodology - use hunting-for-living-off-the-land-binaries.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

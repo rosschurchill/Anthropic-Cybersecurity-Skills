@@ -1,6 +1,6 @@
 ---
 name: implementing-zero-trust-for-saas-applications
-description: Secures SaaS apps (Microsoft 365, Google Workspace, Salesforce, Slack) via CASB/SSPM deployment, conditional access policies, OAuth app governance, and session-level DLP controls enforcing identity verification and device compliance. Use when adding MFA/device-compliance conditional access, discovering shadow IT, governing OAuth consent grants, or applying session controls to sensitive SaaS data.
+description: Secures SaaS apps (Microsoft 365, Google Workspace, Salesforce, Slack) via CASB/SSPM deployment, conditional access policies, OAuth app governance, and session-level DLP controls enforcing identity verification and device compliance. Use when adding MFA/device-compliance conditional access, discovering shadow IT, governing OAuth consent grants, or applying session controls to sensitive SaaS data. Do not use for brokering zero-trust access to internal private applications - use implementing-zero-trust-network-access-with-zscaler.
 domain: cybersecurity
 subdomain: zero-trust-architecture
 tags:

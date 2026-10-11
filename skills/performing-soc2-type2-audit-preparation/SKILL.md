@@ -6,7 +6,7 @@ description: 'Automates SOC 2 Type II audit preparation including gap assessment
   compliance monitoring. Covers all five TSC categories (Security, Availability, Processing
   Integrity, Confidentiality, Privacy) with automated evidence gathering from AWS,
   Azure, GCP, Okta, GitHub, and Jira. Use when preparing for or maintaining SOC 2
-  Type II certification.
+  Type II certification. Do not use for ISO 27001 ISMS certification - use implementing-iso-27001-information-security-management.
 
   '
 domain: cybersecurity

@@ -5,7 +5,7 @@ description: Configure rsyslog for centralized log collection with TLS encryptio
   files with GnuTLS stream drivers, x509 certificate authentication, per-host log
   segregation, and reliable queue settings. Use when building a centralized, encrypted
   syslog pipeline, hardening rsyslog client/server configs for high-availability log
-  infrastructure, or troubleshooting TLS-based syslog forwarding.
+  infrastructure, or troubleshooting TLS-based syslog forwarding. Do not use for log forwarding and aggregation with Fluentd - use implementing-log-forwarding-with-fluentd.
 domain: cybersecurity
 subdomain: security-operations
 tags:

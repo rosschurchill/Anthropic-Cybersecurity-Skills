@@ -1,8 +1,12 @@
 ---
 name: performing-wireless-security-assessment-with-kismet
-description: Conduct wireless network security assessments using Kismet to detect
-  rogue access points, hidden SSIDs, weak encryption, and unauthorized clients through
-  passive RF monitoring.
+description: >-
+  Runs passive 802.11a/b/g/n/ac/ax wireless assessment with Kismet (monitor mode, no
+  transmission) to detect rogue access points, weak encryption, hidden networks, and client
+  behavior undetectably. Use when passively surveying the RF environment, detecting rogue APs
+  and misconfigured encryption, or mapping clients and probe requests during an assessment. Do
+  not use for active WPA handshake capture and password cracking — use
+  performing-wifi-password-cracking-with-aircrack.
 domain: cybersecurity
 subdomain: network-security
 tags:

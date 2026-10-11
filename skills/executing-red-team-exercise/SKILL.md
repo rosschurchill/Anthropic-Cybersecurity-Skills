@@ -1,13 +1,14 @@
 ---
 name: executing-red-team-exercise
-description: 'Run a stealthy, MITRE ATT&CK-mapped adversary emulation against an organization''s
-  people, processes, and technology, using C2 infrastructure (Cobalt Strike, Sliver, Brute
-  Ratel, Mythic) through the full attack lifecycle to test SOC detection and response rather
-  than just find vulnerabilities. Use when executing a full-scope red team exercise, adversary
+description: >-
+  Run a stealthy, MITRE ATT&CK-mapped adversary emulation against an organization's people,
+  processes, and technology, using C2 infrastructure (Cobalt Strike, Sliver, Brute Ratel, Mythic)
+  through the full attack lifecycle to test SOC detection and response rather than just find
+  vulnerabilities. Use when executing a full-scope red team exercise, adversary
   simulation/emulation, or a regulatory exercise (TIBER-EU, CBEST, AASE, iCAST) with executive
-  authorization and a signed Rules of Engagement already in place.
-
-  '
+  authorization and a signed Rules of Engagement already in place. Do not use for scoping and
+  planning the engagement and its Rules of Engagement - use
+  executing-red-team-engagement-planning.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

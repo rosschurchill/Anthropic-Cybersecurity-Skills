@@ -6,7 +6,7 @@ description: 'Automates the Privacy Impact Assessment (PIA) workflow including d
   the NIST Privacy Framework PRAM methodology and ICO DPIA guidance for systematic
   identification and mitigation of privacy risks across processing activities. Use
   when conducting privacy assessments for new systems, evaluating regulatory compliance
-  posture, or building automated privacy governance programs.
+  posture, or building automated privacy governance programs. Do not use for broad GDPR compliance posture assessment - use conducting-gdpr-compliance-assessment.
 
   '
 domain: cybersecurity

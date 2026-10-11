@@ -1,12 +1,10 @@
 ---
 name: implementing-conduit-security-for-ot-remote-access
-description: 'Implements secure conduit architecture for OT remote access under the
-  IEC 62443 zones-and-conduits model, deploying jump servers, MFA gateways, session
-  recording, and approval-based workflows for vendor and engineer access to ICS. Use
-  when replacing direct VPN access into OT networks, securing third-party vendor access
-  to SCADA equipment, or remediating audit findings on uncontrolled OT remote access.
-
-  '
+description: 'Implements secure conduit architecture for OT remote access under the IEC 62443 zones-and-conduits
+  model, deploying jump servers, MFA gateways, session recording, and approval-based workflows for vendor
+  and engineer access to ICS. Use when replacing direct VPN access into OT networks, securing third-party
+  vendor access to SCADA equipment, or remediating audit findings on uncontrolled OT remote access.
+  Do not use for zone-level packet-filtering firewalls in front of PLCs - use implementing-ics-firewall-with-tofino.'
 domain: cybersecurity
 subdomain: ot-ics-security
 tags:

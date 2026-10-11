@@ -1,6 +1,12 @@
 ---
 name: building-threat-intelligence-platform
-description: Design and deploy a Threat Intelligence Platform (TIP) by integrating open-source CTI tools (MISP, OpenCTI, TheHive, Cortex) into a unified system with feed ingestion pipelines, enrichment workflows, STIX/TAXII interoperability, and analyst dashboards. Use when architecting or standing up a centralized CTI platform to collect, analyze, and disseminate threat intelligence across a security team.
+description: >-
+  Design and deploy a Threat Intelligence Platform (TIP) by integrating open-source CTI tools
+  (MISP, OpenCTI, TheHive, Cortex) into a unified system with feed ingestion pipelines,
+  enrichment workflows, STIX/TAXII interoperability, and analyst dashboards. Use when
+  architecting or standing up a centralized CTI platform to collect, analyze, and disseminate
+  threat intelligence across a security team. Do not use for selecting or evaluating a TIP
+  product — use evaluating-threat-intelligence-platforms.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

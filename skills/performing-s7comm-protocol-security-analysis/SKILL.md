@@ -1,11 +1,12 @@
 ---
 name: performing-s7comm-protocol-security-analysis
-description: 'Perform security analysis of Siemens S7comm and S7CommPlus protocols
-  used by SIMATIC S7 PLCs to identify vulnerabilities including replay attacks, integrity
-  bypass, unauthorized CPU stop commands, and program download manipulation exploiting
-  weaknesses in S7-300, S7-400, S7-1200, and S7-1500 controllers.
-
-  '
+description: >-
+  Analyzes the Siemens S7comm and S7CommPlus protocols for S7-300/400/1200/1500 PLCs to audit
+  Step 7 and TIA Portal communications, build detection rules, and evaluate
+  integrity-mechanism bypass potential. Use when assessing Siemens SIMATIC S7 environments,
+  writing S7comm attack detections, or investigating suspected unauthorized access to Siemens
+  PLC programs. Do not use for Modbus protocol security analysis — use
+  detecting-modbus-command-injection-attacks.
 domain: cybersecurity
 subdomain: ot-ics-security
 tags:

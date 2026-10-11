@@ -6,7 +6,7 @@ description: >-
   SOC 2/ISO 27001 evidence, set contractual right-to-audit clauses, monitor vendors
   continuously, and offboard securely. Use when assessing a new vendor, standing up a
   vendor-risk program, tiering a portfolio, reviewing a SOC 2/CAIQ, or writing security
-  terms into a contract.
+  terms into a contract. Do not use for assessing your own organization's internal cyber risk - use conducting-cyber-risk-assessment-with-nist-800-30.
 domain: cybersecurity
 subdomain: compliance-governance
 tags:

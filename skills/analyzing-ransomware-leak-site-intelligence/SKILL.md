@@ -1,6 +1,11 @@
 ---
 name: analyzing-ransomware-leak-site-intelligence
-description: Safely monitor ransomware group Tor-hosted data leak sites (DLS) to collect and extract structured victim posting data, track group activity trends over time, and produce sector- and geography-specific ransomware risk assessments. Use when performing threat intelligence gathering on active ransomware groups or building proactive defense reporting from double-extortion leak-site activity.
+description: Safely monitor ransomware group Tor-hosted data leak sites (DLS) to collect
+  and extract structured victim posting data, track group activity trends over time,
+  and produce sector- and geography-specific ransomware risk assessments. Use when
+  performing threat intelligence gathering on active ransomware groups or building
+  proactive defense reporting from double-extortion leak-site activity. Do not use
+  for tracing ransom cryptocurrency payments - use analyzing-ransomware-payment-wallets.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

@@ -5,7 +5,7 @@ description: Implements defense-in-depth controls at an AI agent's tool-invocati
   policy enforcement, human-in-the-loop approval, and audit logging. Use when hardening
   an agent that calls tools with real side effects (email, payments, file writes,
   code execution), mapping OWASP Agentic AI Top 10 controls, or bounding prompt-injection
-  blast radius.
+  blast radius. Do not use for model-layer prompt-injection guardrails - use defending-llms-with-guardrails.
 domain: cybersecurity
 subdomain: ai-security
 tags:

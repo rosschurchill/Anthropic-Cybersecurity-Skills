@@ -1,10 +1,12 @@
 ---
 name: building-patch-tuesday-response-process
-description: Establish a repeatable operational process for triaging, testing, and
-  deploying Microsoft Patch Tuesday security updates (Windows, Office, Exchange, SQL
-  Server, Azure) via WSUS/SCCM within risk-based remediation SLAs, from advisory review
-  through validation. Use when building or improving a monthly patch management workflow
-  or prioritizing which CVEs to remediate first.
+description: >-
+  Establish a repeatable operational process for triaging, testing, and deploying Microsoft Patch
+  Tuesday security updates (Windows, Office, Exchange, SQL Server, Azure) via WSUS/SCCM within
+  risk-based remediation SLAs, from advisory review through validation. Use when building or
+  improving a monthly patch management workflow or prioritizing which CVEs to remediate first. Do
+  not use for general vulnerability remediation SLA and aging tracking — use
+  building-vulnerability-aging-and-sla-tracking.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

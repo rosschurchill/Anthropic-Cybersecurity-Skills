@@ -1,8 +1,13 @@
 ---
 name: reverse-engineering-ransomware-encryption-routine
-description: Reverse engineer ransomware encryption routines to identify cryptographic
-  algorithms, key generation flaws, and potential decryption opportunities using static
-  and dynamic analysis.
+description: >-
+  Reverse engineers a ransomware sample's encryption routine to identify symmetric and
+  asymmetric algorithms, key derivation, IV handling, file-targeting logic, and implementation
+  flaws that may enable decryption without paying (e.g., Rhysida, Qilin.B, Medusa). Use when
+  analyzing a ransomware binary in a controlled lab to recover the crypto scheme, find
+  weaknesses, or build detection from the routine. Do not use for higher-level analysis of
+  ransomware encryption behavior and mechanisms — use
+  analyzing-ransomware-encryption-mechanisms.
 domain: cybersecurity
 subdomain: malware-analysis
 tags:

@@ -1,12 +1,12 @@
 ---
 name: configuring-snort-ids-for-intrusion-detection
-description: 'Installs, configures, and tunes Snort 3 to monitor network traffic
-  for malicious activity using custom and community rulesets, preprocessors, and
-  alert output plugins. Use when deploying network-based intrusion detection at
-  key boundaries, writing custom Snort rules, tuning rulesets to reduce false positives,
-  or integrating Snort alerts with a SIEM.
-
-  '
+description: >-
+  Installs, configures, and tunes Snort 3 to monitor network traffic for malicious activity
+  using custom and community rulesets, preprocessors, and alert output plugins. Use when
+  deploying network-based intrusion detection at key boundaries, writing custom Snort rules,
+  tuning rulesets to reduce false positives, or integrating Snort alerts with a SIEM. Do not
+  use for Suricata-based network monitoring - use
+  configuring-suricata-for-network-monitoring.
 domain: cybersecurity
 subdomain: network-security
 tags:

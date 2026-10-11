@@ -1,10 +1,12 @@
 ---
 name: detecting-suspicious-powershell-execution
-description: Hunt for suspicious PowerShell execution (T1059.001) such as encoded commands,
-  download cradles, AMSI bypass, and constrained language mode evasion using EDR telemetry
-  (CrowdStrike, Microsoft Defender for Endpoint), Sysmon, and SIEM queries (Splunk, Elastic).
-  Use when proactively threat hunting, triaging EDR/SIEM alerts, or scoping an incident
-  involving malicious PowerShell activity.
+description: >-
+  Hunt for suspicious PowerShell execution (T1059.001) such as encoded commands, download
+  cradles, AMSI bypass, and constrained language mode evasion using EDR telemetry (CrowdStrike,
+  Microsoft Defender for Endpoint), Sysmon, and SIEM queries (Splunk, Elastic). Use when
+  proactively threat hunting, triaging EDR/SIEM alerts, or scoping an incident involving
+  malicious PowerShell activity. Do not use for behavioral-anomaly baselining of PowerShell
+  activity - use hunting-for-anomalous-powershell-execution.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

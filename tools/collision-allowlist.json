@@ -20,6 +20,223 @@
         "hardening-windows-endpoint-with-cis-benchmark"
       ],
       "reason": "Same CIS Benchmark methodology, different operating systems. The controls, tooling and audit commands do not overlap, so both must exist; each description must name the OS explicitly and point at the other."
+    },
+    {
+      "pair": [
+        "analyzing-malicious-pdf-with-peepdf",
+        "analyzing-pdf-malware-with-pdfid"
+      ],
+      "reason": "Same PDF-triage toolset, different primary tool and depth: pdfid centers on rapid structure/keyword triage and attack-vector classification, peepdf on deep interactive object and JavaScript/shellcode extraction; each description points triage work at pdfid and deep extraction at peepdf."
+    },
+    {
+      "pair": [
+        "implementing-image-provenance-verification-with-cosign",
+        "implementing-sigstore-for-software-signing"
+      ],
+      "reason": "Both use Sigstore Cosign, but cosign skill targets container image provenance with Kubernetes admission-control enforcement while sigstore skill targets general software/binary artifact signing in CI/CD; each negative trigger names the other's scope."
+    },
+    {
+      "pair": [
+        "detecting-malicious-scheduled-tasks-with-sysmon",
+        "hunting-for-suspicious-scheduled-tasks"
+      ],
+      "reason": "Different telemetry: sysmon skill detects via Sysmon Event IDs 1/11 correlated with parent processes, while the hunt works Windows Security Event 4698 task-creation records; each description names the other's data source."
+    },
+    {
+      "pair": [
+        "performing-serverless-function-security-review",
+        "securing-serverless-functions"
+      ],
+      "reason": "Opposite posture on the same platforms: review skill assesses/identifies serverless misconfigurations, securing skill implements hardening controls (least-privilege IAM, secrets, runtime monitoring); each points assessment vs implementation at the other."
+    },
+    {
+      "pair": [
+        "performing-phishing-simulation-with-gophish",
+        "performing-red-team-phishing-with-gophish"
+      ],
+      "reason": "Same GoPhish tool, different interface: simulation skill is manual admin-panel campaign setup, red-team skill automates campaigns via the Python gophish library; each description points the other interface elsewhere."
+    },
+    {
+      "pair": [
+        "conducting-internal-reconnaissance-with-bloodhound-ce",
+        "performing-active-directory-bloodhound-analysis"
+      ],
+      "reason": "Different tool version: CE skill targets BloodHound Community Edition (Docker/graph-database deployment), the other the legacy/classic BloodHound; each negative trigger names the edition it is not for."
+    },
+    {
+      "pair": [
+        "analyzing-memory-dumps-with-volatility",
+        "conducting-memory-forensics-with-volatility"
+      ],
+      "reason": "Different tool version: analyzing skill uses classic Volatility (v2) across Windows/Linux/macOS, conducting skill uses Volatility 3; each description names the other framework version."
+    },
+    {
+      "pair": [
+        "analyzing-memory-dumps-with-volatility",
+        "performing-memory-forensics-with-volatility3"
+      ],
+      "reason": "Different tool version: analyzing skill uses classic Volatility (v2) across Windows/Linux/macOS, the other uses the Volatility 3 framework; each description names the other framework version."
+    },
+    {
+      "pair": [
+        "exploiting-kerberoasting-with-impacket",
+        "performing-kerberoasting-attack"
+      ],
+      "reason": "Tool-specific vs general technique: impacket skill is Impacket GetUserSPNs.py-specific, the other is a tool-agnostic Kerberoasting methodology; each negative trigger routes the other case away."
+    },
+    {
+      "pair": [
+        "analyzing-threat-actor-ttps-with-mitre-attack",
+        "analyzing-threat-actor-ttps-with-mitre-navigator"
+      ],
+      "reason": "Different method: attack skill is broad ATT&CK behavior/IOC mapping and intel reporting across Enterprise/Mobile/ICS matrices, navigator skill specifically generates ATT&CK Navigator layer files via attackcti; each points the other scope away."
+    },
+    {
+      "pair": [
+        "performing-purple-team-atomic-testing",
+        "performing-threat-emulation-with-atomic-red-team"
+      ],
+      "reason": "Different execution framework for Atomic Red Team: purple-team skill uses Invoke-AtomicRedTeam (PowerShell) with Sigma correlation and detection-validation loops, the other uses the atomic-operator Python framework; each names the other framework."
+    },
+    {
+      "pair": [
+        "analyzing-uefi-bootkit-persistence",
+        "auditing-uefi-firmware-with-chipsec"
+      ],
+      "reason": "Both use CHIPSEC, opposite posture: bootkit skill analyzes UEFI malware/persistence families (BlackLotus, LoJax, MoonBounce), auditing skill assesses platform firmware configuration and protections (SPI write protection, BIOS lock, SMM); each names the other's focus."
+    },
+    {
+      "pair": [
+        "implementing-opa-gatekeeper-for-policy-enforcement",
+        "implementing-policy-as-code-with-open-policy-agent"
+      ],
+      "reason": "Different scope: gatekeeper skill is Kubernetes admission-control mechanics alone (ConstraintTemplates, mutation, deny at admission), policy-as-code skill is OPA policy-as-code spanning CI/CD pipelines as well as Kubernetes; each names the other's scope."
+    },
+    {
+      "pair": [
+        "analyzing-certificate-transparency-for-phishing",
+        "analyzing-tls-certificate-transparency-logs"
+      ],
+      "reason": "Different tool/method for CT-log monitoring: phishing skill uses Certstream real-time streaming for organization-targeted phishing, the other uses crt.sh/pycrtsh querying with Levenshtein typosquatting and shadow-IT detection; each names the other's method."
+    },
+    {
+      "pair": [
+        "implementing-stix-taxii-feed-integration",
+        "implementing-taxii-server-with-opentaxii"
+      ],
+      "reason": "Client vs server: feed-integration skill builds a Python STIX/TAXII client to poll and parse feeds with the stix2 library, the other deploys and operates a TAXII server with OpenTAXII/Medallion in Docker; each names the other's role."
+    },
+    {
+      "pair": [
+        "performing-wifi-password-cracking-with-aircrack",
+        "performing-wireless-network-penetration-test"
+      ],
+      "reason": "Narrow task vs full engagement: cracking skill does offline WPA/WPA2 passphrase cracking of a captured handshake, the other is a full wireless penetration test (rogue AP, segmentation, evil twin); each routes the other scope away."
+    },
+    {
+      "pair": [
+        "detecting-modbus-command-injection-attacks",
+        "monitoring-scada-modbus-traffic-anomalies"
+      ],
+      "reason": "Different focus/tooling on Modbus: injection skill detects command-injection and malformed-frame attacks with ICS-aware IDS/DPI, the other does general statistical traffic-anomaly baselining with pymodbus/Scapy/Zeek; each names the other's scope."
+    },
+    {
+      "pair": [
+        "detecting-lateral-movement-with-splunk",
+        "performing-lateral-movement-detection"
+      ],
+      "reason": "Tool-specific vs general: splunk skill is Splunk-SPL-specific, the other is SIEM-agnostic multi-source detection spanning network flow and endpoint telemetry; each negative trigger routes the other case away."
+    },
+    {
+      "pair": [
+        "detecting-dns-exfiltration-with-dns-query-analysis",
+        "hunting-for-dns-tunneling-with-zeek"
+      ],
+      "reason": "Different method/platform: dns-query-analysis skill uses passive-DNS statistical/ML detection, the other analyzes Zeek dns.log; each names the other's method."
+    },
+    {
+      "pair": [
+        "implementing-image-provenance-verification-with-cosign",
+        "verifying-build-provenance-with-slsa-sigstore"
+      ],
+      "reason": "Signing/enforcement vs verification: cosign skill signs images and enforces verified-images-only at Kubernetes admission, the other verifies SLSA provenance with slsa-verifier against build levels; each names the other's role."
+    },
+    {
+      "pair": [
+        "detecting-malicious-scheduled-tasks-with-sysmon",
+        "hunting-for-scheduled-task-persistence"
+      ],
+      "reason": "Different telemetry: sysmon skill detects via Sysmon Event IDs 1/11 correlated with parent processes, the hunt works Windows Security Event 4698 via SIEM/EDR; each names the other's data source."
+    },
+    {
+      "pair": [
+        "detecting-dns-exfiltration-with-dns-query-analysis",
+        "performing-dns-tunneling-detection"
+      ],
+      "reason": "Different method: dns-query-analysis skill uses passive-DNS log monitoring with statistical/ML methods, the other uses scapy-based live packet-capture analysis; each names the other's method."
+    },
+    {
+      "pair": [
+        "executing-phishing-simulation-campaign",
+        "performing-phishing-simulation-with-gophish"
+      ],
+      "reason": "General vs tool-specific: executing skill is a tool-agnostic phishing-simulation methodology, the other is GoPhish-specific campaign setup and reporting; each routes the other case away."
+    },
+    {
+      "pair": [
+        "analyzing-supply-chain-malware-artifacts",
+        "hunting-for-supply-chain-compromise"
+      ],
+      "reason": "Artifact forensics vs log hunting: malware-artifacts skill investigates the trojanized artifacts/samples themselves, the other runs a SIEM/EDR log-based threat hunt for supply-chain compromise; each names the other's approach."
+    },
+    {
+      "pair": [
+        "detecting-dns-exfiltration-with-dns-query-analysis",
+        "detecting-exfiltration-over-dns-with-zeek"
+      ],
+      "reason": "Different method/platform: dns-query-analysis skill uses passive-DNS statistical/ML detection, the other analyzes Zeek dns.log; each names the other's method."
+    },
+    {
+      "pair": [
+        "analyzing-cobalt-strike-beacon-configuration",
+        "analyzing-cobaltstrike-malleable-c2-profiles"
+      ],
+      "reason": "Different artifact: beacon-configuration skill extracts embedded config from Beacon PE files/memory dumps, the other parses Malleable C2 profile definitions (AST) and builds traffic detections; each names the other's input."
+    },
+    {
+      "pair": [
+        "analyzing-security-logs-with-splunk",
+        "building-detection-rule-with-splunk-spl"
+      ],
+      "reason": "Investigation vs detection engineering: analyzing skill investigates incidents and reconstructs timelines in Splunk, the other authors SPL detection/correlation rules; each names the other's task."
+    },
+    {
+      "pair": [
+        "implementing-fuzz-testing-in-cicd-with-aflplusplus",
+        "performing-fuzzing-with-aflplusplus"
+      ],
+      "reason": "Same AFL++ tool, different context: cicd skill integrates fuzzing into a CI/CD pipeline, the other runs standalone campaigns with corpus minimization and crash triage; each names the other's context."
+    },
+    {
+      "pair": [
+        "configuring-suricata-for-network-monitoring",
+        "implementing-network-intrusion-prevention-with-suricata"
+      ],
+      "reason": "Same Suricata tool, different mode: monitoring skill is passive IDS detection, EVE logging, SIEM integration and file extraction, the other is inline IPS (NFQueue) focused on actively blocking traffic; each names the other's mode."
+    },
+    {
+      "pair": [
+        "conducting-network-penetration-test",
+        "performing-external-network-penetration-test"
+      ],
+      "reason": "Scope: conducting skill is general/internal network penetration testing, the other is a dedicated external/internet-facing perimeter test; each routes the other scope away."
+    },
+    {
+      "pair": [
+        "analyzing-dns-logs-for-exfiltration",
+        "hunting-for-dns-tunneling-with-zeek"
+      ],
+      "reason": "Different platform: dns-logs skill does SIEM-based DNS-log analysis with DGA detection, the other analyzes Zeek dns.log specifically; each names the other's platform."
     }
   ]
 }

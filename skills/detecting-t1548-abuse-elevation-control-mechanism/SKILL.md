@@ -1,10 +1,12 @@
 ---
 name: detecting-t1548-abuse-elevation-control-mechanism
-description: Detect abuse of elevation control mechanisms (T1548), including Windows UAC
-  bypass via auto-elevating binaries like fodhelper.exe and Linux sudo/setuid/setgid exploitation,
-  by monitoring registry changes, integrity-level transitions, and parent-child process
+description: >-
+  Detect abuse of elevation control mechanisms (T1548), including Windows UAC bypass via
+  auto-elevating binaries like fodhelper.exe and Linux sudo/setuid/setgid exploitation, by
+  monitoring registry changes, integrity-level transitions, and parent-child process
   relationships via Sysmon and Windows Security events. Use when hunting privilege-escalation
-  activity or validating elevation-abuse detection coverage.
+  activity or validating elevation-abuse detection coverage. Do not use for general
+  privilege-escalation attempt detection - use detecting-privilege-escalation-attempts.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

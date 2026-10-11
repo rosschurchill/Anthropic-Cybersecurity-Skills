@@ -1,11 +1,6 @@
 ---
 name: performing-cloud-storage-forensic-acquisition
-description: Perform forensic acquisition of cloud storage services including Google
-  Drive, OneDrive, Dropbox, and Box by pulling API-based remote data such as revision
-  history and audit logs, and collecting local sync-client artifacts including KAPE
-  targets and OneDrive databases from endpoints. Use during incident response or e-discovery
-  when evidence resides in cloud-synced storage and both cloud-side and endpoint-side
-  artifacts must be preserved.
+description: 'Perform forensic acquisition of cloud storage services including Google Drive, OneDrive, Dropbox, and Box by pulling API-based remote data such as revision history and audit logs, and collecting local sync-client artifacts including KAPE targets and OneDrive databases from endpoints. Use during incident response or e-discovery when evidence resides in cloud-synced storage and both cloud-side and endpoint-side artifacts must be preserved. Do not use for IaaS compromise investigation across AWS, Azure, or GCP - use performing-cloud-forensics-investigation.'
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

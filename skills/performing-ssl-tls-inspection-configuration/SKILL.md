@@ -6,7 +6,7 @@ description: >-
   exfiltration detection, including deploying trusted CA certificates,
   managing exemptions for certificate-pinned apps, and privacy compliance. Use
   when setting up or auditing TLS inspection on network security devices to
-  close the encrypted-traffic blind spot.
+  close the encrypted-traffic blind spot. Do not use for assessing server TLS configuration strength - use performing-ssl-tls-security-assessment.
 domain: cybersecurity
 subdomain: network-security
 tags:

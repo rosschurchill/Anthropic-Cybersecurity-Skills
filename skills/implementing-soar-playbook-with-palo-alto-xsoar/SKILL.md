@@ -5,7 +5,7 @@ description: Build automated incident response playbooks in Cortex XSOAR (Demist
   phishing, malware, account-compromise, and DDoS response workflows across SOC tools.
   Use when authoring or wiring up an XSOAR playbook, adding custom XSOAR integration
   commands or Python automation scripts, or reducing manual SOC response time via
-  orchestration.
+  orchestration. Do not use for building SOAR playbooks on Splunk Phantom - use implementing-soar-automation-with-phantom.
 domain: cybersecurity
 subdomain: soc-operations
 tags:

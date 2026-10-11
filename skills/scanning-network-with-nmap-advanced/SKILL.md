@@ -5,7 +5,7 @@ description: 'Performs advanced network recon using Nmap''s Scripting Engine (NS
   hosts, enumerate service versions, detect vulnerabilities, and fingerprint OSes.
   Use during authorized penetration tests or enterprise asset-discovery assessments
   needing scan evasion, NSE vulnerability checks, or output fed into a vulnerability
-  management pipeline.
+  management pipeline. Do not use for authenticated vulnerability scanning with Nessus - use performing-vulnerability-scanning-with-nessus.
 
   '
 domain: cybersecurity

@@ -1,8 +1,12 @@
 ---
 name: performing-clickjacking-attack-test
-description: Testing web applications for clickjacking vulnerabilities by assessing
-  frame embedding controls and crafting proof-of-concept overlay attacks during authorized
-  security assessments.
+description: >-
+  Tests web applications for clickjacking (UI redressing) by assessing frame-embedding
+  controls and crafting proof-of-concept overlay and iframe attacks during authorized
+  assessments. Use when checking whether sensitive one-click actions (delete account, transfer
+  funds, change settings) can be framed, or evaluating X-Frame-Options and CSP frame-ancestors
+  enforcement. Do not use for forging cross-site state-changing requests — use
+  performing-csrf-attack-simulation.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

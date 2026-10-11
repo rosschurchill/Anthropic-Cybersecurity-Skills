@@ -4,7 +4,7 @@ description: 'Hardens AWS IAM configurations to enforce least-privilege access, 
   IAM policy scoping, permission boundaries, IAM Access Analyzer integration, and credential
   rotation strategies. Use when reducing the blast radius of compromised AWS identities,
   auditing overly permissive IAM policies, or setting up permission boundaries and
-  Access Analyzer findings review across cloud accounts.
+  Access Analyzer findings review across cloud accounts. Do not use for hardening Lambda execution roles - use securing-aws-lambda-execution-roles.
 
   '
 domain: cybersecurity

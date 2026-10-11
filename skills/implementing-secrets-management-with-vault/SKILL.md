@@ -1,13 +1,13 @@
 ---
 name: implementing-secrets-management-with-vault
-description: 'Deploy HashiCorp Vault for centralized secrets management, covering dynamic
-  secret generation for databases and cloud providers, transit encryption, PKI certificate
-  management, and Kubernetes integration. Use when eliminating hardcoded credentials
-  from application code or CI/CD pipelines, migrating to short-lived auto-rotated
-  secrets, or giving Kubernetes workloads secure access to database or cloud provider
-  credentials.
-
-  '
+description: >-
+  Deploy HashiCorp Vault for centralized secrets management, covering dynamic secret
+  generation for databases and cloud providers, transit encryption, PKI certificate
+  management, and Kubernetes integration. Use when eliminating hardcoded credentials from
+  application code or CI/CD pipelines, migrating to short-lived auto-rotated secrets, or
+  giving Kubernetes workloads secure access to database or cloud provider credentials. Do not
+  use for scanning code for hardcoded secrets - use
+  implementing-secret-scanning-with-gitleaks.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

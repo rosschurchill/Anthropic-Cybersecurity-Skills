@@ -1,14 +1,14 @@
 ---
 name: collecting-open-source-intelligence
-description: 'Collects and synthesizes open-source intelligence (OSINT) about threat
-  actors, malicious infrastructure, and attack campaigns using publicly available
-  data sources, passive reconnaissance tools, and dark web monitoring. Use when investigating
-  external threat actor infrastructure, performing pre-engagement reconnaissance for
-  authorized red team assessments, or enriching CTI reports with publicly available
-  adversary context. Activates for requests involving Maltego, Shodan, OSINT framework,
-  SpiderFoot, or infrastructure reconnaissance.
-
-  '
+description: >-
+  Collects and synthesizes open-source intelligence (OSINT) about threat actors, malicious
+  infrastructure, and attack campaigns using publicly available data sources, passive
+  reconnaissance tools, and dark web monitoring. Use when investigating external threat actor
+  infrastructure, performing pre-engagement reconnaissance for authorized red team assessments,
+  or enriching CTI reports with publicly available adversary context. Activates for requests
+  involving Maltego, Shodan, OSINT framework, SpiderFoot, or infrastructure reconnaissance. Do
+  not use for pentest external footprinting of a target organization — use
+  conducting-external-reconnaissance-with-osint.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

@@ -5,7 +5,7 @@ description: 'Uses Microsoft RESTler to perform stateful REST API fuzzing: compi
   test/fuzz-lean/fuzz modes that generate request sequences exercising producer-consumer
   dependencies, then flags 500 errors, auth bypasses, resource leaks, and injection
   bugs. Use when fuzzing REST APIs for stateful bugs or running RESTler-based automated
-  API security testing.
+  API security testing. Do not use for manual collection-driven API security testing - use performing-api-security-testing-with-postman.
 
   '
 domain: cybersecurity

@@ -1,6 +1,12 @@
 ---
 name: performing-physical-intrusion-assessment
-description: Conduct authorized physical penetration testing against facilities, server rooms, and restricted areas using tailgating, RFID badge cloning, lock bypassing, rogue network device deployment, and security-guard procedure testing. Use as part of a full-scope red team engagement to evaluate physical security controls and their path to network access, always under signed client authorization.
+description: >-
+  Evaluates physical security controls in authorized red team engagements by attempting
+  tailgating, RFID badge cloning, lock bypass, rogue network device deployment, and testing
+  guard procedures (MITRE ATT&CK T1200, T1091). Use when scoping a physical penetration test
+  of facilities, server rooms, or restricted areas, or testing badge and access-control
+  resilience. Do not use for human-targeted pretexting and phishing social engineering — use
+  conducting-social-engineering-penetration-test.
 domain: cybersecurity
 subdomain: red-teaming
 tags:

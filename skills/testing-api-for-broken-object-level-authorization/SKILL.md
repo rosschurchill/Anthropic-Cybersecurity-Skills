@@ -5,7 +5,7 @@ description: 'Tests REST and GraphQL APIs for Broken Object Level Authorization 
   IDs, UUIDs, slugs), and systematically substituting IDs belonging to other users
   to check whether the server enforces per-object authorization. Use when asked to
   test BOLA or IDOR in an API, verify object-level authorization, or assess an API
-  for access control bypass.
+  for access control bypass. Do not use for broken function-level authorization - use exploiting-broken-function-level-authorization.
 
   '
 domain: cybersecurity

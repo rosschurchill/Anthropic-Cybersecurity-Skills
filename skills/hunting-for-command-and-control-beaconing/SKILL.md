@@ -1,8 +1,14 @@
 ---
 name: hunting-for-command-and-control-beaconing
-description: Detect C2 beaconing patterns in network traffic using frequency analysis,
-  jitter detection, and domain reputation to identify compromised endpoints communicating
-  with adversary infrastructure.
+description: >-
+  Detect C2 beaconing patterns in network traffic using frequency analysis, jitter detection,
+  and domain reputation to identify compromised endpoints communicating with adversary
+  infrastructure. Use when proactively hunting compromised systems, investigating periodic
+  outbound connections to suspicious domains, responding to intel about C2 frameworks in your
+  sector, triaging unusual DNS query patterns, or identifying active C2 during incident
+  response. Keywords: C2 beaconing, jitter, frequency analysis, domain reputation, DNS,
+  periodic callback, adversary infrastructure. Do not use for pure statistical timing analysis
+  without domain reputation — use hunting-for-beaconing-with-frequency-analysis.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

@@ -1,12 +1,11 @@
 ---
 name: detecting-insider-data-exfiltration-via-dlp
-description: 'Detects insider data exfiltration by analyzing DLP policy violations,
-  file access patterns, upload volume anomalies, and off-hours activity in endpoint
-  and cloud logs. Uses pandas for behavioral analytics and statistical baselines.
-  Use when investigating insider threats or building user behavior analytics for data
-  loss prevention.
-
-  '
+description: >-
+  Detects insider data exfiltration by analyzing DLP policy violations, file access patterns,
+  upload volume anomalies, and off-hours activity in endpoint and cloud logs. Uses pandas for
+  behavioral analytics and statistical baselines. Use when investigating insider threats or
+  building user behavior analytics for data loss prevention. Do not use for broad insider
+  behavioral threat hunting beyond DLP - use detecting-insider-threat-behaviors.
 domain: cybersecurity
 subdomain: security-operations
 tags:

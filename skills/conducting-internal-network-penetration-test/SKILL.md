@@ -1,8 +1,13 @@
 ---
 name: conducting-internal-network-penetration-test
-description: Execute an internal network penetration test simulating an insider threat
-  or post-breach attacker to identify lateral movement paths, privilege escalation
-  vectors, and sensitive data exposure within the corporate network.
+description: >-
+  Executes an internal network penetration test simulating an insider or post-breach attacker to
+  identify lateral-movement paths, privilege-escalation vectors, and sensitive-data exposure
+  inside the corporate network. Use when assessing internal attack paths from an assumed-breach
+  position, testing segmentation and privilege boundaries, or validating east-west controls
+  during an authorized engagement. Keywords: internal pentest, insider threat, lateral movement,
+  privilege escalation, segmentation, assumed breach, east-west. Do not use for internet-facing
+  perimeter testing - use performing-external-network-penetration-test.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

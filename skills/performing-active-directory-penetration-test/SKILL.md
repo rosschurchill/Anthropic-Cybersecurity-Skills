@@ -4,7 +4,7 @@ description: Conduct a focused Active Directory penetration test using BloodHoun
   Impacket, Certipy, Rubeus, and NetExec to enumerate domain objects, discover attack
   paths, exploit Kerberos weaknesses, escalate privileges via ADCS/DCSync, and demonstrate
   domain compromise. Use when running an authorized AD pentest from a standard domain
-  user foothold toward Domain Admin or Enterprise Admin.
+  user foothold toward Domain Admin or Enterprise Admin. Do not use for cross-forest trust relationship attacks - use performing-active-directory-forest-trust-attack.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

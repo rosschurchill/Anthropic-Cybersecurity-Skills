@@ -1,10 +1,14 @@
 ---
 name: detecting-living-off-the-land-attacks
-description: 'Detect abuse of legitimate Windows binaries (LOLBins) used for living
-  off the land attacks. Monitors process creation, command-line arguments, and parent-child
-  relationships to identify suspicious LOLBin execution patterns.
-
-  '
+description: >-
+  Detect abuse of legitimate Windows binaries (LOLBins) used for living off the land attacks.
+  Monitors process creation, command-line arguments, and parent-child relationships to
+  identify suspicious LOLBin execution patterns. Use when building SIEM/EDR detection rules
+  for LOLBin abuse, investigating alerts where system binaries run in unexpected contexts,
+  tuning Sysmon process-creation capture, or responding to fileless intrusions that used only
+  built-in OS tools. Keywords: LOLBins, LOTL, fileless, Sysmon, AppLocker, WDAC, parent-child
+  process. Do not use for threat-hunting LOLBin execution across historical endpoint logs —
+  use hunting-for-lolbins-execution-in-endpoint-logs.
 domain: cybersecurity
 subdomain: threat-detection
 tags:

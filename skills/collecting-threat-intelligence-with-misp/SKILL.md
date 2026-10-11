@@ -1,6 +1,12 @@
 ---
 name: collecting-threat-intelligence-with-misp
-description: Deploy MISP, configure threat feeds (MISP community, freetext, TAXII, CSV), and use the PyMISP API to programmatically fetch, add, and search events and IOCs, building automated collection pipelines that aggregate indicators from community and commercial sources. Use when gathering, storing, or correlating IOCs and threat intelligence, or when scripting MISP ingestion via PyMISP.
+description: >-
+  Deploy MISP, configure threat feeds (MISP community, freetext, TAXII, CSV), and use the PyMISP
+  API to programmatically fetch, add, and search events and IOCs, building automated collection
+  pipelines that aggregate indicators from community and commercial sources. Use when gathering,
+  storing, or correlating IOCs and threat intelligence, or when scripting MISP ingestion via
+  PyMISP. Do not use for multi-source feed aggregation and distribution across SIEM and SOAR —
+  use building-threat-feed-aggregation-with-misp.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

@@ -5,7 +5,7 @@ description: Validates backup integrity through cryptographic hash verification,
   confirm backups are reliable for disaster recovery and ransomware response. Use
   before relying on backups for recovery, when building post-backup validation
   pipelines, auditing backup infrastructure for compliance, or checking immutable/air-gapped
-  backups for silent corruption or tampering.
+  backups for silent corruption or tampering. Do not use for full ransomware recovery procedure testing - use testing-ransomware-recovery-procedures.
 domain: cybersecurity
 subdomain: incident-response
 tags:

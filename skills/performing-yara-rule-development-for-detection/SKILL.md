@@ -4,7 +4,7 @@ description: Develops precise YARA and YARA-X rules for malware detection by ide
   unique strings, byte sequences, PE header traits, and behavioral indicators in
   unpacked malware artifacts while minimizing false positives. Use when building
   detection signatures for threat hunting, classifying malware families, or authoring
-  rules from IOCs such as C2 URLs, mutex names, and encryption constants.
+  rules from IOCs such as C2 URLs, mutex names, and encryption constants. Do not use for hunting with existing YARA rules - use performing-threat-hunting-with-yara-rules.
 domain: cybersecurity
 subdomain: malware-analysis
 tags:

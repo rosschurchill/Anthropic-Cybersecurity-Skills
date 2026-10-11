@@ -1,10 +1,10 @@
 ---
 name: hunting-for-living-off-the-land-binaries
-description: Proactively hunts for adversary abuse of legitimate, signed system binaries
-  (LOLBins) used to execute malicious payloads, download files, or proxy execution
-  while evading application allowlisting and defense-evasion controls. Use when building
-  LOLBins detection rules for EDR/SIEM or when threat hunting for defense-evasion
-  activity involving trusted system binaries.
+description: Proactively hunts for adversary abuse of legitimate, signed system binaries (LOLBins)
+  used to execute malicious payloads, download files, or proxy execution while evading application
+  allowlisting and defense-evasion controls. Use when building LOLBins detection rules for EDR/SIEM
+  or when threat hunting for defense-evasion activity involving trusted system binaries. Do not
+  use for parsing LOLBin execution out of endpoint logs - use hunting-for-lolbins-execution-in-endpoint-logs.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

@@ -4,7 +4,7 @@ description: 'Hardens GitHub Actions workflows against supply chain attacks, cre
   theft, and privilege escalation: pinning actions to SHA digests, minimizing GITHUB_TOKEN
   permissions, protecting secrets, preventing script injection in workflow expressions,
   and requiring reviewers for workflow changes. Use when hardening GitHub Actions
-  workflows that handle secrets, deploy to production, or run with elevated permissions.
+  workflows that handle secrets, deploy to production, or run with elevated permissions. Do not use for adding SAST scanning to Actions pipelines - use integrating-sast-into-github-actions-pipeline.
 
   '
 domain: cybersecurity

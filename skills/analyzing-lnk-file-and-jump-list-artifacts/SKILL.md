@@ -5,7 +5,7 @@ description: Analyze Windows LNK shortcut files and Jump List artifacts with LEC
   access, program execution, and user activity that persists even after the target
   file is deleted. Use when investigating Windows user activity, reconstructing file-access
   or program-execution timelines, or examining recent/frequently-used file evidence
-  in a forensic exam.
+  in a forensic exam. Do not use for LNK-only parsing without Jump Lists - use analyzing-windows-lnk-files-for-artifacts.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

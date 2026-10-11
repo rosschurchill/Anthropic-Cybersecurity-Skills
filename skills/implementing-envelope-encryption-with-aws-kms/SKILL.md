@@ -1,6 +1,10 @@
 ---
 name: implementing-envelope-encryption-with-aws-kms
-description: Implements envelope encryption with AWS KMS, encrypting data locally with a data encryption key (DEK) and protecting that DEK with a KMS-managed key (KEK), covering the encrypt/decrypt flow, KMS key types, and security validation criteria. Use when designing key management for encrypting large or numerous data objects on AWS, or when reducing direct KMS API call volume.
+description: 'Implements envelope encryption with AWS KMS, encrypting data locally with a data encryption
+  key (DEK) and protecting that DEK with a KMS-managed key (KEK), covering the encrypt/decrypt flow,
+  KMS key types, and security validation criteria. Use when designing key management for encrypting
+  large or numerous data objects on AWS, or when reducing direct KMS API call volume. Do not use for
+  encrypting data at rest with a static local AES key - use implementing-aes-encryption-for-data-at-rest.'
 domain: cybersecurity
 subdomain: cryptography
 tags:

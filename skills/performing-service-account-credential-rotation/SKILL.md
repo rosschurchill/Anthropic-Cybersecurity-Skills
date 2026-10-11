@@ -3,7 +3,7 @@ name: performing-service-account-credential-rotation
 description: Automates credential rotation for service accounts across Active Directory,
   cloud platforms, and application databases to eliminate stale secrets and reduce
   compromise risk. Use when rotating or automating rotation of service account passwords,
-  API keys, or secrets stored in a vault.
+  API keys, or secrets stored in a vault. Do not use for auditing and reviewing service account usage - use performing-service-account-audit.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

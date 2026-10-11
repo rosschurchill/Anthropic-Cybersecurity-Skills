@@ -1,6 +1,11 @@
 ---
 name: hunting-evtx-with-chainsaw
-description: Run Chainsaw against collected Windows EVTX files to hunt with the SigmaHQ rule corpus, built-in detection rules, and high-speed keyword/regex search, plus analyze shimcache, SRUM, and event-log gaps, outputting colorized tables, CSV, or JSON. Use during first-response triage for offline, SIEM-free detection over Windows event logs, or to quickly confirm a hunt hypothesis and produce reporting output.
+description: Run Chainsaw against collected Windows EVTX files to hunt with the SigmaHQ rule corpus,
+  built-in detection rules, and high-speed keyword/regex search, plus analyze shimcache, SRUM,
+  and event-log gaps, outputting colorized tables, CSV, or JSON. Use during first-response triage
+  for offline, SIEM-free detection over Windows event logs, or to quickly confirm a hunt hypothesis
+  and produce reporting output. Do not use for building a chronological Sigma timeline from EVTX
+  - use generating-forensic-timelines-with-hayabusa.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

@@ -1,14 +1,13 @@
 ---
 name: performing-iot-security-assessment
-description: 'Performs comprehensive security assessments of IoT devices and their
-  ecosystems by testing hardware interfaces, firmware, network communications, cloud
-  APIs, and companion mobile applications. The tester uses firmware extraction and
-  analysis, hardware debugging via UART and JTAG, network protocol analysis, and runtime
-  exploitation to identify vulnerabilities across all layers of the IoT stack. Activates
-  for requests involving IoT security testing, embedded device assessment, firmware
-  security analysis, or smart device penetration testing.
-
-  '
+description: >-
+  Performs full-stack security assessments of IoT devices and ecosystems — hardware interfaces
+  (UART, JTAG), firmware, network protocols, cloud APIs, and companion mobile apps — using
+  firmware analysis, hardware debugging, protocol analysis, and runtime exploitation. Use when
+  assessing a connected or embedded device end to end before or after deployment, or
+  evaluating the device-cloud-app ecosystem for a product security review. Do not use for
+  firmware-only carving and filesystem extraction — use
+  performing-firmware-extraction-with-binwalk.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

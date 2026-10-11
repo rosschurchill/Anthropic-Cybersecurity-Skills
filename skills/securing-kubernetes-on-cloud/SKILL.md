@@ -5,7 +5,7 @@ description: 'Hardens managed Kubernetes clusters on EKS, AKS, and GKE by implem
   Identity for GKE, Managed Identities for AKS), RBAC scoping, image admission controls,
   and runtime security monitoring. Use when deploying a new managed Kubernetes cluster
   with security requirements or hardening an existing EKS, AKS, or GKE cluster after
-  an audit or pentest finding.
+  an audit or pentest finding. Do not use for offensive Kubernetes penetration testing - use performing-kubernetes-penetration-testing.
 
   '
 domain: cybersecurity

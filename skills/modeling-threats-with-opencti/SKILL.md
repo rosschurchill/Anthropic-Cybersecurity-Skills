@@ -1,6 +1,6 @@
 ---
 name: modeling-threats-with-opencti
-description: Deploy OpenCTI (Filigran) via Docker Compose and use the pycti Python client to model threat actors, intrusion sets, campaigns, and indicators as a STIX 2.1 knowledge graph with relationships (uses, attributed-to, targets). Use when building a centralized threat-intel knowledge base, correlating IOCs from multiple feeds into one adversary graph, or producing STIX bundles for detection engineering.
+description: Deploy OpenCTI (Filigran) via Docker Compose and use the pycti Python client to model threat actors, intrusion sets, campaigns, and indicators as a STIX 2.1 knowledge graph with relationships (uses, attributed-to, targets). Use when building a centralized threat-intel knowledge base, correlating IOCs from multiple feeds into one adversary graph, or producing STIX bundles for detection engineering. Do not use for building the IOC enrichment pipeline in OpenCTI - use building-ioc-enrichment-pipeline-with-opencti.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

@@ -1,14 +1,15 @@
 ---
 name: implementing-honeypot-for-ransomware-detection
-description: 'Deploys canary files, honeypot shares, and decoy systems to detect ransomware
-  activity at the earliest possible stage. Configures canary tokens embedded in strategic
-  file locations that trigger alerts when ransomware attempts encryption, uses honeypot
-  network shares that mimic high-value targets, and deploys Thinkst Canary appliances
-  for comprehensive deception-based detection. Activates for requests involving ransomware
-  honeypots, canary files, deception technology for ransomware, or early ransomware
-  alerting.
-
-  '
+description: >-
+  Deploys canary files, honeypot shares, and decoy systems to detect ransomware activity at
+  the earliest stage, configuring canary tokens in strategic file locations that alert on
+  encryption attempts, honeypot network shares that mimic high-value targets, and Thinkst
+  Canary appliances for deception-based detection. Use when deploying early-warning canary
+  files for encryption attempts, creating honeypot shares that catch lateral movement and data
+  staging, supplementing EDR/SIEM with low-false-positive deception alerts, or validating
+  ransomware detection with controlled tests. Keywords: canary file, canary token, honeypot
+  share, decoy, Thinkst Canary, ransomware, encryption alert, deception. Do not use for
+  standalone ransomware canary-file deployment — use deploying-ransomware-canary-files.
 domain: cybersecurity
 subdomain: ransomware-defense
 tags:

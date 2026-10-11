@@ -1,11 +1,13 @@
 ---
 name: auditing-aws-s3-bucket-permissions
-description: 'Systematically audit AWS S3 bucket permissions to identify publicly
-  accessible buckets, overly permissive ACLs, misconfigured bucket policies, and missing
-  encryption settings using AWS CLI, S3audit, and Prowler to enforce least-privilege
-  data access controls.
-
-  '
+description: >-
+  Systematically audits AWS S3 bucket permissions to find publicly accessible buckets, overly
+  permissive ACLs, misconfigured bucket policies, and missing encryption using the AWS CLI,
+  S3audit, and Prowler, enforcing least-privilege data access. Use when assessing S3 exposure
+  across an account, establishing a storage security baseline during onboarding, or responding to
+  an S3 data-exposure alert from Trusted Advisor or Security Hub. Keywords: S3, bucket policy,
+  ACL, public access block, Prowler, S3audit, encryption, least privilege. Do not use for
+  remediating the misconfigurations once found - use remediating-s3-bucket-misconfiguration.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

@@ -4,7 +4,7 @@ description: 'Secures container registry images (ECR, ACR, GCR, Docker Hub) by s
   with Trivy and Grype, signing with Cosign and Sigstore, configuring registry access
   controls, and building CI/CD pipelines that block unscanned or unsigned images.
   Use when establishing registry security controls or enforcing scan/signature checks
-  before image promotion.
+  before image promotion. Do not use for Harbor-specific registry hardening - use securing-container-registry-with-harbor.
 
   '
 domain: cybersecurity

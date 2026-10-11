@@ -4,7 +4,7 @@ description: Performs comprehensive Windows forensic artifact analysis using Eri
   Zimmerman's open-source EZ Tools suite (KAPE, MFTECmd, PECmd, LECmd, JLECmd, Timeline
   Explorer) to parse registry hives, prefetch files, event logs, and file system
   metadata. Use during DFIR investigations that need a timeline of program execution,
-  file access, and persistence built from Windows artifacts.
+  file access, and persistence built from Windows artifacts. Do not use for rapid KAPE-based evidence collection and triage - use triaging-windows-with-kape.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

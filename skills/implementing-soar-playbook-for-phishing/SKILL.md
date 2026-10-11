@@ -1,10 +1,12 @@
 ---
 name: implementing-soar-playbook-for-phishing
-description: Automates phishing incident response by calling the Splunk SOAR (Phantom)
-  REST API to create containers, attach artifacts (emails, URLs, attachments), and
-  trigger response playbooks. Use when building or wiring up a Splunk SOAR phishing
-  playbook, ingesting a suspected phishing report into SOAR, or automating containment
-  and triage for phishing incidents.
+description: >-
+  Automates phishing incident response by calling the Splunk SOAR (Phantom) REST API to create
+  containers, attach artifacts (emails, URLs, attachments), and trigger response playbooks.
+  Use when building or wiring up a Splunk SOAR phishing playbook, ingesting a suspected
+  phishing report into SOAR, or automating containment and triage for phishing incidents. Do
+  not use for general Splunk SOAR workflow automation - use
+  implementing-soar-automation-with-phantom.
 domain: cybersecurity
 subdomain: security-operations
 tags:

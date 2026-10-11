@@ -1,8 +1,15 @@
 ---
 name: performing-open-source-intelligence-gathering
-description: Open Source Intelligence (OSINT) gathering is the first active phase
-  of a red team engagement, where operators collect publicly available information
-  about the target organization to identify attack s
+description: >-
+  Runs the OSINT phase of an authorized red-team engagement to map a target's external attack
+  surface and build targeting profiles: domain and network recon (WHOIS, Certificate
+  Transparency, subdomain enumeration, Shodan/Censys, exposed S3/Azure/GCS buckets), personnel
+  enumeration and email-convention discovery for social engineering, credential and secret leak
+  hunting (Have I Been Pwned, DeHashed, GitHub), and technology fingerprinting. Use for
+  pre-engagement reconnaissance, mapping an external attack surface, or building spearphishing
+  target lists. Keywords: Amass, Subfinder, theHarvester, Maltego, SpiderFoot, Shodan, Censys,
+  Recon-ng, GitDorker, Hunter.io, WHOIS, CT logs, T1589, T1591, T1593. Do not use when you only
+  need subdomain enumeration - use performing-subdomain-enumeration-with-subfinder.
 domain: cybersecurity
 subdomain: red-teaming
 tags:

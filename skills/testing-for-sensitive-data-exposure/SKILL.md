@@ -1,8 +1,12 @@
 ---
 name: testing-for-sensitive-data-exposure
-description: Identifying sensitive data exposure vulnerabilities including API key
-  leakage, PII in responses, insecure storage, and unprotected data transmission during
-  security assessments.
+description: >-
+  Tests applications and APIs for sensitive data exposure — leaked API keys, credentials,
+  tokens, and secrets in responses, plus weak encryption of PII, financial, and health data in
+  transit and at rest. Use when assessing data-protection controls, hunting secrets in
+  responses, or evaluating GDPR, PCI DSS, and HIPAA data handling during authorized tests. Do
+  not use for APIs returning excessive object properties to clients — use
+  exploiting-excessive-data-exposure-in-api.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

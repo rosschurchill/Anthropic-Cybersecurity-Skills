@@ -4,7 +4,7 @@ description: 'Performs User and Entity Behavior Analytics (UEBA) to detect anoma
   user activities including impossible travel, unusual access patterns, privilege
   abuse, and insider threats using SIEM-based behavioral baselines and statistical
   analysis. Use when SOC teams need to identify compromised accounts or insider threats
-  through deviation from established behavioral norms.
+  through deviation from established behavioral norms. Do not use for insider-threat investigation driven by UEBA signals - use detecting-insider-threat-with-ueba.
 
   '
 domain: cybersecurity

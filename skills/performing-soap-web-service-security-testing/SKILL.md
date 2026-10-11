@@ -3,7 +3,7 @@ name: performing-soap-web-service-security-testing
 description: Performs security testing of SOAP web services by analyzing WSDL definitions
   and testing for XML injection, XXE, WS-Security bypass, SOAPAction spoofing, and
   XPath injection. Use when assessing a SOAP/WSDL-based API endpoint for XML-related
-  vulnerabilities during a penetration test.
+  vulnerabilities during a penetration test. Do not use for general REST API security testing - use conducting-api-security-testing.
 domain: cybersecurity
 subdomain: api-security
 tags:

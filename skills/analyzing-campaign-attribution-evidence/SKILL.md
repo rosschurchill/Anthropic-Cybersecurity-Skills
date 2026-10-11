@@ -1,6 +1,11 @@
 ---
 name: analyzing-campaign-attribution-evidence
-description: Systematically evaluate cyber-campaign evidence to attribute an operation to a threat actor, using the Diamond Model and Analysis of Competing Hypotheses (ACH) to weigh infrastructure overlaps, TTP consistency, malware code similarity, and timing/language artifacts into confidence-weighted attribution assessments. Use when an incident investigation needs a defensible attribution confidence level.
+description: Systematically evaluate cyber-campaign evidence to attribute an operation
+  to a threat actor, using the Diamond Model and Analysis of Competing Hypotheses
+  (ACH) to weigh infrastructure overlaps, TTP consistency, malware code similarity,
+  and timing/language artifacts into confidence-weighted attribution assessments.
+  Use when an incident investigation needs a defensible attribution confidence level.
+  Do not use for correlating multiple campaigns by shared infrastructure - use correlating-threat-campaigns.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

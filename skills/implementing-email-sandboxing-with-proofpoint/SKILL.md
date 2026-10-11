@@ -1,8 +1,15 @@
 ---
 name: implementing-email-sandboxing-with-proofpoint
-description: Email sandboxing detonates suspicious attachments and URLs in isolated
-  environments to detect zero-day malware and evasive phishing payloads. Proofpoint
-  Targeted Attack Protection (TAP) is an industry
+description: >-
+  Configures Proofpoint Targeted Attack Protection (TAP) to detonate suspicious attachments in
+  Windows/macOS/Android VMs and rewrite URLs for time-of-click analysis, tuning attachment and
+  URL Defense policies, monitoring the TAP Dashboard and Very Attacked People (VAP) report, and
+  exporting threat events to a SIEM via the TAP SIEM API. Use when deploying or tuning Proofpoint
+  email sandboxing, catching zero-day attachments and evasive phishing payloads, or wiring TAP
+  alerts into a SIEM. Keywords: Proofpoint TAP, URL Defense, time-of-click, attachment
+  detonation, VAP, TAP Dashboard, tap-api-v2.proofpoint.com /v2/siem/all, messagesBlocked,
+  clicksPermitted, Splunk. Do not use for the broader secure email gateway that blocks phishing,
+  BEC, and spam before delivery - use implementing-proofpoint-email-security-gateway.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

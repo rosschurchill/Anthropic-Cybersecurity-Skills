@@ -1,9 +1,6 @@
 ---
 name: performing-false-positive-reduction-in-siem
-description: Reduces SIEM false positives through systematic rule tuning, threshold
-  adjustment, correlation logic refinement, allowlisting, and threat intelligence
-  enrichment. Use when SOC analysts are overwhelmed by alert noise, when tuning noisy
-  detection rules, or during a quarterly SIEM rule review to cut alert fatigue.
+description: 'Reduces SIEM false positives through systematic rule tuning, threshold adjustment, correlation logic refinement, allowlisting, and threat intelligence enrichment. Use when SOC analysts are overwhelmed by alert noise, when tuning noisy detection rules, or during a quarterly SIEM rule review to cut alert fatigue. Do not use for authoring new detection rules - use building-detection-rule-with-splunk-spl.'
 domain: cybersecurity
 subdomain: soc-operations
 tags:

@@ -5,7 +5,7 @@ description: Executes web cache deception attacks by exploiting path normalizati
   Nginx) and origin servers to cache and retrieve sensitive authenticated content.
   Use when testing applications behind CDNs for cache-key misconfigurations, during
   bug bounty hunting on aggressively cached sites, or when assessing sensitive data
-  exposure through cache layer misconfiguration.
+  exposure through cache layer misconfiguration. Do not use for web cache poisoning attacks - use performing-web-cache-poisoning-attack.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

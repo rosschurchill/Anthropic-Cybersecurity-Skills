@@ -63,7 +63,7 @@ jobs:
       # Ratchet: the number of unreviewed near-duplicate description pairs may
       # never increase. Lower this cap as disambiguation lands.
       - name: Detect skill collisions
-        run: python3 tools/detect-collisions.py --max-unreviewed 55
+        run: python3 tools/detect-collisions.py --max-unreviewed 24
 
       - name: Check for duplicate skill names
         run: |

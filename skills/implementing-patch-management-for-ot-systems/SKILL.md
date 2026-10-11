@@ -1,13 +1,12 @@
 ---
 name: implementing-patch-management-for-ot-systems
-description: 'Implements a structured patch management program for OT/ICS environments
-  where IT-style patching can cause process disruption or safety hazards, covering
-  vendor compatibility testing, risk-based prioritization, staged test deployment,
-  maintenance window coordination, rollback procedures, and compensating controls.
-  Use when planning or auditing patching for SCADA, PLCs, or other industrial control
-  systems.
-
-  '
+description: >-
+  Implements a structured patch management program for OT/ICS environments where IT-style
+  patching can cause process disruption or safety hazards, covering vendor compatibility
+  testing, risk-based prioritization, staged test deployment, maintenance window coordination,
+  rollback procedures, and compensating controls. Use when planning or auditing patching for
+  SCADA, PLCs, or other industrial control systems. Do not use for safely scanning OT systems
+  for vulnerabilities - use performing-ot-vulnerability-scanning-safely.
 domain: cybersecurity
 subdomain: ot-ics-security
 tags:

@@ -1,11 +1,6 @@
 ---
 name: performing-kerberoasting-attack
-description: Perform Kerberoasting, a post-exploitation technique that enumerates
-  Active Directory service accounts with Service Principal Names (SPNs), requests
-  their Kerberos TGS tickets, and cracks the NTLM-encrypted tickets offline to recover
-  service account credentials. Use during authorized red team engagements or penetration
-  tests to assess AD privilege escalation and credential access risk from weak service
-  account passwords.
+description: 'Perform Kerberoasting, a post-exploitation technique that enumerates Active Directory service accounts with Service Principal Names (SPNs), requests their Kerberos TGS tickets, and cracks the NTLM-encrypted tickets offline to recover service account credentials. Use during authorized red team engagements or penetration tests to assess AD privilege escalation and credential access risk from weak service account passwords. Do not use for Impacket GetUserSPNs.py-specific Kerberoasting - use exploiting-kerberoasting-with-impacket.'
 domain: cybersecurity
 subdomain: red-teaming
 tags:

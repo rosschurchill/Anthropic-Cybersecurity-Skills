@@ -1,8 +1,15 @@
 ---
 name: implementing-patch-management-workflow
-description: Patch management is the systematic process of identifying, testing, deploying,
-  and verifying software updates to remediate vulnerabilities across an organization's
-  IT infrastructure. An effective patc
+description: >-
+  Builds an end-to-end patch management workflow - discovery, assessment, testing, CAB approval,
+  phased ring-based rollout, and post-patch verification - across Windows and Linux using WSUS,
+  SCCM/MECM, Intune, Jamf, and Ansible playbooks, pulling missing-patch data from Tenable.io or
+  Qualys and confirming remediation with a follow-up Nessus scan. Use when designing or
+  automating patch rollout, setting deployment rings and SLAs, or closing the loop between a
+  vulnerability scan and verified remediation. Keywords: WSUS, Get-WsusUpdate, SCCM/MECM,
+  Ansible, dnf security, apt dist-upgrade, deployment rings, soak time, Tenable.io, Qualys, KB,
+  CAB. Do not use for scoring and ranking which vulnerabilities to patch first - use
+  prioritizing-vulnerabilities-with-cvss-scoring.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

@@ -1,10 +1,12 @@
 ---
 name: implementing-saml-sso-with-okta
-description: Implement SAML 2.0 Single Sign-On using Okta as the Identity Provider,
-  covering SP-initiated and IdP-initiated flows, attribute mapping, certificate management,
-  SHA-256 signature enforcement, and Single Logout. Use when configuring Okta SAML SSO
-  for an application, hardening SAML certificate rotation and signing, or testing and
-  troubleshooting SAML assertion flows with a tracer tool.
+description: >-
+  Implement SAML 2.0 Single Sign-On using Okta as the Identity Provider, covering SP-initiated
+  and IdP-initiated flows, attribute mapping, certificate management, SHA-256 signature
+  enforcement, and Single Logout. Use when configuring Okta SAML SSO for an application,
+  hardening SAML certificate rotation and signing, or testing and troubleshooting SAML
+  assertion flows with a tracer tool. Do not use for automated user provisioning and lifecycle
+  sync - use implementing-scim-provisioning-with-okta.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

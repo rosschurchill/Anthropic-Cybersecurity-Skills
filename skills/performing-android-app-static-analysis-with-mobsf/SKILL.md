@@ -6,7 +6,7 @@ description: 'Performs automated static analysis of Android applications using M
   executing the application. Use when assessing Android APK/AAB files for security
   vulnerabilities before deployment, during penetration testing, or as part of CI/CD
   security gates. Activates for requests involving Android static analysis, MobSF
-  scanning, APK security assessment, or mobile application code review.
+  scanning, APK security assessment, or mobile application code review. Do not use for runtime dynamic analysis of a running Android app - use performing-dynamic-analysis-of-android-app.
 
   '
 domain: cybersecurity

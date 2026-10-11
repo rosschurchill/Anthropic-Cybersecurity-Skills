@@ -1,10 +1,12 @@
 ---
 name: detecting-golden-ticket-attacks-in-kerberos-logs
-description: Detect Golden Ticket attacks in Active Directory using Splunk and KQL queries
-  against domain controller event logs, looking for Kerberos TGT anomalies such as mismatched
-  encryption types, impossible ticket lifetimes, non-existent accounts, and forged PAC
-  signatures. Use when hunting for Kerberos ticket forgery or krbtgt-based persistence
-  (MITRE T1558.001) in AD environments.
+description: >-
+  Detect Golden Ticket attacks in Active Directory using Splunk and KQL queries against domain
+  controller event logs, looking for Kerberos TGT anomalies such as mismatched encryption types,
+  impossible ticket lifetimes, non-existent accounts, and forged PAC signatures. Use when hunting
+  for Kerberos ticket forgery or krbtgt-based persistence (MITRE T1558.001) in AD environments.
+  Do not use for Event ID 4769 RC4-downgrade forgery detection - use
+  detecting-golden-ticket-forgery.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

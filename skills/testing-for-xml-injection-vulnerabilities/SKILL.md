@@ -1,8 +1,11 @@
 ---
 name: testing-for-xml-injection-vulnerabilities
-description: Test web applications for XML injection vulnerabilities including XXE,
-  XPath injection, and XML entity attacks to identify data exposure and server-side
-  request forgery risks.
+description: >-
+  Tests applications that parse XML (SOAP, XML-RPC, SAML, file import/export) for XML
+  injection — tag injection, structure manipulation, and malformed-document handling. Use when
+  the target processes XML input, assessing SOAP or XML-RPC services, SAML assertions, or XML
+  file upload handling. Do not use for external-entity (XXE) injection via DTDs — use
+  testing-for-xxe-injection-vulnerabilities.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

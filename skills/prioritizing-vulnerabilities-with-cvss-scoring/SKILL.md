@@ -1,8 +1,15 @@
 ---
 name: prioritizing-vulnerabilities-with-cvss-scoring
-description: The Common Vulnerability Scoring System (CVSS) is the industry standard
-  framework maintained by FIRST (Forum of Incident Response and Security Teams) for
-  assessing vulnerability severity. CVSS v4.0 (r
+description: >-
+  Calculates and interprets CVSS v4.0 (and v3.1) scores and vector strings, then combines the
+  base score with EPSS exploit-probability (FIRST api.first.org/data/v1/epss), CISA KEV listing,
+  asset criticality, and network exposure in a multi-factor matrix to prioritize remediation and
+  set SLAs. Use when triaging scan results, deciding what to fix first, or turning a CVSS vector
+  and threat context into a priority and a deadline. Keywords: CVSS v4.0, vector string
+  CVSS:4.0/AV:N/AC:L, base/threat/environmental metrics, Exploit Maturity, EPSS, api.first.org,
+  CISA KEV, NVD, severity rating. Do not use for EPSS-only exploit-prediction prioritization -
+  use implementing-epss-score-for-vulnerability-prioritization; for KEV-catalog-driven
+  prioritization use performing-cve-prioritization-with-kev-catalog.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

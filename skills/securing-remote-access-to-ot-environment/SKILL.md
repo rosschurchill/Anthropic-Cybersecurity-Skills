@@ -4,7 +4,7 @@ description: 'Designs and configures secure remote access to OT/ICS environments
   operators, engineers, and vendors: jump server architecture, multi-factor authentication,
   session recording, privileged access management, vendor access controls, and IEC
   62443 / NERC CIP-005 compliance. Use when designing OT remote access architecture
-  or configuring a jump server with privileged access management.
+  or configuring a jump server with privileged access management. Do not use for IEC 62443 conduit security controls - use implementing-conduit-security-for-ot-remote-access.
 
   '
 domain: cybersecurity

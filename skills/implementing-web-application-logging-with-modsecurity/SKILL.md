@@ -4,7 +4,7 @@ description: Configure ModSecurity WAF with the OWASP Core Rule Set (CRS) for we
   application audit logging, tuning SecRuleEngine, SecAuditEngine, and CRS paranoia
   levels to reduce false positives, and writing custom SecRules for application-specific
   threats. Use when deploying or tuning a ModSecurity WAF, analyzing audit logs for
-  attack detection, or reducing CRS false positives.
+  attack detection, or reducing CRS false positives. Do not use for testing how attackers evade a WAF - use performing-web-application-firewall-bypass.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

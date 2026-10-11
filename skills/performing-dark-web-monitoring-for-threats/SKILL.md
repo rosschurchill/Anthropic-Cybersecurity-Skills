@@ -1,8 +1,16 @@
 ---
 name: performing-dark-web-monitoring-for-threats
-description: Dark web monitoring involves systematically scanning Tor hidden services,
-  underground forums, paste sites, and dark web marketplaces to identify threats targeting
-  an organization, including leaked cre
+description: >-
+  Stands up Tor-based monitoring (SOCKS5 proxy on 127.0.0.1:9050 via socks5h, stem) to scan
+  .onion paste sites, underground forums, marketplaces, and ransomware leak sites for leaked
+  credentials, breach data, and brand mentions, correlating with Have I Been Pwned (k-anonymity
+  range and breachedaccount APIs), Ransomwatch, IntelligenceX, and commercial feeds (Flare,
+  SpyCloud, DarkOwl, Intel 471), then raising alerts and generating a STIX report under OPSEC
+  safeguards. Use when monitoring the dark web for exposed credentials or data, watching
+  ransomware leak sites for mentions of your organization, or standing up credential-leak
+  alerting. Keywords: Tor, socks5h, .onion, HIBP, pwnedpasswords range, Ransomwatch,
+  IntelligenceX, DarkOwl, Intel 471, STIX, Whonix. Do not use for clearnet OSINT and threat-actor
+  infrastructure mapping - use collecting-open-source-intelligence.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

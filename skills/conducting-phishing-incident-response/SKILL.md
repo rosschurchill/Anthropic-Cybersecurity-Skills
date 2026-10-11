@@ -1,6 +1,13 @@
 ---
 name: conducting-phishing-incident-response
-description: Respond to phishing incidents by analyzing reported emails, extracting indicators, sandboxing URLs/attachments, assessing credential compromise, quarantining malicious messages organization-wide, and remediating affected accounts. Use when investigating a reported phishing or credential-phishing email, a suspected spearphishing incident, or when a mailbox-wide purge and account remediation is needed.
+description: >-
+  Respond to phishing incidents by analyzing reported emails, extracting indicators,
+  sandboxing URLs/attachments, assessing credential compromise, quarantining malicious
+  messages organization-wide, and remediating affected accounts. Use when investigating a
+  reported phishing or credential-phishing email, a suspected spearphishing incident, or
+  when a mailbox-wide purge and account remediation is needed. Do not use for building
+  email-gateway detection for spearphishing - use
+  detecting-spearphishing-with-email-gateway.
 domain: cybersecurity
 subdomain: incident-response
 tags:

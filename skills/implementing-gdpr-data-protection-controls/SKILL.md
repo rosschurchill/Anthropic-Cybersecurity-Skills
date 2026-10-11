@@ -1,6 +1,10 @@
 ---
 name: implementing-gdpr-data-protection-controls
-description: Implements GDPR (EU 2016/679) technical and organizational measures — privacy by design/default, DPIAs, data subject rights management, 72-hour breach notification, and cross-border transfer mechanisms (SCCs, BCRs, adequacy). Use when designing or auditing GDPR controls, building a DPIA, handling data subject access/erasure requests, or assessing cross-border data transfers.
+description: 'Implements GDPR (EU 2016/679) technical and organizational measures — privacy by design/default,
+  DPIAs, data subject rights management, 72-hour breach notification, and cross-border transfer mechanisms
+  (SCCs, BCRs, adequacy). Use when designing or auditing GDPR controls, building a DPIA, handling data
+  subject access/erasure requests, or assessing cross-border data transfers. Do not use for automating
+  a specific data subject access request workflow - use implementing-gdpr-data-subject-access-request.'
 domain: cybersecurity
 subdomain: compliance-governance
 tags:

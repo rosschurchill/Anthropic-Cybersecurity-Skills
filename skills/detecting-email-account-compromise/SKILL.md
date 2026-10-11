@@ -1,6 +1,12 @@
 ---
 name: detecting-email-account-compromise
-description: Detect compromised O365 and Google Workspace email accounts by analyzing Unified Audit Logs and Azure AD sign-in logs for impossible travel, inbox rule creation/deletion (Set-InboxRule, New-InboxRule), external mail forwarding rules, and unusual Microsoft Graph API access or OAuth token use. Use when investigating suspected business email compromise (BEC), account takeover, or mailbox persistence via malicious inbox rules.
+description: >-
+  Detect compromised O365 and Google Workspace email accounts by analyzing Unified Audit Logs and
+  Azure AD sign-in logs for impossible travel, inbox rule creation/deletion (Set-InboxRule,
+  New-InboxRule), external mail forwarding rules, and unusual Microsoft Graph API access or OAuth
+  token use. Use when investigating suspected business email compromise (BEC), account takeover,
+  or mailbox persistence via malicious inbox rules. Do not use for vendor or executive
+  impersonation fraud without a compromised account - use detecting-business-email-compromise.
 domain: cybersecurity
 subdomain: incident-response
 tags:

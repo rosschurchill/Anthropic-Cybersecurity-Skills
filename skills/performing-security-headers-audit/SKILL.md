@@ -1,7 +1,12 @@
 ---
 name: performing-security-headers-audit
-description: Auditing HTTP security headers including CSP, HSTS, X-Frame-Options,
-  and cookie attributes to identify missing or misconfigured browser-level protections.
+description: >-
+  Audits HTTP security response headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options,
+  Referrer-Policy, Permissions-Policy) against best practice as a configuration review during
+  web assessments. Use when reviewing browser-level protections against XSS, clickjacking, and
+  data leakage, checking header compliance (PCI DSS, SOC 2), or gating headers in a CI/CD
+  deployment check. Do not use for actively exploiting missing frame-protection headers — use
+  performing-clickjacking-attack-test.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

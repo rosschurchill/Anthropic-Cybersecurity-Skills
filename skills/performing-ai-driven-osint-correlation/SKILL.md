@@ -4,7 +4,7 @@ description: Use AI/LLM-based reasoning with Sherlock, theHarvester, and SpiderF
   to correlate OSINT findings—usernames, emails, social profiles, domain records,
   breach databases, and dark-web mentions—into unified, confidence-scored intelligence
   profiles with link analysis. Use when raw OSINT data from multiple sources needs
-  merging into one target profile or resolving identity linkage across platforms.
+  merging into one target profile or resolving identity linkage across platforms. Do not use for running a single-tool SpiderFoot OSINT scan - use performing-osint-with-spiderfoot.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

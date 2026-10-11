@@ -1,10 +1,12 @@
 ---
 name: performing-packet-injection-attack
-description: 'Crafts and injects custom network packets using Scapy, hping3, and Nemesis
-  during authorized security assessments to test firewall rules, IDS detection, protocol
-  handling, and network stack resilience against malformed and spoofed traffic.
-
-  '
+description: >-
+  Crafts and injects custom network packets (Scapy, hping3) with specific flags, source
+  addresses, fragmentation, and payloads to test IDS/IPS signatures, firewall rules,
+  anti-spoofing controls, and network-stack resilience during authorized testing. Use when
+  validating detection rules by injecting signature traffic, testing BCP38 or uRPF
+  anti-spoofing, or exercising TCP reset and fragmentation handling. Do not use for capturing
+  and analyzing existing traffic — use performing-network-packet-capture-analysis.
 domain: cybersecurity
 subdomain: network-security
 tags:

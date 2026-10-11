@@ -6,7 +6,7 @@ description: >-
   certificate validation, and HTTPS upgrade mechanisms. Use when performing an
   authorized penetration test to validate HSTS preloading and TLS certificate
   handling, demonstrate downgrade-attack risk to stakeholders, or train SOC
-  teams to detect SSL stripping indicators in network traffic.
+  teams to detect SSL stripping indicators in network traffic. Do not use for general man-in-the-middle attack simulation - use conducting-man-in-the-middle-attack-simulation.
 domain: cybersecurity
 subdomain: network-security
 tags:

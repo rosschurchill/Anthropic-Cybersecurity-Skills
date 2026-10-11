@@ -6,7 +6,7 @@ description: 'Reverse engineers iOS applications using Frida dynamic instrumenta
   authorized iOS penetration testing, analyzing proprietary protocols, understanding
   obfuscated logic, or extracting runtime secrets from iOS binaries. Activates for
   requests involving iOS reverse engineering, Frida iOS hooking, Objective-C/Swift
-  method tracing, or iOS binary analysis.
+  method tracing, or iOS binary analysis. Do not use for iOS analysis with Objection - use analyzing-ios-app-security-with-objection.
 
   '
 domain: cybersecurity

@@ -5,7 +5,7 @@ description: Detect and respond to Adversary-in-the-Middle (AiTM) phishing attac
   and steal session tokens, correlating Azure AD/Entra sign-in logs, SIEM alerts,
   and EDR telemetry. Use when investigating suspected MFA-bypass phishing or session
   token theft, or building detection and response playbooks against reverse-proxy
-  phishing kits.
+  phishing kits. Do not use for running the offensive Evilginx reverse-proxy phishing attack - use performing-initial-access-with-evilginx3.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

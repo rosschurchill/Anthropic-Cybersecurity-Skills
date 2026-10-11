@@ -4,7 +4,7 @@ description: Execute and test the JWT none algorithm attack, crafting tokens wit
   the alg header set to none using PyJWT and an intercepting proxy (Burp Suite/mitmproxy)
   to bypass signature verification and forge arbitrary claims. Use during authorized
   penetration tests or security assessments of applications that use JWT for authentication
-  or authorization, to validate that the server rejects unsigned tokens.
+  or authorization, to validate that the server rejects unsigned tokens. Do not use for JWT algorithm confusion key-confusion attacks - use exploiting-jwt-algorithm-confusion-attack.
 domain: cybersecurity
 subdomain: api-security
 tags:

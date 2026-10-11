@@ -5,7 +5,7 @@ description: Build out a full CTI program around the six-phase threat intelligen
   including defining intelligence requirements, building a collection pipeline, normalizing
   data, and tracking dissemination feedback. Use when standing up or maturing a threat
   intelligence program, defining intelligence requirements, or designing collection-to-dissemination
-  workflows for a CTI team.
+  workflows for a CTI team. Do not use for running stakeholder-requirement and feedback loops across an existing CTI program - use managing-intelligence-lifecycle.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

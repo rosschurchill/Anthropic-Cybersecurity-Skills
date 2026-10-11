@@ -1,10 +1,12 @@
 ---
 name: executing-red-team-engagement-planning
-description: Build the foundational red team engagement plan - scope definition, Rules
-  of Engagement (restrictions, communication plan, emergency stop procedures, legal authorization),
-  MITRE ATT&CK-aligned threat profile selection, and operational timelines - producing an
-  engagement brief for stakeholder approval. Use before any offensive testing begins, when
-  scoping a full-scope, assumed-breach, objective-based, or purple-team engagement.
+description: >-
+  Build the foundational red team engagement plan - scope definition, Rules of Engagement
+  (restrictions, communication plan, emergency stop procedures, legal authorization), MITRE
+  ATT&CK-aligned threat profile selection, and operational timelines - producing an engagement
+  brief for stakeholder approval. Use before any offensive testing begins, when scoping a
+  full-scope, assumed-breach, objective-based, or purple-team engagement. Do not use for running
+  the adversary-emulation exercise itself - use executing-red-team-exercise.
 domain: cybersecurity
 subdomain: red-teaming
 tags:

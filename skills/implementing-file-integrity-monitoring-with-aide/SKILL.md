@@ -1,6 +1,10 @@
 ---
 name: implementing-file-integrity-monitoring-with-aide
-description: Configures AIDE (Advanced Intrusion Detection Environment) for file integrity monitoring on Linux, covering baseline database creation, scheduled integrity checks via cron, change detection, and alerting on unauthorized modifications. Use when setting up host-based file integrity monitoring, detecting unauthorized file changes, or meeting compliance requirements for FIM on Linux systems.
+description: 'Configures AIDE (Advanced Intrusion Detection Environment) for file integrity monitoring
+  on Linux, covering baseline database creation, scheduled integrity checks via cron, change detection,
+  and alerting on unauthorized modifications. Use when setting up host-based file integrity monitoring,
+  detecting unauthorized file changes, or meeting compliance requirements for FIM on Linux systems.
+  Do not use for file integrity monitoring within a full endpoint detection platform - use implementing-endpoint-detection-with-wazuh.'
 domain: cybersecurity
 subdomain: endpoint-security
 tags:

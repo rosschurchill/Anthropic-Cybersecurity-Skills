@@ -4,7 +4,7 @@ description: Automates the full SSL/TLS certificate lifecycle, including generat
   Certificate Signing Requests, issuing, deploying, monitoring, renewing, and revoking
   X.509 certificates, using Python and ACME protocol tools. Use when managing certificate
   issuance or renewal, preventing certificate-expiry outages, or building automated
-  PKI/ACME workflows.
+  PKI/ACME workflows. Do not use for standing up a certificate authority - use configuring-certificate-authority-with-openssl.
 domain: cybersecurity
 subdomain: cryptography
 tags:

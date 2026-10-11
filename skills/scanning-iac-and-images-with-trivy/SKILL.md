@@ -4,7 +4,7 @@ description: Scans container images, Infrastructure-as-Code (Terraform, CloudFor
   Kubernetes manifests, Dockerfile, Helm), filesystems, git repos, and SBOMs with Trivy's
   vuln, misconfig, secret, and license scanners. Use when building a CI/CD security
   gate that scans images before push, IaC before apply, or SBOMs for supply-chain
-  weaknesses, and fails the build on policy violations.
+  weaknesses, and fails the build on policy violations. Do not use for CI/CD container-scan gates - use scanning-containers-with-trivy-in-cicd.
 domain: cybersecurity
 subdomain: devsecops
 tags:

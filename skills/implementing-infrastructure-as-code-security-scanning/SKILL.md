@@ -1,12 +1,12 @@
 ---
 name: implementing-infrastructure-as-code-security-scanning
-description: 'Implements automated security scanning for Infrastructure as Code using
-  Checkov, tfsec, and KICS to detect misconfigurations in Terraform, CloudFormation,
-  Kubernetes manifests, and Helm charts, plus policy-based governance and CI/CD
-  integration. Use when validating cloud infrastructure before deployment or blocking
-  insecure changes (public S3 buckets, open security groups) in pull requests.
-
-  '
+description: >-
+  Implements automated security scanning for Infrastructure as Code using Checkov, tfsec, and
+  KICS to detect misconfigurations in Terraform, CloudFormation, Kubernetes manifests, and
+  Helm charts, plus policy-based governance and CI/CD integration. Use when validating cloud
+  infrastructure before deployment or blocking insecure changes (public S3 buckets, open
+  security groups) in pull requests. Do not use for Trivy-based IaC and container image
+  scanning - use scanning-iac-and-images-with-trivy.
 domain: cybersecurity
 subdomain: devsecops
 tags:

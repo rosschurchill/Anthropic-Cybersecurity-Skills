@@ -5,7 +5,7 @@ description: Performs forensic analysis of SQLite databases by examining B-tree 
   files, decoding encoded timestamps, and extracting evidence from browser history,
   messaging apps, and mobile device databases. Use when recovering deleted or unallocated
   data from a SQLite database during digital forensics or mobile/browser evidence
-  analysis.
+  analysis. Do not use for high-level browser history forensics - use analyzing-browser-forensics-with-hindsight.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

@@ -1,14 +1,14 @@
 ---
 name: conducting-wireless-network-penetration-test
-description: 'Conducts authorized wireless network penetration tests to assess the
-  security of WiFi infrastructure by testing for weak encryption protocols, captive
-  portal bypasses, evil twin attacks, WPA2/WPA3 handshake capture, rogue access point
-  detection, and client-side attacks. The tester evaluates wireless authentication,
-  network segmentation, and the effectiveness of wireless intrusion detection systems.
-  Activates for requests involving wireless pentest, WiFi security assessment, WPA2/WPA3
-  testing, or rogue access point detection.
-
-  '
+description: >-
+  Conducts authorized wireless penetration tests of WiFi infrastructure, testing weak encryption,
+  captive-portal bypasses, evil-twin and rogue-AP attacks, WPA2/WPA3 handshake capture, and
+  client-side attacks while evaluating wireless authentication, segmentation, and WIDS/WIPS
+  effectiveness. Use when assessing enterprise WiFi segments, testing WPA3 transition-mode
+  configurations, or validating wireless segmentation from the wired network. Keywords: WiFi
+  pentest, WPA2, WPA3, evil twin, rogue AP, handshake capture, captive portal, WIDS/WIPS. Do not
+  use for offline WPA/WPA2 handshake cracking alone - use
+  performing-wifi-password-cracking-with-aircrack.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

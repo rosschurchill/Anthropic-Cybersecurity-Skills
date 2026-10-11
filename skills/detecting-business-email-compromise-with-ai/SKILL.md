@@ -1,8 +1,13 @@
 ---
 name: detecting-business-email-compromise-with-ai
-description: Deploy AI and NLP-powered detection systems to identify business email
-  compromise attacks by analyzing writing style, behavioral patterns, and contextual
-  anomalies that evade traditional rule-based filters.
+description: >-
+  Deploys AI and NLP-powered detection to identify business email compromise by analyzing writing
+  style, behavioral patterns, and contextual anomalies that evade rule-based filters. Use when
+  building ML/NLP BEC detection, catching invoice-fraud or executive-impersonation emails that
+  bypass signature rules, or scoring messages by stylometric and behavioral anomaly. Keywords:
+  BEC, NLP, writing style, stylometry, behavioral anomaly, executive impersonation, invoice
+  fraud, ML detection. Do not use for rule- and header-based BEC detection - use
+  detecting-business-email-compromise.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

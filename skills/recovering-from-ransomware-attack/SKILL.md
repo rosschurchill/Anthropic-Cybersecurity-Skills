@@ -5,7 +5,7 @@ description: 'Executes structured ransomware incident recovery following NIST/CI
   rebuild, prioritized restoration from verified backups, credential reset, and
   Active Directory/database recovery in dependency order. Use when recovering from
   a ransomware attack, performing post-encryption restoration, or executing disaster
-  recovery after ransomware encryption.
+  recovery after ransomware encryption. Do not use for broader ransomware incident response and containment - use performing-ransomware-response.
 
   '
 domain: cybersecurity

@@ -1,6 +1,10 @@
 ---
 name: implementing-gcp-organization-policy-constraints
-description: Implements GCP Organization Policy constraints via gcloud and Terraform, such as restricting external IPs, resource locations, default service accounts, and service account keys, plus dry-run testing of policy impact before enforcement. Use when enforcing security guardrails across an org's resource hierarchy, or hardening GCP config at the org, folder, or project level.
+description: 'Implements GCP Organization Policy constraints via gcloud and Terraform, such as restricting
+  external IPs, resource locations, default service accounts, and service account keys, plus dry-run
+  testing of policy impact before enforcement. Use when enforcing security guardrails across an org''s
+  resource hierarchy, or hardening GCP config at the org, folder, or project level. Do not use for auditing
+  effective IAM permissions in GCP - use auditing-gcp-iam-permissions.'
 domain: cybersecurity
 subdomain: cloud-security
 tags:

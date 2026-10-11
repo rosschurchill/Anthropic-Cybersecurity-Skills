@@ -1,11 +1,12 @@
 ---
 name: implementing-pci-dss-compliance-controls
-description: Implements PCI DSS 4.0.1's 12 requirements across 6 control objectives
-  for organizations that store, process, or transmit cardholder data, including the
-  customized validation approach, enhanced authentication, and continuous monitoring
-  controls introduced by the 51 requirements mandatory since March 2025. Use when
-  scoping a cardholder data environment, building PCI DSS 4.0.1 compliance controls,
-  or preparing for a PCI assessment.
+description: >-
+  Implements PCI DSS 4.0.1's 12 requirements across 6 control objectives for organizations
+  that store, process, or transmit cardholder data, including the customized validation
+  approach, enhanced authentication, and continuous monitoring controls introduced by the 51
+  requirements mandatory since March 2025. Use when scoping a cardholder data environment,
+  building PCI DSS 4.0.1 compliance controls, or preparing for a PCI assessment. Do not use
+  for HIPAA Security Rule safeguards - use implementing-hipaa-security-rule-safeguards.
 domain: cybersecurity
 subdomain: compliance-governance
 tags:

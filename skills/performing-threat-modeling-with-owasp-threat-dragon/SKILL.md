@@ -5,7 +5,7 @@ description: >-
   identify threats with STRIDE, LINDDUN, CIA, DIE, or PLOT4ai methodologies
   via its auto-generation rule engine, and produce PDF threat model reports.
   Use during secure design review of an application architecture to build a
-  formal threat model and document mitigations for GRC compliance.
+  formal threat model and document mitigations for GRC compliance. Do not use for ATT&CK-based operational threat modeling - use implementing-threat-modeling-with-mitre-attack.
 domain: cybersecurity
 subdomain: devsecops
 tags:

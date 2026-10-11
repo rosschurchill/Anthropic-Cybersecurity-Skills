@@ -1,11 +1,11 @@
 ---
 name: implementing-bgp-security-with-rpki
-description: Implement RPKI-based BGP route origin validation by creating Route Origin
-  Authorizations (ROAs) at RIRs (ARIN, RIPE, APNIC, AFRINIC, LACNIC), deploying validator
-  software (Routinator, FORT, OctoRPKI), and configuring RPKI-to-Router protocol and
-  ROV accept/reject policies on Cisco IOS-XE and Juniper Junos routers. Use when hardening
-  BGP against route hijacking or leaks, or when configuring ROV filtering policy on
-  production routers.
+description: 'Implement RPKI-based BGP route origin validation by creating Route Origin Authorizations
+  (ROAs) at RIRs (ARIN, RIPE, APNIC, AFRINIC, LACNIC), deploying validator software (Routinator, FORT,
+  OctoRPKI), and configuring RPKI-to-Router protocol and ROV accept/reject policies on Cisco IOS-XE
+  and Juniper Junos routers. Use when hardening BGP against route hijacking or leaks, or when configuring
+  ROV filtering policy on production routers. Do not use for exploiting BGP route hijacking in an authorized
+  test - use exploiting-bgp-hijacking-vulnerabilities.'
 domain: cybersecurity
 subdomain: network-security
 tags:

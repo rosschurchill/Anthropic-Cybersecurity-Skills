@@ -5,7 +5,7 @@ description: Perform structured log source onboarding into SIEM platforms (Splun
   framework, configuring collectors, building parsers, normalizing fields to a common
   schema (e.g. CIM), and validating data quality. Use when planning or executing
   the integration of new log sources — such as Active Directory, firewalls, EDR,
-  VPN, DNS, or cloud audit logs — into a SIEM for security monitoring and detection.
+  VPN, DNS, or cloud audit logs — into a SIEM for security monitoring and detection. Do not use for building detection use cases after data is ingested - use implementing-siem-use-cases-for-detection.
 domain: cybersecurity
 subdomain: soc-operations
 tags:

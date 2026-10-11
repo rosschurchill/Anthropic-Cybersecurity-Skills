@@ -1,13 +1,13 @@
 ---
 name: configuring-windows-defender-advanced-settings
-description: 'Configures Microsoft Defender for Endpoint (MDE) advanced protection
-  settings including attack surface reduction rules, controlled folder access, network
-  protection, and exploit protection. Use when hardening Windows endpoints beyond
-  default Defender settings, deploying enterprise-grade endpoint protection, or meeting
-  compliance requirements for advanced malware defense. Activates for requests involving
-  Windows Defender configuration, ASR rules, MDE tuning, or Microsoft endpoint security.
-
-  '
+description: >-
+  Configures Microsoft Defender for Endpoint (MDE) advanced protection settings including
+  attack surface reduction rules, controlled folder access, network protection, and exploit
+  protection. Use when hardening Windows endpoints beyond default Defender settings,
+  deploying enterprise-grade endpoint protection, or meeting compliance requirements for
+  advanced malware defense. Activates for requests involving Windows Defender configuration,
+  ASR rules, MDE tuning, or Microsoft endpoint security. Do not use for CrowdStrike Falcon
+  EDR deployment - use deploying-edr-agent-with-crowdstrike.
 domain: cybersecurity
 subdomain: endpoint-security
 tags:

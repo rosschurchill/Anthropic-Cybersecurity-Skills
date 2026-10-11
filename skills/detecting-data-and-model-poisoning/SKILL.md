@@ -1,6 +1,14 @@
 ---
 name: detecting-data-and-model-poisoning
-description: Identify poisoned training data and backdoored ML models across the pipeline using IBM's Adversarial Robustness Toolbox (activation clustering, spectral signatures, trigger reconstruction), Cleanlab for label-quality issues, and supply-chain checks like weight-hash verification and safetensors enforcement. Use before training or deploying on third-party/user-contributed data or downloaded checkpoints, during ML supply-chain reviews, or when investigating model misbehavior tied to specific inputs (suspected backdoor trigger).
+description: >-
+  Identify poisoned training data and backdoored ML models across the pipeline using IBM's
+  Adversarial Robustness Toolbox (activation clustering, spectral signatures, trigger
+  reconstruction), Cleanlab for label-quality issues, and supply-chain checks like weight-hash
+  verification and safetensors enforcement. Use before training or deploying on
+  third-party/user-contributed data or downloaded checkpoints, during ML supply-chain reviews, or
+  when investigating model misbehavior tied to specific inputs (suspected backdoor trigger). Do
+  not use for inference-time model stealing or extraction - use
+  detecting-model-extraction-attacks.
 domain: cybersecurity
 subdomain: ai-security
 tags:

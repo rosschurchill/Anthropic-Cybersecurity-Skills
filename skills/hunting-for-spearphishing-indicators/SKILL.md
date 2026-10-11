@@ -1,7 +1,13 @@
 ---
 name: hunting-for-spearphishing-indicators
-description: Hunt for spearphishing campaign indicators across email logs, endpoint
-  telemetry, and network data to detect targeted email attacks.
+description: >-
+  Hunt for spearphishing campaign indicators across email logs, endpoint telemetry, and
+  network data to detect targeted email attacks. Use when proactively hunting for
+  spearphishing across the environment, scoping compromise after intel of an active campaign,
+  correlating email/endpoint/network signals during incident response, or validating detection
+  during periodic assessments. Keywords: spearphishing, targeted email, sender anomaly,
+  attachment, malicious link, email logs, endpoint telemetry, campaign. Do not use for inline
+  email-gateway-based spearphishing blocking — use detecting-spearphishing-with-email-gateway.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

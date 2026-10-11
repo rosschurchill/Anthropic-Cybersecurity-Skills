@@ -1,14 +1,13 @@
 ---
 name: performing-firmware-extraction-with-binwalk
-description: 'Performs firmware image extraction and analysis using binwalk to identify
-  embedded filesystems, compressed archives, bootloaders, kernel images, and cryptographic
-  material. Covers entropy analysis for detecting encrypted or compressed regions,
-  recursive extraction of nested archives, SquashFS/CramFS/JFFS2 filesystem mounting,
-  and string analysis for credential and configuration discovery. Activates for requests
-  involving firmware reverse engineering, IoT device analysis, embedded system security
-  assessment, or router/camera firmware extraction.
-
-  '
+description: >-
+  Extracts and analyzes firmware images with binwalk to identify embedded filesystems
+  (SquashFS, CramFS, JFFS2, UBIFS), compressed archives, bootloaders, kernel images, and
+  cryptographic material, using entropy analysis, recursive extraction, and string analysis
+  for hardcoded credentials and configuration. Use when reverse engineering router, camera, or
+  IoT firmware, carving embedded filesystems from flash dumps, or hunting secrets in embedded
+  images during authorized assessments. Do not use for behavioral or static malware analysis
+  of extracted binaries — use performing-firmware-malware-analysis.
 domain: cybersecurity
 subdomain: firmware-analysis
 tags:

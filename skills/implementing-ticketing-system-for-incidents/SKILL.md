@@ -4,7 +4,7 @@ description: 'Implements an integrated incident ticketing system connecting SIEM
   to ServiceNow, Jira, or TheHive for structured incident tracking, SLA management,
   escalation workflows, and compliance documentation. Use when SOC teams need formalized
   incident lifecycle management with automated ticket creation, assignment routing,
-  and resolution tracking.
+  and resolution tracking. Do not use for defining SOC escalation tiers and routing thresholds - use building-soc-escalation-matrix.
 
   '
 domain: cybersecurity

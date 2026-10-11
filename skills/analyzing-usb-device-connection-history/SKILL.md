@@ -4,6 +4,7 @@ description: Correlate Windows registry keys (USBSTOR, MountedDevices), Event Lo
   and setupapi.dev.log to reconstruct USB device connection history, first/last-plugged
   timestamps, and drive letter mappings. Use when investigating removable media usage,
   tracking device provenance, or building a timeline for suspected data exfiltration.
+  Do not use for enforcing USB device-control policy - use implementing-usb-device-control-policy.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

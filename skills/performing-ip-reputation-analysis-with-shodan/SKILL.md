@@ -1,8 +1,12 @@
 ---
 name: performing-ip-reputation-analysis-with-shodan
-description: Analyze IP address reputation using the Shodan API to identify open ports,
-  running services, known vulnerabilities, and hosting context for threat intelligence
-  enrichment and incident triage.
+description: >-
+  Enriches IP addresses using the Shodan and InternetDB APIs to catalog open ports, running
+  services, SSL certificates, and known vulnerabilities, scoring threat level and hosting
+  patterns for SOC triage and threat-intelligence workflows. Use when enriching an IP from an
+  alert, assessing a host's internet exposure, or adding Shodan context to triage and intel
+  pipelines. Do not use for multi-source IOC enrichment orchestration across feeds — use
+  performing-ioc-enrichment-automation.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

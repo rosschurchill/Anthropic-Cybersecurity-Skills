@@ -4,7 +4,7 @@ description: Tests web applications for reflected, stored, and DOM-based Cross-S
   Scripting by injecting JavaScript payloads with Burp Suite (XSS extensions, Active
   Scan++) and browser tools, then bypassing sanitization and CSP to demonstrate session
   hijacking and user impersonation. Use for OWASP WSTG client-side injection testing or
-  when evaluating input sanitization and output encoding coverage.
+  when evaluating input sanitization and output encoding coverage. Do not use for the Burp Suite-specific XSS workflow - use testing-for-xss-vulnerabilities-with-burpsuite.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:
