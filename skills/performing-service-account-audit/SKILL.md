@@ -1,8 +1,17 @@
 ---
 name: performing-service-account-audit
-description: Audit service accounts across enterprise infrastructure to identify orphaned,
-  over-privileged, and non-compliant accounts. This skill covers discovery of service
-  accounts in Active Directory, cloud pl
+description: >-
+  Audits service accounts across Active Directory, AWS, Azure, GCP, databases, and applications
+  to find orphaned, over-privileged, and non-compliant accounts, using AD PowerShell (Get-ADUser
+  SPN filter, Get-ADServiceAccount, Search-ADAccount -PasswordNeverExpires/-AccountInactive), AWS
+  IAM CLI (access-key-last-used, generate-credential-report), and az ad sp list, then
+  risk-classifies each account and produces SOX, PCI DSS, and HIPAA compliance reports. Use when
+  inventorying or reviewing service accounts, flagging stale non-rotating credentials, or
+  identifying gMSA migration candidates. Keywords: service account, SPN, gMSA,
+  PasswordNeverExpires, Search-ADAccount, access-key-last-used, generate-credential-report, az ad
+  sp, NIST AC-2, ldap3, boto3. Do not use for rotating service-account credentials - use
+  performing-service-account-credential-rotation; to detect active abuse use
+  detecting-service-account-abuse.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

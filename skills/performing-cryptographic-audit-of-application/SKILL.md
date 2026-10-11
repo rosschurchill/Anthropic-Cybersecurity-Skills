@@ -1,8 +1,15 @@
 ---
 name: performing-cryptographic-audit-of-application
-description: A cryptographic audit systematically reviews an application's use of
-  cryptographic primitives, protocols, and key management to identify vulnerabilities
-  such as weak algorithms, insecure modes, hardco
+description: >-
+  Builds and runs an automated cryptographic audit of an application, scanning source and config
+  for deprecated algorithms (MD5, SHA-1, DES, 3DES, RC4), ECB mode, hardcoded keys and secrets,
+  weak KDF parameters (low-iteration PBKDF2), and poor entropy, and inspecting live TLS with
+  Python ssl/socket and the cryptography library for weak protocols (TLS 1.0/1.1), weak cipher
+  suites, undersized RSA/EC keys, SHA-1 certificate signatures, expiry, and missing HSTS, then
+  emitting findings with severity, location, and remediation. Use when auditing an application's
+  cryptography or flagging weak crypto in code review. Keywords: MD5, SHA-1, DES, RC4, ECB,
+  PBKDF2, RSA 2048, TLSv1.0, cipher suites, x509, HSTS, Strict-Transport-Security. Do not use for
+  a full external TLS/SSL server posture assessment - use performing-ssl-tls-security-assessment.
 domain: cybersecurity
 subdomain: cryptography
 tags:
