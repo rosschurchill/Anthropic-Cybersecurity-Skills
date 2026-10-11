@@ -1,10 +1,10 @@
 ---
 name: analyzing-windows-prefetch-with-python
-description: Parse Windows Prefetch (.pf) files with the windowsprefetch Python
-  library to reconstruct application execution history, run counts, and accessed
-  file/volume lists. Use when investigating renamed or masquerading binaries, verifying
-  program execution timelines, or hunting for suspicious execution patterns in incident
-  response.
+description: Parse Windows Prefetch (.pf) files with the windowsprefetch Python library
+  to reconstruct application execution history, run counts, and accessed file/volume
+  lists. Use when investigating renamed or masquerading binaries, verifying program
+  execution timelines, or hunting for suspicious execution patterns in incident response.
+  Do not use for multi-tool prefetch analysis (PECmd/WinPrefetchView) - use analyzing-prefetch-files-for-execution-history.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

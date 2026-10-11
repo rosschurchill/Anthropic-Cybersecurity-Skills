@@ -1,17 +1,18 @@
 ---
 name: designing-adversary-engagement-with-mitre-engage
 description: >-
-  Plan, run, and measure an adversary engagement operation using the MITRE Engage
-  framework so that deployed deception is driven by strategy instead of deployed ad hoc.
-  Covers the Engage Matrix (Prepare, Expose, Affect, Elicit, Understand), the 10-Step
-  Operational Process, mapping engagement Activities to the ATT&CK techniques they
-  expose, and defining measurable Goals and Operational Objectives. Use when a team has
-  honeypots, honeytokens, or canary tokens but no coordinating strategy, when leadership
-  asks "should we engage attackers and how", when building a deception/denial program,
-  when writing an adversary engagement operation plan, or when deciding which deception
-  Activities to deploy against a specific threat actor. Keywords: MITRE Engage, adversary
-  engagement, cyber deception strategy, denial and deception, Engage Matrix, EAC, EGO,
-  Expose Affect Elicit, deception program, honeypot strategy, engagement operation.
+  Plan, run, and measure an adversary engagement operation using the MITRE Engage framework
+  so that deployed deception is driven by strategy instead of deployed ad hoc. Covers the
+  Engage Matrix (Prepare, Expose, Affect, Elicit, Understand), the 10-Step Operational
+  Process, mapping engagement Activities to the ATT&CK techniques they expose, and defining
+  measurable Goals and Operational Objectives. Use when a team has honeypots, honeytokens,
+  or canary tokens but no coordinating strategy, when leadership asks "should we engage
+  attackers and how", when building a deception/denial program, when writing an adversary
+  engagement operation plan, or when deciding which deception Activities to deploy against a
+  specific threat actor. Keywords: MITRE Engage, adversary engagement, cyber deception
+  strategy, denial and deception, Engage Matrix, EAC, EGO, Expose Affect Elicit, deception
+  program, honeypot strategy. Do not use for the hands-on deployment of deception technology
+  - use performing-deception-technology-deployment.
 domain: cybersecurity
 subdomain: deception-technology
 tags:

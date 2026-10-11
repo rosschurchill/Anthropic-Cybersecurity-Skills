@@ -1,10 +1,12 @@
 ---
 name: configuring-hsm-for-key-storage
-description: Configures Hardware Security Modules for cryptographic key storage
-  using the PKCS#11 standard interface, covering key generation, signing, encryption,
-  and key management on physical HSMs and SoftHSM2 for development. Use when protecting
-  cryptographic keys so they never leave a hardened device boundary, or when building
-  and testing PKCS#11-based key management workflows.
+description: >-
+  Configures Hardware Security Modules for cryptographic key storage using the PKCS#11
+  standard interface, covering key generation, signing, encryption, and key management on
+  physical HSMs and SoftHSM2 for development. Use when protecting cryptographic keys so they
+  never leave a hardened device boundary, or when building and testing PKCS#11-based key
+  management workflows. Do not use for building a CA hierarchy and issuing X.509
+  certificates - use configuring-certificate-authority-with-openssl.
 domain: cybersecurity
 subdomain: cryptography
 tags:

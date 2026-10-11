@@ -1,13 +1,12 @@
 ---
 name: analyzing-threat-intelligence-feeds
-description: 'Analyzes structured and unstructured threat intelligence feeds to extract
+description: Analyzes structured and unstructured threat intelligence feeds to extract
   actionable indicators, adversary tactics, and campaign context. Use when ingesting
   commercial or open-source CTI feeds, evaluating feed quality, normalizing data into
   STIX 2.1 format, or enriching existing IOCs with campaign attribution. Activates
   for requests involving ThreatConnect, Recorded Future, Mandiant Advantage, MISP,
-  AlienVault OTX, or automated feed aggregation pipelines.
-
-  '
+  AlienVault OTX, or automated feed aggregation pipelines. Do not use for building
+  the feed-integration pipeline - use building-threat-intelligence-feed-integration.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

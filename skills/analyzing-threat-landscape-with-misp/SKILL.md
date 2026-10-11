@@ -3,8 +3,9 @@ name: analyzing-threat-landscape-with-misp
 description: Query a MISP (Malware Information Sharing Platform) instance via PyMISP
   to compute event statistics, IOC type breakdowns, threat actor galaxy clusters,
   and tag trends, and generate threat landscape reports with temporal trends. Use
-  when asked to analyze threat intelligence data, summarize top threat actors or
-  malware families, or produce a CTI landscape report from MISP events.
+  when asked to analyze threat intelligence data, summarize top threat actors or malware
+  families, or produce a CTI landscape report from MISP events. Do not use for collecting
+  and ingesting intelligence into MISP - use collecting-threat-intelligence-with-misp.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

@@ -1,6 +1,12 @@
 ---
 name: building-threat-actor-profile-from-osint
-description: Build threat actor profiles by collecting OSINT from vendor reports, paste sites, dark web forums, social media, and code repos, correlating indicators, mapping adversary infrastructure with tools like Maltego and SpiderFoot, and producing structured dossiers of motivations, capabilities, infrastructure, and TTPs. Use when performing attribution or building an adversary dossier from open-source intelligence.
+description: >-
+  Build threat actor profiles by collecting OSINT from vendor reports, paste sites, dark web
+  forums, social media, and code repos, correlating indicators, mapping adversary infrastructure
+  with tools like Maltego and SpiderFoot, and producing structured dossiers of motivations,
+  capabilities, infrastructure, and TTPs. Use when performing attribution or building an
+  adversary dossier from open-source intelligence. Do not use for profiling named APT or crime
+  groups from aggregated TTP and campaign intel — use profiling-threat-actor-groups.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

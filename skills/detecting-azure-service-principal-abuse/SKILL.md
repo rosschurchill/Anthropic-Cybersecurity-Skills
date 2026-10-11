@@ -1,11 +1,13 @@
 ---
 name: detecting-azure-service-principal-abuse
-description: Detect Azure service principal abuse in Microsoft Entra ID using KQL detection
-  queries (Sentinel/Splunk) against Azure AD Audit and Sign-in Logs, covering added
-  credentials, privileged role assignment, admin consent bypass, and service principal
-  enumeration. Use when investigating suspected privilege escalation or persistence
-  via service principals, or building threat-hunting queries for Entra ID identity
-  abuse.
+description: >-
+  Detect Azure service principal abuse in Microsoft Entra ID using KQL detection queries
+  (Sentinel/Splunk) against Azure AD Audit and Sign-in Logs, covering added credentials,
+  privileged role assignment, admin consent bypass, and service principal enumeration. Use
+  when investigating suspected privilege escalation or persistence via service principals,
+  or building threat-hunting queries for Entra ID identity abuse. Do not use for detecting
+  offensive Entra tooling in Graph activity logs - use
+  detecting-entra-offensive-tools-in-graph-logs.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

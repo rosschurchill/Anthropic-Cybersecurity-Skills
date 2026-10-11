@@ -1,6 +1,13 @@
 ---
 name: detecting-ai-model-prompt-injection-attacks
-description: Detects prompt injection using regex signature matching, heuristic scoring for structural anomalies, and DeBERTa-based transformer classification, flagging direct injections (system-prompt overrides, role-play escapes) and indirect injections (encoded payloads, obfuscation) per OWASP LLM Top 10 (LLM01:2025). Use for input validation layers in chatbots/agents/RAG pipelines, or for retrospectively classifying injection attempts in logs or incident investigations.
+description: >-
+  Detects prompt injection using regex signature matching, heuristic scoring for structural
+  anomalies, and DeBERTa-based transformer classification, flagging direct injections
+  (system-prompt overrides, role-play escapes) and indirect injections (encoded payloads,
+  obfuscation) per OWASP LLM Top 10 (LLM01:2025). Use for input validation layers in
+  chatbots/agents/RAG pipelines, or for retrospectively classifying injection attempts in
+  logs or incident investigations. Do not use for indirect prompt injection via external
+  content - use detecting-indirect-prompt-injection.
 domain: cybersecurity
 subdomain: ai-security
 tags:

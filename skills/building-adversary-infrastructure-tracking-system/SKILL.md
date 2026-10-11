@@ -1,6 +1,13 @@
 ---
 name: building-adversary-infrastructure-tracking-system
-description: Build an automated adversary infrastructure tracking system in Python (dnspython, python-whois, shodan, networkx) that pivots across passive DNS, certificate transparency logs, WHOIS records, and IP enrichment to map threat-actor C2 networks and flag newly registered domains matching known patterns. Use when pivoting from known indicators to discover related C2 infrastructure or maintaining a continuously updated map of a threat actor's network.
+description: >-
+  Build an automated adversary infrastructure tracking system in Python (dnspython, python-whois,
+  shodan, networkx) that pivots across passive DNS, certificate transparency logs, WHOIS records,
+  and IP enrichment to map threat-actor C2 networks and flag newly registered domains matching
+  known patterns. Use when pivoting from known indicators to discover related C2 infrastructure
+  or maintaining a continuously updated map of a threat actor's network. Do not use for ongoing
+  tracking of a specific threat actor's known infrastructure — use
+  tracking-threat-actor-infrastructure.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

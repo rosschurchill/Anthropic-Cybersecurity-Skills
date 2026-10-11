@@ -1,10 +1,12 @@
 ---
 name: building-ioc-enrichment-pipeline-with-opencti
-description: Build an automated IOC enrichment pipeline on OpenCTI (STIX 2.1 native
-  threat intel platform) using its internal enrichment connectors to pull context
-  from VirusTotal, Shodan, AbuseIPDB, and GreyNoise, correlate indicators with known
-  actors/campaigns, and score them for analyst prioritization. Use when deploying
-  OpenCTI or automating enrichment and confidence scoring of newly ingested indicators.
+description: >-
+  Build an automated IOC enrichment pipeline on OpenCTI (STIX 2.1 native threat intel platform)
+  using its internal enrichment connectors to pull context from VirusTotal, Shodan, AbuseIPDB,
+  and GreyNoise, correlate indicators with known actors/campaigns, and score them for analyst
+  prioritization. Use when deploying OpenCTI or automating enrichment and confidence scoring of
+  newly ingested indicators. Do not use for platform-agnostic SOAR IOC enrichment workflows — use
+  automating-ioc-enrichment.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

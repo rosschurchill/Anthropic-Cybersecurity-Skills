@@ -1,9 +1,10 @@
 ---
 name: analyzing-typosquatting-domains-with-dnstwist
-description: Generate domain permutations with dnstwist and check DNS resolution
-  to detect typosquatting, homograph phishing, and brand impersonation domains registered
+description: Generate domain permutations with dnstwist and check DNS resolution to
+  detect typosquatting, homograph phishing, and brand impersonation domains registered
   against your organization. Use when asked to monitor for lookalike domains, investigate
-  a phishing domain, or assess brand-impersonation risk.
+  a phishing domain, or assess brand-impersonation risk. Do not use for typosquatted
+  software packages on npm/PyPI - use detecting-typosquatting-packages-in-npm-pypi.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

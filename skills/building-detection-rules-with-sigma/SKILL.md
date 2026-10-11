@@ -1,12 +1,12 @@
 ---
 name: building-detection-rules-with-sigma
-description: 'Builds vendor-agnostic detection rules using the Sigma rule format for
-  threat detection across SIEM platforms including Splunk, Elastic, and Microsoft
-  Sentinel. Use when creating portable detection logic from threat intelligence, mapping
-  rules to MITRE ATT&CK techniques, or converting community Sigma rules into platform-specific
-  queries using sigmac or pySigma backends.
-
-  '
+description: >-
+  Builds vendor-agnostic detection rules using the Sigma rule format for threat detection across
+  SIEM platforms including Splunk, Elastic, and Microsoft Sentinel. Use when creating portable
+  detection logic from threat intelligence, mapping rules to MITRE ATT&CK techniques, or
+  converting community Sigma rules into platform-specific queries using sigmac or pySigma
+  backends. Do not use for writing Splunk-native SPL detections — use
+  building-detection-rule-with-splunk-spl.
 domain: cybersecurity
 subdomain: soc-operations
 tags:

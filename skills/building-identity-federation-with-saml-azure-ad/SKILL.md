@@ -1,6 +1,12 @@
 ---
 name: building-identity-federation-with-saml-azure-ad
-description: Configure SAML 2.0 identity federation between on-premises Active Directory (via AD FS or a third-party IdP) and Microsoft Entra ID, covering federation models (AD FS, password hash sync, pass-through auth, third-party IdP) and the SAML authentication flow. Use when extending on-premises authentication authority to cloud resources or designing hybrid identity SSO architecture for Entra ID.
+description: >-
+  Configure SAML 2.0 identity federation between on-premises Active Directory (via AD FS or a
+  third-party IdP) and Microsoft Entra ID, covering federation models (AD FS, password hash sync,
+  pass-through auth, third-party IdP) and the SAML authentication flow. Use when extending
+  on-premises authentication authority to cloud resources or designing hybrid identity SSO
+  architecture for Entra ID. Do not use for Okta SAML SSO application integration — use
+  implementing-saml-sso-with-okta.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

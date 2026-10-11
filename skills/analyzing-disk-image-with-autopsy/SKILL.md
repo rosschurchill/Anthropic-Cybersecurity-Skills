@@ -1,6 +1,11 @@
 ---
 name: analyzing-disk-image-with-autopsy
-description: Perform comprehensive forensic analysis of raw (dd), E01, or AFF disk images with Autopsy and The Sleuth Kit, recovering deleted files, examining metadata and embedded artifacts, keyword searching, and building investigation timelines with visual reports. Use for structured analysis of a forensic disk image or when stakeholders need visual reports from evidence.
+description: Perform comprehensive forensic analysis of raw (dd), E01, or AFF disk
+  images with Autopsy and The Sleuth Kit, recovering deleted files, examining metadata
+  and embedded artifacts, keyword searching, and building investigation timelines
+  with visual reports. Use for structured analysis of a forensic disk image or when
+  stakeholders need visual reports from evidence. Do not use for acquiring/imaging
+  the drive first - use acquiring-disk-image-with-dd-and-dcfldd.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

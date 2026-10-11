@@ -1,13 +1,11 @@
 ---
 name: analyzing-command-and-control-communication
-description: 'Analyzes malware C2 communication over HTTP, HTTPS, DNS, and custom
-  protocols to reverse-engineer beacon patterns, command structures, data encoding,
-  and infrastructure (primary servers, fallback domains, dead drops). Use after
-  reverse engineering reveals network traffic needing protocol analysis or when
-  building detection signatures for a framework like Cobalt Strike, Metasploit,
-  or Sliver.
-
-  '
+description: Analyzes malware C2 communication over HTTP, HTTPS, DNS, and custom protocols
+  to reverse-engineer beacon patterns, command structures, data encoding, and infrastructure
+  (primary servers, fallback domains, dead drops). Use after reverse engineering reveals
+  network traffic needing protocol analysis or when building detection signatures
+  for a framework like Cobalt Strike, Metasploit, or Sliver. Do not use for covert
+  tunneling channels (DNS/ICMP/steganographic) - use analyzing-network-covert-channels-in-malware.
 domain: cybersecurity
 subdomain: malware-analysis
 tags:
