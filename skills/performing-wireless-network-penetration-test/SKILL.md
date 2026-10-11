@@ -1,8 +1,6 @@
 ---
 name: performing-wireless-network-penetration-test
-description: Execute a wireless network penetration test to assess WiFi security by
-  capturing handshakes, cracking WPA2/WPA3 keys, detecting rogue access points, and
-  testing wireless segmentation using Aircrack-ng and related tools.
+description: 'Execute a wireless network penetration test to assess WiFi security by capturing handshakes, cracking WPA2/WPA3 keys, detecting rogue access points, and testing wireless segmentation using Aircrack-ng and related tools. Do not use for offline WPA/WPA2 passphrase cracking of a captured handshake alone - use performing-wifi-password-cracking-with-aircrack.'
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

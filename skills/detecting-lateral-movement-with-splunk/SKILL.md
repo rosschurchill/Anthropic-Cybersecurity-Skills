@@ -1,9 +1,6 @@
 ---
 name: detecting-lateral-movement-with-splunk
-description: Detect adversary lateral movement across networks using Splunk SPL queries
-  against Windows authentication logs, SMB traffic, and remote service (WMI/PsExec/RDP)
-  abuse. Use when hunting for MITRE ATT&CK TA0008 lateral movement activity or investigating
-  suspected pivoting between hosts during an incident, with Splunk as the SIEM.
+description: 'Detect adversary lateral movement across networks using Splunk SPL queries against Windows authentication logs, SMB traffic, and remote service (WMI/PsExec/RDP) abuse. Use when hunting for MITRE ATT&CK TA0008 lateral movement activity or investigating suspected pivoting between hosts during an incident, with Splunk as the SIEM. Do not use for SIEM-agnostic multi-source lateral-movement detection spanning network flow and endpoint telemetry - use performing-lateral-movement-detection.'
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

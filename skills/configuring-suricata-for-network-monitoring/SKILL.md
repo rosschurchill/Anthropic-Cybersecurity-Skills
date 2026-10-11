@@ -1,12 +1,6 @@
 ---
 name: configuring-suricata-for-network-monitoring
-description: 'Deploys and configures Suricata IDS/IPS with Emerging Threats rulesets,
-  EVE JSON logging, and custom rules for high-throughput, protocol-aware traffic
-  inspection (HTTP, TLS, DNS, SMB) and SIEM integration. Use when running Suricata
-  in IDS or inline IPS mode to detect or block malicious traffic, or when combining
-  signature-based and protocol anomaly detection with file extraction.
-
-  '
+description: 'Deploys and configures Suricata IDS/IPS with Emerging Threats rulesets, EVE JSON logging, and custom rules for high-throughput, protocol-aware traffic inspection (HTTP, TLS, DNS, SMB) and SIEM integration. Use when running Suricata in IDS or inline IPS mode to detect or block malicious traffic, or when combining signature-based and protocol anomaly detection with file extraction. Do not use for inline IPS deployment (NFQueue) focused on actively blocking traffic - use implementing-network-intrusion-prevention-with-suricata.'
 domain: cybersecurity
 subdomain: network-security
 tags:

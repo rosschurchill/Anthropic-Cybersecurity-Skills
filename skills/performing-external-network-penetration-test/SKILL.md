@@ -1,8 +1,6 @@
 ---
 name: performing-external-network-penetration-test
-description: Conduct a comprehensive external network penetration test to identify
-  vulnerabilities in internet-facing infrastructure using PTES methodology, reconnaissance,
-  scanning, exploitation, and reporting.
+description: 'Conduct a comprehensive external network penetration test to identify vulnerabilities in internet-facing infrastructure using PTES methodology, reconnaissance, scanning, exploitation, and reporting. Do not use for internal or general-scope network penetration testing - use conducting-network-penetration-test.'
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

@@ -1,15 +1,6 @@
 ---
 name: performing-lateral-movement-detection
-description: 'Detects lateral movement techniques including Pass-the-Hash, PsExec,
-  WMI execution, RDP pivoting, and SMB-based spreading by correlating Windows Security/Sysmon
-  event logs, network flow data (NetFlow/Zeek), and endpoint telemetry in a SIEM,
-  mapped to MITRE ATT&CK Lateral Movement (TA0008) techniques with sample SPL detection
-  queries. Use when a SOC team needs to detect attackers pivoting between internal
-  systems after initial compromise, trace an attacker''s movement path during an
-  incident investigation, or build detection engineering rules for TA0008; not for
-  detecting initial access or external attacks.
-
-  '
+description: 'Detects lateral movement techniques including Pass-the-Hash, PsExec, WMI execution, RDP pivoting, and SMB-based spreading by correlating Windows Security/Sysmon event logs, network flow data (NetFlow/Zeek), and endpoint telemetry in a SIEM, mapped to MITRE ATT&CK Lateral Movement (TA0008) techniques with sample SPL detection queries. Use when a SOC team needs to detect attackers pivoting between internal systems after initial compromise, trace an attacker''s movement path during an incident investigation, or build detection engineering rules for TA0008; not for detecting initial access or external attacks. Do not use for Splunk-SPL-specific lateral-movement hunting - use detecting-lateral-movement-with-splunk.'
 domain: cybersecurity
 subdomain: soc-operations
 tags:

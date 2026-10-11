@@ -1,12 +1,6 @@
 ---
 name: analyzing-uefi-bootkit-persistence
-description: 'Analyzes UEFI bootkit persistence (SPI flash implants, ESP modifications,
-  Secure Boot bypass, UEFI variable manipulation) using chipsec for firmware integrity
-  verification, detecting known families like BlackLotus, LoJax, and MoonBounce.
-  Use for UEFI malware analysis, firmware persistence investigation, or Secure Boot
-  bypass detection.
-
-  '
+description: 'Analyzes UEFI bootkit persistence (SPI flash implants, ESP modifications, Secure Boot bypass, UEFI variable manipulation) using chipsec for firmware integrity verification, detecting known families like BlackLotus, LoJax, and MoonBounce. Use for UEFI malware analysis, firmware persistence investigation, or Secure Boot bypass detection. Do not use for auditing platform firmware configuration and protections (SPI write protection, BIOS lock, SMM/SMRR) - use auditing-uefi-firmware-with-chipsec.'
 domain: cybersecurity
 subdomain: firmware-security
 tags:

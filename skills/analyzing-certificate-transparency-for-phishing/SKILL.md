@@ -1,8 +1,6 @@
 ---
 name: analyzing-certificate-transparency-for-phishing
-description: Monitor Certificate Transparency logs using crt.sh and Certstream to
-  detect phishing domains, lookalike certificates, and unauthorized certificate issuance
-  targeting your organization.
+description: 'Monitor Certificate Transparency logs using crt.sh and Certstream to detect phishing domains, lookalike certificates, and unauthorized certificate issuance targeting your organization. Do not use for crt.sh/pycrtsh querying with Levenshtein typosquatting and shadow-IT detection - use analyzing-tls-certificate-transparency-logs.'
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
