@@ -1,11 +1,12 @@
 ---
 name: performing-gcp-security-assessment-with-forseti
-description: 'Performing comprehensive security assessments of Google Cloud Platform
-  environments using Forseti Security, Security Command Center, and gcloud CLI to
-  audit IAM policies, firewall rules, storage permissions, and compliance against
-  CIS GCP Foundations Benchmark.
-
-  '
+description: >-
+  Performs security assessments of Google Cloud Platform environments with Forseti Security,
+  Security Command Center, and gcloud to audit IAM policies, firewall rules, and storage
+  permissions against the CIS GCP Foundations Benchmark. Use when baselining a GCP
+  organization or new project, running periodic CIS compliance audits, or building continuous
+  configuration monitoring across projects. Do not use for a focused IAM binding and
+  permission audit — use auditing-gcp-iam-permissions.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

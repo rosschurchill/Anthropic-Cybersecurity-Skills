@@ -1,13 +1,14 @@
 ---
 name: deploying-decoy-files-for-ransomware-detection
-description: 'Deploys canary files (honeytokens) across file systems to detect ransomware
-  encryption activity in real time. Uses strategically placed decoy documents monitored
-  via file integrity monitoring or OS-level watchdogs to trigger alerts when ransomware
-  modifies or encrypts them. Activates for requests involving ransomware canary deployment,
-  honeyfile setup, deception-based ransomware detection, or file integrity monitoring
-  for encryption.
-
-  '
+description: >-
+  Deploys decoy documents (tripwire files) across file systems and shares, watched by
+  file-integrity monitoring or OS-level filesystem watchers, to catch ransomware mid-encryption
+  with high-fidelity, low-noise alerts. Use when placing early-warning tripwire files on file
+  servers, flagging unauthorized modification of planted documents, or protecting high-value
+  shares with files no legitimate user should touch. Keywords: decoy document, tripwire file,
+  file integrity monitoring, inotify, FSWatcher, unauthorized modification, ransomware
+  encryption. Do not use for canary-token and honeypot-share deception appliances - use
+  implementing-honeypot-for-ransomware-detection.
 domain: cybersecurity
 subdomain: ransomware-defense
 tags:

@@ -1,14 +1,14 @@
 ---
 name: detecting-attacks-on-scada-systems
-description: 'This skill covers detecting cyber attacks targeting Supervisory Control
-  and Data Acquisition (SCADA) systems including man-in-the-middle attacks on industrial
-  protocols, unauthorized command injection into PLCs, HMI compromise, historian data
-  manipulation, and denial-of-service against control system communications. It leverages
-  OT-specific intrusion detection systems, industrial protocol anomaly detection,
-  and process data analytics to identify attacks that traditional IT security tools
-  miss.
-
-  '
+description: >-
+  Detects cyber attacks on SCADA systems including MITM on industrial protocols, unauthorized PLC
+  command injection, HMI compromise, historian data manipulation, and control-communication DoS,
+  using OT-specific IDS, industrial-protocol anomaly detection, and process-data analytics. Use
+  when deploying OT detection in a SCADA environment, investigating a suspected ICS attack, or
+  building rules for OT attack patterns like Stuxnet, TRITON, or Industroyer. Keywords: SCADA,
+  OT, PLC, HMI, historian, Modbus, DNP3, Dragos, Nozomi, Claroty, ICS IDS. Do not use for
+  Modbus-specific traffic anomaly monitoring alone - use
+  monitoring-scada-modbus-traffic-anomalies.
 domain: cybersecurity
 subdomain: ot-ics-security
 tags:

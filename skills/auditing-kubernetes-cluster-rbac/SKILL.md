@@ -1,10 +1,13 @@
 ---
 name: auditing-kubernetes-cluster-rbac
-description: 'Auditing Kubernetes cluster RBAC configurations to identify overly permissive
-  roles, wildcard permissions, dangerous ClusterRoleBindings, service account abuse,
-  and privilege escalation paths using kubectl, rbac-tool, KubiScan, and Kubeaudit.
-
-  '
+description: >-
+  Audits Kubernetes cluster RBAC to find overly permissive roles, wildcard permissions, dangerous
+  ClusterRoleBindings, service-account abuse, and privilege-escalation paths using kubectl,
+  rbac-tool, KubiScan, and Kubeaudit. Use when reviewing cluster RBAC for least privilege,
+  documenting access controls for a compliance audit, or scoping RBAC when onboarding teams to a
+  shared cluster. Keywords: Kubernetes RBAC, ClusterRoleBinding, wildcard verbs, service account,
+  rbac-tool, KubiScan, Kubeaudit. Do not use for tracing concrete escalation paths toward
+  cluster-admin - use auditing-kubernetes-rbac-privilege-escalation.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

@@ -1,10 +1,14 @@
 ---
 name: emulating-cloud-attacks-with-stratus-red-team
-description: Install and run Stratus Red Team to detonate granular, MITRE ATT&CK-mapped
-  AWS, Azure, GCP, and Kubernetes attack techniques through their warmup-detonate-revert-cleanup
-  lifecycle, then verify the telemetry they generate. Use to validate that cloud detections
-  (CloudTrail, GuardDuty, Microsoft Sentinel, GCP SCC, Falco) actually fire, or to run a
-  repeatable purple-team exercise generating realistic attacker telemetry.
+description: >-
+  Install and run Stratus Red Team to detonate granular, MITRE ATT&CK-mapped AWS, Azure, GCP,
+  and Kubernetes attack techniques through their warmup-detonate-revert-cleanup lifecycle,
+  then verify the telemetry they generate. Use when validating that cloud detections
+  (CloudTrail, GuardDuty, Microsoft Sentinel, GCP SCC, Falco) actually fire, running a
+  repeatable cloud purple-team exercise, or measuring detection coverage against a known
+  technique catalog. Keywords: Stratus Red Team, detonate, warmup, revert, MITRE ATT&CK,
+  CloudTrail, GuardDuty, Falco, purple team. Do not use for emulating endpoint TTPs on hosts —
+  use performing-threat-emulation-with-atomic-red-team.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

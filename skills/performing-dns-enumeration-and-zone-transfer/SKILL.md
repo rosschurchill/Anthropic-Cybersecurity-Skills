@@ -1,10 +1,12 @@
 ---
 name: performing-dns-enumeration-and-zone-transfer
-description: 'Enumerates DNS records, attempts zone transfers, brute-forces subdomains,
-  and maps DNS infrastructure during authorized reconnaissance to identify attack
-  surface, misconfigurations, and information disclosure in target domains.
-
-  '
+description: >-
+  Enumerates DNS records, attempts zone transfers (AXFR), brute-forces subdomains, and maps
+  DNS infrastructure during authorized reconnaissance to reveal attack surface,
+  misconfigurations, and information disclosure. Use when mapping a target's external
+  footprint, discovering hidden hosts and mail or name servers, or validating DNSSEC, SPF,
+  DKIM, and DMARC. Do not use for large-scale passive subdomain discovery from OSINT sources —
+  use performing-subdomain-enumeration-with-subfinder.
 domain: cybersecurity
 subdomain: network-security
 tags:

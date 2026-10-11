@@ -1,14 +1,13 @@
 ---
 name: conducting-mobile-app-penetration-test
-description: 'Conducts penetration testing of iOS and Android mobile applications
-  following the OWASP Mobile Application Security Testing Guide (MASTG) to identify
-  vulnerabilities in data storage, network communication, authentication, cryptography,
-  and platform-specific security controls. The tester performs static analysis of
-  application binaries, dynamic analysis at runtime, and API security testing to evaluate
-  the complete mobile attack surface. Activates for requests involving mobile app
-  pentest, iOS security assessment, Android security testing, or OWASP MASTG assessment.
-
-  '
+description: >-
+  Conducts iOS and Android mobile app penetration tests following OWASP MASTG, covering static
+  analysis of binaries, dynamic runtime analysis, and API security testing across data storage,
+  network, authentication, cryptography, and platform controls. Use when assessing a mobile app
+  before release, running an OWASP MASVS L1/L2 compliance assessment, or testing a mobile app's
+  end-to-end security with its backend APIs. Keywords: OWASP MASTG, MASVS, mobile pentest, static
+  analysis, dynamic analysis, iOS, Android, data storage. Do not use for a single-platform
+  iOS-only runtime assessment - use performing-ios-app-security-assessment.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

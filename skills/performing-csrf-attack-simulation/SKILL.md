@@ -1,8 +1,11 @@
 ---
 name: performing-csrf-attack-simulation
-description: Testing web applications for Cross-Site Request Forgery vulnerabilities
-  by crafting forged requests that exploit authenticated user sessions during authorized
-  security assessments.
+description: >-
+  Tests web applications for Cross-Site Request Forgery by crafting forged requests that
+  exploit authenticated user sessions during authorized assessments. Use when assessing
+  state-changing actions (password change, fund transfer, settings update) for missing
+  anti-CSRF tokens or SameSite cookie enforcement. Do not use for frame-overlay UI redressing
+  attacks — use performing-clickjacking-attack-test.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

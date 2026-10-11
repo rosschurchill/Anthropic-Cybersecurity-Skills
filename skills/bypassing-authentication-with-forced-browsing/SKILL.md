@@ -1,8 +1,13 @@
 ---
 name: bypassing-authentication-with-forced-browsing
-description: Discovering and accessing unprotected pages, APIs, and administrative
-  interfaces by enumerating URLs and bypassing authentication controls during authorized
-  security assessments.
+description: >-
+  Discovers and accesses unprotected pages, APIs, backup files, and administrative interfaces by
+  enumerating URLs and bypassing inconsistently enforced authentication during authorized
+  assessments. Use when testing whether authentication is enforced across every endpoint, finding
+  exposed admin, debug, or config files in production, or validating access control on supposedly
+  protected resources. Keywords: forced browsing, directory enumeration, hidden endpoints, admin
+  interface, access control, unauthenticated access. Do not use for exploiting function-level
+  authorization flaws on known endpoints - use exploiting-broken-function-level-authorization.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

@@ -1,10 +1,13 @@
 ---
 name: detecting-lateral-movement-in-network
-description: 'Identifies lateral movement techniques in enterprise networks by analyzing
-  authentication logs, network flows, SMB traffic, and RDP sessions using Zeek, Velociraptor,
-  and SIEM correlation rules to detect attackers moving between systems.
-
-  '
+description: >-
+  Identifies lateral-movement techniques in enterprise networks by analyzing authentication logs,
+  network flows, SMB traffic, and RDP sessions with Zeek, Velociraptor, and SIEM correlation
+  rules to detect attackers moving between systems. Use when hunting post-compromise movement
+  (pass-the-hash, RDP hopping, PsExec), building SIEM rules for T1021/T1570, or investigating
+  anomalous east-west traffic across hosts. Keywords: lateral movement, pass-the-hash, RDP,
+  PsExec, SMB, Velociraptor, SIEM correlation, T1021, east-west. Do not use for Zeek-log-only
+  lateral-movement detection - use detecting-lateral-movement-with-zeek.
 domain: cybersecurity
 subdomain: network-security
 tags:

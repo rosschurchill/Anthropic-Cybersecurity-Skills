@@ -1,8 +1,12 @@
 ---
 name: performing-thick-client-application-penetration-test
-description: Conduct a thick client application penetration test to identify insecure
-  local storage, hardcoded credentials, DLL hijacking, memory manipulation, and insecure
-  API communication in desktop applications using dnSpy, Procmon, and Burp Suite.
+description: >-
+  Assesses desktop and thick-client applications and their backends — local file and
+  credential storage, binary and memory analysis, DLL injection, process interception, and
+  client-server communication — in authorized penetration tests. Use when testing desktop apps
+  such as banking clients, SAP GUI, trading platforms, or legacy enterprise software for local
+  and client-server weaknesses. Do not use for browser-based web application testing — use
+  performing-web-application-penetration-test.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

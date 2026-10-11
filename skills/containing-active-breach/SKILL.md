@@ -1,13 +1,13 @@
 ---
 name: containing-active-breach
-description: 'Executes containment strategies to stop active adversary operations
-  and prevent lateral movement during a confirmed security breach. Implements short-term
-  and long-term containment using network segmentation, endpoint isolation, credential
-  revocation, and access control modifications. Activates for requests involving breach
-  containment, lateral movement prevention, network isolation, active threat containment,
-  or live incident response.
-
-  '
+description: >-
+  Executes containment to stop active adversary operations and prevent lateral movement during a
+  confirmed breach, using network segmentation, endpoint isolation, credential revocation, and
+  access-control changes for short- and long-term containment. Use when an intrusion is in
+  progress, malware or ransomware is spreading laterally, or a compromised account is being
+  actively abused. Keywords: containment, endpoint isolation, network segmentation, credential
+  revocation, lateral movement, active breach, C2 cutoff. Do not use for cloud-specific
+  containment procedures - use performing-cloud-incident-containment-procedures.
 domain: cybersecurity
 subdomain: incident-response
 tags:

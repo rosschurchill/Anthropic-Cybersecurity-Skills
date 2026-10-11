@@ -1,11 +1,11 @@
 ---
 name: performing-scada-hmi-security-assessment
-description: 'Perform security assessments of SCADA Human-Machine Interface (HMI)
-  systems to identify vulnerabilities in web-based HMIs, thin-client configurations,
-  authentication mechanisms, and communication channels between HMI and PLCs, aligned
-  with IEC 62443 and NIST SP 800-82 guidelines.
-
-  '
+description: >-
+  Assesses HMI systems in SCADA/DCS environments for web vulnerabilities, authentication,
+  authorization, and session weaknesses, and insecure HMI-to-PLC/RTU communication, aligned to
+  IEC 62443 and NERC CIP. Use when reviewing a web-based or thick HMI's security, auditing HMI
+  access controls, or testing HMI-to-controller communication security. Do not use for
+  PLC-level S7 protocol analysis — use performing-s7comm-protocol-security-analysis.
 domain: cybersecurity
 subdomain: ot-ics-security
 tags:

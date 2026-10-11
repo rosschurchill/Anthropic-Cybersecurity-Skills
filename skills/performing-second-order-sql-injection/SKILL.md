@@ -1,8 +1,12 @@
 ---
 name: performing-second-order-sql-injection
-description: Detect and exploit second-order SQL injection vulnerabilities where malicious
-  input is stored in a database and later executed in an unsafe SQL query during a
-  different application operation.
+description: >-
+  Tests for second-order (stored) SQL injection, where input sanitized at storage time is
+  later used unsafely in a subsequent query, by tracing stored user data through multi-step
+  workflows into downstream database operations. Use when first-order injection is blocked but
+  stored user content feeds later queries, or assessing admin panels and stored-procedure
+  paths that reuse previously stored data. Do not use for standard first-order SQL injection —
+  use exploiting-sql-injection-vulnerabilities.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

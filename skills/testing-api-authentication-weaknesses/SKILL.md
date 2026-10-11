@@ -1,14 +1,11 @@
 ---
 name: testing-api-authentication-weaknesses
-description: 'Tests API authentication mechanisms for weaknesses including broken
-  token validation, missing authentication on endpoints, weak password policies, credential
-  stuffing susceptibility, token leakage in URLs or logs, and session management flaws.
-  The tester evaluates JWT implementation, API key handling, OAuth flows, and session
-  token entropy to identify authentication bypasses. Maps to OWASP API2:2023 Broken
-  Authentication. Activates for requests involving API authentication testing, token
-  validation assessment, credential security testing, or API auth bypass.
-
-  '
+description: >-
+  Tests REST API authentication and session mechanisms for bypasses — unprotected endpoints,
+  weak API key generation, storage, and rotation, and token expiration, revocation, and
+  refresh flaws. Use when assessing an API's authentication before production, checking that
+  every endpoint enforces authentication, or validating session and API-key handling. Do not
+  use for JWT-specific token attacks — use testing-jwt-token-security.
 domain: cybersecurity
 subdomain: api-security
 tags:

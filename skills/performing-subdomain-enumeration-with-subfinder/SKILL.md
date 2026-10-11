@@ -1,7 +1,11 @@
 ---
 name: performing-subdomain-enumeration-with-subfinder
-description: Enumerate subdomains of target domains using ProjectDiscovery's Subfinder
-  passive reconnaissance tool to map the attack surface during security assessments.
+description: >-
+  Discovers subdomains passively with subfinder across dozens of OSINT sources and APIs to map
+  an organization's external attack surface and build asset inventories. Use during the recon
+  phase of pentests or bug bounties, before scanning discovered hosts, or when building
+  passive asset inventories for continuous monitoring. Do not use for active DNS record
+  enumeration and zone-transfer testing — use performing-dns-enumeration-and-zone-transfer.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

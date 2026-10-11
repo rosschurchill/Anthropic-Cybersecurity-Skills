@@ -1,8 +1,15 @@
 ---
 name: performing-active-directory-compromise-investigation
-description: Investigate Active Directory compromise by analyzing authentication logs,
-  replication metadata, Group Policy changes, and Kerberos ticket anomalies to identify
-  attacker persistence and lateral movement paths.
+description: >-
+  Investigate Active Directory compromise by analyzing authentication logs, replication
+  metadata, Group Policy changes, and Kerberos ticket anomalies to identify attacker
+  persistence and lateral movement paths. Use when scoping a suspected AD compromise,
+  reconstructing attacker persistence and lateral movement, analyzing Kerberos ticket
+  anomalies (golden/silver ticket, DCSync), reviewing GPO and replication-metadata changes, or
+  following AD incident-response procedures. Keywords: Active Directory, authentication logs,
+  replication metadata, DCSync, Kerberos ticket, golden ticket, GPO change, lateral movement.
+  Do not use for simulating AD attacks offensively — use
+  executing-active-directory-attack-simulation.
 domain: cybersecurity
 subdomain: incident-response
 tags:

@@ -1,8 +1,12 @@
 ---
 name: performing-web-cache-poisoning-attack
-description: Exploiting web cache mechanisms to serve malicious content to other users
-  by poisoning cached responses through unkeyed headers and parameters during authorized
-  security tests.
+description: >-
+  Tests for web cache poisoning on CDN and reverse-proxy stacks (Cloudflare, Akamai, Varnish,
+  Nginx) by finding unkeyed inputs reflected into cached responses, so a poisoned entry is
+  served to all users. Use when the app sits behind aggressive caching and you are probing
+  unkeyed headers, cache-key behavior, and cache deception during authorized testing. Do not
+  use for path-confusion cache deception that caches victim responses — use
+  performing-web-cache-deception-attack.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

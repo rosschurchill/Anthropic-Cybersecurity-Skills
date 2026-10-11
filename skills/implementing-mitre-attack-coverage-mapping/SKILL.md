@@ -1,7 +1,13 @@
 ---
 name: implementing-mitre-attack-coverage-mapping
-description: Implement MITRE ATT&CK coverage mapping to identify detection gaps, prioritize
-  rule development, and measure SOC detection maturity against adversary techniques.
+description: >-
+  Implement MITRE ATT&CK coverage mapping to identify detection gaps, prioritize rule
+  development, and measure SOC detection maturity against adversary techniques. Use when
+  assessing which ATT&CK techniques current detections cover, finding and prioritizing
+  detection gaps, measuring SOC detection maturity, or planning rule-development roadmaps
+  against a technique matrix. Keywords: MITRE ATT&CK, coverage mapping, detection gap,
+  technique matrix, detection maturity, rule development, heatmap. Do not use for mapping
+  observed activity to specific ATT&CK technique IDs — use mapping-mitre-attack-techniques.
 domain: cybersecurity
 subdomain: soc-operations
 tags:

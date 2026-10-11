@@ -1,8 +1,12 @@
 ---
 name: testing-jwt-token-security
-description: Assessing JSON Web Token implementations for cryptographic weaknesses,
-  algorithm confusion attacks, and authorization bypass vulnerabilities during security
-  engagements.
+description: >-
+  Tests JSON Web Token implementations for weaknesses — none and weak algorithms,
+  signature-verification and key-confusion flaws, missing expiration, and secret brute-forcing
+  — where JWTs are used for authentication or authorization. Use when the target uses JWTs as
+  Bearer tokens or in cookies, assessing SSO, OAuth, or OIDC flows that issue JWTs, or
+  microservice inter-service JWT auth. Do not use for the specific RS256-to-HS256
+  algorithm-confusion attack — use exploiting-jwt-algorithm-confusion-attack.
 domain: cybersecurity
 subdomain: web-application-security
 tags:

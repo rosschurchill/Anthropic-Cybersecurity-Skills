@@ -1,14 +1,14 @@
 ---
 name: conducting-api-security-testing
-description: 'Conducts security testing of REST, GraphQL, and gRPC APIs to identify
-  vulnerabilities in authentication, authorization, rate limiting, input validation,
-  and business logic. The tester uses the OWASP API Security Top 10 as the testing
-  framework, combining Burp Suite interception with Postman collections and custom
-  scripts to test endpoint security at every privilege level. Activates for requests
-  involving API security testing, REST API pentest, GraphQL security assessment, or
-  API vulnerability testing.
-
-  '
+description: >-
+  Tests REST, GraphQL, and gRPC APIs for broken object- and function-level authorization,
+  injection, mass assignment, excessive data exposure, and business-logic abuse, exercising every
+  endpoint at each privilege level with intercepting proxies and custom scripts. Use when
+  assessing an API or microservices trust boundary, chaining authorization bypasses across roles,
+  or probing GraphQL introspection and query-complexity abuse. Keywords: BOLA, BFLA, mass
+  assignment, business logic, GraphQL introspection, privilege level, microservices. Do not use
+  for a checklist-style OWASP API Top 10 pass with Burp and Postman - use
+  testing-api-security-with-owasp-top-10.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

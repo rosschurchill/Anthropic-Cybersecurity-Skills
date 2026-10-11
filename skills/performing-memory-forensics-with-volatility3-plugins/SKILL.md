@@ -1,8 +1,12 @@
 ---
 name: performing-memory-forensics-with-volatility3-plugins
-description: Analyze memory dumps using Volatility3 plugins to detect injected code,
-  rootkits, credential theft, and malware artifacts in Windows, Linux, and macOS memory
-  images.
+description: >-
+  Analyzes RAM dumps with specialized Volatility3 plugins (windows.malfind, psscan, dlllist,
+  netscan, handles, ETW Scan) to detect code injection, hidden processes, rootkits, credential
+  harvesting, and network artifacts invisible to disk forensics. Use when hunting injection
+  and hidden-process artifacts in a memory image, or running advanced and contest Volatility3
+  plugins beyond the core workflow. Do not use for the baseline Volatility3
+  acquisition-to-triage workflow — use performing-memory-forensics-with-volatility3.
 domain: cybersecurity
 subdomain: malware-analysis
 tags:

@@ -1,12 +1,15 @@
 ---
 name: detecting-process-injection-techniques
-description: 'Detects and analyzes process injection techniques used by malware including
-  classic DLL injection, process hollowing, APC injection, thread hijacking, and reflective
-  loading. Uses memory forensics, API monitoring, and behavioral analysis to identify
-  injection artifacts. Activates for requests involving process injection detection,
-  code injection analysis, hollowed process investigation, or in-memory threat detection.
-
-  '
+description: >-
+  Detects and analyzes process injection techniques used by malware including classic DLL
+  injection, process hollowing, APC injection, thread hijacking, and reflective loading, using
+  memory forensics, API monitoring, and behavioral analysis to identify injection artifacts.
+  Use when an EDR flags VirtualAllocEx/WriteProcessMemory/CreateRemoteThread sequences, a
+  trusted process shows unexpected network or file activity, memory forensics reveals code in
+  anomalous regions, or investigating malware hiding inside legitimate processes. Keywords:
+  process hollowing, APC injection, thread hijacking, reflective loading, VirtualAllocEx,
+  WriteProcessMemory, CreateRemoteThread, Volatility. Do not use for Sysmon-based real-time
+  T1055 detection rules — use detecting-t1055-process-injection-with-sysmon.
 domain: cybersecurity
 subdomain: malware-analysis
 tags:

@@ -1,7 +1,12 @@
 ---
 name: performing-log-analysis-for-forensic-investigation
-description: Collect, parse, and correlate system, application, and security logs
-  to reconstruct events and establish timelines during forensic investigations.
+description: >-
+  Reconstructs incident timelines by collecting, parsing, and correlating logs across systems
+  and sources to establish evidence of unauthorized access, lateral movement, and
+  exfiltration. Use when building a cross-source event chronology during post-breach
+  investigation or preparing forensic reports requiring detailed timelines. Do not use for
+  deep Linux host system and journal log forensics — use
+  performing-linux-log-forensics-investigation.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

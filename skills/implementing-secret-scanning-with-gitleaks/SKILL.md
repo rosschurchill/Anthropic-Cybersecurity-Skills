@@ -1,12 +1,15 @@
 ---
 name: implementing-secret-scanning-with-gitleaks
-description: 'This skill covers implementing Gitleaks for detecting and preventing
-  hardcoded secrets in git repositories. It addresses configuring pre-commit hooks,
-  CI/CD pipeline integration, custom rule authoring for organization-specific secrets,
-  baseline management for existing repositories, and remediation workflows for exposed
-  credentials.
-
-  '
+description: >-
+  Implements Gitleaks for detecting and preventing hardcoded secrets in git repositories,
+  covering pre-commit hook configuration, CI/CD pipeline integration, custom rule authoring
+  for organization-specific secrets, baseline management for existing repositories, and
+  remediation workflows for exposed credentials. Use when wiring Gitleaks pre-commit gates,
+  scanning repository history for previously committed secrets to rotate, authoring custom
+  detection rules, baselining an existing repo, or meeting compliance mandates for secret
+  detection in source. Keywords: Gitleaks, pre-commit, .gitleaks.toml, custom rules, baseline,
+  git history, secret detection, remediation. Do not use for multi-tool CI/CD pipeline secret
+  scanning — use implementing-secrets-scanning-in-ci-cd.
 domain: cybersecurity
 subdomain: devsecops
 tags:

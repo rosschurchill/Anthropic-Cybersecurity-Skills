@@ -1,7 +1,13 @@
 ---
 name: analyzing-docker-container-forensics
-description: Investigate compromised Docker containers by analyzing images, layers,
-  volumes, logs, and runtime artifacts to identify malicious activity and evidence.
+description: >-
+  Investigates compromised Docker containers and hosts by analyzing images, layers, volumes,
+  logs, and runtime artifacts to identify malicious activity, container escapes, and
+  privilege-escalation evidence. Use when performing forensics on a breached container, examining
+  malicious images pulled from a registry, or reconstructing attacker activity inside a
+  containerized host after an incident. Keywords: docker inspect, image layers, overlay2,
+  container escape, runtime artifacts, container forensics. Do not use for live syscall-level
+  runtime threat detection - use detecting-container-runtime-threats-with-falco.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

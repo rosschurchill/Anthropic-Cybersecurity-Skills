@@ -1,8 +1,13 @@
 ---
 name: implementing-proofpoint-email-security-gateway
-description: Deploy and configure Proofpoint Email Protection as a secure email gateway
-  to detect and block phishing, malware, BEC, and spam before messages reach user
-  inboxes.
+description: >-
+  Deploy and configure Proofpoint Email Protection as a secure email gateway to detect and
+  block phishing, malware, BEC, and spam before messages reach user inboxes. Use when standing
+  up or tuning Proofpoint as the inbound secure email gateway, configuring anti-phishing,
+  anti-malware, BEC, and spam policies, routing mail flow through Proofpoint, or enforcing
+  email authentication at the gateway. Keywords: Proofpoint, Email Protection, secure email
+  gateway, SEG, phishing, BEC, spam, mail flow, policy. Do not use for Proofpoint attachment
+  sandboxing configuration specifically — use implementing-email-sandboxing-with-proofpoint.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

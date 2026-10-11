@@ -1,13 +1,12 @@
 ---
 name: performing-privilege-escalation-assessment
-description: 'Performs privilege escalation assessments on compromised Linux and Windows
-  systems to identify paths from low-privilege access to root or SYSTEM-level control.
-  The tester enumerates misconfigurations, vulnerable services, kernel exploits, SUID
-  binaries, unquoted service paths, and credential stores to demonstrate the full
-  impact of an initial compromise. Activates for requests involving privilege escalation
-  testing, local exploitation, post-compromise escalation, or OS-level security assessment.
-
-  '
+description: >-
+  Assesses local privilege escalation on Linux and Windows hosts after low-privilege access —
+  SUID/sudo and service misconfigurations, kernel exploits, and container and VM escape
+  controls — to demonstrate full system compromise. Use when escalating from a foothold during
+  a host pentest, testing endpoint hardening and EDR detection of privilege escalation, or
+  validating least-privilege and application-whitelisting controls. Do not use for cloud IAM
+  privilege escalation in AWS — use performing-aws-privilege-escalation-assessment.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:

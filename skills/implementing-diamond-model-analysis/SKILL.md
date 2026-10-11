@@ -1,10 +1,15 @@
 ---
 name: implementing-diamond-model-analysis
-description: The Diamond Model of Intrusion Analysis provides a structured framework
-  for analyzing cyber intrusions by examining four core features - Adversary, Capability,
-  Infrastructure, and Victim. This skill covers implementing the Diamond Model programmatically
-  to classify and correlate intrusion events, build activity threads, and generate
-  pivot-ready intelligence.
+description: >-
+  The Diamond Model of Intrusion Analysis provides a structured framework for analyzing cyber
+  intrusions through four core features — Adversary, Capability, Infrastructure, and Victim.
+  This skill covers implementing the Diamond Model programmatically to classify and correlate
+  intrusion events, build activity threads, and generate pivot-ready intelligence. Use when
+  structuring intrusion analysis around adversary/capability/infrastructure/victim,
+  correlating events into activity threads, pivoting between indicators to enrich
+  intelligence, or standardizing intrusion documentation. Keywords: Diamond Model, intrusion
+  analysis, adversary, capability, infrastructure, victim, activity thread, pivoting. Do not
+  use for kill-chain phase mapping of an intrusion — use analyzing-cyber-kill-chain.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

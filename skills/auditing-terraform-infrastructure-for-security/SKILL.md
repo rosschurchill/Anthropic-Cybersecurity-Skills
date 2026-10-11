@@ -1,11 +1,13 @@
 ---
 name: auditing-terraform-infrastructure-for-security
-description: 'Auditing Terraform infrastructure-as-code for security misconfigurations
-  using Checkov, tfsec, Terrascan, and OPA/Rego policies to detect overly permissive
-  IAM policies, public resource exposure, missing encryption, and insecure defaults
-  before cloud deployment.
-
-  '
+description: >-
+  Audits Terraform infrastructure-as-code for security misconfigurations using Checkov, tfsec,
+  Terrascan, and OPA/Rego to detect overly permissive IAM, public resource exposure, missing
+  encryption, and insecure defaults before cloud deployment. Use when gating Terraform in CI/CD,
+  reviewing modules and plans before apply, or building policy-as-code guardrails for
+  provisioning. Keywords: Terraform, IaC, Checkov, tfsec, Terrascan, OPA, Rego, policy-as-code,
+  pre-deploy scan. Do not use for scanning Kubernetes manifests as code - use
+  scanning-kubernetes-manifests-with-kubesec.
 domain: cybersecurity
 subdomain: cloud-security
 tags:
