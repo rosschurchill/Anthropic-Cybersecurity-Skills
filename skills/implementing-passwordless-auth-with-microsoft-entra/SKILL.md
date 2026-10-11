@@ -325,80 +325,7 @@ Write-Host "Cloud Kerberos Trust configured for hybrid WHfB deployment"
 
 Implement security key registration workflow:
 
-```powershell
-# Bulk FIDO2 security key registration via Temporary Access Pass
-# Step 1: Issue Temporary Access Pass for key registration
-
-function Issue-TemporaryAccessPass {
-    param(
-        [string]$UserId,
-        [int]$LifetimeMinutes = 60,
-        [bool]$IsUsableOnce = $true
-    )
-
-    $tap = @{
-        "@odata.type" = "#microsoft.graph.temporaryAccessPassAuthenticationMethod"
-        lifetimeInMinutes = $LifetimeMinutes
-        isUsableOnce = $IsUsableOnce
-    }
-
-    $result = New-MgUserAuthenticationTemporaryAccessPassMethod `
-        -UserId $UserId `
-        -BodyParameter $tap
-
-    return @{
-        UserId = $UserId
-        TemporaryAccessPass = $result.TemporaryAccessPass
-        ExpiresAt = $result.CreatedDateTime.AddMinutes($LifetimeMinutes)
-    }
-}
-
-# Bulk issue TAPs for security key registration event
-$registrationUsers = Import-Csv "security_key_registration_list.csv"
-
-$tapResults = foreach ($user in $registrationUsers) {
-    $tap = Issue-TemporaryAccessPass -UserId $user.UserPrincipalName
-    [PSCustomObject]@{
-        User = $user.UserPrincipalName
-        TAP = $tap.TemporaryAccessPass
-        Expires = $tap.ExpiresAt
-        KeySerial = $user.AssignedKeySerial
-    }
-}
-
-# Export TAPs for secure distribution to registration team
-$tapResults | Export-Csv "tap_assignments.csv" -NoTypeInformation
-
-# Monitor FIDO2 registration progress
-function Get-Fido2RegistrationStatus {
-    $allUsers = Get-MgUser -All -Property "id,userPrincipalName,department"
-
-    $registrationStatus = foreach ($user in $allUsers) {
-        $methods = Get-MgUserAuthenticationFido2Method -UserId $user.Id
-
-        [PSCustomObject]@{
-            UserPrincipalName = $user.UserPrincipalName
-            Department = $user.Department
-            Fido2KeyCount = $methods.Count
-            KeyModels = ($methods.Model -join ", ")
-            RegistrationDates = ($methods.CreatedDateTime -join ", ")
-            HasBackupKey = $methods.Count -ge 2
-        }
-    }
-
-    return $registrationStatus
-}
-
-$status = Get-Fido2RegistrationStatus
-$total = $status.Count
-$registered = ($status | Where-Object { $_.Fido2KeyCount -gt 0 }).Count
-$withBackup = ($status | Where-Object { $_.HasBackupKey }).Count
-
-Write-Host "FIDO2 Registration Progress"
-Write-Host "  Total Users: $total"
-Write-Host "  Registered:  $registered ($([math]::Round($registered/$total*100,1))%)"
-Write-Host "  With Backup: $withBackup ($([math]::Round($withBackup/$total*100,1))%)"
-```
+See [references/fido2-key-registration.md](references/fido2-key-registration.md) for the Temporary Access Pass issuance and FIDO2 registration-status PowerShell.
 
 ### Step 5: Disable Legacy Authentication Methods
 
@@ -454,52 +381,7 @@ $legacyAuthReport | Format-Table -AutoSize
 
 Track deployment progress and authentication method usage:
 
-```powershell
-# Generate passwordless adoption dashboard data
-function Get-PasswordlessAdoptionMetrics {
-    # Authentication method registration statistics
-    $registrationReport = Get-MgReportAuthenticationMethodUserRegistrationDetail -All
-
-    $metrics = @{
-        TotalUsers = $registrationReport.Count
-        PasswordlessCapable = ($registrationReport | Where-Object { $_.IsPasswordlessCapable }).Count
-        MfaRegistered = ($registrationReport | Where-Object { $_.IsMfaRegistered }).Count
-        Fido2Registered = ($registrationReport | Where-Object { "fido2" -in $_.MethodsRegistered }).Count
-        WhfbRegistered = ($registrationReport | Where-Object { "windowsHelloForBusiness" -in $_.MethodsRegistered }).Count
-        AuthenticatorRegistered = ($registrationReport | Where-Object { "microsoftAuthenticator" -in $_.MethodsRegistered }).Count
-        SmsOnly = ($registrationReport | Where-Object {
-            "sms" -in $_.MethodsRegistered -and
-            "fido2" -notin $_.MethodsRegistered -and
-            "windowsHelloForBusiness" -notin $_.MethodsRegistered
-        }).Count
-    }
-
-    # Authentication method usage from sign-in logs
-    $signInLogs = Get-MgAuditLogSignIn -Top 10000 -Filter "createdDateTime ge $((Get-Date).AddDays(-30).ToString('yyyy-MM-ddTHH:mm:ssZ'))"
-
-    $authMethodUsage = $signInLogs |
-        Group-Object { $_.AuthenticationMethodsUsed -join "," } |
-        Select-Object Count, Name | Sort-Object Count -Descending
-
-    return @{
-        Registration = $metrics
-        Usage = $authMethodUsage
-    }
-}
-
-$adoption = Get-PasswordlessAdoptionMetrics
-$reg = $adoption.Registration
-
-Write-Host "PASSWORDLESS ADOPTION REPORT"
-Write-Host "============================"
-Write-Host "Total Users:              $($reg.TotalUsers)"
-Write-Host "Passwordless Capable:     $($reg.PasswordlessCapable) ($([math]::Round($reg.PasswordlessCapable/$reg.TotalUsers*100,1))%)"
-Write-Host "  FIDO2 Keys:             $($reg.Fido2Registered)"
-Write-Host "  Windows Hello:          $($reg.WhfbRegistered)"
-Write-Host "  Authenticator:          $($reg.AuthenticatorRegistered)"
-Write-Host "MFA Registered:           $($reg.MfaRegistered) ($([math]::Round($reg.MfaRegistered/$reg.TotalUsers*100,1))%)"
-Write-Host "SMS Only (needs upgrade): $($reg.SmsOnly)"
-```
+See [references/adoption-metrics.md](references/adoption-metrics.md) for the passwordless adoption dashboard PowerShell.
 
 ## Key Concepts
 
