@@ -82,7 +82,7 @@ research -> draft -> gate loop. Status: `research` = sub-research file written;
 | T1675 | ESXi Administration Command | `detecting-esxi-administration-abuse` | execution | shipped |
 | T1072 | Software Deployment Tools | `detecting-software-deployment-tool-abuse` | execution | shipped |
 | T1176 | Software Extensions | `detecting-malicious-software-extensions` | persistence | shipped |
-| T1671 | Cloud Application Integration | `detecting-malicious-cloud-app-integration` | persistence | research |
+| T1671 | Cloud Application Integration | `detecting-malicious-cloud-app-integration` | persistence | shipped |
 | T1569 | System Services | `detecting-malicious-system-service-execution` | execution | research |
 | T1189 | Drive-by Compromise | `detecting-drive-by-compromise` | initial-access | research |
 | T1115 | Clipboard Data | `detecting-clipboard-data-theft` | collection | research |
