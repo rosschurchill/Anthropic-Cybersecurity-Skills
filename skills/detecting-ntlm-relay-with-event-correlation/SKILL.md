@@ -1,12 +1,6 @@
 ---
 name: detecting-ntlm-relay-with-event-correlation
-description: >-
-  Detect NTLM relay attacks (T1557.001) by correlating Windows Event 4624 LogonType 3 for
-  IP-to-hostname mismatches, identifying Responder/LLMNR poisoning artifacts, auditing SMB/LDAP
-  signing, and flagging NTLMv2-to-NTLMv1 downgrades. Use for hunting credential relay in
-  NTLM-enabled AD, investigating auth-source anomalies, building SIEM correlation rules, or
-  responding to PetitPotam/DFSCoerce/PrinterBug alerts. Do not use for proactive NTLM relay
-  threat hunting - use hunting-for-ntlm-relay-attacks.
+description: 'Detect NTLM relay attacks (T1557.001) by correlating Windows Event 4624 LogonType 3 for IP-to-hostname mismatches, identifying Responder/LLMNR poisoning artifacts, auditing SMB/LDAP signing, and flagging NTLMv2-to-NTLMv1 downgrades. Use for hunting credential relay in NTLM-enabled AD, investigating auth-source anomalies, building SIEM correlation rules, or responding to PetitPotam/DFSCoerce/PrinterBug alerts. Do not use for DCSync credential-replication detection - use detecting-dcsync-attack-in-active-directory.'
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -21,6 +15,9 @@ tags:
 - NTLM-downgrade
 - PetitPotam
 - Active-Directory
+- Windows-events
+- NTLMSSP
+- credential-access
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -51,6 +48,7 @@ mitre_attack:
 - T1082
 - T1083
 - T1069
+- T1003
 ---
 
 # Detecting NTLM Relay with Event Correlation

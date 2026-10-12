@@ -18,6 +18,9 @@ tags:
 - identity-aware-proxy
 - ztna
 - access-context-manager
+- context-aware-access
+- device-trust
+- identity
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -32,6 +35,9 @@ mitre_attack:
 - T1059
 - T1078.004
 - T1530
+- T1550
+- T1021
+- T1556
 ---
 
 # Implementing BeyondCorp Zero Trust Access Model

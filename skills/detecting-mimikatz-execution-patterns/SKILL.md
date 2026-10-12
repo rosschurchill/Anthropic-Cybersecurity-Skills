@@ -6,7 +6,7 @@ description: >-
   threat hunting for T1003 credential access, triaging EDR/SIEM alerts on LSASS access, scoping
   compromise during incident response, or validating detection coverage in a purple team
   exercise. Do not use for general LSASS, SAM, or NTDS credential-dumping detection beyond
-  Mimikatz - use detecting-credential-dumping-techniques.
+  Mimikatz - use detecting-t1003-credential-dumping-with-edr.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

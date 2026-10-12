@@ -20,6 +20,10 @@ tags:
 - threat-hunting
 - evtx
 - obfuscation
+- event-id-4104
+- obfuscation-detection
+- windows-forensics
+- endpoint-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -28,12 +32,18 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+- RS.MA-01
+- GV.OV-01
 mitre_attack:
 - T1046
 - T1057
 - T1082
 - T1083
 - T1003
+- T1059.001
+- T1027.010
+- T1140
+- T1105
 ---
 # Hunting for Anomalous PowerShell Execution
 

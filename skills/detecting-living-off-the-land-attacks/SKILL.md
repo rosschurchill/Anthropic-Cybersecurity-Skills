@@ -8,7 +8,7 @@ description: >-
   tuning Sysmon process-creation capture, or responding to fileless intrusions that used only
   built-in OS tools. Keywords: LOLBins, LOTL, fileless, Sysmon, AppLocker, WDAC, parent-child
   process. Do not use for threat-hunting LOLBin execution across historical endpoint logs —
-  use hunting-for-lolbins-execution-in-endpoint-logs.
+  use hunting-for-living-off-the-land-binaries.
 domain: cybersecurity
 subdomain: threat-detection
 tags:

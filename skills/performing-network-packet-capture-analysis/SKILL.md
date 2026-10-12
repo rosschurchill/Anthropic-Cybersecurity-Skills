@@ -14,6 +14,8 @@ tags:
 - traffic-analysis
 - pcapng
 - network-evidence
+- forensics
+- packet-analysis
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -27,6 +29,7 @@ mitre_attack:
 - T1119
 - T1070
 - T1048
+- T1059
 ---
 
 # Performing Network Packet Capture Analysis

@@ -66,13 +66,6 @@
     {
       "pair": [
         "analyzing-memory-dumps-with-volatility",
-        "conducting-memory-forensics-with-volatility"
-      ],
-      "reason": "Different tool version: analyzing skill uses classic Volatility (v2) across Windows/Linux/macOS, conducting skill uses Volatility 3; each description names the other framework version."
-    },
-    {
-      "pair": [
-        "analyzing-memory-dumps-with-volatility",
         "performing-memory-forensics-with-volatility3"
       ],
       "reason": "Different tool version: analyzing skill uses classic Volatility (v2) across Windows/Linux/macOS, the other uses the Volatility 3 framework; each description names the other framework version."
@@ -128,13 +121,6 @@
     },
     {
       "pair": [
-        "performing-wifi-password-cracking-with-aircrack",
-        "performing-wireless-network-penetration-test"
-      ],
-      "reason": "Narrow task vs full engagement: cracking skill does offline WPA/WPA2 passphrase cracking of a captured handshake, the other is a full wireless penetration test (rogue AP, segmentation, evil twin); each routes the other scope away."
-    },
-    {
-      "pair": [
         "detecting-modbus-command-injection-attacks",
         "monitoring-scada-modbus-traffic-anomalies"
       ],
@@ -163,13 +149,6 @@
     },
     {
       "pair": [
-        "detecting-malicious-scheduled-tasks-with-sysmon",
-        "hunting-for-scheduled-task-persistence"
-      ],
-      "reason": "Different telemetry: sysmon skill detects via Sysmon Event IDs 1/11 correlated with parent processes, the hunt works Windows Security Event 4698 via SIEM/EDR; each names the other's data source."
-    },
-    {
-      "pair": [
         "detecting-dns-exfiltration-with-dns-query-analysis",
         "performing-dns-tunneling-detection"
       ],
@@ -188,13 +167,6 @@
         "hunting-for-supply-chain-compromise"
       ],
       "reason": "Artifact forensics vs log hunting: malware-artifacts skill investigates the trojanized artifacts/samples themselves, the other runs a SIEM/EDR log-based threat hunt for supply-chain compromise; each names the other's approach."
-    },
-    {
-      "pair": [
-        "detecting-dns-exfiltration-with-dns-query-analysis",
-        "detecting-exfiltration-over-dns-with-zeek"
-      ],
-      "reason": "Different method/platform: dns-query-analysis skill uses passive-DNS statistical/ML detection, the other analyzes Zeek dns.log; each names the other's method."
     },
     {
       "pair": [

@@ -10,6 +10,9 @@ tags:
 - ram-analysis
 - malware-detection
 - incident-response
+- RAM-analysis
+- process-injection
+- DFIR
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -17,12 +20,19 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+- RS.MA-02
+- RC.RP-01
 mitre_attack:
 - T1005
 - T1074
 - T1119
 - T1070
 - T1059
+- T1055
+- T1003.001
+- T1014
+- T1059.001
+- T1620
 ---
 
 # Performing Memory Forensics with Volatility 3

@@ -17,6 +17,11 @@ tags:
 - WPA2
 - WPA3
 - evil-twin
+- WiFi
+- Aircrack-ng
+- rogue-AP
+- 802.11
+- Kismet
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -31,6 +36,11 @@ mitre_attack:
 - T1110.002
 - T1557
 - T1669
+- T1595
+- T1190
+- T1059
+- T1078
+- T1591
 ---
 # Conducting Wireless Network Penetration Test
 

@@ -6,7 +6,7 @@ description: >-
   ML-based DGA classification, passive DNS correlation, and Zeek/Suricata signatures. Use when
   investigating suspected DNS tunneling, classifying DGA domains, detecting DNS beaconing, or
   building DNS anomaly rules for a SOC/SIEM. Do not use for data exfiltration tunneled over DNS -
-  use detecting-exfiltration-over-dns-with-zeek.
+  use hunting-for-dns-tunneling-with-zeek.
 domain: cybersecurity
 subdomain: network-security
 tags:

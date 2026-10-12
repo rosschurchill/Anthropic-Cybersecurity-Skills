@@ -8,7 +8,7 @@ description: >-
   sector, triaging unusual DNS query patterns, or identifying active C2 during incident
   response. Keywords: C2 beaconing, jitter, frequency analysis, domain reputation, DNS,
   periodic callback, adversary infrastructure. Do not use for pure statistical timing analysis
-  without domain reputation — use hunting-for-beaconing-with-frequency-analysis.
+  without domain reputation — use hunting-for-command-and-control-beaconing.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -18,6 +18,12 @@ tags:
 - beaconing
 - network-analysis
 - proactive-detection
+- c2-detection
+- frequency-analysis
+- network-traffic
+- RITA
+- jitter-detection
+- mitre-t1071
 version: '1.0'
 author: mahipal
 license: Apache-2.0

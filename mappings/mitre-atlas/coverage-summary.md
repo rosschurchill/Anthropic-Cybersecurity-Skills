@@ -55,7 +55,7 @@ Maps this repository's AI/LLM-security skills to [MITRE ATLAS](https://atlas.mit
 - `implementing-azure-defender-for-cloud`
 - `implementing-cloud-dlp-for-data-protection`
 - `implementing-dragos-platform-for-ot-monitoring`
-- `implementing-ebpf-security-monitoring`
+- `implementing-runtime-security-with-tetragon`
 - `implementing-fuzz-testing-in-cicd-with-aflplusplus`
 - `implementing-gdpr-data-protection-controls`
 - `implementing-immutable-backup-with-restic`
@@ -103,7 +103,7 @@ Maps this repository's AI/LLM-security skills to [MITRE ATLAS](https://atlas.mit
 - `implementing-azure-defender-for-cloud`
 - `implementing-cloud-dlp-for-data-protection`
 - `implementing-dragos-platform-for-ot-monitoring`
-- `implementing-ebpf-security-monitoring`
+- `implementing-runtime-security-with-tetragon`
 - `implementing-fuzz-testing-in-cicd-with-aflplusplus`
 - `implementing-gdpr-data-protection-controls`
 - `implementing-immutable-backup-with-restic`
@@ -151,7 +151,7 @@ Maps this repository's AI/LLM-security skills to [MITRE ATLAS](https://atlas.mit
 - `implementing-azure-defender-for-cloud`
 - `implementing-cloud-dlp-for-data-protection`
 - `implementing-dragos-platform-for-ot-monitoring`
-- `implementing-ebpf-security-monitoring`
+- `implementing-runtime-security-with-tetragon`
 - `implementing-fuzz-testing-in-cicd-with-aflplusplus`
 - `implementing-gdpr-data-protection-controls`
 - `implementing-immutable-backup-with-restic`

@@ -5,7 +5,7 @@ description: Runs KAPE (Kroll Artifact Parser and Extractor) to collect targeted
   via Targets and parse them with Modules wrapping Eric Zimmerman's EZ Tools (PECmd,
   MFTECmd, RECmd). Use during early incident containment/triage when full disk
   imaging is impractical but a defensible, parseable Windows artifact set is needed
-  quickly, including at-scale remote collection. Do not use for standalone parsing with Eric Zimmerman tools - use parsing-artifacts-with-eric-zimmerman-tools.
+  quickly, including at-scale remote collection. Do not use for standalone parsing with Eric Zimmerman tools - use performing-windows-artifact-analysis-with-eric-zimmerman-tools.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

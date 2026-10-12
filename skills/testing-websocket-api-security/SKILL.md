@@ -1,10 +1,6 @@
 ---
 name: testing-websocket-api-security
-description: Tests WebSocket API implementations for missing upgrade-handshake authentication,
-  Cross-Site WebSocket Hijacking (CSWSH), message injection, insufficient input validation,
-  message-flooding DoS, and information leakage, using Burp Suite's WebSocket interception
-  and the wscat CLI to craft malicious payloads. Use for real-time API penetration testing
-  or CSWSH/authorization-bypass assessments on WebSocket channels. Do not use for weaponized WebSocket exploitation - use exploiting-websocket-vulnerabilities.
+description: 'Tests WebSocket API implementations for missing upgrade-handshake authentication, Cross-Site WebSocket Hijacking (CSWSH), message injection, insufficient input validation, message-flooding DoS, and information leakage, using Burp Suite''s WebSocket interception and the wscat CLI to craft malicious payloads. Use for real-time API penetration testing or CSWSH/authorization-bypass assessments on WebSocket channels. Do not use for OAuth2 implementation-flaw testing - use testing-oauth2-implementation-flaws.'
 domain: cybersecurity
 subdomain: api-security
 tags:
@@ -14,6 +10,10 @@ tags:
 - real-time
 - injection
 - authentication
+- penetration-testing
+- web-security
+- owasp
+- burpsuite
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -28,6 +28,8 @@ mitre_attack:
 - T1552.001
 - T1055
 - T1059
+- T1505.003
+- T1083
 ---
 # Testing WebSocket API Security
 

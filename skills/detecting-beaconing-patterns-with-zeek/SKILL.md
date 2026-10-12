@@ -5,7 +5,7 @@ description: >-
   patterns. Uses the ZAT library to load Zeek logs into Pandas DataFrames, calculates
   inter-arrival time standard deviation, and flags periodic connections with low jitter. Use when
   hunting for command-and-control callbacks in network data. Do not use for frequency-analysis
-  beaconing hunts outside Zeek conn.log data - use hunting-for-beaconing-with-frequency-analysis.
+  beaconing hunts outside Zeek conn.log data - use hunting-for-command-and-control-beaconing.
 domain: cybersecurity
 subdomain: security-operations
 tags:

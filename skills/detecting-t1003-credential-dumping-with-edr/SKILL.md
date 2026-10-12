@@ -1,12 +1,6 @@
 ---
 name: detecting-t1003-credential-dumping-with-edr
-description: >-
-  Detect OS credential dumping (MITRE T1003) targeting LSASS memory, the SAM database, NTDS.dit,
-  and cached credentials by correlating EDR telemetry, Sysmon process-access events, and Windows
-  security event logs. Use when hunting for Mimikatz-style credential theft, triaging an EDR
-  alert on LSASS access, or scoping an incident after suspected credential dumping. Do not use
-  for tool-agnostic credential-dumping detection techniques - use
-  detecting-credential-dumping-techniques.
+description: 'Detect OS credential dumping (MITRE T1003) targeting LSASS memory, the SAM database, NTDS.dit, and cached credentials by correlating EDR telemetry, Sysmon process-access events, and Windows security event logs. Use when hunting for Mimikatz-style credential theft, triaging an EDR alert on LSASS access, or scoping an incident after suspected credential dumping. Do not use for DCSync credential-replication detection - use detecting-dcsync-attack-in-active-directory.'
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -18,6 +12,10 @@ tags:
 - mimikatz
 - ntds
 - sam-database
+- sysmon
+- active-directory
+- windows-security
+- defense-evasion
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -32,11 +30,17 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+- DE.AE-06
 mitre_attack:
 - T1003.001
 - T1003.002
 - T1003.003
 - T1003.006
+- T1078
+- T1190
+- T1059
+- T1003
+- T1110
 mitre_f3:
   version: '1.1'
   tactics:

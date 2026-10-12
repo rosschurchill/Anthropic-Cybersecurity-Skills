@@ -6,7 +6,7 @@ description: >-
   across Microsoft 365 services. Use for authorized red-team engagements simulating device-code
   or consent-grant phishing against a tenant you have explicit written permission to test. Do not
   use for exploiting OAuth server or client misconfigurations — use
-  exploiting-oauth-misconfiguration.
+  testing-oauth2-implementation-flaws.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:
