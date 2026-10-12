@@ -209,6 +209,13 @@
         "hunting-for-dns-tunneling-with-zeek"
       ],
       "reason": "Different platform: dns-logs skill does SIEM-based DNS-log analysis with DGA detection, the other analyzes Zeek dns.log specifically; each names the other's platform."
+    },
+    {
+      "pair": [
+        "detecting-malicious-cloud-app-integration",
+        "detecting-suspicious-oauth-application-consent"
+      ],
+      "reason": "Different scope: the app-integration skill detects OAuth/enterprise-app persistence across Microsoft 365, Google Workspace and SaaS (rogue registrations, SP credential adds, admin-consent bypass); the consent skill detects Entra-only illicit consent-grant attacks via Graph; each names the other's scope."
     }
   ]
 }
