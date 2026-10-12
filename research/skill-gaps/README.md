@@ -39,7 +39,7 @@ and passing gates.
 | T1690 | Prevent Command History Logging | `detecting-command-history-tampering` | defense-evasion | shipped |
 | T1599 | Network Boundary Bridging | `detecting-network-boundary-bridging` | defense-evasion | shipped |
 | T1578 | Modify Cloud Compute Infrastructure | `detecting-cloud-compute-infrastructure-tampering` | defense-evasion | shipped |
-| T1666 | Modify Cloud Resource Hierarchy | `detecting-cloud-resource-hierarchy-tampering` | defense-evasion | research |
+| T1666 | Modify Cloud Resource Hierarchy | `detecting-cloud-resource-hierarchy-tampering` | defense-evasion | shipped |
 | T1677 | Poisoned Pipeline Execution | `detecting-poisoned-pipeline-execution` | execution | research |
 | T1654 | Log Enumeration | `detecting-adversary-log-enumeration` | discovery | research |
 | T1020 | Automated Exfiltration | `detecting-automated-data-exfiltration` | exfiltration | research |
