@@ -72,10 +72,11 @@ Spearphishing targets specific individuals using personalized, researched conten
 
 ## When to Use
 
-- When investigating security incidents that require detecting spearphishing with email gateway
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hardening Microsoft Defender for Office 365, Proofpoint, Mimecast, or Barracuda against targeted phishing of executives and finance staff.
+- Use when configuring impersonation protection for VIP display names and lookalike domains after a CEO/CFO spoofing attempt.
+- Use when enabling Safe Links / URL detonation and Safe Attachments / sandboxing, including blocking newly registered domains and macro-enabled Office docs from external senders.
+- Use when investigating a suspected spearphishing campaign and writing custom gateway detection rules from the observed pretext and sender patterns.
+- Use when wiring gateway impersonation and quarantine alerts into a SIEM for correlation.
 
 ## Prerequisites
 - Access to email security gateway admin console

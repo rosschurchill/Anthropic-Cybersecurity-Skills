@@ -50,10 +50,11 @@ Azure service principals are identity objects used by applications, services, an
 
 ## When to Use
 
-- When investigating security incidents that require detecting azure service principal abuse
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating privilege escalation or persistence via Entra ID service principals
+- Use when writing KQL/SPL detections for credentials added to a service principal (AuditLogs)
+- Use when detecting privileged role assignments (Global/Application Administrator) to a service principal
+- Use when flagging admin-consent bypass or bulk service principal enumeration via MicrosoftGraphActivityLogs
+- Use when hunting OAuth app permission escalation (e.g., RoleManagement.ReadWrite.Directory grants)
 
 ## Prerequisites
 

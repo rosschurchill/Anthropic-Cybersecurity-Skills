@@ -74,10 +74,11 @@ QR code phishing (quishing) is a rapidly growing attack vector where malicious U
 
 ## When to Use
 
-- When investigating security incidents that require detecting qr code phishing with email security
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when configuring an email gateway to OCR and decode QR-code images so embedded URLs get the same reputation checks as text links
+- Use when investigating a suspicious email whose only payload is a QR code image (common quishing pattern)
+- Use when defending against evasion variants: split QR codes (Gabagool kit), nested QR codes, or ASCII/text-based QR codes
+- Use when flagging quishing themes like MFA reset, document signing, or voicemail notifications from first-time external senders
+- Use when extending mobile threat defense (Lookout, Zimperium, Palo Alto ALFA) to scan QR destinations on personal devices
 
 ## Prerequisites
 - Email security gateway with image analysis capabilities
@@ -142,6 +143,27 @@ QR code phishing (quishing) is a rapidly growing attack vector where malicious U
 - Teach users to verify QR destination URLs before entering credentials
 - Establish reporting process for suspicious QR code emails
 - Distribute guidance on safe QR scanning practices
+
+## Example
+
+Steps 1-2 in code: decode QR codes from an email image attachment and extract the embedded URL so it can be submitted to the same reputation/sandbox pipeline used for text links.
+
+```python
+from PIL import Image
+from pyzbar.pyzbar import decode
+
+def extract_qr_urls(image_path: str) -> list:
+    urls = []
+    for obj in decode(Image.open(image_path)):
+        data = obj.data.decode("utf-8", errors="ignore")
+        if data.lower().startswith(("http://", "https://")):
+            urls.append(data)
+    return urls
+
+# Submit each decoded URL to the same URL-reputation / sandbox pipeline used for text links.
+for url in extract_qr_urls("attachment.png"):
+    print("QR-embedded URL for analysis:", url)
+```
 
 ## Tools & Resources
 - **Barracuda Multimodal AI**: OCR + deep image processing for QR detection

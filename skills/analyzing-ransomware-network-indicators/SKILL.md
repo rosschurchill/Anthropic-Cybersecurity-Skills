@@ -65,10 +65,11 @@ Before and during ransomware execution, adversaries establish C2 channels, exfil
 
 ## When to Use
 
-- When investigating security incidents that require analyzing ransomware network indicators
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when threat hunting Zeek conn.log or NetFlow for C2 beaconing (regular-interval callbacks detected via low coefficient of variation on connection intervals).
+- Use when investigating suspected pre-encryption exfiltration as large outbound byte-ratio flows to external IPs.
+- Use when cross-referencing destination IPs against a current TOR exit-node list for anonymized C2 or payment traffic.
+- Use when detecting DGA-like domain queries or high-entropy subdomains associated with ransomware families.
+- Use when producing a composite ransomware risk score with MITRE mapping (T1071, T1573, T1048) during incident response.
 
 ## Prerequisites
 
@@ -93,3 +94,68 @@ Before and during ransomware execution, adversaries establish C2 channels, exfil
 - TOR exit node connection alerts
 - Data exfiltration flow analysis
 - Composite ransomware risk score with MITRE mapping (T1071, T1573, T1041)
+
+## Example
+
+Detect beaconing from a Zeek `conn.log` (TSV) using the interval coefficient-of-variation approach described in the steps:
+
+```python
+#!/usr/bin/env python3
+"""Detect C2 beaconing in a Zeek conn.log via connection-interval regularity."""
+import sys
+import statistics
+from collections import defaultdict
+
+
+def load_conn_log(path):
+    """Parse a Zeek conn.log (TSV). Returns rows as dicts keyed by #fields header."""
+    fields, rows = [], []
+    with open(path) as f:
+        for line in f:
+            if line.startswith("#fields"):
+                fields = line.strip().split("\t")[1:]
+            elif not line.startswith("#"):
+                values = line.strip().split("\t")
+                rows.append(dict(zip(fields, values)))
+    return rows
+
+
+def detect_beaconing(rows, min_conns=8, cv_threshold=0.1):
+    """Flag src->dst pairs whose connection intervals are suspiciously regular."""
+    timeline = defaultdict(list)
+    for r in rows:
+        try:
+            ts = float(r["ts"])
+        except (KeyError, ValueError):
+            continue
+        timeline[(r["id.orig_h"], r["id.resp_h"], r.get("id.resp_p", ""))].append(ts)
+
+    findings = []
+    for (src, dst, dport), times in timeline.items():
+        if len(times) < min_conns:
+            continue
+        times.sort()
+        intervals = [b - a for a, b in zip(times, times[1:])]
+        mean = statistics.mean(intervals)
+        if mean == 0:
+            continue
+        cv = statistics.pstdev(intervals) / mean  # low CV = highly periodic
+        if cv < cv_threshold:
+            findings.append({
+                "src": src, "dst": dst, "dport": dport,
+                "connections": len(times),
+                "mean_interval_s": round(mean, 1),
+                "cv": round(cv, 3),
+                "verdict": "likely C2 beacon",
+            })
+    return sorted(findings, key=lambda x: x["cv"])
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print(f"Usage: {sys.argv[0]} <conn.log>")
+        sys.exit(1)
+    for f in detect_beaconing(load_conn_log(sys.argv[1])):
+        print(f"[!] {f['src']} -> {f['dst']}:{f['dport']} "
+              f"({f['connections']} conns, interval ~{f['mean_interval_s']}s, CV={f['cv']})")
+```

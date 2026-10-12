@@ -43,10 +43,11 @@ Shellbags are Windows registry artifacts that track how users interact with fold
 
 ## When to Use
 
-- When investigating security incidents that require analyzing windows shellbag artifacts
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when proving a user browsed to a specific folder via Windows Explorer, even after the folder was deleted
+- Use when reconstructing folder access history from NTUSER.DAT/UsrClass.dat BagMRU keys with SBECmd
+- Use when establishing user interaction with removable media (USB) or network shares in DFIR
+- Use when demonstrating knowledge of a since-removed directory (e.g., an exfil staging folder)
+- Use when correlating shellbag timestamps with USBSTOR/MountPoints2 registry entries
 
 ## Prerequisites
 

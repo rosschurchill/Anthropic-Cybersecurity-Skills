@@ -53,10 +53,11 @@ PowerShell Empire is a post-exploitation framework consisting of listeners, stag
 
 ## When to Use
 
-- When investigating security incidents that require analyzing powershell empire artifacts
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting Windows Script Block Logging (Event ID 4104) for the default Empire launcher string `powershell -noP -sta -w 1 -enc` followed by a Base64 blob.
+- Use when confirming Empire C2 by decoding Base64 payloads containing `System.Net.WebClient`, `DownloadData`, `DownloadString`, or `FromBase64String`.
+- Use when searching Module Logging (Event ID 4103) for known Empire module invocations (Invoke-Mimikatz, Invoke-Kerberoast, Invoke-TokenManipulation, Invoke-PSInject).
+- Use when identifying Empire staging URL patterns (e.g. `/login/process.php`, `/admin/get.php`) or default user-agent strings in captured activity.
+- Use when triaging exported EVTX from a host suspected of post-exploitation framework activity.
 
 ## Prerequisites
 
@@ -75,3 +76,39 @@ PowerShell Empire is a post-exploitation framework consisting of listeners, stag
 ## Output
 
 JSON report with matched IOCs, decoded Base64 payloads, timeline of suspicious events, MITRE ATT&CK technique mappings, and severity scores.
+
+## Detection Query
+
+Sigma rule matching the Empire launcher and module signatures in Script Block Logging (4104):
+
+```yaml
+title: PowerShell Empire Launcher and Module Invocation
+id: 9f3d4c21-7a8b-4e16-9c0a-empire-detection
+status: experimental
+description: Detects PowerShell Empire default launcher string and known module invocations in Script Block Logging
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+logsource:
+  product: windows
+  category: ps_script
+detection:
+  launcher:
+    ScriptBlockText|contains:
+      - '-noP -sta -w 1 -enc'
+      - 'System.Net.WebClient'
+      - 'FromBase64String'
+  modules:
+    ScriptBlockText|contains:
+      - 'Invoke-Mimikatz'
+      - 'Invoke-Kerberoast'
+      - 'Invoke-TokenManipulation'
+      - 'Invoke-PSInject'
+  condition: launcher or modules
+fields:
+  - ScriptBlockText
+  - Computer
+level: high
+tags:
+  - attack.execution
+  - attack.t1059.001
+```

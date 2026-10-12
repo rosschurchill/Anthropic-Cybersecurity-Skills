@@ -43,10 +43,11 @@ Amazon GuardDuty is a threat detection service that continuously monitors AWS ac
 
 ## When to Use
 
-- When investigating security incidents that require detecting aws guardduty findings automation
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when designing automated remediation playbooks that trigger on GuardDuty findings via EventBridge and Lambda
+- Use when auto-quarantining a compromised EC2 instance (isolation SG + forensic EBS snapshots) on a high-severity finding
+- Use when automatically deactivating compromised IAM access keys and applying a deny-all policy
+- Use when routing high-severity GuardDuty findings to SNS for security team notification
+- Use when reducing mean time to respond (MTTR) across VPC Flow Logs, CloudTrail, DNS, EKS, or S3 findings
 
 ## Prerequisites
 

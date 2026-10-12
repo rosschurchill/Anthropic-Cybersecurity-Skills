@@ -35,10 +35,11 @@ Cobalt Strike is a commercial adversary simulation tool widely abused by threat 
 
 ## When to Use
 
-- When investigating security incidents that require analyzing cobalt strike beacon configuration
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when you recover a Cobalt Strike beacon PE, shellcode, or memory dump and need its TLV config (C2Server, BeaconType, sleep/jitter).
+- Use when extracting the XOR-encoded config (0x69 for v3, 0x2e for v4) with CobaltStrikeParser or dissect.cobaltstrike.
+- Use when you need the watermark to link multiple beacons to one operator or a cracked/leaked license.
+- Use when mapping attacker C2 infrastructure and malleable-profile settings to attribute a campaign.
+- Use when asked to "pull the beacon config from this sample" or "get the C2 and watermark out of this Cobalt Strike payload."
 
 ## Prerequisites
 

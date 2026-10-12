@@ -41,10 +41,11 @@ User and Entity Behavior Analytics (UEBA) moves beyond static rule-based detecti
 
 ## When to Use
 
-- When investigating security incidents that require detecting insider threat with ueba
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when building or tuning a UEBA pipeline on Elasticsearch/OpenSearch rather than running a one-off manual hunt
+- Use when you need per-user behavioral baselines (login times, data volume, app usage) over a rolling 30-day window
+- Use when computing z-score deviation and peer-group comparison to turn raw activity into risk scores
+- Use when correlating multiple low-confidence signals (odd hours + large downloads + new system access) into one composite insider-threat alert
+- Use when ingesting AD authentication, VPN, DLP, and file-server logs into a unified user-identity field for analytics
 
 ## Prerequisites
 
@@ -67,6 +68,34 @@ Compare current activity against baselines using z-score deviation and peer grou
 
 ### Step 4: Correlate and Alert
 Combine multiple anomalous indicators (unusual hours + large downloads + new system access) into composite risk scores that trigger SOC investigation workflows.
+
+## Example
+
+Steps 2-3 in code: compute the z-score of today's outbound data volume against a user's 30-day baseline built from Elasticsearch aggregations.
+
+```python
+from elasticsearch import Elasticsearch
+import statistics
+
+es = Elasticsearch("https://localhost:9200")
+
+def daily_bytes(user, days="30d"):
+    body = {
+        "size": 0,
+        "query": {"bool": {"filter": [
+            {"term": {"user.name": user}},
+            {"range": {"@timestamp": {"gte": f"now-{days}/d", "lt": "now/d"}}}]}},
+        "aggs": {"per_day": {"date_histogram": {"field": "@timestamp", "calendar_interval": "day"},
+                             "aggs": {"vol": {"sum": {"field": "network.bytes_out"}}}}},
+    }
+    buckets = es.search(index="file-access-*", body=body)["aggregations"]["per_day"]["buckets"]
+    return [b["vol"]["value"] for b in buckets]
+
+def zscore_today(user, today_bytes):
+    hist = daily_bytes(user)
+    mu, sd = statistics.mean(hist), statistics.pstdev(hist) or 1.0
+    return (today_bytes - mu) / sd   # z > 3 => flag for peer-group review
+```
 
 ## Expected Output
 

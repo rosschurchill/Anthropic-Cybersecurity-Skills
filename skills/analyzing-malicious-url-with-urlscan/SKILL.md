@@ -43,10 +43,11 @@ URLScan.io is a free service for scanning and analyzing suspicious URLs. It capt
 
 ## When to Use
 
-- When investigating security incidents that require analyzing malicious url with urlscan
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when triaging a reported phishing link and you need a screenshot, rendered DOM, and HAR without touching it from your host.
+- Use when submitting a URL via POST /api/v1/scan/ (visibility private) and reading verdicts.overall.malicious/score from the result.
+- Use when detonating a suspicious URL to unwind a redirect chain to the final credential-harvesting page.
+- Use when pivoting on infrastructure with search q=domain: and cross-referencing VirusTotal, PhishTank, and Google Safe Browsing.
+- Use when asked to "scan this URL with urlscan.io" or "check if this link is phishing and pull its IOCs."
 
 ## Prerequisites
 - URLScan.io account (free tier available, API key for automation)

@@ -45,10 +45,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing cloud storage access patterns
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when a principal makes 100+ GetObject calls in an hour and you suspect bulk-download exfiltration from S3, GCS, or Azure Blob.
+- Use when after-hours (outside 8am-6pm) access to a sensitive bucket appears in CloudTrail Data Events.
+- Use when an object is fetched from a source IP not seen in the prior 30 days, or a ListBucket enumeration spike suggests reconnaissance.
+- Use when you need to baseline hourly request volume and per-user object counts across cloud storage audit logs.
+- Use when asked to "investigate suspected cloud data exfiltration" or "find abnormal S3/GCS/Blob access in these logs."
 
 ## Prerequisites
 

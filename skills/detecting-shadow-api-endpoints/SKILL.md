@@ -43,10 +43,11 @@ Shadow APIs are API endpoints operating within an organization's environment tha
 
 ## When to Use
 
-- When investigating security incidents that require detecting shadow api endpoints
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when assessing API attack surface by diffing live Kong, AWS API Gateway, or Envoy traffic against documented OpenAPI/Swagger specs to surface undocumented routes.
+- Use when auditing for forgotten test environments, deprecated API versions, or Lambda function URLs still serving traffic without governance.
+- Use when a gateway access log shows high-volume `/api` or `/v*` paths that appear in no OpenAPI spec and you need to triage and risk-rank them.
+- Use when mining source repos (Express, Flask/Django, Spring Boot route decorators) for endpoints never registered with the API gateway.
+- Use when building an API registration governance policy that rejects unregistered routes at the gateway (e.g. Kong pre-function 404 on unknown method:path).
 
 ## Prerequisites
 

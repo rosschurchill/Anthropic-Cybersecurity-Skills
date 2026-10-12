@@ -43,10 +43,11 @@ This skill uses boto3 and Cloudsplaining-style analysis to identify IAM privileg
 
 ## When to Use
 
-- When investigating security incidents that require detecting aws iam privilege escalation
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when reviewing IAM policies for privilege-escalation risk across an AWS account
+- Use when identifying dangerous permission combinations (iam:PassRole + lambda:CreateFunction, iam:CreatePolicyVersion)
+- Use when flagging wildcard-resource policies (Resource: "*") attached to dangerous actions
+- Use when validating least-privilege via iam:GetAccountAuthorizationDetails
+- Use when mapping which principals can reach a given escalation path before remediation
 
 ## Prerequisites
 
@@ -69,3 +70,46 @@ This skill uses boto3 and Cloudsplaining-style analysis to identify IAM privileg
 - List of dangerous permission combinations per principal
 - Wildcard resource policy audit results
 - Remediation recommendations for each finding
+
+## Example
+
+Download authorization details with boto3 and check each policy for known escalation permission combinations (Steps 1-2):
+
+```python
+import boto3
+
+iam = boto3.client("iam")
+
+# Step 1: Download all users, groups, roles, and policies
+details = {"UserDetailList": [], "RoleDetailList": [], "Policies": []}
+paginator = iam.get_paginator("get_account_authorization_details")
+for page in paginator.paginate():
+    for key in details:
+        details[key].extend(page.get(key, []))
+
+# Step 2: Known privilege-escalation action combinations
+ESCALATION = [
+    {"iam:PassRole", "lambda:CreateFunction"},
+    {"iam:CreatePolicyVersion"},
+    {"iam:AttachUserPolicy"},
+    {"sts:AssumeRole"},
+]
+
+def actions_of(policy_doc):
+    acts = set()
+    stmts = policy_doc.get("Statement", [])
+    for s in (stmts if isinstance(stmts, list) else [stmts]):
+        if s.get("Effect") == "Allow":
+            a = s.get("Action", [])
+            acts.update(a if isinstance(a, list) else [a])
+    return acts
+
+# Step 3/5: Flag policies whose default version grants an escalation combo
+for pol in details["Policies"]:
+    doc = next((v["Document"] for v in pol["PolicyVersionList"]
+                if v["IsDefaultVersion"]), {})
+    acts = actions_of(doc)
+    for combo in ESCALATION:
+        if combo.issubset(acts) or "*" in acts:
+            print(f"[!] {pol['PolicyName']}: escalation via {', '.join(sorted(combo))}")
+```

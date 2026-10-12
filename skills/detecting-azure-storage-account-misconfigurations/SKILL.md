@@ -51,10 +51,11 @@ Azure Storage accounts are a frequent target for attackers due to misconfigured 
 
 ## When to Use
 
-- When investigating security incidents that require detecting azure storage account misconfigurations
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when auditing an Azure subscription's storage accounts for public blob exposure with azure-mgmt-storage
+- Use when checking for disabled HTTPS-only traffic or outdated minimum TLS (1.0/1.1) settings
+- Use when flagging storage accounts with network default action Allow or missing encryption at rest
+- Use when investigating a suspected data exposure via public blob/container access level
+- Use when producing a risk-scored posture report aligned to CIS Azure Benchmark controls
 
 ## Prerequisites
 
@@ -74,3 +75,29 @@ Azure Storage accounts are a frequent target for attackers due to misconfigured 
 ## Output
 
 JSON report with per-account findings, severity ratings (Critical/High/Medium/Low), and remediation recommendations aligned with CIS Azure Benchmark controls.
+
+## Example
+
+Enumerate storage accounts with the azure-mgmt-storage `StorageManagementClient` and inspect the key detection areas:
+
+```python
+import os
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.storage import StorageManagementClient
+
+sub_id = os.environ["AZURE_SUBSCRIPTION_ID"]
+client = StorageManagementClient(DefaultAzureCredential(), sub_id)
+
+for acct in client.storage_accounts.list():
+    findings = []
+    if acct.allow_blob_public_access:
+        findings.append(("HIGH", "public blob access enabled"))
+    if not acct.enable_https_traffic_only:
+        findings.append(("HIGH", "HTTPS-only traffic disabled"))
+    if acct.minimum_tls_version in ("TLS1_0", "TLS1_1"):
+        findings.append(("MEDIUM", f"weak minimum TLS: {acct.minimum_tls_version}"))
+    if acct.network_rule_set and acct.network_rule_set.default_action == "Allow":
+        findings.append(("MEDIUM", "network default action = Allow"))
+    for severity, msg in findings:
+        print(f"[{severity}] {acct.name}: {msg}")
+```

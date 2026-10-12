@@ -41,10 +41,11 @@ Email account compromise (EAC) is a prevalent attack vector where adversaries ga
 
 ## When to Use
 
-- When investigating security incidents that require detecting email account compromise
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating a suspected account takeover in Microsoft 365 or Google Workspace and need to pull inbox rules via Microsoft Graph
+- Use when hunting malicious inbox rules (New-InboxRule, Set-InboxRule) that forward or delete mail matching "invoice" or "payment"
+- Use when Azure AD sign-in logs show impossible travel or sign-ins from suspicious user agents like python-requests
+- Use when auditing OAuth application consent grants for suspicious third-party apps with mailbox access
+- Use when confirming mailbox persistence behind a BEC incident by correlating findings across multiple compromised users
 
 ## Prerequisites
 
@@ -65,6 +66,32 @@ Email account compromise (EAC) is a prevalent attack vector where adversaries ga
 7. Identify OAuth application consent grants for suspicious third-party apps
 8. Correlate findings across users to detect campaign-level compromise
 9. Generate compromise indicators report with severity scores
+
+## Example
+
+Steps 1-4 in code: authenticate with MSAL and pull each mailbox's inbox rules via Microsoft Graph, flagging external forwarding and deletion rules.
+
+```python
+import msal, requests
+
+TENANT, CLIENT_ID, SECRET = "<tenant>", "<app-id>", "<secret>"
+app = msal.ConfidentialClientApplication(
+    CLIENT_ID, authority=f"https://login.microsoftonline.com/{TENANT}",
+    client_credential=SECRET)
+token = app.acquire_token_for_client(scopes=["https://graph.microsoft.com/.default"])
+hdr = {"Authorization": "Bearer " + token["access_token"]}
+
+def suspicious_rules(user_id, internal_domain):
+    url = f"https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/inbox/messageRules"
+    for rule in requests.get(url, headers=hdr).json().get("value", []):
+        acts = rule.get("actions", {})
+        fwd = acts.get("forwardTo", []) + acts.get("redirectTo", [])
+        ext = [a["emailAddress"]["address"] for a in fwd
+               if not a["emailAddress"]["address"].endswith(internal_domain)]
+        if ext or acts.get("delete"):
+            yield {"rule": rule.get("displayName"), "forwardsTo": ext,
+                   "deletes": bool(acts.get("delete"))}
+```
 
 ## Expected Output
 

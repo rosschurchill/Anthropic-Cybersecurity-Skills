@@ -41,10 +41,11 @@ MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics, techn
 
 ## When to Use
 
-- When investigating security incidents that require analyzing threat actor ttps with mitre attack
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when mapping an observed threat actor (e.g. APT29/G0016, APT28, Lazarus Group) to its documented ATT&CK techniques via attackcti and the MITRE TAXII server.
+- Use when correlating observed IOCs or behavior to specific Enterprise, Mobile, or ICS techniques and sub-techniques.
+- Use when building an ATT&CK Navigator layer (JSON) to visualize a group's technique coverage.
+- Use when running a detection-gap analysis: comparing an actor's technique set against what your sensors can detect.
+- Use when comparing TTPs across multiple threat groups to find shared and unique techniques for detection-engineering prioritization.
 
 ## Prerequisites
 

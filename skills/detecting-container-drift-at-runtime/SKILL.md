@@ -44,10 +44,11 @@ Container drift occurs when running containers deviate from their original image
 
 ## When to Use
 
-- When investigating security incidents that require detecting container drift at runtime
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when validating immutable-infrastructure controls on running containers (readOnlyRootFilesystem, Pod Security Standards)
+- Use when hunting for unexpected package installs (apt, yum, pip, npm) or new binaries executed inside a running container
+- Use when determining whether a container diverged from the image it was built from via digest or filesystem comparison
+- Use when writing Falco or Microsoft Defender for Containers rules for binary, file, configuration, or network drift
+- Use when running the Detect-Isolate-Evict (DIE) response playbook after a drift alert fires
 
 ## Prerequisites
 

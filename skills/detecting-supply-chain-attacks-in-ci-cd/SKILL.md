@@ -41,10 +41,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require detecting supply chain attacks in ci cd
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when auditing `.github/workflows/*.yml` for unpinned actions (using `@main` instead of a commit SHA).
+- Use when checking `run:` steps for script injection via untrusted `${{ github.event }}` expressions.
+- Use when reviewing GITHUB_TOKEN permissions and third-party actions granted write access to the repo.
+- Use when investigating a compromised build system for dependency confusion (public/private package name collisions) or secrets exposure.
+- Use when hardening CI/CD pipelines and want an automated PyGithub/YAML audit of workflow configurations.
 
 ## Prerequisites
 

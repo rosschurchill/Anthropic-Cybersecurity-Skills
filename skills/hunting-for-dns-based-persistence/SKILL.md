@@ -42,10 +42,11 @@ Attackers establish DNS-based persistence by hijacking DNS records, creating una
 
 ## When to Use
 
-- When investigating security incidents that require hunting for dns based persistence
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating suspected DNS hijacking or subdomain takeover via dangling CNAME records pointing at decommissioned services.
+- Use when pulling passive DNS history from the SecurityTrails API to find unauthorized new subdomains or changed records.
+- Use when auditing Route53/Azure DNS/Cloudflare change logs (or zone transfers) for unauthorized NS delegation, wildcard, or MX modifications.
+- Use when hunting persistence that survives credential rotation and endpoint reimaging because it lives in DNS, not on a host.
+- Use when diffing current zone records against a historical baseline to surface record tampering.
 
 ## Prerequisites
 
@@ -72,6 +73,39 @@ Compare current records against baseline to identify unauthorized modifications,
 ### Step 4: Investigate Findings
 
 Correlate DNS anomalies with threat intelligence feeds, check resolution targets against known malicious infrastructure, and validate record ownership.
+
+## Example
+
+Query SecurityTrails passive DNS history for a domain and flag CNAMEs that point at
+decommissioned services (dangling CNAME = subdomain-takeover risk):
+
+```python
+import os
+import requests
+
+API = "https://api.securitytrails.com/v1"
+headers = {"APIKEY": os.environ["SECURITYTRAILS_API_KEY"]}
+
+# Hosting suffixes that commonly become dangling after a service is torn down
+TAKEOVER_SUFFIXES = (
+    ".s3.amazonaws.com", ".cloudfront.net", ".azurewebsites.net",
+    ".github.io", ".herokuapp.com", ".trafficmanager.net",
+)
+
+domain = "example.com"
+resp = requests.get(f"{API}/domain/{domain}/subdomains", headers=headers)
+subdomains = resp.json().get("subdomains", [])
+
+for sub in subdomains:
+    fqdn = f"{sub}.{domain}"
+    hist = requests.get(f"{API}/history/{fqdn}/dns/cname", headers=headers).json()
+    for record in hist.get("records", []):
+        for value in record.get("values", []):
+            target = value.get("hostname", "")
+            if target.endswith(TAKEOVER_SUFFIXES):
+                print(f"[DANGLING?] {fqdn} CNAME -> {target} "
+                      f"(first_seen={record.get('first_seen')})")
+```
 
 ## Expected Output
 

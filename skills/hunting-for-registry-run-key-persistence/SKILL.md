@@ -49,10 +49,11 @@ Registry Run keys (T1547.001) are one of the most commonly used persistence mech
 
 ## When to Use
 
-- When investigating security incidents that require hunting for registry run key persistence
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting T1547.001 Run/RunOnce auto-start persistence in Sysmon Event ID 13 (RegistryEvent - Value Set).
+- Use when triaging a Run key whose value points at a temp directory, AppData, or ProgramData, or contains an encoded PowerShell command.
+- Use when flagging LOLBin abuse (mshta.exe, rundll32.exe, regsvr32.exe, wscript.exe) registered under a Run key.
+- Use when the modifying process (Image) is itself suspicious (cmd.exe, powershell.exe, python.exe) rather than an installer.
+- Use when chaining Event 13 with Event 1 (Process Creation) and Event 11 (FileCreate) to confirm a recently dropped payload was registered for autostart.
 
 ## Prerequisites
 
@@ -74,6 +75,46 @@ Registry Run keys (T1547.001) are one of the most commonly used persistence mech
 8. Chain with Event ID 1 to verify if the registered binary was recently created
 9. Generate detection report with MITRE ATT&CK mapping and severity scores
 10. Produce Sigma/Splunk detection rules from findings
+
+## Example
+
+Sigma rule over Sysmon Event ID 13 that fires on a Run/RunOnce value pointing at a
+suspicious path or interpreter:
+
+```yaml
+title: Suspicious Run Key Value Set (T1547.001)
+id: 3f2b8c6d-7a14-4e92-bc05-2d9f1a4e6b78
+status: experimental
+description: Detects Run/RunOnce registry values written with a payload in a temp path,
+  AppData, or an encoded PowerShell/LOLBin command, via Sysmon Event ID 13.
+references:
+  - https://attack.mitre.org/techniques/T1547/001/
+logsource:
+  product: windows
+  category: registry_set
+detection:
+  selection_key:
+    TargetObject|contains:
+      - '\CurrentVersion\Run\'
+      - '\CurrentVersion\RunOnce\'
+  selection_value:
+    Details|contains:
+      - '\AppData\'
+      - '\Temp\'
+      - '\ProgramData\'
+      - '-enc'
+      - '-EncodedCommand'
+      - 'mshta'
+      - 'rundll32'
+      - 'regsvr32'
+  condition: selection_key and selection_value
+falsepositives:
+  - Legitimate installers writing autostart entries
+level: high
+tags:
+  - attack.persistence
+  - attack.t1547.001
+```
 
 ## Expected Output
 

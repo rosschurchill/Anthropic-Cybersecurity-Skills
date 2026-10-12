@@ -42,10 +42,11 @@ ARP poisoning (ARP spoofing) is a Layer 2 attack where an adversary sends falsif
 
 ## When to Use
 
-- When investigating security incidents that require detecting arp poisoning in network traffic
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating suspected man-in-the-middle interception or session hijacking on a LAN segment
+- Use when deploying ARPWatch or a scapy monitor to flag IP-to-MAC mapping changes and flip-flopping
+- Use when detecting gateway ARP spoofing (gateway IP claimed by an unexpected MAC)
+- Use when writing Wireshark filters for gratuitous ARP floods or duplicate IP address claims
+- Use when configuring Dynamic ARP Inspection (DAI) and DHCP snooping as layer-2 defenses
 
 ## Prerequisites
 

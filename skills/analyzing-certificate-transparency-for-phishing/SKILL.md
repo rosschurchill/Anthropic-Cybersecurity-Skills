@@ -65,10 +65,11 @@ Certificate Transparency (CT) is an Internet security standard that creates a pu
 
 ## When to Use
 
-- When investigating security incidents that require analyzing certificate transparency for phishing
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when you need to monitor crt.sh or Certstream in real time for certificates mimicking your brand or domains.
+- Use when hunting lookalike/typosquat domains that just registered a TLS certificate ahead of a phishing campaign.
+- Use when you want to alert on unauthorized certificate issuance for a domain your organization owns.
+- Use when enriching a suspected phishing domain by pulling its CT-log certificate history and issuer.
+- Use when asked to "watch Certificate Transparency logs for phishing" or "detect new certs impersonating our company."
 
 ## Prerequisites
 

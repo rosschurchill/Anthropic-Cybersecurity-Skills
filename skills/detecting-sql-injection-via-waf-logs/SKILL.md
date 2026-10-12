@@ -39,10 +39,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require detecting sql injection via waf logs
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when triaging SQLi alerts in ModSecurity audit logs, AWS WAF JSON logs, or Cloudflare firewall events (e.g. CRS rule 942100 / libinjection hits).
+- Use when scoping an injection campaign across sources by clustering persistent attacker IPs and correlating multi-request attempts.
+- Use when classifying payloads by OWASP injection type (classic `OR 1=1`, UNION SELECT, blind, time-based `SLEEP()`/`BENCHMARK()`).
+- Use when estimating attack success from WAF response codes and producing an incident report with OWASP classification.
+- Use when validating WAF detection coverage against known SQLi patterns during SOC monitoring.
 
 ## Prerequisites
 

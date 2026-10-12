@@ -35,10 +35,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing azure activity logs for threats
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when you need a KQL query over AzureActivity for ROLEASSIGNMENTS/WRITE to catch privilege escalation in a tenant.
+- Use when hunting "Add member to role" AuditLogs events that grant Global Administrator.
+- Use when investigating impossible-travel or new-IP sign-ins via azure-monitor-query against a Log Analytics workspace.
+- Use when a Key Vault secret is accessed from an unfamiliar IP, or NSG/conditional-access policies are modified unexpectedly.
+- Use when asked to "threat hunt in Azure activity logs" or "build a cloud SIEM detection for suspicious admin operations."
 
 ## Prerequisites
 

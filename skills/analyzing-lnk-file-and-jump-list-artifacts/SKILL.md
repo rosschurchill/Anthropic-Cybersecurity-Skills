@@ -41,10 +41,11 @@ Windows LNK (shortcut) files and Jump Lists are critical forensic artifacts that
 
 ## When to Use
 
-- When investigating security incidents that require analyzing lnk file and jump list artifacts
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when you need to prove a user opened a specific file at a specific time, even after that file was deleted.
+- Use when parsing LNK files with LECmd or pylnk3 to recover target path, volume serial, NetBIOS name, and MAC address of the origin host.
+- Use when examining Jump Lists with JLECmd to reconstruct per-application recently/frequently accessed files.
+- Use when building a file-access or program-execution timeline for a Windows user-activity investigation.
+- Use when asked to "analyze these LNK/Jump List artifacts" or "show what files this account recently opened."
 
 ## Prerequisites
 

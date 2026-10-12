@@ -40,10 +40,11 @@ Smart contract vulnerabilities have led to billions of dollars in losses across 
 
 ## When to Use
 
-- When investigating security incidents that require analyzing ethereum smart contract vulnerabilities
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when auditing a Solidity contract with Slither and Mythril before mainnet deployment.
+- Use when hunting reentrancy, integer overflow, unchecked external calls, or broken access control in contract source.
+- Use when gating a contract in CI so a high-severity Slither/Mythril finding blocks the deploy.
+- Use when triaging a reported DeFi exploit against the contract's source to confirm the vulnerable function and path.
+- Use when asked to "run a Slither/Mythril audit on this contract" or "find vulnerabilities in this Solidity code."
 
 ## Prerequisites
 
@@ -58,6 +59,25 @@ Smart contract vulnerabilities have led to billions of dollars in losses across 
 ### Step 1: Run Slither Static Analysis
 
 Execute Slither against the contract codebase to identify vulnerability patterns, optimization opportunities, and code quality issues using its 90+ built-in detectors.
+
+```bash
+# Pin the compiler to the pragma version, then emit machine-readable results
+solc-select install 0.8.20 && solc-select use 0.8.20
+slither contracts/Vault.sol --json slither-out.json
+```
+
+```python
+import json
+
+with open("slither-out.json") as f:
+    report = json.load(f)
+
+# Surface high/medium impact detectors (e.g. reentrancy-eth, arbitrary-send)
+for det in report.get("results", {}).get("detectors", []):
+    if det["impact"] in ("High", "Medium"):
+        where = det["elements"][0].get("name", "?") if det["elements"] else "?"
+        print(f"[{det['impact']}] {det['check']} -> {where}")
+```
 
 ### Step 2: Run Mythril Symbolic Execution
 

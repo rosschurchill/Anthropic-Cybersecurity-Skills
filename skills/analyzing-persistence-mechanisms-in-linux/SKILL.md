@@ -47,10 +47,11 @@ Adversaries establish persistence on Linux systems through crontab jobs, systemd
 
 ## When to Use
 
-- When investigating security incidents that require analyzing persistence mechanisms in linux
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use during Linux incident response to enumerate persistence across crontabs, /etc/cron.d, systemd service/timer units, and init scripts on a live host or forensic image.
+- Use when checking /etc/ld.so.preload and the LD_PRELOAD environment variable for injected shared libraries.
+- Use when inspecting shell profiles (.bashrc, .bash_profile, .profile, /etc/profile.d/) for injected commands or reverse shells.
+- Use when auditing SSH authorized_keys files for unauthorized public keys or backdoor command restrictions.
+- Use when correlating persistence file modifications against auditd logs to build an installation timeline.
 
 ## Prerequisites
 
@@ -75,3 +76,44 @@ Adversaries establish persistence on Linux systems through crontab jobs, systemd
 - Timeline of persistence installation from auditd correlation
 - MITRE ATT&CK technique mapping (T1053, T1543, T1574, T1546)
 - Remediation commands for each detected persistence mechanism
+
+## Example
+
+Sweep the primary Linux persistence vectors listed in the steps above and correlate with auditd:
+
+```bash
+#!/usr/bin/env bash
+# Enumerate common Linux persistence mechanisms on a live host.
+set -u
+
+echo "=== [T1053.003] Cron jobs ==="
+for u in $(cut -f1 -d: /etc/passwd); do
+    crontab -l -u "$u" 2>/dev/null | grep -v '^\s*#' | sed "s/^/  [$u] /"
+done
+ls -la /etc/cron.d/ /etc/cron.daily/ /etc/cron.hourly/ 2>/dev/null
+cat /etc/crontab 2>/dev/null
+
+echo "=== [T1543.002] Non-package systemd units ==="
+for unit in /etc/systemd/system/*.service ~/.config/systemd/user/*.service; do
+    [ -f "$unit" ] || continue
+    echo "  $unit"
+    grep -E '^ExecStart=' "$unit"
+done
+
+echo "=== [T1574.006] LD_PRELOAD hijacking ==="
+cat /etc/ld.so.preload 2>/dev/null && echo "  (!) /etc/ld.so.preload is populated"
+env | grep -i ld_preload
+
+echo "=== [T1546.004] Shell profile injection ==="
+grep -REn 'bash -i|/dev/tcp/|nc |curl |wget ' \
+    /etc/profile /etc/profile.d/ /root/.bashrc /home/*/.bashrc /home/*/.profile 2>/dev/null
+
+echo "=== [T1098.004] SSH authorized_keys ==="
+for f in /root/.ssh/authorized_keys /home/*/.ssh/authorized_keys; do
+    [ -f "$f" ] && echo "  $f:" && cat "$f"
+done
+
+echo "=== auditd timeline (persistence paths) ==="
+ausearch -f /etc/crontab -f /etc/ld.so.preload -f /etc/systemd/system 2>/dev/null \
+    | grep -E 'type=PATH|type=SYSCALL' | tail -n 40
+```

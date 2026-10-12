@@ -36,10 +36,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing network flow data with netflow
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting anomalies in NetFlow v9 or IPFIX records where no packet payloads are available, parsing exports with the Python `netflow` library.
+- Use when detecting port scanning from flow data (a single source reaching many destinations on the same port).
+- Use when spotting data exfiltration as high byte-count outbound flows to unusual destinations.
+- Use when identifying C2 beaconing through periodic connections with consistent intervals.
+- Use when baselining east-west traffic and flagging volumetric spikes beyond threshold.
 
 ## Prerequisites
 

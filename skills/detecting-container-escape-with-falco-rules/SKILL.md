@@ -49,10 +49,11 @@ Falco is a CNCF-graduated runtime security tool that monitors Linux syscalls to 
 
 ## When to Use
 
-- When investigating security incidents that require detecting container escape with falco rules
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when authoring or tuning a specific Falco rule for breakout behavior (host filesystem mount, nsenter, kernel module load)
+- Use when a noisy escape-related Falco alert needs tuning down with exception lists and macros
+- Use when converting escape indicators into Falco conditions, macros, lists, priorities, and output fields
+- Use when deploying Falco via Helm or standalone and wiring alerts to Falcosidekick/Slack
+- Use when testing custom rules in falco_rules.local.yaml against a simulated escape attempt
 
 ## Prerequisites
 

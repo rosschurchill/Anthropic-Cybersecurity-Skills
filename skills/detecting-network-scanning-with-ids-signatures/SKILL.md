@@ -45,10 +45,11 @@ Network scanning is typically the first phase of an attack, where adversaries en
 
 ## When to Use
 
-- When investigating security incidents that require detecting network scanning with ids signatures
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when writing or tuning Suricata/Snort signatures to detect Nmap, Masscan, or ZMap scanning
+- Use when investigating suspected reconnaissance and need to classify SYN, FIN, Xmas, NULL, ACK, or UDP scan patterns
+- Use when configuring threshold-based rules and threshold.config to suppress authorized scanners and rate-limit alerts
+- Use when internal-to-internal scanning suggests a compromised host performing lateral-movement recon
+- Use when correlating IDS scan alerts with downstream exploitation to reconstruct the kill chain
 
 ## Prerequisites
 

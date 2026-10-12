@@ -43,10 +43,11 @@ Hindsight is an open-source browser forensics tool designed to parse artifacts f
 
 ## When to Use
 
-- When investigating security incidents that require analyzing browser forensics with hindsight
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when you need a unified XLSX/JSON/SQLite timeline of a user's web activity from a Chrome, Edge, Brave, Opera, or Vivaldi profile.
+- Use when reconstructing browsing history, downloads, and cache records during incident response or an insider-threat investigation.
+- Use when you need to recover cookies, autofill, saved passwords, or Local Storage from a seized Chromium profile for a criminal case.
+- Use when correlating download history against known-malicious URLs to establish how a payload reached the host.
+- Use when asked to "parse this Chrome profile with Hindsight" or "build a web-activity timeline from a browser User Data directory."
 
 ## Prerequisites
 

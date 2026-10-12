@@ -43,10 +43,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing threat landscape with misp
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when producing a CTI landscape report from MISP events over a date range (e.g., last 90 days)
+- Use when summarizing top threat actors or malware families from MISP galaxy clusters
+- Use when breaking down IOC/attribute types (ip-dst, domain, sha256) across stored MISP events
+- Use when ranking the top MITRE ATT&CK techniques from MISP event tags
+- Use when tracking temporal trends in IOC submissions via PyMISP
 
 ## Prerequisites
 

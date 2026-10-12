@@ -45,10 +45,11 @@ Microsoft Outlook PST (Personal Storage Table) and OST (Offline Storage Table) f
 
 ## When to Use
 
-- When investigating security incidents that require analyzing outlook pst for email forensics
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when conducting an email forensic investigation or e-discovery over Outlook PST/OST archives with libpff/pffexport or pypff.
+- Use when recovering deleted emails from the Recoverable Items folder (`pffexport -m recovered`).
+- Use when extracting and triaging attachments from a mailbox for malware or exfiltrated data.
+- Use when reconstructing communication patterns or tracing message routing from transport headers (Received, X-Originating-IP, SPF/DKIM/DMARC results).
+- Use when parsing MAPI metadata and timestamps across all PST folders during incident response.
 
 ## Prerequisites
 
