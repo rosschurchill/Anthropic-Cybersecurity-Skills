@@ -86,7 +86,7 @@ research -> draft -> gate loop. Status: `research` = sub-research file written;
 | T1569 | System Services | `detecting-malicious-system-service-execution` | execution | shipped |
 | T1189 | Drive-by Compromise | `detecting-drive-by-compromise` | initial-access | shipped |
 | T1115 | Clipboard Data | `detecting-clipboard-data-theft` | collection | shipped |
-| T1113/.123/.125 | Screen/Audio/Video Capture | `detecting-screen-audio-video-capture` | collection | research |
+| T1113/.123/.125 | Screen/Audio/Video Capture | `detecting-screen-audio-video-capture` | collection | shipped |
 | T1602 | Data from Configuration Repository | `detecting-network-config-repository-theft` | collection | research |
 | T1205 | Traffic Signaling | `detecting-traffic-signaling-and-port-knocking` | command-and-control | research |
 | T1665 | Hide Infrastructure | `detecting-hidden-c2-infrastructure` | command-and-control | research |
