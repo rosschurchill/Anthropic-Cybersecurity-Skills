@@ -191,8 +191,8 @@ index=ot (sourcetype=ics_proto action=mode_read OR sourcetype=ews_audit action="
 - **S7comm SZL sweep:** CPU-function/SZL diagnostics reads from an unknown host
   on classic S7comm (verify SZL IDs against your dissector).
 - **Modbus vendor status read:** a Schneider UMAS "read PLC status" over its
-  vendor function (verify the sub-function), or FC 0x2B/43 MEI Read Device
-  Identification, from outside the master net.
+  vendor function (verify the sub-function), or FC 0x2B/43 MEI type 14 (0x0E)
+  Read Device Identification, from outside the master net.
 - **False positive:** a sanctioned EWS reading status during an approved change
   window — closed by the allowlist and change-window lookup.
 

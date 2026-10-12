@@ -81,8 +81,8 @@ instrumentation use `detecting-mobile-runtime-hooking-and-instrumentation`.
    setting key.
 3. **Dropper / trojan permission profile.** Raise severity when the same package
    combines the accessibility grant with a screen-overlay capability
-   (illustratively `SYSTEM_ALERT_WINDOW`), install-from-unknown-sources
-   (illustratively `REQUEST_INSTALL_PACKAGES`), broad package visibility, or SMS
+   (`SYSTEM_ALERT_WINDOW`), install-from-unknown-sources
+   (`REQUEST_INSTALL_PACKAGES`), broad package visibility, or SMS
    permissions, **and** was sideloaded (installer is not the Play Store) or loads
    code dynamically. Anatsa droppers specifically walk the user through the
    restricted-settings path to re-enable the grant — flag that prompt flow.

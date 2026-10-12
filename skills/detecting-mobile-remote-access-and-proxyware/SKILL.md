@@ -64,8 +64,9 @@ from MTD, MDM/UEM, network-egress and app-vetting signals:
   infrastructure.
 - **MDM/UEM** (Microsoft Intune, Jamf Pro, VMware Workspace ONE, Android
   Enterprise): app inventory and sideload state; apps requesting broad network
-  plus always-on VPN or a VPN-service role (verify the exact `BIND_VPN_SERVICE` /
-  `VpnService` constant against current Android docs); foreground-service abuse
+  plus always-on VPN or a VPN-service role (a `VpnService` must be declared with
+  the `BIND_VPN_SERVICE` permission; verify the MDM/MTD field that surfaces it
+  against your connector's schema); foreground-service abuse
   keeping a relay alive; per-app data-usage where exposed.
 - **Network protection / egress** (MTD network module, corporate DNS, secure web
   gateway for on-net devices): the device acting as a *source* of inbound-relayed

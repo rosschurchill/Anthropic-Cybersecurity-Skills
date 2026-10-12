@@ -140,13 +140,14 @@ only: Joker, Bread, and Wi-Fi-disabling toll-fraud variants.
 
 ## Detection Queries
 
-Treat thresholds, field names, role/permission constants and dial strings as
-**verify/tune** against current Android/Apple and carrier docs.
+Treat thresholds, connector field names and dial strings as **verify/tune**
+against current Android/Apple and carrier docs. The `RoleManager` role
+constants are documented, stable API surface and can be relied on as written.
 
 ### KQL (Sentinel / Defender) — untrusted app holding SMS or call-control roles
 
 ```kql
-// verify table/column names and role constants against your schema
+// verify table/column names against your schema
 MobileAppInventory
 | where Roles has_any ("ROLE_SMS","ROLE_CALL_REDIRECTION","ROLE_CALL_SCREENING")
    or Permissions has_any ("SEND_SMS","ANSWER_PHONE_CALLS","CALL_PHONE")

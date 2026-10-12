@@ -86,17 +86,17 @@ escalate risk to the survivor.** Before changing anything:
 ## Workflow
 
 1. **Permission-cluster screen.** Enumerate apps holding the sensitive cluster —
-   `RECORD_AUDIO` + a location permission (illustrative:
-   `ACCESS_FINE_LOCATION` / `ACCESS_BACKGROUND_LOCATION`) or `CAMERA`. Apps with
-   no UI justification for the cluster are candidates. Screen capture is **not**
+   `RECORD_AUDIO` + a location permission
+   (`ACCESS_FINE_LOCATION`, or `ACCESS_BACKGROUND_LOCATION` since API 29) or
+   `CAMERA`. Apps with no UI justification for the cluster are candidates. Screen capture is **not**
    enumerable this way: `MediaProjection` has no manifest permission and needs
    per-session user consent via
    `MediaProjectionManager.createScreenCaptureIntent()`, so the static signals
-   are the declared `foregroundServiceType="mediaProjection"` and, on Android
-   14+, `FOREGROUND_SERVICE_MEDIA_PROJECTION`. **Verify the exact permission and
-   AppOps op constants against current Android docs** and prefer the behavioral
-   framing (an unexpected, non-allowlisted app holding a powerful sensor
-   grant).
+   are the declared `foregroundServiceType="mediaProjection"` and
+   `FOREGROUND_SERVICE_MEDIA_PROJECTION`, which Android 14 (API 34) requires for
+   a `mediaProjection` foreground service. **Verify AppOps op constants against
+   current Android docs** and prefer the behavioral framing (an unexpected,
+   non-allowlisted app holding a powerful sensor grant).
 2. **Runtime-use anomaly.** Read mic / camera / `MediaProjection` use timestamps
    from the Privacy Dashboard or App Privacy Report. Flag use that occurs while
    the user was not interacting — backgrounded or screen-locked capture is the
@@ -133,13 +133,14 @@ guidance); MDM app inventory (Intune / Jamf Pro / Workspace ONE).
 
 ## Detection Queries
 
-Permission names, AppOps ops, and thresholds are illustrative — **verify and
-tune** against current Android/Apple docs.
+AppOps op names and thresholds are illustrative — **verify and tune** against
+current Android/Apple docs. The permission constants above are documented,
+stable API surface and can be relied on as written.
 
 ### Android — sensitive permission cluster (MDM / fleet)
 
 ```text
-# From MDM app-permission inventory. Verify constant names; tune the allowlist.
+# From MDM app-permission inventory. Tune the allowlist.
 CANDIDATE IF app holds RECORD_AUDIO
           AND app holds (ACCESS_BACKGROUND_LOCATION OR ACCESS_FINE_LOCATION)
           AND app NOT IN legitimate_recorder_nav_allowlist
