@@ -24,12 +24,6 @@ tags:
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
-nist_ai_rmf:
-- GOVERN-1.1
-- MEASURE-2.7
-- MANAGE-3.1
-- GOVERN-4.2
-- MAP-2.3
 d3fend_techniques:
 - Restore Access
 - Password Authentication

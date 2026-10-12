@@ -24,12 +24,6 @@ d3fend_techniques:
 - File Metadata Consistency Validation
 - Content Format Conversion
 - File Content Analysis
-nist_ai_rmf:
-- MEASURE-2.7
-- MAP-5.1
-- MANAGE-2.4
-- MANAGE-3.1
-- MEASURE-3.1
 nist_csf:
 - RS.MA-01
 - RS.MA-02

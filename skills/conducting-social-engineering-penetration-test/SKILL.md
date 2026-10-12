@@ -22,9 +22,6 @@ tags:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-nist_ai_rmf:
-- GOVERN-6.2
-- MAP-5.2
 nist_csf:
 - ID.RA-01
 - ID.RA-06

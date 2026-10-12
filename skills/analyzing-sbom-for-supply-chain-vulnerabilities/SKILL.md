@@ -23,12 +23,6 @@ tags:
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
-nist_ai_rmf:
-- GOVERN-5.2
-- MAP-1.6
-- MANAGE-2.2
-- GOVERN-1.1
-- GOVERN-4.2
 nist_csf:
 - GV.SC-01
 - GV.SC-03

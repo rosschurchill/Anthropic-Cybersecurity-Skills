@@ -23,12 +23,6 @@ nist_csf:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-nist_ai_rmf:
-- MEASURE-2.7
-- MAP-5.1
-- MANAGE-2.4
-- MEASURE-2.8
-- MEASURE-2.9
 mitre_attack:
 - T1078
 - T1530

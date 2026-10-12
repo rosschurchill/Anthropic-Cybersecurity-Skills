@@ -22,10 +22,6 @@ tags:
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
-nist_ai_rmf:
-- MEASURE-2.7
-- MAP-5.1
-- MANAGE-2.4
 nist_csf:
 - ID.RA-01
 - ID.RA-05
