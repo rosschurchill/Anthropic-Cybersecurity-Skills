@@ -36,7 +36,7 @@ and passing gates.
 | T1111 | MFA Interception | `detecting-mfa-interception-and-bypass` | credential-access | shipped |
 | T1689 | Downgrade Attack | `detecting-protocol-downgrade-attacks` | defense-evasion | shipped |
 | T1686 | Disable or Modify System Firewall | `detecting-host-firewall-tampering` | defense-evasion | shipped |
-| T1690 | Prevent Command History Logging | `detecting-command-history-tampering` | defense-evasion | research |
+| T1690 | Prevent Command History Logging | `detecting-command-history-tampering` | defense-evasion | shipped |
 | T1599 | Network Boundary Bridging | `detecting-network-boundary-bridging` | defense-evasion | research |
 | T1578 | Modify Cloud Compute Infrastructure | `detecting-cloud-compute-infrastructure-tampering` | defense-evasion | research |
 | T1666 | Modify Cloud Resource Hierarchy | `detecting-cloud-resource-hierarchy-tampering` | defense-evasion | research |
