@@ -27,7 +27,7 @@ and passing gates.
 | ATT&CK | Technique | Proposed slug | Tactic | Status |
 |--------|-----------|---------------|--------|:------:|
 | T1561 | Disk Wipe | `detecting-disk-wipe-and-destruction` | impact | shipped |
-| T1495 | Firmware Corruption | `detecting-firmware-corruption-attacks` | impact | research |
+| T1495 | Firmware Corruption | `detecting-firmware-corruption-attacks` | impact | shipped |
 | T1491 | Defacement | `detecting-website-defacement` | impact | research |
 | T1498 | Network Denial of Service | `detecting-network-denial-of-service` | impact | research |
 | T1499 | Endpoint Denial of Service | `detecting-endpoint-denial-of-service` | impact | research |
