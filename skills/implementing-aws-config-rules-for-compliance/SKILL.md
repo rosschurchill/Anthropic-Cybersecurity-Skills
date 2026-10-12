@@ -4,7 +4,7 @@ description: Implements AWS Config managed and custom rules for continuous compl
   of AWS resources aligned to CIS and PCI DSS, configuring automatic remediation with SSM Automation
   and aggregating compliance data across accounts. Use when establishing continuous compliance
   monitoring, detecting configuration drift, or building a multi-account compliance dashboard
-  via AWS Organizations. Do not use for Security Hub compliance-standard aggregation - use implementing-aws-security-hub-compliance.
+  via AWS Organizations. Do not use for Security Hub compliance-standard aggregation - use implementing-aws-security-hub.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

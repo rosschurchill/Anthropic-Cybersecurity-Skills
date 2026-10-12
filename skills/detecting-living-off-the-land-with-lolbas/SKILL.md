@@ -6,7 +6,7 @@ description: >-
   endpoint data. Use when hunting for adversaries abusing built-in Windows binaries to download,
   execute, or proxy malicious code while evading traditional executable-based detection. Do not
   use for interactively hunting LOLBin execution in endpoint logs - use
-  hunting-for-lolbins-execution-in-endpoint-logs.
+  hunting-for-living-off-the-land-binaries.
 domain: cybersecurity
 subdomain: threat-detection
 tags:

@@ -5,7 +5,7 @@ description: >-
   weak API key generation, storage, and rotation, and token expiration, revocation, and
   refresh flaws. Use when assessing an API's authentication before production, checking that
   every endpoint enforces authentication, or validating session and API-key handling. Do not
-  use for JWT-specific token attacks — use testing-jwt-token-security.
+  use for JWT-specific token attacks — use testing-for-json-web-token-vulnerabilities.
 domain: cybersecurity
 subdomain: api-security
 tags:

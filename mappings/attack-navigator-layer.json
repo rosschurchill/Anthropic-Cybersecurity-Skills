@@ -46,7 +46,7 @@
         },
         {
           "name": "skills",
-          "value": "building-attack-pattern-library-from-cti-reports, building-detection-rules-with-sigma, detecting-container-escape-with-falco-rules, detecting-credential-dumping-techniques, detecting-credential-dumping-with-edr (+6 more)"
+          "value": "building-attack-pattern-library-from-cti-reports, building-detection-rules-with-sigma, detecting-container-escape-with-falco-rules, detecting-t1003-credential-dumping-with-edr, detecting-credential-dumping-with-edr (+6 more)"
         }
       ]
     },
@@ -318,7 +318,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, conducting-full-scope-red-team-engagement"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, conducting-full-scope-red-team-engagement"
         }
       ]
     },
@@ -542,7 +542,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-persistence-mechanisms-in-linux, hunting-for-persistence-mechanisms-in-windows, implementing-mitre-attack-coverage-mapping, implementing-siem-use-cases-for-detection (+1 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-persistence-mechanisms-in-linux, hunting-for-persistence-mechanisms-in-windows, implementing-mitre-attack-coverage-mapping, implementing-siem-use-cases-for-detection (+1 more)"
         }
       ]
     },
@@ -558,7 +558,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-scheduled-task-persistence"
+          "value": "hunting-for-suspicious-scheduled-tasks"
         }
       ]
     },
@@ -574,7 +574,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-scheduled-task-persistence, performing-privilege-escalation-on-linux"
+          "value": "hunting-for-suspicious-scheduled-tasks, performing-privilege-escalation-on-linux"
         }
       ]
     },
@@ -590,7 +590,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-windows-event-logs-in-splunk, building-attack-pattern-library-from-cti-reports, building-detection-rule-with-splunk-spl, conducting-full-scope-red-team-engagement (+11 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-windows-event-logs-in-splunk, building-attack-pattern-library-from-cti-reports, building-detection-rule-with-splunk-spl, conducting-full-scope-red-team-engagement (+11 more)"
         }
       ]
     },
@@ -622,7 +622,7 @@
         },
         {
           "name": "skills",
-          "value": "detecting-process-hollowing-technique, detecting-process-injection-techniques, detecting-t1055-process-injection-with-sysmon, hunting-for-process-injection-techniques"
+          "value": "detecting-process-hollowing-technique, detecting-process-injection-techniques, detecting-t1055-process-injection-with-sysmon, detecting-t1055-process-injection-with-sysmon"
         }
       ]
     },
@@ -814,7 +814,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-threat-actor-ttps-with-mitre-attack, analyzing-windows-event-logs-in-splunk, building-incident-timeline-with-timesketch, deobfuscating-powershell-obfuscated-malware (+5 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-threat-actor-ttps-with-mitre-attack, analyzing-windows-event-logs-in-splunk, building-incident-timeline-with-timesketch, deobfuscating-powershell-obfuscated-malware (+5 more)"
         }
       ]
     },
@@ -830,7 +830,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-macro-malware-in-office-documents, analyzing-powershell-empire-artifacts, analyzing-security-logs-with-splunk, analyzing-threat-actor-ttps-with-mitre-navigator (+21 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-macro-malware-in-office-documents, analyzing-powershell-empire-artifacts, analyzing-security-logs-with-splunk, analyzing-threat-actor-ttps-with-mitre-navigator (+21 more)"
         }
       ]
     },
@@ -862,7 +862,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-macro-malware-in-office-documents, executing-red-team-exercise, hunting-for-lolbins-execution-in-endpoint-logs, mapping-mitre-attack-techniques"
+          "value": "analyzing-macro-malware-in-office-documents, executing-red-team-exercise, hunting-for-living-off-the-land-binaries, mapping-mitre-attack-techniques"
         }
       ]
     },
@@ -990,7 +990,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-network-covert-channels-in-malware, analyzing-ransomware-network-indicators, analyzing-threat-actor-ttps-with-mitre-attack, hunting-advanced-persistent-threats (+5 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-network-covert-channels-in-malware, analyzing-ransomware-network-indicators, analyzing-threat-actor-ttps-with-mitre-attack, hunting-advanced-persistent-threats (+5 more)"
         }
       ]
     },
@@ -1006,7 +1006,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, building-c2-infrastructure-with-sliver-framework, building-red-team-c2-infrastructure-with-havoc, conducting-malware-incident-response, detecting-process-injection-techniques (+7 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, building-c2-infrastructure-with-sliver-framework, building-red-team-c2-infrastructure-with-havoc, conducting-malware-incident-response, detecting-process-injection-techniques (+7 more)"
         }
       ]
     },
@@ -1022,7 +1022,7 @@
         },
         {
           "name": "skills",
-          "value": "building-attack-pattern-library-from-cti-reports, building-c2-infrastructure-with-sliver-framework, hunting-for-beaconing-with-frequency-analysis, hunting-for-command-and-control-beaconing, hunting-for-dns-tunneling-with-zeek (+2 more)"
+          "value": "building-attack-pattern-library-from-cti-reports, building-c2-infrastructure-with-sliver-framework, hunting-for-command-and-control-beaconing, hunting-for-command-and-control-beaconing, hunting-for-dns-tunneling-with-zeek (+2 more)"
         }
       ]
     },
@@ -1086,7 +1086,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-windows-event-logs-in-splunk, conducting-full-scope-red-team-engagement, conducting-internal-network-penetration-test, detecting-insider-threat-behaviors (+8 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-windows-event-logs-in-splunk, conducting-full-scope-red-team-engagement, conducting-internal-network-penetration-test, detecting-insider-threat-behaviors (+8 more)"
         }
       ]
     },
@@ -1502,7 +1502,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-lolbins-execution-in-endpoint-logs"
+          "value": "hunting-for-living-off-the-land-binaries"
         }
       ]
     },
@@ -1662,7 +1662,7 @@
         },
         {
           "name": "skills",
-          "value": "detecting-living-off-the-land-with-lolbas, hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs"
+          "value": "detecting-living-off-the-land-with-lolbas, hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries"
         }
       ]
     },
@@ -1742,7 +1742,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs"
+          "value": "hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries"
         }
       ]
     },
@@ -1854,7 +1854,7 @@
         },
         {
           "name": "skills",
-          "value": "detecting-evasion-techniques-in-endpoint-logs, detecting-living-off-the-land-with-lolbas, hunting-advanced-persistent-threats, hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs (+1 more)"
+          "value": "detecting-evasion-techniques-in-endpoint-logs, detecting-living-off-the-land-with-lolbas, hunting-advanced-persistent-threats, hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries (+1 more)"
         }
       ]
     },
@@ -1870,7 +1870,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs"
+          "value": "hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries"
         }
       ]
     },
@@ -1902,7 +1902,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs"
+          "value": "hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries"
         }
       ]
     },
@@ -1918,7 +1918,7 @@
         },
         {
           "name": "skills",
-          "value": "detecting-fileless-malware-techniques, hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs"
+          "value": "detecting-fileless-malware-techniques, hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries"
         }
       ]
     },
@@ -1934,7 +1934,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs"
+          "value": "hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries"
         }
       ]
     },
@@ -1950,7 +1950,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-living-off-the-land-binaries, hunting-for-lolbins-execution-in-endpoint-logs, performing-dynamic-analysis-with-any-run"
+          "value": "hunting-for-living-off-the-land-binaries, hunting-for-living-off-the-land-binaries, performing-dynamic-analysis-with-any-run"
         }
       ]
     },
@@ -2334,7 +2334,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-malware-persistence-with-autoruns, hunting-advanced-persistent-threats, hunting-for-persistence-mechanisms-in-windows, implementing-siem-use-cases-for-detection (+1 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-malware-persistence-with-autoruns, hunting-advanced-persistent-threats, hunting-for-persistence-mechanisms-in-windows, implementing-siem-use-cases-for-detection (+1 more)"
         }
       ]
     },
@@ -2350,7 +2350,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-windows-event-logs-in-splunk, building-attack-pattern-library-from-cti-reports, conducting-full-scope-red-team-engagement, hunting-for-persistence-mechanisms-in-windows (+8 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-windows-event-logs-in-splunk, building-attack-pattern-library-from-cti-reports, conducting-full-scope-red-team-engagement, hunting-for-persistence-mechanisms-in-windows (+8 more)"
         }
       ]
     },
@@ -2686,7 +2686,7 @@
         },
         {
           "name": "skills",
-          "value": "conducting-internal-network-penetration-test, hunting-for-ntlm-relay-attacks"
+          "value": "conducting-internal-network-penetration-test, detecting-ntlm-relay-with-event-correlation"
         }
       ]
     },
@@ -2718,7 +2718,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-windows-event-logs-in-splunk, conducting-domain-persistence-with-dcsync, detecting-golden-ticket-forgery, detecting-kerberoasting-attacks, detecting-mimikatz-execution-patterns (+2 more)"
+          "value": "analyzing-windows-event-logs-in-splunk, conducting-domain-persistence-with-dcsync, detecting-golden-ticket-attacks-in-kerberos-logs, detecting-kerberoasting-attacks, detecting-mimikatz-execution-patterns (+2 more)"
         }
       ]
     },
@@ -2830,7 +2830,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-threat-actor-ttps-with-mitre-attack, analyzing-threat-landscape-with-misp, building-attack-pattern-library-from-cti-reports, implementing-mitre-attack-coverage-mapping (+1 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-threat-actor-ttps-with-mitre-attack, analyzing-threat-landscape-with-misp, building-attack-pattern-library-from-cti-reports, implementing-mitre-attack-coverage-mapping (+1 more)"
         }
       ]
     },
@@ -2846,7 +2846,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-apt-group-with-mitre-navigator, analyzing-macro-malware-in-office-documents, analyzing-threat-actor-ttps-with-mitre-navigator, building-attack-pattern-library-from-cti-reports, conducting-full-scope-red-team-engagement (+10 more)"
+          "value": "analyzing-threat-actor-ttps-with-mitre-navigator, analyzing-macro-malware-in-office-documents, analyzing-threat-actor-ttps-with-mitre-navigator, building-attack-pattern-library-from-cti-reports, conducting-full-scope-red-team-engagement (+10 more)"
         }
       ]
     },
@@ -2958,7 +2958,7 @@
         },
         {
           "name": "skills",
-          "value": "hunting-for-beaconing-with-frequency-analysis"
+          "value": "hunting-for-command-and-control-beaconing"
         }
       ]
     },
@@ -3038,7 +3038,7 @@
         },
         {
           "name": "skills",
-          "value": "analyzing-ransomware-network-indicators, hunting-for-beaconing-with-frequency-analysis, hunting-for-command-and-control-beaconing, implementing-mitre-attack-coverage-mapping"
+          "value": "analyzing-ransomware-network-indicators, hunting-for-command-and-control-beaconing, hunting-for-command-and-control-beaconing, implementing-mitre-attack-coverage-mapping"
         }
       ]
     },

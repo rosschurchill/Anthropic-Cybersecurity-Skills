@@ -1,10 +1,6 @@
 ---
 name: hunting-for-living-off-the-land-binaries
-description: Proactively hunts for adversary abuse of legitimate, signed system binaries (LOLBins)
-  used to execute malicious payloads, download files, or proxy execution while evading application
-  allowlisting and defense-evasion controls. Use when building LOLBins detection rules for EDR/SIEM
-  or when threat hunting for defense-evasion activity involving trusted system binaries. Do not
-  use for parsing LOLBin execution out of endpoint logs - use hunting-for-lolbins-execution-in-endpoint-logs.
+description: 'Proactively hunts for adversary abuse of legitimate, signed system binaries (LOLBins) used to execute malicious payloads, download files, or proxy execution while evading application allowlisting and defense-evasion controls. Use when building LOLBins detection rules for EDR/SIEM or when threat hunting for defense-evasion activity involving trusted system binaries. Do not use for process-injection hunting - use detecting-t1055-process-injection-with-sysmon.'
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -15,6 +11,10 @@ tags:
 - siem
 - proactive-detection
 - defense-evasion
+- living-off-the-land
+- endpoint-detection
+- process-monitoring
+- mitre-t1218
 version: '1.0'
 author: mahipal
 license: Apache-2.0

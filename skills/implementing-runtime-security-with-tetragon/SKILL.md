@@ -20,6 +20,7 @@ tags:
 - observability
 - kernel-security
 - cncf
+- kubernetes-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -36,11 +37,19 @@ nist_csf:
 - PR.IR-01
 - ID.AM-08
 - DE.CM-01
+- RS.MA-01
+- GV.OV-01
+- DE.AE-02
 mitre_attack:
 - T1610
 - T1611
 - T1609
 - T1525
+- T1078
+- T1190
+- T1059
+- T1685.002
+- T1685.005
 ---
 
 # Implementing Runtime Security with Tetragon

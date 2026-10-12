@@ -15,6 +15,11 @@ tags:
 - token-forgery
 - kid-injection
 - jku-attack
+- penetration-testing
+- authentication
+- web-security
+- token-security
+- burpsuite
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -29,6 +34,7 @@ mitre_attack:
 - T1505.003
 - T1083
 - T1068
+- T1027
 ---
 
 # Testing for JSON Web Token Vulnerabilities

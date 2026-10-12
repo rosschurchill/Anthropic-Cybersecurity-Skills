@@ -20,6 +20,11 @@ tags:
 - timeline-explorer
 - dfir
 - artifact-analysis
+- digital-forensics
+- prefetch
+- shellbags
+- mft
+- artifact-parsing
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -33,6 +38,7 @@ mitre_attack:
 - T1119
 - T1070
 - T1059
+- T1112
 ---
 
 # Performing Windows Artifact Analysis with Eric Zimmerman Tools

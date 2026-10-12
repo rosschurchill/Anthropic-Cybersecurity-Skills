@@ -15,6 +15,11 @@ tags:
 - compliance-automation
 - security-standards
 - finding-aggregation
+- cloud-security
+- aws
+- security-hub
+- compliance
+- cis-benchmark
 version: 1.0.0
 author: mahipal
 license: Apache-2.0

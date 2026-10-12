@@ -14,6 +14,10 @@ tags:
 - authentication
 - redirect-uri
 - token-security
+- penetration-testing
+- oauth
+- web-security
+- authorization
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -28,6 +32,8 @@ mitre_attack:
 - T1552.001
 - T1027
 - T1070
+- T1505.003
+- T1083
 ---
 # Testing OAuth2 Implementation Flaws
 

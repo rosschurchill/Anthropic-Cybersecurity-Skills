@@ -7,7 +7,7 @@ description: >-
   remediating a compromised host, especially when fileless or memory-resident malware is
   suspected, root cause analysis is needed, or the evidence must hold up in legal proceedings. Do
   not use for analyzing a captured memory image — use
-  conducting-memory-forensics-with-volatility.
+  performing-memory-forensics-with-volatility3.
 domain: cybersecurity
 subdomain: incident-response
 tags:

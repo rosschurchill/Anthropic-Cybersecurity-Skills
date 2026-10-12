@@ -1,11 +1,6 @@
 ---
 name: implementing-threat-intelligence-lifecycle-management
-description: Build out a full CTI program around the six-phase threat intelligence
-  lifecycle (direction, collection, processing, analysis, dissemination, feedback),
-  including defining intelligence requirements, building a collection pipeline, normalizing
-  data, and tracking dissemination feedback. Use when standing up or maturing a threat
-  intelligence program, defining intelligence requirements, or designing collection-to-dissemination
-  workflows for a CTI team. Do not use for running stakeholder-requirement and feedback loops across an existing CTI program - use managing-intelligence-lifecycle.
+description: 'Build out a full CTI program around the six-phase threat intelligence lifecycle (direction, collection, processing, analysis, dissemination, feedback), including defining intelligence requirements, building a collection pipeline, normalizing data, and tracking dissemination feedback. Use when standing up or maturing a threat intelligence program, defining intelligence requirements, or designing collection-to-dissemination workflows for a CTI team. Do not use for mapping a specific actor to ATT&CK Navigator - use analyzing-threat-actor-ttps-with-mitre-navigator.'
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
@@ -17,6 +12,12 @@ tags:
 - dissemination
 - strategic-intelligence
 - cti-program
+- CTI
+- intelligence-lifecycle
+- PIR
+- NIST-SP-800-150
+- threat-intelligence-program
+- NIST-CSF
 version: '1.0'
 author: mahipal
 license: Apache-2.0

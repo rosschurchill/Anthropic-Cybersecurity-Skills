@@ -11,6 +11,8 @@ tags:
 - covert-channel
 - mitre-t1071-004
 - network-monitoring
+- dns-exfiltration
+- entropy-analysis
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -25,12 +27,18 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+- PR.IR-01
+- ID.AM-03
+- PR.DS-02
 mitre_attack:
 - T1046
 - T1057
 - T1082
 - T1083
 - T1048
+- T1040
+- T1557
+- T1071
 ---
 
 # Hunting for DNS Tunneling with Zeek

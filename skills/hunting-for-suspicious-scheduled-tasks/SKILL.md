@@ -10,6 +10,9 @@ tags:
 - mitre-t1053-005
 - windows
 - endpoint-detection
+- mitre-attack
+- t1053
+- proactive-detection
 version: '1.0'
 author: mahipal
 license: Apache-2.0

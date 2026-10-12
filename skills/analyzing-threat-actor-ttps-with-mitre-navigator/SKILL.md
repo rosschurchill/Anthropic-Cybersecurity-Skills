@@ -11,6 +11,10 @@ tags:
 - ttp-mapping
 - stix
 - attackcti
+- threat-actor
+- ttp-analysis
+- heatmap
+- detection-gap
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -39,6 +43,8 @@ mitre_attack:
 - T1071.001
 - T1547.001
 - T1053.005
+- T1003.001
+- T1486
 ---
 # Analyzing Threat Actor TTPs with MITRE Navigator
 

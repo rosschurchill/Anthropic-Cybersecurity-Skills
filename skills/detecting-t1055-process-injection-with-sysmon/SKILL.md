@@ -17,6 +17,9 @@ tags:
 - defense-evasion
 - dll-injection
 - process-hollowing
+- t1055
+- createremotethread
+- edr
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -36,6 +39,11 @@ mitre_attack:
 - T1055.002
 - T1055.003
 - T1055.012
+- T1046
+- T1057
+- T1082
+- T1083
+- T1055
 ---
 
 # Detecting T1055 Process Injection with Sysmon
