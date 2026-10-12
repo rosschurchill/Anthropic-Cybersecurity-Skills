@@ -42,7 +42,7 @@ and passing gates.
 | T1666 | Modify Cloud Resource Hierarchy | `detecting-cloud-resource-hierarchy-tampering` | defense-evasion | shipped |
 | T1677 | Poisoned Pipeline Execution | `detecting-poisoned-pipeline-execution` | execution | shipped |
 | T1654 | Log Enumeration | `detecting-adversary-log-enumeration` | discovery | shipped |
-| T1020 | Automated Exfiltration | `detecting-automated-data-exfiltration` | exfiltration | research |
+| T1020 | Automated Exfiltration | `detecting-automated-data-exfiltration` | exfiltration | shipped |
 | T1563 | Remote Service Session Hijacking | `detecting-remote-service-session-hijacking` | lateral-movement | research |
 | T1560 | Archive Collected Data | `detecting-data-staging-and-archiving` | collection | research |
 | T1132 | Data Encoding | `detecting-encoded-c2-channels` | command-and-control | research |
