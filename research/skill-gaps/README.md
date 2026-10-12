@@ -26,27 +26,27 @@ and passing gates.
 
 | ATT&CK | Technique | Proposed slug | Tactic | Status |
 |--------|-----------|---------------|--------|:------:|
-| T1561 | Disk Wipe | `detecting-disk-wipe-and-destruction` | impact | research |
-| T1495 | Firmware Corruption | `detecting-firmware-corruption-attacks` | impact | research |
-| T1491 | Defacement | `detecting-website-defacement` | impact | research |
-| T1498 | Network Denial of Service | `detecting-network-denial-of-service` | impact | research |
-| T1499 | Endpoint Denial of Service | `detecting-endpoint-denial-of-service` | impact | research |
-| T1529 | System Shutdown/Reboot | `detecting-malicious-system-shutdown` | impact | research |
-| T1667 | Email Bombing | `detecting-email-bombing-attacks` | impact | research |
-| T1111 | MFA Interception | `detecting-mfa-interception-and-bypass` | credential-access | research |
-| T1689 | Downgrade Attack | `detecting-protocol-downgrade-attacks` | defense-evasion | research |
-| T1686 | Disable or Modify System Firewall | `detecting-host-firewall-tampering` | defense-evasion | research |
-| T1690 | Prevent Command History Logging | `detecting-command-history-tampering` | defense-evasion | research |
-| T1599 | Network Boundary Bridging | `detecting-network-boundary-bridging` | defense-evasion | research |
-| T1578 | Modify Cloud Compute Infrastructure | `detecting-cloud-compute-infrastructure-tampering` | defense-evasion | research |
-| T1666 | Modify Cloud Resource Hierarchy | `detecting-cloud-resource-hierarchy-tampering` | defense-evasion | research |
-| T1677 | Poisoned Pipeline Execution | `detecting-poisoned-pipeline-execution` | execution | research |
-| T1654 | Log Enumeration | `detecting-adversary-log-enumeration` | discovery | research |
-| T1020 | Automated Exfiltration | `detecting-automated-data-exfiltration` | exfiltration | research |
-| T1563 | Remote Service Session Hijacking | `detecting-remote-service-session-hijacking` | lateral-movement | research |
-| T1560 | Archive Collected Data | `detecting-data-staging-and-archiving` | collection | research |
-| T1132 | Data Encoding | `detecting-encoded-c2-channels` | command-and-control | research |
-| T1104 | Multi-Stage Channels | `detecting-multi-stage-c2-channels` | command-and-control | research |
+| T1561 | Disk Wipe | `detecting-disk-wipe-and-destruction` | impact | shipped |
+| T1495 | Firmware Corruption | `detecting-firmware-corruption-attacks` | impact | shipped |
+| T1491 | Defacement | `detecting-website-defacement` | impact | shipped |
+| T1498 | Network Denial of Service | `detecting-network-denial-of-service` | impact | shipped |
+| T1499 | Endpoint Denial of Service | `detecting-endpoint-denial-of-service` | impact | shipped |
+| T1529 | System Shutdown/Reboot | `detecting-malicious-system-shutdown` | impact | shipped |
+| T1667 | Email Bombing | `detecting-email-bombing-attacks` | impact | shipped |
+| T1111 | MFA Interception | `detecting-mfa-interception-and-bypass` | credential-access | shipped |
+| T1689 | Downgrade Attack | `detecting-protocol-downgrade-attacks` | defense-evasion | shipped |
+| T1686 | Disable or Modify System Firewall | `detecting-host-firewall-tampering` | defense-evasion | shipped |
+| T1690 | Prevent Command History Logging | `detecting-command-history-tampering` | defense-evasion | shipped |
+| T1599 | Network Boundary Bridging | `detecting-network-boundary-bridging` | defense-evasion | shipped |
+| T1578 | Modify Cloud Compute Infrastructure | `detecting-cloud-compute-infrastructure-tampering` | defense-evasion | shipped |
+| T1666 | Modify Cloud Resource Hierarchy | `detecting-cloud-resource-hierarchy-tampering` | defense-evasion | shipped |
+| T1677 | Poisoned Pipeline Execution | `detecting-poisoned-pipeline-execution` | execution | shipped |
+| T1654 | Log Enumeration | `detecting-adversary-log-enumeration` | discovery | shipped |
+| T1020 | Automated Exfiltration | `detecting-automated-data-exfiltration` | exfiltration | shipped |
+| T1563 | Remote Service Session Hijacking | `detecting-remote-service-session-hijacking` | lateral-movement | shipped |
+| T1560 | Archive Collected Data | `detecting-data-staging-and-archiving` | collection | shipped |
+| T1132 | Data Encoding | `detecting-encoded-c2-channels` | command-and-control | shipped |
+| T1104 | Multi-Stage Channels | `detecting-multi-stage-c2-channels` | command-and-control | shipped |
 
 ## How a research file becomes a skill
 
