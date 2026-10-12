@@ -48,10 +48,11 @@ Privilege escalation in Kubernetes occurs when a pod or container gains elevated
 
 ## When to Use
 
-- When investigating security incidents that require detecting privilege escalation in kubernetes pods
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating a pod running as root or in privileged mode, or one adding dangerous capabilities (SYS_ADMIN, SYS_PTRACE)
+- Use when writing OPA Gatekeeper/Kyverno admission policies to block privileged, hostPID, hostNetwork, or hostPath pods
+- Use when deploying Falco rules to catch in-pod escalation at runtime (setuid binaries, capset, writes to /etc/passwd)
+- Use when hardening workloads with Pod Security Admission at the restricted level and allowPrivilegeEscalation: false
+- Use when querying Kubernetes audit logs for pods created with an elevated securityContext
 
 ## Prerequisites
 

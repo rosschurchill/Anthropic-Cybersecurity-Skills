@@ -46,10 +46,11 @@ Domain fronting (MITRE ATT&CK T1090.004) is a technique where attackers use diff
 
 ## When to Use
 
-- When investigating security incidents that require hunting for domain fronting c2 traffic
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting C2 hidden behind legitimate CDN domains (T1090.004) by comparing the TLS SNI field against the HTTP Host header in proxy logs.
+- Use when flagging connections where the SNI points at a high-reputation CDN domain but the Host header targets a different, attacker-controlled domain.
+- Use when inspecting TLS certificates with pyOpenSSL to identify the CDN provider (CloudFront, Azure CDN, Cloudflare) behind a fronted connection.
+- Use when correlating SNI-Host mismatches with known CDN IP ranges to raise detection confidence.
+- Use when investigating proxy/TLS logs for domain-fronting evasion and scoring alerts by domain-reputation differential.
 
 ## Prerequisites
 
@@ -67,6 +68,33 @@ Domain fronting (MITRE ATT&CK T1090.004) is a technique where attackers use diff
 5. Flag high-confidence domain fronting where SNI and Host differ on CDN IPs
 6. Score alerts based on domain reputation differential
 7. Generate detection report with network flow context
+
+## Example
+
+Parse proxy logs for connections carrying both an SNI and an HTTP Host header, and flag
+mismatches where the SNI resolves to a CDN (classic domain fronting):
+
+```python
+import csv
+
+# CDN-hosted apex domains that are commonly used as the fronting (SNI) domain
+CDN_SNI_SUFFIXES = (
+    "cloudfront.net", "azureedge.net", "fastly.net",
+    "akamaihd.net", "cloudflare.net", "amazonaws.com",
+)
+
+with open("proxy.csv", newline="") as f:
+    for row in csv.DictReader(f):
+        sni = (row.get("tls_sni") or "").lower().strip()
+        host = (row.get("http_host") or "").lower().strip()
+        if not sni or not host:
+            continue
+        # Domain fronting: SNI (what the network sees) != Host (where the request goes),
+        # and the SNI is a benign-looking CDN endpoint.
+        if sni != host and sni.endswith(CDN_SNI_SUFFIXES):
+            print(f"[FRONTING?] src={row.get('client_ip')} "
+                  f"SNI={sni} HOST={host} bytes={row.get('bytes')}")
+```
 
 ## Expected Output
 

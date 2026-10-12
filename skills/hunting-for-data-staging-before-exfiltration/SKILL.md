@@ -47,10 +47,11 @@ Before exfiltrating data, adversaries typically stage collected files in a centr
 
 ## When to Use
 
-- When investigating security incidents that require hunting for data staging before exfiltration
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting pre-exfiltration staging (T1074) in EDR/Sysmon telemetry for 7z.exe, rar.exe, WinRAR, tar, or zip launched with compression arguments.
+- Use when flagging file writes into common staging paths (%TEMP%, ProgramData, Recycle Bin, hidden directories) in Sysmon Event ID 11 / 4688.
+- Use when spotting anomalous consolidation — many reads across document, database, and network-share paths followed by writes to a single directory.
+- Use when correlating archive size, source-path diversity, and timing into a staging risk score.
+- Use when validating monitoring coverage for archiver abuse (T1074.001/.002, T1560) ahead of an exfiltration event.
 
 ## Prerequisites
 
@@ -68,6 +69,33 @@ Before exfiltrating data, adversaries typically stage collected files in a centr
 5. **Analyze Archive Metadata** — Extract and analyze archive file sizes, creation times, and source paths
 6. **Score Staging Risk** — Apply heuristic scoring based on archive size, source diversity, staging path suspicion, and timing
 7. **Generate Hunt Report** — Produce a structured report with staging event timeline and MITRE ATT&CK mapping
+
+## Example
+
+Flag archiver process creation (Event ID 4688 / Sysmon 1) that writes into a staging path,
+from telemetry exported to JSON lines:
+
+```python
+import json
+import re
+
+ARCHIVERS = re.compile(r"\\(7z|7za|rar|winrar|tar|zip)\.exe$", re.IGNORECASE)
+STAGING = re.compile(r"\\(temp|appdata\\local\\temp|programdata|\$recycle\.bin)\\",
+                     re.IGNORECASE)
+# Compression / archive-create arguments
+ARGS = re.compile(r"\b(a|-?r|--create|-cf|-czf)\b|\.(7z|rar|zip|tar)\b", re.IGNORECASE)
+
+with open("process_events.jsonl") as f:
+    for line in f:
+        ev = json.loads(line)
+        image = ev.get("Image", ev.get("NewProcessName", ""))
+        cmdline = ev.get("CommandLine", "")
+        if ARCHIVERS.search(image) and ARGS.search(cmdline):
+            staged = bool(STAGING.search(cmdline))
+            print(f"[{'HIGH' if staged else 'MED'}] staging via {image}")
+            print(f"    host={ev.get('Computer','?')} user={ev.get('User','?')}")
+            print(f"    cmd={cmdline[:160]}")
+```
 
 ## Expected Output
 

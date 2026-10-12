@@ -41,10 +41,11 @@ The NTFS Master File Table ($MFT) is the central metadata repository for every f
 
 ## When to Use
 
-- When investigating security incidents that require analyzing mft for deleted file recovery
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when recovering metadata (filename, path, size, timestamps) of deleted files from an NTFS volume by parsing the $MFT with MFTECmd for InUse=False records.
+- Use when reconstructing a file-system timeline from $MFT, $UsnJrnl:$J change records, and $LogFile transactions during a Windows forensic exam.
+- Use when detecting anti-forensic timestomping by comparing $STANDARD_INFORMATION versus $FILE_NAME timestamps for the same entry.
+- Use when examining MFT slack space for remnants of previously reallocated file records.
+- Use when correlating deleted-file evidence across $Recycle.Bin ($I/$R files) and Volume Shadow Copies.
 
 ## Prerequisites
 

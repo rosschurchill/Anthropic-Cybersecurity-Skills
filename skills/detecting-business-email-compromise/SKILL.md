@@ -84,10 +84,11 @@ Business Email Compromise (BEC) is a sophisticated fraud scheme where attackers 
 
 ## When to Use
 
-- When investigating security incidents that require detecting business email compromise
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating a suspected CEO-fraud or executive-impersonation email requesting an urgent wire transfer
+- Use when a vendor emails changed bank/payment details (false-invoice scheme) and you need to verify before paying
+- Use when building email-gateway rules that flag VIP display names from external domains or Reply-To domain mismatches
+- Use when an HR or finance inbox receives a request for W-2s, gift cards, or cryptocurrency with urgency/secrecy language
+- Use when hunting for account-compromise signs like malicious inbox forwarding rules or impossible-travel logins tied to BEC
 
 ## Prerequisites
 - Email security gateway with BEC detection capabilities
@@ -137,6 +138,20 @@ Business Email Compromise (BEC) is a sophisticated fraud scheme where attackers 
 - Alert on email forwarding rule creation
 - Monitor for mailbox delegation changes
 - Check for inbox rules hiding BEC-related emails
+
+## Detection Query
+
+Microsoft Sentinel (KQL): alert when an inbox rule is created that auto-forwards mail to an external address, a common account-compromise step behind BEC (Step 4).
+
+```kql
+// External auto-forwarding inbox rule created (BEC account-compromise indicator)
+OfficeActivity
+| where Operation in ("New-InboxRule", "Set-InboxRule")
+| where RawEventData has_any ("ForwardTo", "RedirectTo", "ForwardAsAttachmentTo")
+| extend Forward = extract(@"ForwardTo.*?SMTP:([^\]]+)", 1, RawEventData)
+| where isnotempty(Forward) and Forward !endswith "@yourcompany.com"
+| project TimeGenerated, UserId, Operation, Forward, ClientIP
+```
 
 ## Tools & Resources
 - **Microsoft Defender for O365 Anti-BEC**: Built-in BEC detection

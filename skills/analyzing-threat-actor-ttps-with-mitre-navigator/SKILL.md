@@ -58,10 +58,11 @@ multiple groups, and assess detection coverage gaps against known adversaries.
 
 ## When to Use
 
-- When investigating security incidents that require analyzing threat actor ttps with mitre navigator
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when profiling a specific APT group (e.g., APT29) and generating an ATT&CK Navigator layer file of its techniques
+- Use when querying ATT&CK STIX data via attackcti/TAXII to extract group-technique associations
+- Use when building a Navigator coverage heatmap to compare your detections against an adversary profile
+- Use when assessing technique coverage gaps against a named threat actor before defensive planning
+- Use when comparing two or more threat groups' TTPs side by side in a single Navigator layer
 
 ## Prerequisites
 

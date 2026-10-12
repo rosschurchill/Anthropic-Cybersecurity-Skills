@@ -57,10 +57,11 @@ mitre_f3:
 
 ## When to Use
 
-- When investigating security incidents that require hunting credential stuffing attacks
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating an account-takeover campaign where many unique source IPs target few usernames with a very low success rate (< 1%).
+- Use when analyzing authentication logs (Splunk or raw CSV) for login-velocity anomalies and ASN concentration from cloud/proxy providers.
+- Use when distinguishing password spraying (one password across many accounts) from classic brute force in the same auth dataset.
+- Use when flagging geographic impossibility or user-agent uniformity across distributed failed logins.
+- Use when building detection rules for authentication abuse after a credential-dump exposure.
 
 ## Prerequisites
 

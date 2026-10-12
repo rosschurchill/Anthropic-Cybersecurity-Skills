@@ -36,10 +36,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing api gateway access logs
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when a user_id is hitting one endpoint with many distinct resource_ids and you suspect BOLA/IDOR enumeration.
+- Use when a single source_ip triggers a surge of 401s (credential scanning or password spraying against the API).
+- Use when parsing AWS API Gateway, Kong, or Nginx access logs with pandas to baseline request volume and flag anomalies.
+- Use when you see injection payloads in query parameters, or DELETE/PATCH calls against read-only endpoints.
+- Use when asked to "find API abuse in these gateway logs" or "detect rate-limit bypass via header manipulation."
 
 ## Prerequisites
 

@@ -48,10 +48,11 @@ Pass-the-Ticket (PtT) is a credential theft technique (MITRE ATT&CK T1550.003) w
 
 ## When to Use
 
-- When investigating security incidents that require detecting pass the ticket attacks
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating stolen or replayed Kerberos tickets (TGT/TGS) across Active Directory hosts
+- Use when writing Splunk or Elastic detection rules over Windows Event IDs 4768, 4769, and 4771
+- Use when flagging RC4 encryption downgrades (TicketEncryptionType 0x17) that indicate ticket abuse
+- Use when correlating ticket reuse from multiple source IPs or baselining per-user TGS request volume
+- Use when validating SOC coverage for credential-theft techniques (MITRE T1550.003)
 
 ## Prerequisites
 
@@ -69,6 +70,20 @@ Pass-the-Ticket (PtT) is a credential theft technique (MITRE ATT&CK T1550.003) w
 5. Build baseline of normal TGS request volume per user/host
 6. Alert on standard deviation anomalies in ticket request patterns
 7. Investigate flagged events with enrichment from Active Directory
+
+## Detection Query
+
+Splunk SPL (Steps 3-5): surface users whose service-ticket requests come from many source IPs or include RC4 downgrades.
+
+```spl
+index=wineventlog (EventCode=4768 OR EventCode=4769)
+| rename Ticket_Encryption_Type as enc, Client_Address as src_ip, Account_Name as user
+| eval rc4_downgrade=if(enc=="0x17",1,0)
+| stats dc(src_ip) as distinct_src, values(src_ip) as src_ips,
+        sum(rc4_downgrade) as rc4_events, count as tgs_requests by user
+| where distinct_src > 3 OR rc4_events > 0
+| sort - distinct_src
+```
 
 ## Expected Output
 

@@ -43,10 +43,11 @@ Cobalt Strike is the most prevalent command-and-control framework used by both r
 
 ## When to Use
 
-- When investigating security incidents that require hunting for cobalt strike beacons
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting Cobalt Strike beacon callbacks in Zeek ssl.log via the default certificate serial `8BB00EE` or known JA3S/JARM fingerprints.
+- Use when analyzing connection timing in PCAP or Zeek conn.log for regular callback intervals with jitter (e.g. with RITA beacon scoring).
+- Use when matching HTTP request URIs, headers, and user-agents against known malleable C2 profiles.
+- Use when combining TLS, timing, and HTTP-profile indicators into a composite beacon confidence score during a network hunt.
+- Use when writing Suricata rules to alert on Cobalt Strike C2 in live traffic.
 
 ## Prerequisites
 
@@ -70,6 +71,47 @@ Match HTTP request patterns (URI paths, headers, user-agents) against known mall
 
 ### Step 4: Correlate and Score
 Combine multiple indicators (TLS + timing + HTTP profile) into a composite beacon confidence score.
+
+## Example
+
+Hunt Zeek `ssl.log` for the default Cobalt Strike certificate serial (`8BB00EE...`) and
+score beacon jitter from `conn.log` connection intervals:
+
+```bash
+# 1. TLS certificate analysis: default Cobalt Strike cert serial in Zeek ssl.log
+#    (Zeek records the serial as a hex string; the default team-server cert starts 8BB00EE)
+zeek-cut -d ts id.orig_h id.resp_h server_name < ssl.log \
+  | grep -i "8bb00ee" || true
+```
+
+```python
+# 2. Beacon interval/jitter analysis from Zeek conn.log (TSV)
+import statistics
+from collections import defaultdict
+
+conns = defaultdict(list)
+with open("conn.log") as f:
+    for line in f:
+        if line.startswith("#"):
+            continue
+        fields = line.rstrip("\n").split("\t")
+        ts, orig, resp = float(fields[0]), fields[2], fields[4]
+        conns[(orig, resp)].append(ts)
+
+for (orig, resp), times in conns.items():
+    if len(times) < 8:
+        continue
+    times.sort()
+    intervals = [b - a for a, b in zip(times, times[1:])]
+    mean = statistics.mean(intervals)
+    if mean == 0:
+        continue
+    # Low coefficient of variation = regular callbacks = likely beacon
+    cov = statistics.pstdev(intervals) / mean
+    if cov < 0.25 and mean > 5:
+        print(f"BEACON? {orig} -> {resp} interval~{mean:.0f}s jitter(cov)={cov:.2f} "
+              f"callbacks={len(times)}")
+```
 
 ## Expected Output
 

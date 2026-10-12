@@ -48,10 +48,11 @@ Container escape is a critical attack technique where an adversary breaks out of
 
 ## When to Use
 
-- When investigating security incidents that require detecting container escape attempts
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when deciding which breakout behaviors to monitor regardless of whether Falco, Sysdig, auditd, or an EDR collects the signal
+- Use when investigating a suspected Docker or Kubernetes breakout (namespace manipulation, nsenter, Docker socket access)
+- Use when assessing risk from privileged containers, CAP_SYS_ADMIN, or sensitive mounts like /proc/sysrq-trigger and cgroup release_agent
+- Use when comparing container-escape detection coverage across runtime sensors and seccomp/audit rules
+- Use when building a seccomp profile or auditd ruleset to log escape-relevant syscalls (setns, unshare, mount, init_module)
 
 ## Prerequisites
 

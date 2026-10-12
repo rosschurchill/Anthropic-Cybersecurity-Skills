@@ -47,10 +47,11 @@ Attackers frequently install malicious Windows services for persistence and priv
 
 ## When to Use
 
-- When investigating security incidents that require hunting for unusual service installations
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting new-service persistence (T1543.003) by parsing System event log Event ID 7045 for every newly installed service.
+- Use when Event ID 7045 fires for an unfamiliar service and you need to assess the service name, binary path, type, and account.
+- Use when flagging service binaries in temp directories or that invoke powershell.exe, cmd.exe, or encoded commands.
+- Use when identifying services running as LocalSystem from unusual paths during incident response.
+- Use when enumerating service-based persistence against a known-good service baseline on Windows hosts.
 
 ## Prerequisites
 
@@ -68,6 +69,46 @@ Attackers frequently install malicious Windows services for persistence and priv
 5. Identify services running as LocalSystem with unusual paths
 6. Cross-reference with known legitimate service baselines
 7. Generate threat hunting report with MITRE ATT&CK T1543.003 mapping
+
+## Example
+
+Sigma rule over System log Event ID 7045 that flags a new service whose image path is
+in a temp directory or launches a script interpreter:
+
+```yaml
+title: Suspicious New Service Installation (T1543.003)
+id: 7d0c9f52-1e84-4b3a-9f27-5a6b2c8d3e41
+status: experimental
+description: Detects Event ID 7045 service installs whose ImagePath points at a temp
+  path or invokes powershell/cmd with an encoded command.
+references:
+  - https://attack.mitre.org/techniques/T1543/003/
+logsource:
+  product: windows
+  service: system
+detection:
+  selection:
+    Provider_Name: 'Service Control Manager'
+    EventID: 7045
+  suspicious_path:
+    ImagePath|contains:
+      - '\Temp\'
+      - '\AppData\'
+      - '\ProgramData\'
+      - 'powershell'
+      - 'cmd.exe /c'
+      - '-enc'
+      - '-EncodedCommand'
+      - 'rundll32'
+  condition: selection and suspicious_path
+falsepositives:
+  - Legitimate software installers registering helper services
+level: high
+tags:
+  - attack.persistence
+  - attack.privilege_escalation
+  - attack.t1543.003
+```
 
 ## Expected Output
 

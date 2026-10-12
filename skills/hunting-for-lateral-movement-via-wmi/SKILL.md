@@ -39,10 +39,11 @@ Windows Management Instrumentation (WMI) is commonly abused for lateral movement
 
 ## When to Use
 
-- When investigating security incidents that require hunting for lateral movement via wmi
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting remote code execution via `wmic process call create` or `Win32_Process.Create()` across Windows hosts.
+- Use when flagging WmiPrvSE.exe spawning cmd.exe or powershell.exe in Event ID 4688 or Sysmon Event ID 1.
+- Use when triaging WMI-Activity/Operational events 5857/5860/5861 for subscription-based (event consumer) persistence.
+- Use when spotting WMI lateral-movement command lines (`cmd.exe /q /c`, output redirection to the ADMIN$ share).
+- Use when validating detection coverage for WMI lateral movement during incident response.
 
 ## Prerequisites
 
@@ -64,6 +65,43 @@ Identify suspicious command lines matching WMI lateral movement patterns (cmd.ex
 
 ### Step 4: Check WMI Event Subscriptions
 Parse WMI-Activity/Operational log for event consumer creation indicating persistence.
+
+## Example
+
+Sigma rule for WmiPrvSE.exe spawning a command interpreter — the core signal of remote
+WMI process creation:
+
+```yaml
+title: WMI Lateral Movement - WmiPrvSE Spawns Command Interpreter
+id: 9a1c7f2e-5b3d-4a21-9e8c-1f4d2b6a0c11
+status: experimental
+description: Detects WmiPrvSE.exe spawning cmd.exe or powershell.exe, indicating
+  remote process creation via wmic process call create or Win32_Process.Create().
+references:
+  - https://attack.mitre.org/techniques/T1021/
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    ParentImage|endswith: '\WmiPrvSE.exe'
+    Image|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+      - '\pwsh.exe'
+  suspicious_cmd:
+    CommandLine|contains:
+      - '/q /c'
+      - '\\ADMIN$'
+      - '2>&1'
+  condition: selection and suspicious_cmd
+falsepositives:
+  - Legitimate software deployment or monitoring tools that use WMI
+level: high
+tags:
+  - attack.lateral_movement
+  - attack.t1021
+```
 
 ## Expected Output
 

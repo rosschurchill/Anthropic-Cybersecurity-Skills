@@ -69,10 +69,11 @@ DNSTwist is a domain name permutation engine that generates similar-looking doma
 
 ## When to Use
 
-- When investigating security incidents that require analyzing typosquatting domains with dnstwist
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when monitoring for registered lookalike domains of your corporate domain with dnstwist
+- Use when investigating a suspected phishing domain and assessing its DNS/MX records and web similarity
+- Use when prioritizing homograph or typosquatting domains by risk (recent registration, MX-capable, high ssdeep score)
+- Use when generating a blocklist or takedown report for high-risk impersonation domains
+- Use when running continuous monitoring to catch newly registered typosquats
 
 ## Prerequisites
 

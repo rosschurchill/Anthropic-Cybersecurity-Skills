@@ -44,10 +44,11 @@ API enumeration attacks occur when attackers systematically probe API endpoints 
 
 ## When to Use
 
-- When investigating security incidents that require detecting api enumeration attacks
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when writing Splunk/Elastic SIEM rules to flag sequential or UUID identifier iteration against API endpoints
+- Use when investigating suspected object-level authorization abuse (BOLA/IDOR) in API gateway or WAF logs
+- Use when detecting mixed 200/401/403 response patterns indicating enumeration from a single source
+- Use when building threat-hunting queries for API access-control bypass
+- Use when hardening API logging and rate-limiting against enumeration
 
 ## Prerequisites
 

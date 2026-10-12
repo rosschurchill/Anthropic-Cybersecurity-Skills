@@ -45,10 +45,11 @@ MITRE ATT&CK T1098 (Account Manipulation) covers adversary actions to maintain o
 
 ## When to Use
 
-- When investigating security incidents that require hunting for t1098 account manipulation
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating suspected privilege persistence in Active Directory via shadow-admin creation or SID history injection.
+- Use when triaging Windows Security Event IDs 4738 (account changed), 4728/4732/4756 (member added to security groups), 4670 (permissions changed), and 5136 (directory object modified).
+- Use when flagging additions to Domain Admins, Enterprise Admins, Schema Admins, Administrators, or Backup Operators.
+- Use when detecting accounts that gain AdminSDHolder protection or direct privilege assignment after initial access.
+- Use when correlating account/credential changes with authentication events to reconstruct the compromise-to-persistence timeline.
 
 ## Prerequisites
 
@@ -70,6 +71,43 @@ Detect accounts receiving AdminSDHolder protection, direct privilege assignment,
 
 ### Step 4: Correlate with Attack Timeline
 Cross-reference account changes with authentication events to identify initial compromise and persistence establishment.
+
+## Example
+
+Sigma rule that fires when a member is added to a highly privileged group (Event ID 4728/4732/4756):
+
+```yaml
+title: Member Added to Privileged Group (T1098)
+id: c4e1a9b7-2f36-4d58-8a0e-6b3f1d7c2e90
+status: experimental
+description: Detects additions to Domain Admins, Enterprise Admins, Schema Admins,
+  Administrators, or Backup Operators via Windows Security Event IDs 4728/4732/4756.
+references:
+  - https://attack.mitre.org/techniques/T1098/
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID:
+      - 4728   # member added to global security group
+      - 4732   # member added to local security group
+      - 4756   # member added to universal security group
+    TargetUserName:
+      - 'Domain Admins'
+      - 'Enterprise Admins'
+      - 'Schema Admins'
+      - 'Administrators'
+      - 'Backup Operators'
+  condition: selection
+falsepositives:
+  - Authorized administrative onboarding changes
+level: high
+tags:
+  - attack.persistence
+  - attack.privilege_escalation
+  - attack.t1098
+```
 
 ## Expected Output
 

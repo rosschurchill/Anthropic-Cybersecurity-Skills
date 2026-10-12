@@ -35,10 +35,11 @@ Cobalt Strike Malleable C2 profiles are domain-specific language scripts that cu
 
 ## When to Use
 
-- When investigating security incidents that require analyzing cobaltstrike malleable c2 profiles
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when reverse-engineering a captured .profile to extract HTTP GET/POST URIs, headers, user agents, and metadata transforms.
+- Use when you need the sleep time, jitter percentage, and DNS beacon settings a profile defines to tune detection thresholds.
+- Use when a profile spoofs a legitimate service (Amazon, Google, Slack) and you need the exact indicators to build a Suricata/Snort signature.
+- Use when validating captured Beacon traffic in a PCAP against a known malleable profile's transforms.
+- Use when asked to "analyze this Cobalt Strike malleable profile" or "generate network detections from this C2 profile."
 
 ## Prerequisites
 
@@ -60,6 +61,37 @@ Cobalt Strike Malleable C2 profiles are domain-specific language scripts that cu
 8. Compare profile against known threat actor profile collections
 9. Extract staging URIs and payload delivery mechanisms
 10. Produce detection report with IOCs and recommended network signatures
+
+## Example
+
+Parse a profile with `dissect.cobaltstrike` and pull the HTTP-GET URI, spoofed
+User-Agent, and sleep/jitter, then emit a Suricata rule from the extracted URI:
+
+```python
+from dissect.cobaltstrike.c2profile import C2Profile
+
+profile = C2Profile.from_path("amazon.profile")
+cfg = profile.as_dict()
+
+uri = cfg.get("http-get.uri", ["/"])[0]
+useragent = cfg.get("useragent", ["<none>"])[0]
+sleeptime = cfg.get("sleeptime", ["<none>"])[0]
+jitter = cfg.get("jitter", ["<none>"])[0]
+
+print(f"GET URI     : {uri}")
+print(f"User-Agent  : {useragent}")
+print(f"Sleep/Jitter: {sleeptime} ms / {jitter}%")
+
+# Turn the URI + UA into a Suricata signature for the GET beacon
+sid = 9000001
+print(
+    f'alert http any any -> any any (msg:"Cobalt Strike malleable C2 GET"; '
+    f'flow:established,to_server; http.method; content:"GET"; '
+    f'http.uri; content:"{uri}"; '
+    f'http.user_agent; content:"{useragent}"; '
+    f'classtype:trojan-activity; sid:{sid}; rev:1;)'
+)
+```
 
 ## Expected Output
 

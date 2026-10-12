@@ -68,10 +68,11 @@ AWS CloudTrail records API calls across AWS services. This skill covers querying
 
 ## When to Use
 
-- When investigating security incidents that require detecting aws cloudtrail anomalies
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting account compromise by querying CloudTrail with boto3 lookup_events
+- Use when baselining normal API activity per user/IP to flag statistical outliers
+- Use when detecting first-time API calls, new event sources, or geographic IP changes for a principal
+- Use when flagging sensitive API usage (IAM, KMS, S3 policy changes) or elevated error rates
+- Use when producing an anomaly-scored report of suspicious AWS users and source IPs
 
 ## Prerequisites
 
@@ -97,3 +98,38 @@ Produce a JSON report with anomaly scores, top suspicious users, and recommended
 ## Expected Output
 
 JSON report with event statistics, baseline deviations, anomalous users/IPs, sensitive API calls, and error rate analysis.
+
+## Detection Query
+
+Pull recent management events with boto3 `lookup_events`, baseline per-user API activity, and flag sensitive calls (Steps 1-3):
+
+```python
+import json
+import boto3
+from collections import Counter
+from datetime import datetime, timedelta
+
+ct = boto3.client("cloudtrail")
+
+# Step 1: Retrieve recent events with pagination
+events = []
+paginator = ct.get_paginator("lookup_events")
+start = datetime.utcnow() - timedelta(days=7)
+for page in paginator.paginate(StartTime=start, EndTime=datetime.utcnow()):
+    events.extend(page["Events"])
+
+# Step 2: Aggregate activity per user identity (baseline)
+by_user = {}
+for e in events:
+    detail = json.loads(e["CloudTrailEvent"])
+    user = detail.get("userIdentity", {}).get("arn", "unknown")
+    by_user.setdefault(user, Counter())[e["EventName"]] += 1
+
+# Step 3: Flag sensitive API usage that deviates from normal behavior
+SENSITIVE = {"PutUserPolicy", "CreateAccessKey", "AttachUserPolicy",
+             "PutBucketPolicy", "ScheduleKeyDeletion", "DeleteTrail"}
+for user, calls in by_user.items():
+    hits = SENSITIVE & set(calls)
+    if hits:
+        print(f"[!] {user} invoked sensitive APIs: {', '.join(sorted(hits))}")
+```

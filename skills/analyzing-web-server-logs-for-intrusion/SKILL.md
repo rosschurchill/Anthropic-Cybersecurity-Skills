@@ -40,10 +40,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing web server logs for intrusion
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting SQL injection, LFI, or directory traversal attempts in Apache/Nginx access logs
+- Use when identifying scanner activity (nikto, sqlmap, dirbuster, gobuster) by user-agent fingerprint
+- Use when detecting login brute-force patterns (>50 POST requests to login endpoints from one IP)
+- Use when enriching suspicious source IPs with GeoIP and producing a prioritized web-intrusion report
+- Use when building regex detections from OWASP attack signatures against Combined Log Format logs
 
 ## Prerequisites
 

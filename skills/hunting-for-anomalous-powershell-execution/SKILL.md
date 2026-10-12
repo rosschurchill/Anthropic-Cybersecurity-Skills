@@ -58,10 +58,11 @@ and fileless attack techniques even when the attacker uses obfuscation layers.
 
 ## When to Use
 
-- When investigating security incidents that require hunting for anomalous powershell execution
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when parsing Microsoft-Windows-PowerShell/Operational EVTX exports for Event 4104 script-block text and Event 4103 module logging.
+- Use when hunting for obfuscated commands, AMSI bypass attempts, or base64 `EncodedCommand` payloads across endpoints.
+- Use when reassembling multi-part script blocks via ScriptBlock ID correlation to recover the full deobfuscated script.
+- Use when identifying download cradles, credential-dumping keywords, and fileless lateral-movement commands in PowerShell logs.
+- Use when scoring and prioritizing suspicious PowerShell events by threat severity for a hunt report.
 
 ## Prerequisites
 

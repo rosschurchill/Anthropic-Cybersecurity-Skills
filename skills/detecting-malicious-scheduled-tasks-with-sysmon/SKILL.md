@@ -46,10 +46,11 @@ targeting remote systems.
 
 ## When to Use
 
-- When investigating security incidents that require detecting malicious scheduled tasks with sysmon
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting scheduled-task persistence (T1053.005) with Sysmon Event ID 1 for schtasks.exe or at.exe
+- Use when correlating Sysmon Event ID 11 (task XML written to C:\Windows\System32\Tasks\) with Security Event 4698
+- Use when a task runs from a public directory or carries an encoded PowerShell payload (-enc)
+- Use when detecting remote task creation (schtasks /s) used for lateral movement
+- Use when flagging tasks created by suspicious parent processes like cmd.exe or an Office app
 
 ## Prerequisites
 

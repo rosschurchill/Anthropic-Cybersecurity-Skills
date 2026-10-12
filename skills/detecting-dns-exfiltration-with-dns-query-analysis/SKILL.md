@@ -38,10 +38,11 @@ DNS exfiltration exploits the Domain Name System as a covert channel to extract 
 
 ## When to Use
 
-- When investigating security incidents that require detecting dns exfiltration with dns query analysis
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting for covert DNS-based data exfiltration from tools like iodine, dnscat2, or dns2tcp
+- Use when building a passive-DNS anomaly capability on query entropy, subdomain length, and query volume to a single domain
+- Use when TXT, NULL, or CNAME record abuse or oversized response payloads suggest a DNS tunnel
+- Use when writing Suricata rules or Splunk SPL to flag high-entropy or excessively long DNS queries
+- Use when analyzing Zeek dns.log or Suricata EVE JSON with a statistical/ML scoring script
 
 ## Prerequisites
 

@@ -90,10 +90,11 @@ AI-powered BEC detection uses machine learning, NLP, and behavioral analytics to
 
 ## When to Use
 
-- When investigating security incidents that require detecting business email compromise with ai
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when deploying an API-based AI email platform (Abnormal Security, Tessian, Ironscales) to catch BEC that bypasses signature rules
+- Use when scoring messages by stylometry and writing-style deviation to flag executive impersonation
+- Use when building NLP/transformer (BERT) models to detect urgency and manipulation language in payment requests
+- Use when behavioral baselines must flag a sudden change in a compromised employee's sending patterns
+- Use when tuning confidence thresholds for auto-quarantine vs. warning banner vs. analyst review
 
 ## Prerequisites
 - AI-powered email security platform (Abnormal Security, Tessian, Microsoft Defender)
@@ -138,6 +139,30 @@ AI-powered BEC detection uses machine learning, NLP, and behavioral analytics to
 - Route suspicious emails to SOC analyst queue for review
 - Integrate with SOAR for automated response playbooks
 - Feed BEC verdicts back into training data for model improvement
+
+## Example
+
+Stylometric anomaly scoring (Step 3): compare a new message against a sender's historical writing profile to catch executive-impersonation BEC that carries no malicious link or attachment.
+
+```python
+# Max per-feature z-score of a message's writing style vs. the sender's baseline.
+import numpy as np
+
+def style_features(text: str) -> np.ndarray:
+    words = text.split()
+    sents = [s for s in text.replace("!", ".").replace("?", ".").split(".") if s.strip()]
+    avg_word_len = np.mean([len(w) for w in words]) if words else 0.0
+    avg_sent_len = np.mean([len(s.split()) for s in sents]) if sents else 0.0
+    type_token = len(set(w.lower() for w in words)) / len(words) if words else 0.0
+    exclaim = text.count("!") / max(len(words), 1)
+    return np.array([avg_word_len, avg_sent_len, type_token, exclaim])
+
+def anomaly_score(new_msg: str, baseline_msgs: list) -> float:
+    base = np.vstack([style_features(m) for m in baseline_msgs])
+    mu, sigma = base.mean(axis=0), base.std(axis=0) + 1e-6
+    z = np.abs((style_features(new_msg) - mu) / sigma)
+    return float(z.max())  # > 3 => route to analyst review as possible impersonation
+```
 
 ## Tools & Resources
 - **Abnormal Security**: API-based AI email security with behavioral analysis

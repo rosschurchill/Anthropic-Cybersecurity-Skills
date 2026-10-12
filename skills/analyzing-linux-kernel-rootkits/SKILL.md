@@ -41,10 +41,11 @@ Linux kernel rootkits operate at ring 0, modifying kernel data structures to hid
 
 ## When to Use
 
-- When investigating security incidents that require analyzing linux kernel rootkits
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting a suspected kernel rootkit in a Linux memory image acquired with LiME, AVML, or /proc/kcore.
+- Use when confirming syscall-table hooking with Volatility3 linux.check_syscall against a known-good reference.
+- Use when finding hidden kernel modules by comparing linux.lsmod to linux.hidden_modules output.
+- Use when a /proc-vs-/sys cross-view discrepancy suggests processes, files, or connections are being hidden at ring 0.
+- Use when asked to "check this memory dump for an LKM rootkit" or "verify whether the syscall table was tampered with."
 
 ## Prerequisites
 

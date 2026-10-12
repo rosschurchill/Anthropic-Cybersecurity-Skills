@@ -42,10 +42,11 @@ Shadow IT refers to unauthorized SaaS applications and cloud services used witho
 
 ## When to Use
 
-- When investigating security incidents that require detecting shadow it cloud usage
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when auditing an organization for unsanctioned SaaS/cloud usage by aggregating proxy logs (Squid, Zscaler, Palo Alto) or DNS query logs with pandas.
+- Use when ranking discovered cloud services by data-transfer volume and unique-user count to find the top data-exfiltration risks.
+- Use when classifying destination domains against known SaaS categories (storage, email, dev tools, AI) and flagging those not on the approved application list.
+- Use when generating a shadow IT discovery report with per-service risk scores and remediation recommendations.
+- Use when enriching netflow/firewall FQDN data to measure egress to unauthorized cloud destinations.
 
 ## Prerequisites
 
@@ -63,6 +64,49 @@ Shadow IT refers to unauthorized SaaS applications and cloud services used witho
 5. Flag unauthorized services not on the approved application list
 6. Calculate risk scores based on data volume, user count, and service category
 7. Generate shadow IT discovery report with remediation recommendations
+
+## Example
+
+Aggregate proxy access logs by registered domain, classify against approved SaaS, and
+rank unauthorized services by egress volume:
+
+```python
+import pandas as pd
+import tldextract
+
+# Proxy log columns: timestamp, user, dest_domain, bytes_sent, bytes_recv
+df = pd.read_csv("proxy_access.csv", parse_dates=["timestamp"])
+
+# Reduce each destination to its registered domain (e.g. files.dropbox.com -> dropbox.com)
+df["registered"] = df["dest_domain"].apply(
+    lambda d: ".".join(p for p in [tldextract.extract(d).domain,
+                                    tldextract.extract(d).suffix] if p)
+)
+
+APPROVED = {"microsoft.com", "office.com", "github.com", "okta.com"}
+SAAS_CATEGORY = {
+    "dropbox.com": "storage", "box.com": "storage", "wetransfer.com": "storage",
+    "mega.nz": "storage", "openai.com": "ai", "anthropic.com": "ai",
+    "mailchimp.com": "email", "pastebin.com": "dev-tools",
+}
+
+agg = (df.groupby("registered")
+         .agg(total_bytes=("bytes_sent", "sum"),
+              requests=("dest_domain", "size"),
+              users=("user", "nunique"))
+         .reset_index())
+
+agg["approved"] = agg["registered"].isin(APPROVED)
+agg["category"] = agg["registered"].map(SAAS_CATEGORY).fillna("uncategorized")
+
+# Risk score: upload volume (MB) + user spread, doubled for storage/AI egress channels
+mb = agg["total_bytes"] / 1_000_000
+agg["risk"] = (mb.clip(upper=500) / 50 + agg["users"].clip(upper=100) / 10)
+agg.loc[agg["category"].isin(["storage", "ai"]), "risk"] *= 2
+
+shadow = agg[~agg["approved"]].sort_values("risk", ascending=False)
+print(shadow[["registered", "category", "total_bytes", "users", "risk"]].head(20))
+```
 
 ## Expected Output
 

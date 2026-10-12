@@ -39,10 +39,11 @@ Campaign attribution analysis involves systematically evaluating evidence to det
 
 ## When to Use
 
-- When investigating security incidents that require analyzing campaign attribution evidence
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when an incident investigation needs a defensible, confidence-weighted attribution of an operation to a threat actor.
+- Use when applying the Diamond Model or Analysis of Competing Hypotheses (ACH) to weigh evidence across competing actors.
+- Use when correlating infrastructure overlaps, TTP consistency, malware code similarity, operational timing, and language artifacts into one assessment.
+- Use when you must distinguish genuine overlap from false flags or shared tooling before assigning High/Moderate/Low confidence.
+- Use when asked "which group did this" or "how confident is this attribution" and you need to justify the level with attackcti/stix2 evidence.
 
 ## Prerequisites
 

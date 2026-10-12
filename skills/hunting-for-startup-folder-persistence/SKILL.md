@@ -46,10 +46,11 @@ Attackers use Windows startup folders for persistence (MITRE ATT&CK T1547.001 â€
 
 ## When to Use
 
-- When investigating security incidents that require hunting for startup folder persistence
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting malware or implants that survive reboot via placement in the user or all-users Startup folder (T1547.001).
+- Use when scanning `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup` and the ProgramData equivalent for suspicious extensions (.bat, .vbs, .ps1, .lnk, .exe).
+- Use when flagging recently created startup files (< 7 days) and unsigned binaries as candidate implants.
+- Use when monitoring startup directories in real time with a Python watchdog handler during an active investigation.
+- Use when validating Autoruns/EDR findings against a known-good startup baseline.
 
 ## Prerequisites
 
@@ -66,6 +67,42 @@ Attackers use Windows startup folders for persistence (MITRE ATT&CK T1547.001 â€
 5. Monitor startup folders in real-time using watchdog FileSystemEventHandler
 6. Correlate with known legitimate startup entries
 7. Generate threat hunting report with T1547.001 MITRE mapping
+
+## Example
+
+Enumerate both startup folders and flag suspicious or recently created entries:
+
+```python
+import os
+import time
+
+STARTUP_DIRS = [
+    os.path.expandvars(r"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"),
+    r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup",
+]
+SUSPICIOUS_EXT = {".bat", ".vbs", ".ps1", ".js", ".lnk", ".exe", ".scr", ".cmd"}
+RECENT_DAYS = 7
+now = time.time()
+
+for d in STARTUP_DIRS:
+    if not os.path.isdir(d):
+        continue
+    for entry in os.scandir(d):
+        if not entry.is_file():
+            continue
+        ext = os.path.splitext(entry.name)[1].lower()
+        age_days = (now - entry.stat().st_ctime) / 86400
+        reasons = []
+        if ext in SUSPICIOUS_EXT:
+            reasons.append(f"ext={ext}")
+        if age_days < RECENT_DAYS:
+            reasons.append(f"created {age_days:.1f}d ago")
+        if reasons:
+            print(f"[SUSPECT] {entry.path}  ({', '.join(reasons)})")
+```
+
+For real-time detection, wrap the same checks in a `watchdog.events.FileSystemEventHandler`
+and schedule an observer on each startup directory.
 
 ## Expected Output
 

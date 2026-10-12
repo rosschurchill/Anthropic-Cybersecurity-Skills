@@ -42,10 +42,11 @@ Business Email Compromise (BEC) attacks often leave traces in Office 365 audit l
 
 ## When to Use
 
-- When investigating security incidents that require analyzing office365 audit logs for compromise
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating a suspected O365 mailbox intrusion or BEC and need to query the Unified Audit Log via Microsoft Graph for Set-Mailbox and New-InboxRule operations.
+- Use when hunting for malicious inbox rules that forward or delete mail, especially forwarding to external addresses.
+- Use when detecting mailbox delegation changes (Add-MailboxPermission) added by an attacker.
+- Use when identifying suspicious OAuth application consent grants used for persistent mailbox access.
+- Use when building a timeline of compromise indicators across affected mailboxes with risk scores.
 
 ## Prerequisites
 
@@ -68,3 +69,63 @@ Business Email Compromise (BEC) attacks often leave traces in Office 365 audit l
 
 - JSON report listing forwarding rules, delegation changes, OAuth grants, and suspicious audit events with risk scores
 - Timeline of compromise indicators with affected mailboxes
+
+## Example
+
+Authenticate with MSAL (client credentials) and query the Unified Audit Log via Microsoft Graph for the inbox-rule and delegation operations named above:
+
+```python
+#!/usr/bin/env python3
+"""Pull O365 Unified Audit Log events for BEC indicators via Microsoft Graph."""
+import msal
+import requests
+
+TENANT_ID = "your-tenant-id"
+CLIENT_ID = "your-app-id"
+CLIENT_SECRET = "your-client-secret"
+
+SUSPICIOUS_OPS = {"New-InboxRule", "Set-InboxRule", "Set-Mailbox",
+                  "Add-MailboxPermission", "Add-MailboxFolderPermission", "Consent to application"}
+
+
+def get_token():
+    app = msal.ConfidentialClientApplication(
+        CLIENT_ID,
+        authority=f"https://login.microsoftonline.com/{TENANT_ID}",
+        client_credential=CLIENT_SECRET,
+    )
+    result = app.acquire_token_for_client(scopes=["https://graph.microsoft.com/.default"])
+    return result["access_token"]
+
+
+def query_audit_log(token, start, end):
+    """Query auditLogs/directoryAudits and the Office 365 management activity feed."""
+    headers = {"Authorization": f"Bearer {token}"}
+    url = "https://graph.microsoft.com/v1.0/auditLogs/directoryAudits"
+    params = {"$filter": f"activityDateTime ge {start} and activityDateTime le {end}", "$top": 999}
+
+    findings = []
+    while url:
+        resp = requests.get(url, headers=headers, params=params, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+        for event in data.get("value", []):
+            op = event.get("activityDisplayName", "")
+            if op in SUSPICIOUS_OPS:
+                findings.append({
+                    "operation": op,
+                    "time": event.get("activityDateTime"),
+                    "actor": event.get("initiatedBy", {}).get("user", {}).get("userPrincipalName"),
+                    "result": event.get("result"),
+                })
+        url = data.get("@odata.nextLink")
+        params = None  # nextLink already encodes the query
+
+    return findings
+
+
+if __name__ == "__main__":
+    token = get_token()
+    for f in query_audit_log(token, "2024-01-01T00:00:00Z", "2024-01-31T23:59:59Z"):
+        print(f"[!] {f['time']} {f['operation']} by {f['actor']} ({f['result']})")
+```

@@ -39,10 +39,11 @@ RDP brute force attacks target Windows Remote Desktop Protocol services by attem
 
 ## When to Use
 
-- When investigating security incidents that require detecting rdp brute force attacks
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating an exposed RDP endpoint for credential-guessing against Event ID 4625 (Logon Type 10 or 3)
+- Use when parsing exported Security EVTX files with python-evtx to rank attacking source IPs by failure count
+- Use when correlating 4625 failures with a subsequent 4624 success to confirm a compromised account
+- Use when detecting username-spray patterns (many usernames from one IP) or NLA bypass attempts
+- Use when building SIEM detection rules for RDP brute force (T1110.001, T1021.001)
 
 ## Prerequisites
 

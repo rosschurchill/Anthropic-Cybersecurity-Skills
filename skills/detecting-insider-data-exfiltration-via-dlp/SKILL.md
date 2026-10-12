@@ -36,10 +36,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require detecting insider data exfiltration via dlp
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating an insider suspected of exfiltrating data and you have endpoint, cloud-storage, and email DLP logs
+- Use when flagging users whose upload volume exceeds 3x their daily baseline using pandas behavioral analytics
+- Use when detecting off-hours file access, bulk downloads before a resignation, or USB/external-device usage spikes
+- Use when building statistical baselines per user from file-activity logs rather than static DLP rules alone
+- Use when correlating DLP policy violations with access to files outside a user's normal scope
 
 ## Prerequisites
 

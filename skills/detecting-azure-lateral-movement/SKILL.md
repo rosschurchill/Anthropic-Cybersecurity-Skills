@@ -44,10 +44,11 @@ Lateral movement in Azure AD/Entra ID differs from on-premises environments. Att
 
 ## When to Use
 
-- When investigating security incidents that require detecting azure lateral movement
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting cloud-identity lateral movement in Entra ID rather than on-prem SMB/RDP
+- Use when writing Sentinel KQL for token replay, cross-tenant sign-ins, or OAuth consent grants
+- Use when correlating sign-in anomalies with privilege or directory changes within a time window
+- Use when detecting service principal credential additions or mailbox delegation (FullAccess, SendAs) abuse
+- Use when building Sentinel playbooks to revoke suspicious OAuth grants or disable compromised service principals
 
 ## Prerequisites
 
@@ -88,3 +89,25 @@ Create Sentinel playbooks (Logic Apps) to automatically revoke suspicious OAuth 
 ## Expected Output
 
 JSON report containing detected lateral movement indicators, correlated event chains, affected identities, and recommended containment actions with MITRE ATT&CK technique mappings.
+
+## Detection Query
+
+Correlate an OAuth app consent grant with a service principal credential addition on the same app (Step 2/3) using Sentinel KQL over the `AuditLogs` table:
+
+```kql
+// Consent to an application quickly followed by a new SP credential = likely persistence pivot
+AuditLogs
+| where OperationName in ("Consent to application", "Add OAuth2PermissionGrant")
+| extend AppName = tostring(TargetResources[0].displayName)
+| extend Initiator = tostring(InitiatedBy.user.userPrincipalName)
+| project ConsentTime = TimeGenerated, Initiator, AppName, OperationName, CorrelationId
+| join kind=inner (
+    AuditLogs
+    | where OperationName == "Add service principal credentials"
+    | extend AppName = tostring(TargetResources[0].displayName)
+    | project CredAddTime = TimeGenerated, AppName
+  ) on AppName
+| where CredAddTime between (ConsentTime .. (ConsentTime + 1h))
+| project ConsentTime, CredAddTime, Initiator, AppName, CorrelationId
+| sort by ConsentTime desc
+```

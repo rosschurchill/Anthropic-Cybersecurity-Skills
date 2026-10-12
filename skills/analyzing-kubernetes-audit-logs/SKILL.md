@@ -40,10 +40,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing kubernetes audit logs
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when parsing kube-apiserver audit logs (JSON lines) to find `create` on `pods/exec` or `pods/attach` (shell into a container).
+- Use when reconstructing what an attacker did through the API server during a suspected cluster compromise.
+- Use when hunting secret enumeration (get/list/watch on `secrets`) or clusterrolebinding creation (RBAC escalation).
+- Use when flagging privileged pod creation or anonymous / system:unauthenticated API access.
+- Use when asked to "analyze these Kubernetes audit logs" or "write K8s detection content from audit events."
 
 ## Prerequisites
 

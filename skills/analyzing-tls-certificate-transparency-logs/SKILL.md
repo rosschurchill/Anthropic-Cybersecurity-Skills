@@ -60,10 +60,11 @@ mitre_f3:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing tls certificate transparency logs
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when querying crt.sh via pycrtsh for certificates issued against your brand's domain pattern
+- Use when hunting newly issued certificates for typosquatting or brand-impersonation subdomains
+- Use when detecting certificates issued by unexpected CAs (unauthorized issuance)
+- Use when discovering shadow IT through unknown subdomain certificates in CT logs
+- Use when proactively monitoring CT logs for phishing infrastructure targeting your organization
 
 ## Prerequisites
 

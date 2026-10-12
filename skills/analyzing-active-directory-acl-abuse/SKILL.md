@@ -42,10 +42,11 @@ This skill uses the ldap3 Python library to connect to a Domain Controller, quer
 
 ## When to Use
 
-- When investigating security incidents that require analyzing active directory acl abuse
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when you need to enumerate GenericAll, WriteDACL, WriteOwner, or GenericWrite ACEs on sensitive objects (Domain Admins, domain controllers, GPOs) with ldap3.
+- Use when hunting non-privileged principals that hold dangerous rights granting password-reset, self-add-to-group, or ownership-takeover attack paths.
+- Use when auditing the nTSecurityDescriptor DACLs after a delegation change to confirm least privilege held.
+- Use when a BloodHound finding flags an ACL edge and you need to confirm the raw ACE, trustee SID, and access mask from the DC.
+- Use when asked "who can take over this AD object" or "find WriteDACL/GenericAll grants to non-admins" during an authorized assessment.
 
 ## Prerequisites
 

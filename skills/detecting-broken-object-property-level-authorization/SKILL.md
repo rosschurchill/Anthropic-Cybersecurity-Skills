@@ -41,10 +41,11 @@ Broken Object Property Level Authorization (BOPLA), classified as API3:2023 in t
 
 ## When to Use
 
-- When investigating security incidents that require detecting broken object property level authorization
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when reviewing API responses for excessive data exposure (e.g., ssn, password_hash leaking in JSON)
+- Use when testing for mass assignment by injecting properties like role=admin or is_verified=true into request bodies
+- Use when building test cases for OWASP API3:2023 (BOPLA) property-level gaps that object-level checks miss
+- Use when probing GraphQL endpoints for introspection-enabled schema exposure
+- Use when writing detection or mitigation for over-exposed or over-writable object fields (allowlist serializers)
 
 ## Prerequisites
 

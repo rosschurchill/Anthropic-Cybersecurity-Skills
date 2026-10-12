@@ -62,10 +62,11 @@ Ransomware groups operating under double-extortion models maintain data leak sit
 
 ## When to Use
 
-- When investigating security incidents that require analyzing ransomware leak site intelligence
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when gathering threat intelligence on active ransomware groups (Qilin, Akira, LockBit, BlackCat, Clop) by ingesting DLS victim posts from public feeds like Ransomwatch or RansomLook.
+- Use when tracking group activity trends over time (monthly victim counts, top groups) to inform proactive defense reporting.
+- Use when producing sector- or geography-specific ransomware risk assessments from double-extortion leak-site data.
+- Use when identifying newly emerged or rebranding ransomware groups within a lookback window.
+- Use when assessing your organization's or supply-chain partners' exposure to double-extortion listings without directly touching Tor .onion sites.
 
 ## Prerequisites
 

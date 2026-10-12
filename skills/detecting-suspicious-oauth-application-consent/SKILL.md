@@ -35,10 +35,11 @@ Illicit consent grant attacks trick users into granting excessive permissions to
 
 ## When to Use
 
-- When investigating security incidents that require detecting suspicious oauth application consent
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when investigating a suspected illicit consent grant attack in Azure AD / Microsoft Entra ID.
+- Use when enumerating OAuth2 permission grants via Microsoft Graph `/oauth2PermissionGrants` to hunt over-privileged or attacker-registered applications.
+- Use when reviewing directory audit logs for `Consent to application` events and tying them to the granting user and IP.
+- Use when flagging apps requesting high-risk scopes (Mail.Read, Files.ReadWrite.All) or published by unverified publishers.
+- Use when validating detection coverage for consent phishing across your tenant's service principals.
 
 ## Prerequisites
 
@@ -56,6 +57,46 @@ Illicit consent grant attacks trick users into granting excessive permissions to
 5. Flag applications with high-risk scopes (Mail.Read, Files.ReadWrite.All, etc.)
 6. Check publisher verification status for each application
 7. Generate risk report with remediation recommendations
+
+## Example
+
+Authenticate with MSAL client credentials and enumerate OAuth2 permission grants,
+flagging high-risk delegated scopes:
+
+```python
+import msal
+import requests
+
+TENANT_ID = "your-tenant-id"
+CLIENT_ID = "your-app-id"
+CLIENT_SECRET = "your-client-secret"
+GRAPH = "https://graph.microsoft.com/v1.0"
+
+HIGH_RISK_SCOPES = {
+    "Mail.Read", "Mail.ReadWrite", "Mail.Send",
+    "Files.ReadWrite.All", "Directory.ReadWrite.All",
+    "User.Read.All", "offline_access",
+}
+
+app = msal.ConfidentialClientApplication(
+    CLIENT_ID,
+    authority=f"https://login.microsoftonline.com/{TENANT_ID}",
+    client_credential=CLIENT_SECRET,
+)
+token = app.acquire_token_for_client(
+    scopes=["https://graph.microsoft.com/.default"]
+)["access_token"]
+headers = {"Authorization": f"Bearer {token}"}
+
+grants = requests.get(f"{GRAPH}/oauth2PermissionGrants", headers=headers).json()
+for grant in grants.get("value", []):
+    scopes = set((grant.get("scope") or "").split())
+    risky = scopes & HIGH_RISK_SCOPES
+    if risky:
+        # consentType "AllPrincipals" means tenant-wide admin consent
+        print(f"clientId={grant['clientId']} consentType={grant['consentType']} "
+              f"risky_scopes={sorted(risky)}")
+```
 
 ## Expected Output
 

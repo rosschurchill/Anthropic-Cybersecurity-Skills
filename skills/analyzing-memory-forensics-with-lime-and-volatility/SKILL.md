@@ -34,10 +34,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require analyzing memory forensics with lime and volatility
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when responding to a compromised Linux host and need to acquire volatile memory with the LiME kernel module before the system is powered down.
+- Use when analyzing a Linux memory image with Volatility 3 to list processes (`linux.pslist` vs `linux.psscan`) and spot hidden or unlinked processes.
+- Use when recovering attacker activity from memory: bash command history (`linux.bash`), live network connections (`linux.sockstat`).
+- Use when hunting for Linux rootkits or injected code via `linux.lsmod` and `linux.malfind`.
+- Use when a disk-only investigation misses in-memory-only malware and you need the volatile artifacts.
 
 ## Prerequisites
 

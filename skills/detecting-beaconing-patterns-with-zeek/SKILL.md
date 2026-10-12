@@ -37,10 +37,11 @@ mitre_attack:
 
 ## When to Use
 
-- When investigating security incidents that require detecting beaconing patterns with zeek
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when hunting C2 beaconing callbacks in Zeek conn.log network data
+- Use when loading conn.log into Pandas via ZAT's LogToDataFrame for timing analysis
+- Use when computing inter-arrival time standard deviation / coefficient of variation per src-dst pair
+- Use when flagging periodic connections with low jitter as likely beacons
+- Use when triaging candidate C2 destinations by connection regularity over a capture window
 
 ## Prerequisites
 

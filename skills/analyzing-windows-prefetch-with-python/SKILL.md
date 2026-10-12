@@ -37,10 +37,11 @@ Windows Prefetch files (.pf) record application execution data including executa
 
 ## When to Use
 
-- When investigating security incidents that require analyzing windows prefetch with python
-- When building detection rules or threat hunting queries for this domain
-- When SOC analysts need structured procedures for this analysis type
-- When validating security monitoring coverage for related attack techniques
+- Use when reconstructing application execution history and run counts from C:\Windows\Prefetch\ .pf files
+- Use when investigating renamed or masquerading binaries by comparing executable names to loaded DLLs/resources
+- Use when verifying whether tools like mimikatz, psexec, or procdump executed during an incident window
+- Use when building a chronological execution timeline across all Prefetch files in incident response
+- Use when hunting first-time executions or anti-forensics tools (sdelete, wevtutil) in a timeline
 
 ## Prerequisites
 
