@@ -44,7 +44,7 @@ and passing gates.
 | T1654 | Log Enumeration | `detecting-adversary-log-enumeration` | discovery | shipped |
 | T1020 | Automated Exfiltration | `detecting-automated-data-exfiltration` | exfiltration | shipped |
 | T1563 | Remote Service Session Hijacking | `detecting-remote-service-session-hijacking` | lateral-movement | shipped |
-| T1560 | Archive Collected Data | `detecting-data-staging-and-archiving` | collection | research |
+| T1560 | Archive Collected Data | `detecting-data-staging-and-archiving` | collection | shipped |
 | T1132 | Data Encoding | `detecting-encoded-c2-channels` | command-and-control | research |
 | T1104 | Multi-Stage Channels | `detecting-multi-stage-c2-channels` | command-and-control | research |
 
