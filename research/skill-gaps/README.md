@@ -32,7 +32,7 @@ and passing gates.
 | T1498 | Network Denial of Service | `detecting-network-denial-of-service` | impact | shipped |
 | T1499 | Endpoint Denial of Service | `detecting-endpoint-denial-of-service` | impact | shipped |
 | T1529 | System Shutdown/Reboot | `detecting-malicious-system-shutdown` | impact | shipped |
-| T1667 | Email Bombing | `detecting-email-bombing-attacks` | impact | research |
+| T1667 | Email Bombing | `detecting-email-bombing-attacks` | impact | shipped |
 | T1111 | MFA Interception | `detecting-mfa-interception-and-bypass` | credential-access | research |
 | T1689 | Downgrade Attack | `detecting-protocol-downgrade-attacks` | defense-evasion | research |
 | T1686 | Disable or Modify System Firewall | `detecting-host-firewall-tampering` | defense-evasion | research |
