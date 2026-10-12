@@ -1,6 +1,6 @@
 # MITRE ATT&CK Mapping
 
-This directory maps the cybersecurity skills in this repository to the [MITRE ATT&CK](https://attack.mitre.org/) framework (Enterprise v15).
+This directory maps the cybersecurity skills in this repository to the [MITRE ATT&CK](https://attack.mitre.org/) framework (Enterprise v19.2). Every skill's `mitre_attack` technique IDs have been validated against the current ATT&CK Enterprise, ICS, and Mobile v19.2 releases — no revoked or deprecated IDs remain.
 
 ## Overview
 
@@ -97,6 +97,6 @@ Skills relevant to ATT&CK carry these tags in their YAML frontmatter:
 
 - [MITRE ATT&CK Enterprise Matrix](https://attack.mitre.org/matrices/enterprise/)
 - [MITRE ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/)
-- [ATT&CK v15 Release Notes](https://attack.mitre.org/resources/updates/)
+- [ATT&CK v19 Release Notes](https://attack.mitre.org/resources/updates/)
 - [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) -- relevant for ot-ics-security skills
 - [MITRE ATT&CK for Mobile](https://attack.mitre.org/matrices/mobile/) -- relevant for mobile-security skills
