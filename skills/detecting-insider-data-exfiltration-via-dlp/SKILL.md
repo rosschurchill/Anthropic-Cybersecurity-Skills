@@ -7,7 +7,7 @@ description: >-
   building user behavior analytics for data loss prevention. Do not use for broad insider
   behavioral threat hunting beyond DLP - use detecting-insider-threat-behaviors.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - insider-threat
 - data-loss-prevention

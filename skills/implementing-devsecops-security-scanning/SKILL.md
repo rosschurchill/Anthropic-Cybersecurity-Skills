@@ -6,7 +6,7 @@ description: 'Integrates SAST, DAST, and SCA into CI/CD pipelines using Semgrep 
   2, PCI-DSS, ISO 27001), or gating deployments on critical vulnerabilities. Do not use for GitHub-native
   CodeQL code scanning - use implementing-github-advanced-security-for-code-scanning.'
 domain: cybersecurity
-subdomain: application-security
+subdomain: devsecops
 tags:
 - devsecops
 - SAST

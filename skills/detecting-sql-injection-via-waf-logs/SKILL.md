@@ -11,7 +11,7 @@ description: >-
   exploiting SQL injection during a penetration test — use
   exploiting-sql-injection-vulnerabilities.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - waf-log-analysis
 - sql-injection-detection

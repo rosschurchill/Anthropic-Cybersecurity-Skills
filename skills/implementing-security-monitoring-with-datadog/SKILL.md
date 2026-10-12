@@ -11,7 +11,7 @@ description: >-
   SIEM, CSM, Workload Protection, Agent, detection rule, dashboard, log ingestion. Do not use
   for building cloud SIEM on Microsoft Sentinel — use building-cloud-siem-with-sentinel.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - siem
 - security-monitoring

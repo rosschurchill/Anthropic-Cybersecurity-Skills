@@ -7,7 +7,7 @@ description: >-
   hunting for command-and-control callbacks in network data. Do not use for frequency-analysis
   beaconing hunts outside Zeek conn.log data - use hunting-for-command-and-control-beaconing.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - network-security
 - zeek

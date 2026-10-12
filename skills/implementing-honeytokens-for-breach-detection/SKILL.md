@@ -6,7 +6,7 @@ description: 'Deploys canary tokens and honeytokens (fake AWS credentials, DNS c
   systems for intrusion detection. Do not use for building a deception coverage report via the Thinkst
   Canary API - use implementing-deception-based-detection-with-canarytoken.'
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - deception-technology
 - honeytokens

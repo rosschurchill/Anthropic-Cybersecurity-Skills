@@ -9,7 +9,7 @@ description: >-
   were altered. Do not use for centralized log collection and forwarding - use
   implementing-log-forwarding-with-fluentd.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - log-integrity
 - tamper-detection

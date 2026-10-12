@@ -6,7 +6,7 @@ description: Parses API Gateway access logs (AWS API Gateway, Kong, Nginx) to de
   Use when investigating API abuse or building API-specific threat detection rules.
   Do not use for actively testing an API for these vulnerabilities - use conducting-api-security-testing.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - api-security
 - access-log-analysis

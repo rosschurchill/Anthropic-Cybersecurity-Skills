@@ -9,7 +9,7 @@ description: >-
   Active Directory tiered administration model configuration - use
   configuring-active-directory-tiered-model.
 domain: cybersecurity
-subdomain: identity-and-access-management
+subdomain: identity-access-management
 tags:
 - privileged-access
 - PAW

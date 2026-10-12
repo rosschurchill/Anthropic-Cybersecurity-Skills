@@ -6,7 +6,7 @@ description: Performs Linux memory acquisition using LiME (Linux Memory Extracto
   Linux memory images. Use when performing incident response on compromised Linux
   systems. Do not use for Windows memory-image analysis - use analyzing-memory-dumps-with-volatility.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - memory-forensics
 - linux-forensics

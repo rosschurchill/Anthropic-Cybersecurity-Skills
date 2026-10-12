@@ -7,7 +7,7 @@ description: >-
   Use during incident response memory analysis. Do not use for memory forensics with the
   Volatility 3 framework - use performing-memory-forensics-with-volatility3.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - memory-forensics
 - rekall

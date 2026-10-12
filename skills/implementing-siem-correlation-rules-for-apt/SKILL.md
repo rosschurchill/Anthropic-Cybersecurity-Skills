@@ -9,7 +9,7 @@ description: >-
   use for building the general SIEM detection use-case library - use
   implementing-siem-use-cases-for-detection.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - siem
 - correlation-rules

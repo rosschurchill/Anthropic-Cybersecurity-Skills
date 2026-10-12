@@ -9,7 +9,7 @@ description: >-
   Nginx, access log, SQLi, LFI, directory traversal, GeoIP, OWASP signatures. Do not use for
   WAF-log-driven SQL injection detection specifically - use detecting-sql-injection-via-waf-logs.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - web-log-analysis
 - apache-logs

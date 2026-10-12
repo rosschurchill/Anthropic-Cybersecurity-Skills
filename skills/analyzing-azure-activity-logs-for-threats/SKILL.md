@@ -6,7 +6,7 @@ description: Queries Azure Monitor activity logs and sign-in logs via azure-moni
   Use when investigating suspicious Azure tenant activity or building cloud SIEM detections.
   Do not use for focused service-principal abuse detection - use detecting-azure-service-principal-abuse.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - azure
 - cloud-security

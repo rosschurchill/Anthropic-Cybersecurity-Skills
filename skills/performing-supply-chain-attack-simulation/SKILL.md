@@ -8,7 +8,7 @@ description: >-
   a project's dependencies for malicious or confused packages, or when
   assessing package-registry supply-chain risk. Do not use for detecting typosquatting packages in npm and PyPI registries - use detecting-typosquatting-packages-in-npm-pypi.
 domain: cybersecurity
-subdomain: application-security
+subdomain: supply-chain-security
 tags:
 - supply-chain
 - typosquatting

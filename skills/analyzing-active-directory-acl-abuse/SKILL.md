@@ -9,7 +9,7 @@ description: >-
   use for graphing full attack paths with BloodHound - use
   performing-active-directory-bloodhound-analysis.
 domain: cybersecurity
-subdomain: identity-security
+subdomain: identity-access-management
 tags:
 - active-directory
 - acl-abuse

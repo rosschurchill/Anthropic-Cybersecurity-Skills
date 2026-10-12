@@ -8,7 +8,7 @@ description: >-
   and reporting alert-to-incident conversion rates. Do not use for authoring new SIEM
   detection use cases - use implementing-siem-use-cases-for-detection.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - siem
 - detection-engineering

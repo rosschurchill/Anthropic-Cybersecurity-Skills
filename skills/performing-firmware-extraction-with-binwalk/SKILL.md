@@ -9,7 +9,7 @@ description: >-
   images during authorized assessments. Do not use for behavioral or static malware analysis
   of extracted binaries — use performing-firmware-malware-analysis.
 domain: cybersecurity
-subdomain: firmware-analysis
+subdomain: hardware-firmware-security
 tags:
 - firmware
 - binwalk
