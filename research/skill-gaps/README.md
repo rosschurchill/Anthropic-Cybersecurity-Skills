@@ -78,7 +78,7 @@ research -> draft -> gate loop. Status: `research` = sub-research file written;
 
 | ATT&CK | Technique | Proposed slug | Tactic | Status |
 |--------|-----------|---------------|--------|:------:|
-| T1651 | Cloud Administration Command | `detecting-cloud-administration-command-abuse` | execution | research |
+| T1651 | Cloud Administration Command | `detecting-cloud-administration-command-abuse` | execution | shipped |
 | T1675 | ESXi Administration Command | `detecting-esxi-administration-abuse` | execution | research |
 | T1072 | Software Deployment Tools | `detecting-software-deployment-tool-abuse` | execution | research |
 | T1176 | Software Extensions | `detecting-malicious-software-extensions` | persistence | research |
