@@ -25,7 +25,7 @@ nist_csf:
 - PR.DS-01
 mitre_attack:
 - T1654
-- T1070.001
+- T1685.005
 - T1082
 ---
 
@@ -158,7 +158,7 @@ LOG ENUMERATION DETECTION
   Target:          <Security channel | auth.log | wtmp | ...>
   Parent:          <parent process> (expected: <y/n>)
   Follow-on:       <export/transfer | 1102 clearing | none>
-  ATT&CK:          T1654[, T1070.001, T1082]
+  ATT&CK:          T1654[, T1685.005, T1082]
   Actions taken:   <host snapshot | logs preserved off-host | clearing hunted>
 ```
 

@@ -25,7 +25,7 @@ nist_csf:
 - PR.PS-01
 mitre_attack:
 - T1667
-- T1656
+- T1684.001
 - T1219
 ---
 
@@ -159,7 +159,7 @@ EMAIL BOMBING DETECTION
   Peak:            <msgs> msgs / <window>, distinct sender domains <n>
   Body pattern:    <subscription confirmations | mixed newsletters | repeated attachment>
   Hand-off:        <none | vishing call | remote-tool exec: <tool> on <host>>
-  ATT&CK:          T1667[, T1656, T1219]
+  ATT&CK:          T1667[, T1684.001, T1219]
   Actions taken:   <recipient rate-limited/quarantined | user warned | remote tools blocked>
 ```
 
