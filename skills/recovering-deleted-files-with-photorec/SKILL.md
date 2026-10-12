@@ -20,10 +20,6 @@ nist_ai_rmf:
 - MEASURE-2.7
 - MAP-5.1
 - MANAGE-2.4
-atlas_techniques:
-- AML.T0070
-- AML.T0066
-- AML.T0082
 nist_csf:
 - RS.AN-03
 - DE.AE-02

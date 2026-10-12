@@ -20,8 +20,6 @@ tags:
 - penetration-testing
 version: 1.0.0
 license: Apache-2.0
-atlas_techniques:
-- AML.T0054
 nist_ai_rmf:
 - MEASURE-2.7
 - MANAGE-2.4

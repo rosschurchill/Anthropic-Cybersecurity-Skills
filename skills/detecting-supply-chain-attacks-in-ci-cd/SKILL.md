@@ -18,8 +18,6 @@ tags:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-atlas_techniques:
-- AML.T0010
 nist_ai_rmf:
 - GOVERN-5.2
 - MAP-1.6

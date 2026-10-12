@@ -20,10 +20,6 @@ tags:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-atlas_techniques:
-- AML.T0051
-- AML.T0054
-- AML.T0056
 nist_ai_rmf:
 - MEASURE-2.7
 - MEASURE-2.5

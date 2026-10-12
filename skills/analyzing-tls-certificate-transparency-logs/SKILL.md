@@ -13,9 +13,6 @@ tags:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-atlas_techniques:
-- AML.T0073
-- AML.T0052
 nist_csf:
 - DE.CM-01
 - RS.MA-01

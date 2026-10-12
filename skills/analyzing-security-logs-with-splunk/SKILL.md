@@ -18,10 +18,6 @@ mitre_attack:
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
-atlas_techniques:
-- AML.T0070
-- AML.T0066
-- AML.T0082
 d3fend_techniques:
 - Executable Denylisting
 - Execution Isolation
