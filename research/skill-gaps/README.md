@@ -37,7 +37,7 @@ and passing gates.
 | T1689 | Downgrade Attack | `detecting-protocol-downgrade-attacks` | defense-evasion | shipped |
 | T1686 | Disable or Modify System Firewall | `detecting-host-firewall-tampering` | defense-evasion | shipped |
 | T1690 | Prevent Command History Logging | `detecting-command-history-tampering` | defense-evasion | shipped |
-| T1599 | Network Boundary Bridging | `detecting-network-boundary-bridging` | defense-evasion | research |
+| T1599 | Network Boundary Bridging | `detecting-network-boundary-bridging` | defense-evasion | shipped |
 | T1578 | Modify Cloud Compute Infrastructure | `detecting-cloud-compute-infrastructure-tampering` | defense-evasion | research |
 | T1666 | Modify Cloud Resource Hierarchy | `detecting-cloud-resource-hierarchy-tampering` | defense-evasion | research |
 | T1677 | Poisoned Pipeline Execution | `detecting-poisoned-pipeline-execution` | execution | research |
