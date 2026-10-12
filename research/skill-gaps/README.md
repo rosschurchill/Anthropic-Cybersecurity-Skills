@@ -83,7 +83,7 @@ research -> draft -> gate loop. Status: `research` = sub-research file written;
 | T1072 | Software Deployment Tools | `detecting-software-deployment-tool-abuse` | execution | shipped |
 | T1176 | Software Extensions | `detecting-malicious-software-extensions` | persistence | shipped |
 | T1671 | Cloud Application Integration | `detecting-malicious-cloud-app-integration` | persistence | shipped |
-| T1569 | System Services | `detecting-malicious-system-service-execution` | execution | research |
+| T1569 | System Services | `detecting-malicious-system-service-execution` | execution | shipped |
 | T1189 | Drive-by Compromise | `detecting-drive-by-compromise` | initial-access | research |
 | T1115 | Clipboard Data | `detecting-clipboard-data-theft` | collection | research |
 | T1113/.123/.125 | Screen/Audio/Video Capture | `detecting-screen-audio-video-capture` | collection | research |
