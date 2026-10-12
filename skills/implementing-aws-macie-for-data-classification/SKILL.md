@@ -19,12 +19,6 @@ tags:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-nist_ai_rmf:
-- GOVERN-1.1
-- GOVERN-4.2
-- MAP-2.3
-- MEASURE-2.7
-- MEASURE-2.5
 nist_csf:
 - PR.IR-01
 - ID.AM-08

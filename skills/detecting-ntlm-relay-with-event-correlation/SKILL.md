@@ -27,11 +27,6 @@ d3fend_techniques:
 - Network Traffic Analysis
 - Client-server Payload Profiling
 - Network Traffic Community Deviation
-nist_ai_rmf:
-- MEASURE-2.7
-- MEASURE-2.5
-- GOVERN-6.1
-- MAP-5.1
 nist_csf:
 - DE.CM-01
 - DE.AE-02

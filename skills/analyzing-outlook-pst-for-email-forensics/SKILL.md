@@ -22,10 +22,6 @@ tags:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-nist_ai_rmf:
-- MANAGE-2.4
-- MANAGE-3.1
-- MEASURE-3.1
 nist_csf:
 - RS.AN-03
 - DE.AE-02

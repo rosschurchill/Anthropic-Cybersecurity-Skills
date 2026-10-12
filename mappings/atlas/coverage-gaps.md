@@ -53,13 +53,36 @@ The one retained mapping on a non-`ai-security` skill is
 `detecting-deepfake-audio-in-vishing-attacks` → `AML.T0052`, `AML.T0088` (it genuinely detects
 AI-generated voice), reduced from four tags by dropping `AML.T0018`/`AML.T0043`.
 
-### Known remaining issue (not addressed here)
+### NIST AI RMF mappings (also cleaned)
 
-**82 non-`ai-security` skills still carry `nist_ai_rmf` mappings** (69× `MEASURE-2.7`, 60× `MAP-5.1`,
-51× `MANAGE-2.4`) on subjects such as `analyzing-outlook-pst-for-email-forensics` and
-`analyzing-powershell-empire-artifacts` — apparently the same bulk event. Unlike an ATLAS technique
-tag, this is a judgement about framework applicability rather than a false claim about covered
-adversary behaviour, so it was left for a separate decision.
+The same bulk event had attached `nist_ai_rmf` mappings to skills with no AI dimension.
+**260 instances across 78 non-`ai-security` skills** were removed (subjects such as
+`analyzing-outlook-pst-for-email-forensics`, `recovering-deleted-files-with-photorec` and
+`analyzing-powershell-empire-artifacts`).
+
+AI RMF needed a **different rule than ATLAS**, because the two frameworks point in opposite
+directions: an ATLAS tag claims the skill defends against attacks *on* an AI system, whereas AI RMF
+governs an AI system you *operate*. So the test applied was: **does the skill's own procedure build,
+train, tune, evaluate or govern an AI/ML model, or address AI-generated threats?** Merely deploying a
+vendor product that uses ML internally (CrowdStrike, Macie, a cloud SIEM) does not make a skill an
+AI-risk-management procedure, so those were cleared.
+
+Four non-`ai-security` skills legitimately keep their AI RMF mappings:
+
+| Skill | Why it qualifies |
+|---|---|
+| `detecting-anomalies-in-industrial-control-systems` | trains an Isolation Forest with scikit-learn (real model lifecycle) |
+| `detecting-business-email-compromise-with-ai` | builds BERT/NLP stylometry detection |
+| `performing-ai-driven-osint-correlation` | operates an LLM as part of the workflow |
+| `detecting-deepfake-audio-in-vishing-attacks` | addresses AI-generated voice |
+
+`nist_ai_rmf` now appears on 30 skills: the 26 `ai-security` skills plus those four. All values are
+valid AI RMF subcategory IDs.
+
+Two false positives were caught during triage and deliberately not kept:
+`performing-clickjacking-attack-test` scored highly only because "embedding" appears nine times in
+the *iframe* sense, and `implementing-cisa-zero-trust-maturity-model` mentions "AI-driven anomaly
+detection" only as a CISA Optimal-stage aspiration, not as work the skill performs.
 
 ## Tier A build queue — shipped
 

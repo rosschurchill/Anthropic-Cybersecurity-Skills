@@ -19,11 +19,6 @@ tags:
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
-nist_ai_rmf:
-- MEASURE-2.7
-- MEASURE-2.5
-- GOVERN-6.1
-- MAP-5.1
 nist_csf:
 - PR.AA-01
 - PR.AA-02

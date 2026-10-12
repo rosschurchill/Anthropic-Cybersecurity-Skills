@@ -20,9 +20,6 @@ tags:
 version: '1.0'
 author: mahipal
 license: Apache-2.0
-nist_ai_rmf:
-- MEASURE-2.8
-- MAP-5.1
 nist_csf:
 - PR.AT-01
 - DE.CM-09
