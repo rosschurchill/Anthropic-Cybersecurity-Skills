@@ -46,7 +46,7 @@ and passing gates.
 | T1563 | Remote Service Session Hijacking | `detecting-remote-service-session-hijacking` | lateral-movement | shipped |
 | T1560 | Archive Collected Data | `detecting-data-staging-and-archiving` | collection | shipped |
 | T1132 | Data Encoding | `detecting-encoded-c2-channels` | command-and-control | shipped |
-| T1104 | Multi-Stage Channels | `detecting-multi-stage-c2-channels` | command-and-control | research |
+| T1104 | Multi-Stage Channels | `detecting-multi-stage-c2-channels` | command-and-control | shipped |
 
 ## How a research file becomes a skill
 
