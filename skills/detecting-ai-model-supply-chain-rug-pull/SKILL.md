@@ -56,7 +56,7 @@ pip install fickling
 
 1. **Inventory and pin.** Enumerate every external model, dataset, and loader package you depend on. Record the exact commit SHA (not a mutable tag like `main`) and a content hash for each. An artifact pinned only by tag can be swapped in place silently.
 2. **Diff the file manifest on every new revision.** Pull the commit history and compare the file list and hashes between the last-reviewed revision and the new one. The core rug-pull signal is a trusted artifact that gains unexplained executable surface.
-3. **Re-scan the new revision.** Run picklescan / ModelScan / Fickling over all weight and config files. Flag any pickle-based artifact (`.bin`, `.pt`, `.ckpt`, `.pkl`) added to a repo that was previously safetensors-only, any Keras Lambda layer, and any custom `modeling_*.py` that implies `trust_remote_code=True`.
+3. **Re-scan the new revision.** Run picklescan / ModelScan / Fickling over all weight and config files. Flag any pickle-based artifact (`.bin`, `.pt`, `.ckpt`, `.pkl`) added to a repo that was previously safetensors-only, any Keras Lambda layer, and any newly added `.py` file at all — the custom-code convention is `modeling_<arch>.py`, `configuration_<arch>.py`, `tokenization_<arch>.py` plus arbitrarily named helpers they import, so treat every added `.py` as `trust_remote_code=True` surface.
 4. **Check reputation plausibility.** Compare download/star/like velocity against the artifact cohort and against inbound references. A spike decoupled from citations, stars from freshly created accounts in a narrow window, or high adoption on a brand-new maintainer is a reputation-inflation signal.
 5. **Verify provenance.** Confirm signature/attestation where available, flag recent maintainer or owner-email changes, and detect re-uploads under a renamed repo that typosquats a trusted name.
 6. **Gate `trust_remote_code`.** Inventory every load path that sets `trust_remote_code=True` and alert on any such load from a non-allowlisted org.
@@ -68,8 +68,9 @@ pip install fickling
 - **Reputation inflation (AML.T0111):** fake stars, likes, or downloads inflate trust so a malicious artifact clears the extra scrutiny new uploads receive. High reputation plus new maintainer plus new pickle file is high severity.
 - **Publish poisoned models / datasets (AML.T0058 / AML.T0019):** the artifact is malicious from first publish rather than turned later; the provenance and scan controls are the same.
 - **Executable surface:** pickle deserialization (opcodes `GLOBAL`, `REDUCE`, `STACK_GLOBAL` referencing `os`, `posix`, `subprocess`, or `builtins.eval`), Keras Lambda layers, and TensorFlow SavedModel custom ops all run code on load. safetensors cannot.
-- **Hub scan caveat:** Hugging Face marks flagged files but does not block them. A green hub badge is not an allow decision; your own re-scan is.
-- **Named reference:** the Postmark MCP npm rug pull, in which a trusted package later began BCCing outbound mail to an attacker, is the canonical consumer-side pattern.
+- **Hub scan caveat:** Hugging Face marks flagged files but does not block them, and the Hub scanner is picklescan itself — so a green hub badge is not an allow decision, and your own re-scan with the same tool is not an independent control either.
+- **Scanners are blocklist-based:** picklescan and ModelScan match known-dangerous opcodes and imports, and both have documented public bypasses (malformed/mis-dispatched archives, scanner-crash cases, alternative gadget chains). A clean scan is evidence, never an allow decision. The durable control is requiring safetensors and quarantining pickle on ingest.
+- **Named reference:** the `postmark-mcp` npm rug pull — an impersonating third-party clone of Postmark's MCP server, not Postmark's own package, which ran benign for many releases before a version began BCCing outbound mail to an attacker — is the canonical consumer-side pattern. For rug pulls in the MCP tool surface itself (tool definitions and descriptions changing after approval), use auditing-mcp-servers-for-tool-poisoning.
 
 ## Tools & Systems
 
@@ -81,7 +82,7 @@ pip install fickling
 | Packaging | OSV, Syft, Grype | Known-vuln and manifest drift on loader packages |
 | Registry | MLflow / SageMaker / Vertex | Promotion, approval, and artifact-hash records |
 
-Treat research-prototype pickle scanners as unverified; the production tools above are the baseline.
+Treat research-prototype pickle scanners as unverified; the production tools above are the baseline. Note the baseline is a detective control only: all three pickle scanners are blocklist-based and bypassable, so a clean verdict must not be promoted to an allow decision.
 
 ## Detection Queries
 
@@ -95,10 +96,13 @@ api = HfApi()
 RISKY = (".bin", ".pt", ".ckpt", ".pkl", ".pth", ".h5")
 
 def new_executable_surface(repo_id, old_sha, new_sha, repo_type="model"):
-    old = {f.rfilename for f in api.list_repo_files(repo_id, revision=old_sha, repo_type=repo_type)}
-    new = {f.rfilename for f in api.list_repo_files(repo_id, revision=new_sha, repo_type=repo_type)}
+    # list_repo_files returns a list[str] of paths (it unwraps rfilename internally)
+    old = set(api.list_repo_files(repo_id, revision=old_sha, repo_type=repo_type))
+    new = set(api.list_repo_files(repo_id, revision=new_sha, repo_type=repo_type))
     added = new - old
-    flagged = [f for f in added if f.lower().endswith(RISKY) or f.endswith("modeling_custom.py")]
+    # any newly added .py in a model repo is remote-code surface; the modeling_/configuration_/
+    # tokenization_/image_processing_ prefixes are the Transformers custom-code convention
+    flagged = [f for f in added if f.lower().endswith(RISKY) or f.endswith(".py")]
     had_only_safetensors = all(not o.lower().endswith(RISKY) for o in old)
     return {"added": sorted(added), "executable_added": sorted(flagged),
             "regressed_from_safetensors": bool(flagged and had_only_safetensors)}
@@ -131,6 +135,8 @@ Pickle scan as an ingest gate (fail closed on finding):
 ```bash
 picklescan --path ./incoming_model && modelscan -p ./incoming_model
 # non-zero exit or any flagged opcode => quarantine, do not promote
+# a clean exit is NOT an allow decision: both tools are blocklist-based with documented
+# bypasses, so gate on format (safetensors required, pickle quarantined) as the real control
 ```
 
 ## Common Scenarios
@@ -138,7 +144,7 @@ picklescan --path ./incoming_model && modelscan -p ./incoming_model
 - **Silent weight swap:** a repo pinned by tag resolves to a new hash with no model-card or changelog update. Pin drift fires; freeze at last-known-good SHA.
 - **safetensors-to-pickle regression:** a trusted, previously safetensors-only model adds a `.bin` with `REDUCE` opcodes referencing `subprocess`. Manifest diff plus scan fires; quarantine.
 - **Inflated newcomer:** a two-week-old dataset shows download velocity 20x its cohort and stars from newly created accounts. Reputation heuristic fires; require human review before any ingest.
-- **trust_remote_code smuggling:** a new revision adds `modeling_custom.py` and the load path sets `trust_remote_code=True`. Load-path inventory fires; block unless the org is allowlisted.
+- **trust_remote_code smuggling:** a new revision adds `modeling_<arch>.py` and a helper module, and the load path sets `trust_remote_code=True`. Load-path inventory fires; block unless the org is allowlisted.
 - **Typosquat re-upload:** a renamed repo mimics a trusted name. Provenance check fires on absent attestation and name similarity.
 
 ## Output Format

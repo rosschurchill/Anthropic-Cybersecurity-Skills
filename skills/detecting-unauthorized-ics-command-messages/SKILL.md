@@ -75,8 +75,11 @@ station itself, use `detecting-rogue-master-on-ics-network`.
    control relay output block (CROB), CIP SetAttribute/service writes, OPC UA
    Write, IEC 61850 MMS control (Operate/SelectWithValue).
 3. **GOOSE semantic integrity check.** Watch IEC 61850 GOOSE for stNum
-   incrementing without a real state change, duplicate or regressing sqNum
-   (replay/takeover), or two publishers for one control block (gocbRef). These
+   incrementing without a real state change, sqNum resetting or regressing
+   **without** a corresponding stNum increment, sqNum repeating within one
+   stNum (replay/takeover), or two publishers for one control block (gocbRef).
+   A bare sqNum reset is normal: sqNum legitimately returns to 0 every time
+   stNum increments, i.e. on every genuine state change. These
    rule-based checks meet the GOOSE real-time delivery bound where ML detectors
    cannot.
 4. **Out-of-band value corroboration (spoofed reporting).** Join the reporting
@@ -115,8 +118,8 @@ add-ons, Microsoft Sentinel, OSIsoft PI / AVEVA historian for out-of-band values
 ```
 # Maintain AUTHORIZED_MASTERS[resp_h] = set of permitted source hosts.
 # WRITE_FCS = the write-class function codes confirmed against your baseline.
-event modbus_message(c: connection, h: ModbusHeader, is_orig: bool) {
-    if ( is_orig && h$function_code in WRITE_FCS &&
+event modbus_message(c: connection, headers: ModbusHeaders, is_orig: bool) {
+    if ( is_orig && headers$function_code in WRITE_FCS &&
          c$id$orig_h !in AUTHORIZED_MASTERS[c$id$resp_h] )
         NOTICE([$note=Modbus::Unauthorized_Write, $conn=c]);
 }
@@ -125,7 +128,10 @@ event modbus_message(c: connection, h: ModbusHeader, is_orig: bool) {
 ### Suricata -- DNP3 operate from outside the master net (local placeholder SID)
 
 ```
-alert ip !$SCADA_MASTERS any -> $SCADA_SLAVES 20000 (
+# Use the dnp3 app-layer protocol in the rule header: pairing an app-layer
+# dnp3 keyword with an `ip` header is inconsistent and risks a load-time
+# app-proto error. Confirm the rule loads with `suricata -T`.
+alert dnp3 !$SCADA_MASTERS any -> $SCADA_SLAVES any (
   msg:"OT-LOCAL DNP3 control/operate from unauthorized source";
   flow:to_server,established;
   dnp3_func:operate;        # tune against a live capture; alert, do not inline-drop
@@ -139,6 +145,7 @@ alert ip !$SCADA_MASTERS any -> $SCADA_SLAVES 20000 (
 `ot_protocol_reports` tag=* reported_value=*
 | join type=inner tag [ search `historian_oob` | rename value as measured ]
 | eval delta=abs(reported_value-measured)
+| lookup tag_tolerance tag OUTPUT tolerance_for_tag   /* per-tag physical tolerance */
 | where delta > tolerance_for_tag
 | table _time, src_ip, tag, reported_value, measured, delta, quality_flag
 ```
@@ -149,8 +156,8 @@ alert ip !$SCADA_MASTERS any -> $SCADA_SLAVES 20000 (
   the comms matrix — off-baseline source fires.
 - **Spoofed telemetry:** a frozen or falsified tag reads GOOD quality while the
   out-of-band sensor diverges — value corroboration fires.
-- **GOOSE takeover:** stNum jumps with no process change and sqNum regresses —
-  GOOSE semantic rule fires.
+- **GOOSE takeover:** stNum jumps with no process change, or sqNum resets or
+  repeats without an accompanying stNum increment — GOOSE semantic rule fires.
 - **False positive:** a newly commissioned, ticketed EWS issues writes — suppress
   via baseline review and change window, do not auto-trust.
 

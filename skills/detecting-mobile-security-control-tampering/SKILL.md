@@ -59,7 +59,8 @@ Mobile detection has **no raw host agent with syscall telemetry** — and here t
 very telemetry may be the target, so server-side signals carry the load:
 
 - **MTD agent-health / tamper signals** (Lookout, Zimperium zIPS, Microsoft
-  Defender for Endpoint on mobile, Wandera): explicit uninstall-attempt and
+  Defender for Endpoint on mobile, Jamf Threat Defense — formerly Wandera):
+  explicit uninstall-attempt and
   tamper/kill alerts, last-check-in heartbeat, and a **missing heartbeat as a
   detection in its own right**.
 - **MDM/UEM compliance + device-admin state** (Microsoft Intune, Jamf Pro, VMware
@@ -76,8 +77,9 @@ very telemetry may be the target, so server-side signals carry the load:
   but with no user-visible launcher activity (icon suppressed); the disappearance
   of a previously inventoried app (self-uninstall).
 - **App-vetting / dynamic analysis** (MobSF): manifest requests for
-  device-admin policy, launcher-alias disable (`setComponentEnabledSetting` —
-  verify constant), code paths that kill/back-off the MTD or Play Protect
+  device-admin policy, launcher-alias disable via
+  `PackageManager.setComponentEnabledSetting(..., COMPONENT_ENABLED_STATE_DISABLED,
+  ...)`, code paths that kill/back-off the MTD or Play Protect
   packages, root-hiding framework indicators (Magisk DenyList / Zygisk-style —
   recognition only).
 - **Forensics**: Android `bugreport` (`dumpsys device_policy`, `package`), logcat
@@ -103,8 +105,11 @@ very telemetry may be the target, so server-side signals carry the load:
 5. **Hide artifacts (T1628).** Reconcile authoritative app inventory against what
    is visible on the launcher; a managed/known app with a suppressed icon is
    high-signal. Allowlist legitimate icon-hiding (some enterprise/parental apps).
-   Chameleon and GodFather are documented examples; Operation Triangulation is an
-   iOS indicator-removal reference.
+   Note icon suppression is **restricted on recent Android**, so an empty
+   inventory-vs-launcher diff does **not** clear a genuinely hiding app — keep
+   the other T1628/T1630 signals in play. Accessibility-abusing families such as
+   Chameleon and GodFather are the recognition references here; Operation
+   Triangulation is an iOS indicator-removal reference.
 6. **Respond** (see *Response*).
 
 ## Key Concepts
@@ -122,9 +127,10 @@ very telemetry may be the target, so server-side signals carry the load:
 
 ## Tools & Systems
 
-Lookout, Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Wandera;
-Microsoft Intune, Jamf Pro/Protect, VMware Workspace ONE, Google Android
-Enterprise + Play Protect + Play Integrity API, Samsung Knox; MobSF; Android
+Lookout, Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Jamf Threat
+Defense (formerly Wandera); Microsoft Intune, Jamf Pro/Protect, VMware
+Workspace ONE, Google Android Enterprise + Play Protect + Play Integrity API,
+Samsung Knox; MobSF; Android
 `bugreport`/`dumpsys device_policy`/logcat, iOS `sysdiagnose`. Malware/root-tool
 names for recognition only: Chameleon, GodFather, Operation Triangulation, Magisk.
 
@@ -166,8 +172,9 @@ DevicePolicyEvents
 ```
 Diff authoritative MDM/vetting inventory against user-visible launcher entries.
 A managed/known package with no launcher activity -> icon suppressed (T1628).
-Allowlist sanctioned icon-hiding apps. Verify launcher-alias disable signals
-(setComponentEnabledSetting) in MobSF before encoding.
+Allowlist sanctioned icon-hiding apps. The corresponding static signal in MobSF is
+a call to PackageManager.setComponentEnabledSetting(..., COMPONENT_ENABLED_STATE_DISABLED, ...)
+against a launcher alias.
 ```
 
 ## Common Scenarios

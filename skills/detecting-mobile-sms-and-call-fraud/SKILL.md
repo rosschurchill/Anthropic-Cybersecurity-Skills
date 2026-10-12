@@ -44,6 +44,12 @@ telephony — the outbound fraud/impact action, not inbound code theft:
 Reach for it when a device **incurs premium-SMS or carrier-billing charges**, an
 app holds unexpected SMS or call-control roles, or carrier fraud notices vanish.
 
+**Platform reality:** every on-device mechanism below is **Android-only** —
+third-party iOS apps cannot hold an SMS-send or call-control role, so on iOS this
+detection reduces to carrier-side signals: billing / CDR review for premium-rate
+dialling and premium-SMS or carrier-billing charges, plus the carrier's own
+fraud-management alerts.
+
 **Scope boundary (hold this line):** this skill is the *billing/impact and
 call-control* action. Reading inbound OTP codes or notification contents for
 account takeover is a different objective — use
@@ -58,20 +64,22 @@ the billing evidence is carrier-side, so state which signals need a carrier feed
   VMware Workspace ONE, Android Enterprise): apps holding SMS send/receive
   permissions or acquiring the **default-SMS-handler role**; call permissions and
   the **call-redirection** and **call-screening** roles; phone-state access.
-  Treat the `RoleManager` role constants (`ROLE_SMS`, `ROLE_CALL_REDIRECTION`,
-  `ROLE_CALL_SCREENING`) and permission names as illustrative — verify the exact
-  constants against current Android docs. Accessibility service as a cross-check
+  `ROLE_SMS`, `ROLE_CALL_REDIRECTION` and `ROLE_CALL_SCREENING` are documented
+  `android.app.role.RoleManager` constants; the hedge belongs on the **MDM/MTD
+  field names** that surface them, which vary by connector — verify those against
+  your vendor's current schema. Accessibility service as a cross-check
   (used to auto-click subscription confirmations and dismiss carrier notices).
 - **Store / billing & carrier signals**: premium-SMS and WAP / direct-carrier-
   billing charges; carrier fraud-management systems flagging short-code or
-  premium-number traffic; subscription-confirmation OTP interception then
-  suppression of the carrier's SMS notice. WAP/direct-carrier-billing visibility
-  is **largely carrier-side** — it needs a carrier fraud-management feed, not
-  on-device telemetry.
+  premium-number traffic; auto-confirmation and then suppression of the
+  **carrier's** subscription-confirmation SMS (inbound code theft for account
+  takeover stays with `detecting-mobile-otp-and-notification-theft`).
+  WAP/direct-carrier-billing visibility is **largely carrier-side** — it needs a
+  carrier fraud-management feed, not on-device telemetry.
 - **MTD app-reputation** (Lookout, Zimperium zIPS, Microsoft Defender for
-  Endpoint on mobile, Wandera): toll-fraud / premium-SMS / fleeceware
-  classifications; network protection on C2 pushing target premium numbers or
-  carrier configs.
+  Endpoint on mobile, Jamf Threat Defense — formerly Wandera): toll-fraud /
+  premium-SMS / fleeceware classifications; network protection on C2 pushing
+  target premium numbers or carrier configs.
 - **App-vetting / dynamic analysis** (MobSF, Google Play Protect): SMS-send calls
   to short-codes; silent WebView navigation through carrier billing-confirmation
   pages; `abortBroadcast`-style suppression of inbound SMS; dropper dynamic code
@@ -87,9 +95,10 @@ the billing evidence is carrier-side, so state which signals need a carrier feed
    alerting on anything else.
 2. **Premium / WAP toll fraud (T1582).** Flag apps that send SMS to premium
    short-codes or drive WAP / direct-carrier-billing subscriptions, especially
-   combined with (a) suppressing or deleting the inbound carrier confirmation SMS,
-   (b) intercepting the confirmation OTP, and (c) disabling Wi-Fi to force
-   cellular billing. Because Play restrictions on SMS-send and the default handler
+   combined with (a) auto-confirming the carrier's subscription-confirmation SMS
+   or WebView prompt, (b) suppressing or deleting that carrier notice so the
+   charge goes unnoticed, and (c) disabling Wi-Fi to force cellular billing.
+   Because Play restrictions on SMS-send and the default handler
    pushed many families (Joker/Bread) toward WAP billing, **weight the WAP-billing
    WebView flow, not just the SMS-send permission**.
 3. **SMS control / covert send-delete (T1582).** Non-default-SMS apps sending
@@ -123,9 +132,9 @@ the billing evidence is carrier-side, so state which signals need a carrier feed
 
 ## Tools & Systems
 
-Lookout, Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Wandera;
-Microsoft Intune, Jamf Pro, VMware Workspace ONE, Google Android Enterprise +
-Play Protect; MobSF; carrier fraud-management / CDR review; Android
+Lookout, Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Jamf Threat
+Defense (formerly Wandera); Microsoft Intune, Jamf Pro, VMware Workspace ONE,
+Google Android Enterprise + Play Protect; MobSF; carrier fraud-management / CDR review; Android
 `bugreport`/telephony logs, iOS `sysdiagnose`. Malware families for recognition
 only: Joker, Bread, and Wi-Fi-disabling toll-fraud variants.
 
@@ -177,8 +186,8 @@ vs telephony API) before encoding a rule.
 ## Common Scenarios
 
 - **Joker-style WAP toll fraud:** a low-reputation app drives a WAP-billing
-  WebView subscription, intercepts the confirmation OTP, deletes the carrier
-  notice, and disables Wi-Fi — carrier charge + suppression + Wi-Fi-off fire.
+  WebView subscription, auto-confirms and then deletes the carrier's
+  subscription-confirmation SMS, and disables Wi-Fi — carrier charge + suppression + Wi-Fi-off fire.
 - **Premium-SMS sender:** a non-default-SMS app sends to premium short-codes and
   deletes the sent record.
 - **Call interception:** an untrusted app sets call forwarding and blocks the

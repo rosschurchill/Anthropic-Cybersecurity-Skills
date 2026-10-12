@@ -1,6 +1,6 @@
 ---
 name: detecting-alarm-setting-tampering
-description: 'Detects tampering with OT alarm configuration - a persistent change to alarm thresholds, enable flags, priorities, deadbands or notification routing so operators are not alerted to dangerous conditions (ATT&CK ICS T0838, Maroochy-style) - using HMI, SCADA and historian alarm-config change logs, controller and IED setting changes, protocol writes to alarm points (Modbus, DNP3, IEC 61850 MMS SetSettingGroupValues, BACnet Notification Class), and a diff against a golden alarm baseline, tied to an authenticated user and change window. Use when an alarm limit or enable flag changed unexpectedly, when a process exceeded bounds with no alarm, or when building alarm-config change monitoring. Keywords: Modify Alarm Settings, T0838, alarm limit, alarm disabled, setpoint, Notification Class, FactoryTalk Alarms and Events, WinCC, PI Notifications, golden baseline, change window. Do not use for transient run-time alarm muting or missing-expected alarms with no config change - use detecting-alarm-suppression.'
+description: 'Detects tampering with OT alarm configuration - a persistent change to alarm thresholds, enable flags, priorities, deadbands or notification routing so operators are not alerted to dangerous conditions (ATT&CK ICS T0838, Maroochy-style) - using HMI, SCADA and historian alarm-config change logs, controller and IED setting changes, protocol writes to alarm points (Modbus, DNP3, IEC 61850 setting-group control block services, BACnet Notification Class), and a diff against a golden alarm baseline, tied to an authenticated user and change window. Use when an alarm limit or enable flag changed unexpectedly, when a process exceeded bounds with no alarm, or when building alarm-config change monitoring. Keywords: Modify Alarm Settings, T0838, alarm limit, alarm disabled, setpoint, Notification Class, FactoryTalk Alarms and Events, WinCC, PI Notifications, golden baseline, change window. Do not use for transient run-time alarm muting or missing-expected alarms with no config change - use detecting-alarm-suppression.'
 domain: cybersecurity
 subdomain: ot-ics-security
 tags:
@@ -92,9 +92,13 @@ frequently co-occur — cross-reference, but keep the trigger distinct.
   disabled, but confirm it against the config-change record before concluding.
 - **Protocol service names are illustrative.** Writes may ride Modbus write
   function codes to alarm-limit registers, DNP3 writes/select-operate to config
-  points, IEC 61850 MMS SetDataValues / SetSettingGroupValues / SetRCBValues,
-  OPC UA Alarms & Conditions writes, or BACnet WriteProperty to Notification
-  Class recipients / Limit_Enable. Verify the exact service names against your
+  points, IEC 61850 MMS SetDataValues or the setting-group control block
+  services (SelectActiveSG / SelectEditSG / SetEditSGValue / SetEditSGValues /
+  ConfirmEditSGValues), OPC UA Alarms & Conditions writes, or BACnet
+  WriteProperty to Notification Class recipients / Limit_Enable. Report control
+  block manipulation (`SetRCBValues`, `RptEna`) suppresses reporting without
+  changing the alarm configuration, so it belongs to
+  `detecting-alarm-suppression`. Verify the exact service names against your
   stack and dissector, and which registers are alarm limits against the
   site point map, before signaturing — prefer the config-log and baseline-diff
   framing, which does not depend on the exact code.
@@ -141,7 +145,8 @@ index=ot sourcetype=alarm_config_snapshot
 index=ot sourcetype=historian
 | lookup golden_alarm_config asset point OUTPUT g_hi
 | where value>=g_hi   /* exceeds the ORIGINAL golden limit */
-| join asset point [ search index=ot sourcetype=alarm_journal | stats count as alarms by asset point ]
+/* left join: an INNER join would discard exactly the no-alarm rows below */
+| join type=left asset point [ search index=ot sourcetype=alarm_journal | stats count as alarms by asset point ]
 | where isnull(alarms) OR alarms=0
 | table _time, asset, point, value, g_hi
 ```

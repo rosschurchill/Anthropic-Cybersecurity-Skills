@@ -57,7 +57,13 @@ reverse-engineering of a suspect firmware image, use
   class — the single strongest comparison point. Without it, drift detection is
   blind.
 - **Asset-management baseline** of expected firmware versions (Claroty / Nozomi
-  / Dragos inventory), including module firmware, not just the CPU image.
+  / Dragos inventory), including module firmware, not just the CPU image. Note
+  that passive OT inventory yields firmware **version strings** and model data,
+  not a cryptographic hash of the running image — no OT platform hashes a live
+  PLC image, so the hash half needs an offline image pull (see below).
+- **A path to pull the image itself** when a hash comparison is required: vendor
+  engineering tooling, removable media (MMC/CF card), or physical extraction,
+  performed offline on the device or on the distributed update package.
 - **Passive protocol monitoring** (Zeek + CISA/INL ICSNPP, or an OT IDS) on
   management and file-transfer segments.
 - **Device alarms and asset/application logs**: firmware-change alarms where the
@@ -72,9 +78,13 @@ reverse-engineering of a suspect firmware image, use
 
 1. **Baseline** the golden firmware version/hash per asset class and the hosts
    authorized to deliver firmware.
-2. **Diff against the golden image (core signal).** Periodically pull the live
-   firmware version/hash from the asset inventory and alert on any delta —
-   especially one outside a change window.
+2. **Diff versions continuously (core signal).** Pull the live firmware
+   **version** per device from the asset inventory and alert on any delta from
+   the golden version — especially one outside a change window. This is the
+   continuous signal, because inventory carries versions, not image hashes.
+   Then **confirm with a hash on demand**: once a device is suspect, pull the
+   image via vendor tooling, removable media or physical extraction and compare
+   its hash to the golden image offline.
 3. **Watch firmware/file-transfer traffic.** Flag firmware or file-transfer
    functions reaching a device from a host not on the EWS/patch-server
    allowlist; record the 5-tuple and device.
@@ -88,9 +98,13 @@ reverse-engineering of a suspect firmware image, use
 
 ## Key Concepts
 
-- **Hash drift against a golden image is the ground truth.** Version strings can
-  be spoofed; a cryptographic hash compared to a known-good image is the
-  reliable signal. Correlate with the change window to cut false positives.
+- **Version drift detects, hash drift confirms.** Version strings can be
+  spoofed, so a cryptographic hash against a known-good image is the stronger
+  evidence — but it is an on-demand, offline step (image pulled via vendor
+  tooling, removable media or physical extraction), not something passive
+  inventory supplies. Run version drift continuously against the change window
+  to cut false positives, and escalate to a hash comparison on the devices it
+  flags.
 - **Modules are separately flashable.** T1693.002 covers communications and I-O
   module firmware that carries its own image — baseline these, not only the CPU.
 - **Signature support varies.** Firmware code-signing/verification is not
@@ -120,16 +134,23 @@ Historians: OSIsoft/AVEVA PI. SIEM: Splunk, Microsoft Sentinel.
 ## Detection Queries
 
 Protocol function/class values below are **illustrative** — verify against your
-dissector and a live capture; the version/hash drift check is vendor-agnostic
-and should anchor the detection.
+dissector and a live capture; the version-drift check is vendor-agnostic and
+should anchor the detection, with a hash comparison as the on-demand
+confirmation on the devices it flags.
 
-### Splunk — firmware version/hash drift outside a change window (core)
+### Splunk — firmware version drift outside a change window (core)
 
 ```spl
-index=ot (sourcetype=asset_inventory OR sourcetype=device_alarm)
+/* asset_inventory only: including device_alarm adds rows carrying neither
+   firmware field, which can make latest() return null and drop the device from
+   the diff. `firmware_hash` is only present if you ingest it from an OFFLINE
+   image pull - passive inventory gives version strings only, so version drift
+   is the continuous signal and the hash comparison is the on-demand
+   confirmation. */
+index=ot sourcetype=asset_inventory
 | stats latest(firmware_version) as cur latest(firmware_hash) as hash by device_id
 | lookup golden_firmware device_id OUTPUT golden_version golden_hash
-| where cur!=golden_version OR hash!=golden_hash
+| where cur!=golden_version OR (isnotnull(hash) AND hash!=golden_hash)
 | lookup change_windows device_id OUTPUT window_active
 | where window_active!="true"
 | table device_id, cur, golden_version, hash, golden_hash

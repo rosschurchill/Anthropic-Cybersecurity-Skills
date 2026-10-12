@@ -49,8 +49,11 @@ For a whole-device restart or shutdown, or broad SCADA attack triage, use
 
 ## Prerequisites
 
-- **Windows Service Control Manager (SCM) logging** plus Security auditing on
-  OT-adjacent Windows hosts (HMI, SCADA server, historian, OPC server, EWS).
+- **System event log (Service Control Manager source) for 7036/7040/7045, plus
+  Security for 4697** (4697 needs the Audit Security System Extension subcategory
+  enabled) on OT-adjacent Windows hosts (HMI, SCADA server, historian, OPC server,
+  EWS). There is no separate "SCM" channel — SCM is the event *source* writing into
+  the System log.
 - **Sysmon** for process-create and registry events, and **EDR** for direct-API
   service control that never touches `sc.exe`.
 - **Linux auditd / service-manager logs** on gateways, historians, and soft-PLC
@@ -68,8 +71,9 @@ For a whole-device restart or shutdown, or broad SCADA attack triage, use
    service and process names that matter (SCADA runtime, historian collector, OPC
    server, poll/alarm engine, protocol gateway) and keep an authoritative
    maintenance calendar.
-2. **SCM + Sysmon rule.** Alert on SCM 7036 (stopped), 7040 (start type changed to
-   Disabled), and Sysmon registry `Start=4` under the Services key for any
+2. **SCM + Sysmon rule.** Alert on SCM 7036 (stopped), 7040 (service start type
+   changed — 7040 fires on *any* start-type change, so match the new value Disabled
+   in the message), and Sysmon registry `Start=4` under the Services key for any
    OT-critical service **when no change ticket is active**. Add 7045 (new service)
    and Security 4697 for service installs.
 3. **Command-line detection.** Flag `sc stop`/`sc config ... start= disabled`,
@@ -78,8 +82,11 @@ For a whole-device restart or shutdown, or broad SCADA attack triage, use
 4. **Direct-API detection (EDR).** RATs call `ControlService` /
    `ChangeServiceConfigW` directly, bypassing `sc.exe`; this requires EDR
    telemetry, not SCM events alone — document the gap when only SCM is available.
-5. **Process-rename anti-restart watch.** Correlate Sysmon file-rename/create of a
-   known OT service image path with a start-type change (Industroyer2 behaviour).
+5. **Process-rename anti-restart watch.** Correlate a change to a known OT service
+   image path with a start-type change (Industroyer2 behaviour). Sysmon has no
+   file-rename event, so use EID 11 (FileCreate) together with EID 23/26
+   (FileDelete/FileDeleteDetected), or file-system auditing (Security 4663) on the
+   image path.
 6. **Downstream corroboration.** Join with historian stale-quality and SCADA
    comms-fail to confirm real OT impact.
 
@@ -99,7 +106,7 @@ For a whole-device restart or shutdown, or broad SCADA attack triage, use
 
 ## Tools & Systems
 
-Windows Event Logs (SCM channel) + Sysmon, Sigma, EDR (CrowdStrike, Microsoft
+Windows event logs (System log, Service Control Manager source; Security for 4697) + Sysmon, Sigma, EDR (CrowdStrike, Microsoft
 Defender, SentinelOne) for direct-API service control, auditd/Linux for gateways,
 Splunk (OT/Windows add-ons), Microsoft Sentinel, Claroty CTD, Nozomi Guardian,
 Dragos Platform, historian/SCADA health monitoring (OSIsoft PI, AVEVA, Ignition).
@@ -108,11 +115,21 @@ Dragos Platform, historian/SCADA health monitoring (OSIsoft PI, AVEVA, Ignition)
 
 ### Splunk -- OT-critical service stopped/disabled outside a change window
 
+Two things this query must get right. `Service` is **not** an extracted field for SCM
+7036/7040 in Splunk's Windows TA — the service name arrives as an insertion string in
+`param1` (state / new start type land in `param2`/`param3`), so it has to be coalesced
+before any filter or table column, or both come back empty. And SPL `IN` takes a literal
+value list, **not** a lookup name: `search Service IN (ot_critical_services)` compares
+against that literal string and returns zero results. Use a `lookup` instead. Verify the
+field names against your TA version.
+
 ```spl
 index=ot_win ((EventCode=7036 "stopped") OR (EventCode=7040 "disabled")
   OR (EventCode=4697) OR (sysmon EventCode=13 TargetObject="*\\Services\\*\\Start" Details="DWORD (0x00000004)"))
-| search Service IN (ot_critical_services)
-| lookup change_window host service OUTPUT in_window
+| eval Service=coalesce(param1, Service)
+| lookup ot_critical_services service AS Service OUTPUT is_critical
+| where is_critical="true"
+| lookup change_window host service AS Service OUTPUT in_window
 | where in_window!="true"
 | table _time, host, Service, EventCode, user, process
 ```
@@ -142,8 +159,12 @@ level: high
 ### Sysmon -- process-rename anti-restart (concept)
 
 ```
-# Sysmon EID 11 (file create/rename) of a known OT service image path
-# correlated with SCM 7040 start-type change = Industroyer2-style restart block.
+# Sysmon EID 11 is FileCreate (create/overwrite) — Sysmon has NO file-rename event, and a
+# same-volume rename (the Industroyer2 behaviour) commonly emits no EID 11 at all. So pair
+# EID 11 on a known OT service image path with EID 23/26 (FileDelete / FileDeleteDetected),
+# or, for reliable coverage, use file-system auditing (Security 4663 with Write Data /
+# Delete access) on the service image path.
+# Any of those correlated with an SCM 7040 start-type change = Industroyer2-style restart block.
 ```
 
 ## Common Scenarios

@@ -51,12 +51,17 @@ instrumentation use `detecting-mobile-runtime-hooking-and-instrumentation`.
 ## Prerequisites
 
 - **Accessibility-grant inventory (primary signal).** Which apps hold an
-  accessibility grant, from MDM/MTD app inventory, the Android Enterprise
-  managed-configuration / permission report, or — for a single device under
-  investigation — the Android secure setting that lists enabled accessibility
-  services (illustratively `enabled_accessibility_services`; verify the exact key
-  against current Android docs) read via `adb shell settings get secure ...` or a
-  `bugreport`.
+  accessibility grant. Note where this is actually visible: accessibility-service
+  enablement is **not** a runtime permission and is not reported by Android
+  Enterprise app reporting (`ApplicationReport` carries state, version,
+  installer, signing key and events — no permission-grant field), so the
+  realistic sources are an **on-device MTD agent's telemetry** and, for a single
+  device under investigation, the `Settings.Secure` key
+  `ENABLED_ACCESSIBILITY_SERVICES` — a colon-separated list of enabled service
+  components — read via `adb shell settings get secure
+  enabled_accessibility_services` or a `bugreport`. The EMM lever here is
+  **preventive**: `Policy.permittedAccessibilityServices` allowlists which
+  services may be enabled at all.
 - **An org allowlist** of legitimate assistive / automation apps that are
   *expected* to hold the grant. Detection is a diff against this list.
 - **MTD**: Lookout, Zimperium zIPS, or Microsoft Defender for Endpoint (mobile)
@@ -94,13 +99,15 @@ instrumentation use `detecting-mobile-runtime-hooking-and-instrumentation`.
 ## Key Concepts
 
 - **The grant is the chokepoint.** Reading other apps' screens, overlaying them,
-  and injecting input all require the accessibility grant. Auditing *who holds it*
+  and injecting input all require the accessibility grant — a service the app
+  declares with the `BIND_ACCESSIBILITY_SERVICE` permission and the user then
+  enables. Auditing *who holds it*
   against an allowlist is the single highest-value detection and does not depend on
   any malware signature.
-- **Behavioural over constant.** Exact setting keys and permission constants drift
-  across Android versions; treat any constant here as illustrative and verify it.
-  The durable signal is "an app that should not have this grant has it, and is
-  acting on it."
+- **Behavioural over constant.** `Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES`
+  is stable and documented; some permission constants do drift across Android
+  versions, so verify those. Either way the durable signal is "an app that should
+  not have this grant has it, and is acting on it."
 - **Permission clusters classify intent.** Accessibility + overlay + unknown-source
   install + SMS is the classic banking-trojan profile; accessibility alone on a
   known assistive app is benign.
@@ -110,7 +117,8 @@ instrumentation use `detecting-mobile-runtime-hooking-and-instrumentation`.
 
 ## Tools & Systems
 
-Android Enterprise / managed Google Play (app inventory, permission report),
+Android Enterprise / managed Google Play (app inventory,
+`Policy.permittedAccessibilityServices` allowlist),
 Microsoft Intune compliance + Entra Conditional Access, Lookout, Zimperium zIPS,
 Microsoft Defender for Endpoint (mobile), Google Play Protect, ADB/logcat,
 `bugreport`, MVT, MobSF, VirusTotal. Allowlist legitimate assistive/automation
@@ -118,13 +126,13 @@ apps. Trojan families named for recognition only: Anatsa/TeaBot, Cerberus, BRATA
 
 ## Detection Queries
 
-Treat field names, setting keys and thresholds below as **verify/tune** against
-your tooling and current Android docs.
+Treat table/field names and thresholds below as **verify/tune** against your
+tooling and current Android docs.
 
 ### Intune / Android Enterprise -- unexpected accessibility grant (concept)
 
 ```
-# Over MDM app-inventory / permission-report export:
+# Over MTD-agent telemetry (MDM app inventory does not report this grant):
 # for each device, for each installed app granted an accessibility service,
 # flag any package NOT in ACCESSIBILITY_ALLOWLIST.
 packages_with_a11y_grant - ACCESSIBILITY_ALLOWLIST  -> raise("unexpected a11y grant")
@@ -134,10 +142,15 @@ packages_with_a11y_grant - ACCESSIBILITY_ALLOWLIST  -> raise("unexpected a11y gr
 ### Microsoft Sentinel (KQL) -- MTD accessibility/overlay alert then sensitive sign-in
 
 ```kql
-// verify table/column names for your MTD + Defender connector
-DeviceTvmThreatEvents
-| where ThreatName has_any ("accessibility", "overlay", "auto-click", "input injection")
-| project TimeGenerated, DeviceId, UserPrincipalName, ThreatName
+// Mobile threat events surface as ALERTS, not in a DeviceTvm* table: use
+// AlertInfo/AlertEvidence (Defender XDR advanced hunting, also available in
+// Sentinel via the XDR connector) or SecurityAlert (Sentinel-native).
+// Verify table/column names for your MTD + Defender connector.
+AlertInfo
+| where Title has_any ("accessibility", "overlay", "auto-click", "input injection")  // verify/tune
+| join kind=inner (AlertEvidence | where isnotempty(AccountUpn)
+                   | project AlertId, DeviceId, AccountUpn) on AlertId
+| project TimeGenerated, DeviceId, UserPrincipalName = AccountUpn, ThreatName = Title
 | join kind=inner (
     SigninLogs
     | where AppDisplayName in ("<corporate apps>")   // verify/tune
@@ -149,7 +162,7 @@ DeviceTvmThreatEvents
 ### ADB / logcat (single-device triage, concept)
 
 ```
-adb shell settings get secure enabled_accessibility_services   # verify exact key
+adb shell settings get secure enabled_accessibility_services
 adb logcat | grep -Ei 'AccessibilityService|AccessibilityManager|addView.*TYPE_APPLICATION_OVERLAY'
 # cross-check: any non-system package binding an accessibility service, or drawing an overlay
 ```

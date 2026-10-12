@@ -43,7 +43,7 @@ Two properties make the attack viable: a meaningful fraction of LLM-suggested pa
 
 - Access to coding-assistant / LLM I/O logs (completions that emit install commands, imports, or manifest edits) — Langfuse or assistant audit logs.
 - Dependency-resolution and private-registry proxy logs (JFrog Artifactory, Sonatype Nexus, Google Artifact Registry, Azure Artifacts, GitHub Packages, Verdaccio): package name, version, first-seen-in-org, upstream source.
-- Ability to query public-registry metadata (package creation date, maintainer history, download count). The official index endpoints are real: PyPI `https://pypi.org/pypi/<name>/json` and npm `https://registry.npmjs.org/<name>`.
+- Ability to query public-registry metadata. The official index endpoints are real, and serve **existence, age and maintainer history**: PyPI `https://pypi.org/pypi/<name>/json` (age = earliest release `upload_time`) and npm `https://registry.npmjs.org/<name>` (age = `time.created`). Neither serves download counts — PyPI's `info.downloads` is deprecated and always returns `-1`, and the npm registry document has no `downloads` key at all. **Download counts come from separate sources:** pypistats.org (or the PyPI download-statistics BigQuery dataset) for PyPI, and `https://api.npmjs.org/downloads/point/last-month/<name>` for npm.
 - CI/CD with SCA tooling (Socket, OSV-Scanner, Snyk, Semgrep Supply Chain, Dependabot, pip-audit, npm audit) and lockfile-diff access.
 - Python 3.9+ for the gate helpers below.
 
@@ -59,12 +59,25 @@ For every AI-suggested or newly-added dependency, check it against an org allowl
 import datetime, difflib
 
 def slopsquat_flags(pkg, org_allowlist, popular_libs, age_days, downloads,
-                    exists_upstream, min_age=90, dl_floor=1000, sim_hi=0.85):
-    """Tune min_age/dl_floor/sim_hi per ecosystem and org risk appetite."""
+                    exists_upstream, provenance, first_suggested_at, created_at,
+                    min_age=90, dl_floor=1000, sim_hi=0.85):
+    """age_days/created_at come from the index endpoint (npm time.created, PyPI
+    earliest release upload_time). `downloads` must be fetched from a download-stats
+    source (pypistats / PyPI BigQuery, api.npmjs.org/downloads/point/...) - the index
+    endpoints do not serve it. provenance: "assistant_only" | "manifest" | ...;
+    first_suggested_at: when the assistant first emitted this name.
+    Tune min_age/dl_floor/sim_hi per ecosystem and org risk appetite."""
     if not exists_upstream:
         return {"verdict": "BLOCK", "reason": "name does not resolve upstream (hallucinated)"}
     if pkg in org_allowlist:
         return {"verdict": "ALLOW", "reason": "vetted allowlist entry"}
+    # Pre-registered hallucination: the assistant invented the name, and the upstream
+    # package was created at or after that suggestion. Usually NOT typosquat-shaped,
+    # so it must be caught here rather than falling through to REVIEW.
+    if (provenance == "assistant_only" and first_suggested_at and created_at
+            and created_at >= first_suggested_at):
+        return {"verdict": "BLOCK",
+                "reason": "assistant-invented name registered upstream at/after first suggestion"}
     typo_shape = max((difflib.SequenceMatcher(None, pkg, p).ratio() for p in popular_libs),
                      default=0.0)
     young_and_obscure = age_days < min_age and downloads < dl_floor
@@ -104,22 +117,38 @@ On a hit, remove the dependency, scan for install-time execution, and rotate any
 | pip-audit, npm audit | Ecosystem vulnerability/advisory checks |
 | Sigstore / SLSA provenance | Verify package provenance and integrity |
 | Langfuse / assistant audit logs | Capture AI-suggested package names for resolution |
-| PyPI and npm registry metadata APIs | Package age, maintainer history, download counts |
+| PyPI and npm registry metadata APIs (`pypi.org/pypi/<name>/json`, `registry.npmjs.org/<name>`) | Package existence, age, maintainer history (no download counts) |
+| pypistats.org or the PyPI BigQuery download dataset; `api.npmjs.org/downloads/point/last-month/<name>` | Download counts for the reputation floor |
 
 ## Detection Queries
 
 ```bash
-# Does an AI-suggested name resolve upstream, and how old/popular is it?
-# PyPI: 404 => does not exist (likely hallucinated). Treat a brand-new resolving name as suspect.
-curl -fsS "https://pypi.org/pypi/${PKG}/json" >/dev/null && echo "pypi: exists" || echo "pypi: MISSING"
-# npm equivalent:
-curl -fsS "https://registry.npmjs.org/${PKG}" >/dev/null && echo "npm: exists" || echo "npm: MISSING"
+# 1. Existence and age (index endpoints). 404 => does not exist (likely hallucinated).
+#    Treat a brand-new resolving name as suspect.
+# PyPI resolves PEP 503 NORMALISED names (case, '-' vs '_' vs '.' all collapse), so a 200
+# is not proof the name existed as suggested: compare info.name to the requested string.
+PY=$(curl -fsS "https://pypi.org/pypi/${PKG}/json") \
+  && echo "pypi: exists; name=$(jq -r .info.name <<<"$PY"); created=$(jq -r '[.releases[][].upload_time] | sort | first' <<<"$PY")" \
+  || echo "pypi: MISSING"
+[ -n "$PY" ] && [ "$(jq -r .info.name <<<"$PY")" != "${PKG}" ] \
+  && echo "pypi: NORMALISATION-ONLY match - did not exist as suggested"
+# npm equivalent (age from time.created):
+curl -fsS "https://registry.npmjs.org/${PKG}" \
+  | jq -r '"npm: exists; created=" + .time.created' || echo "npm: MISSING"
+
+# 2. Download counts come from SEPARATE endpoints - the index documents above carry none
+#    (PyPI info.downloads is deprecated and always -1; npm has no downloads key).
+curl -fsS "https://api.npmjs.org/downloads/point/last-month/${PKG}" | jq -r '.downloads'
+# PyPI: query pypistats.org or the PyPI download-statistics BigQuery dataset (verify the
+# current request path for whichever you adopt).
 ```
 
 ```kusto
 // First-seen dependencies resolved through the registry proxy in the last 24h
 RegistryProxyLogs
 | where Timestamp > ago(24h) and FirstSeenInOrg == true
+// Downloads must be enriched from a download-stats source (pypistats / PyPI BigQuery,
+// api.npmjs.org/downloads) - the registry index documents carry no download count.
 | project Timestamp, Actor, Package, Version, UpstreamSource, UpstreamAgeDays, Downloads
 | where UpstreamAgeDays < 90 or Downloads < 1000
 ```

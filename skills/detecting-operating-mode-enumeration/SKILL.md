@@ -87,11 +87,13 @@ adversary **changing** the mode — actually flipping run/program/stop — use
 - **Behavioral framing beats byte matching.** Unexpected source, off-hours, no
   change ticket, and read-then-write sequencing are robust; exact function
   codes vary by vendor and version and must be verified against your dissector.
-- **State is not the same as run/program.** The standard CIP Identity-Object
-  State enum (0 nonexistent, 1 self-test, 2 standby, 3 operational, 4/5 fault)
-  does not by itself encode Logix run-vs-program or key-switch position — that
-  detail is read through vendor-specific objects. Verify the exact class and
-  attribute against ODVA CIP and the vendor docs before asserting a mapping.
+- **State is not the same as run/program.** The CIP Identity Object is class
+  `0x01` and its State is attribute `8`, with a fixed ODVA enum: 0 nonexistent,
+  1 device self-testing, 2 standby, 3 operational, 4 major recoverable fault,
+  5 major unrecoverable fault. What that attribute does **not** encode is Logix
+  run-vs-program mode or key-switch position — that detail is read through
+  vendor-specific objects, and that mapping is what must be verified per
+  platform.
 - **S7comm-plus (S7-1200/1500) is encrypted.** Classic S7comm SZL/CPU-function
   reads do not apply there; fall back to EWS and endpoint telemetry.
 
@@ -115,27 +117,61 @@ does not depend on the exact code.
 
 ```
 # Pseudo-Zeek over icsnpp-enip CIP fields.
-# Identity Object is class 0x01; device State is attribute 8 (verify the exact
-# class/attribute for run/program/key-switch against ODVA + vendor docs).
+# Identity Object is class 0x01 and device State is attribute 8 - a fixed ODVA
+# definition. State does NOT carry Logix run/program or key-switch position; for
+# that, map the vendor-specific object per platform and match on it instead.
 event cip_get_attribute(c: connection, class_id: count, instance: count, attribute: count) {
     if ( class_id == 0x01 && attribute == 8 && ! is_known_ews(c$id$orig_h) )
         NOTICE([$note=CIP_OperatingMode_Read_From_Unexpected_Host, $conn=c]);
 }
 ```
 
+### Zeek (ICSNPP) — DNP3 and IEC 61850 MMS status reads (concept)
+
+```
+# DNP3 (TCP/20000), via icsnpp-dnp3 (dnp3.log records the function code and the
+# object group/variation): the closest DNP3 equivalent of a mode read is a
+# function code 1 (READ) request for object group 80 variation 1, Internal
+# Indications - the outstation status bits, which include local-control and
+# device-trouble state. Alert when such a read reaches an outstation from a host
+# outside the DNP3 master allowlist, and on repeated sweeps across outstations.
+
+# IEC 61850 MMS (TCP/102): an MMS Read naming the logical device's LLN0 Mod or Beh
+# data attributes (e.g. <LD>/LLN0$ST$Beh$stVal) returns the IED's mode/behaviour -
+# on / blocked / test / test-blocked / off. Alert on MMS Read requests for LLN0
+# Mod/Beh from a client that is not an allowlisted station-bus client. This needs a
+# sensor that parses MMS object names; verify your build exposes them before relying
+# on the object-name match, and otherwise fall back to source-allowlist framing.
+```
+
 ### Suricata — operating-mode read from outside the master net (local SID)
 
 ```
-# Verify cip.* keyword support and class/attribute matching in your Suricata
-# build; tune against a live capture. sid is a local placeholder.
-alert enip any any -> $PLC_NET 44818 ( \
+# PREREQUISITE: the enip app-layer parser is DISABLED BY DEFAULT in suricata.yaml, so an
+# `alert enip` rule never matches until app-layer.protocols.enip.enabled: yes is set.
+# The source must exclude the sanctioned engineering/master net, or the rule fires on all
+# ENIP traffic including the EWS's own polling.
+# The cip_service / cip_class / cip_attribute matches below are ILLUSTRATIVE - they target
+# Get_Attribute_Single (0x0e) on Identity Object class 0x01 attribute 8. Keyword names and
+# CIP class/attribute matching vary by Suricata build; verify support and tune against a
+# live capture, and fall back to the Zeek analytic above where the keywords are absent.
+# sid is a local placeholder.
+alert enip !$EWS_NET any -> $PLC_NET 44818 ( \
   msg:"ICS operating-mode read from non-EWS host (verify CIP fields)"; \
   flow:to_server; \
+  cip_service:0x0e; \
+  cip_class:0x01; \
+  cip_attribute:8; \
   threshold:type limit, track by_src, count 1, seconds 60; \
   sid:1000001; rev:1; )
 ```
 
 ### Splunk — mode read tightly followed by a write (the escalation)
+
+A host missing from `authorized_ews` gets a **null** `authorized`, and SPL comparisons
+against null are false — so `where authorized!="true"` on its own filters out exactly
+the unknown hosts this analytic is looking for and leaves only known-but-unauthorised
+rows. Test for the null explicitly.
 
 ```spl
 index=ot (sourcetype=ics_proto action=mode_read OR sourcetype=ews_audit action="go_online")
@@ -143,7 +179,7 @@ index=ot (sourcetype=ics_proto action=mode_read OR sourcetype=ews_audit action="
 | join src_host [ search index=ot sourcetype=ics_proto action IN ("program_download","param_write","firmware_update") | eval writeTime=_time ]
 | where writeTime>=readTime AND (writeTime-readTime) < 1800
 | lookup authorized_ews host AS src_host OUTPUT authorized
-| where authorized!="true"
+| where isnull(authorized) OR authorized!="true"
 | table readTime, src_host, dest_device, writeTime
 ```
 

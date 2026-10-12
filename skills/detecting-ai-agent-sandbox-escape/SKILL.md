@@ -42,7 +42,7 @@ This skill is AI-agent-specific escape detection: the agent-turn correlation, th
 ## Prerequisites
 
 - Syscall / eBPF runtime security on the sandbox host: Falco, Tetragon (Cilium/eBPF), or Tracee (Aqua) with container-escape rulesets.
-- Seccomp, AppArmor, or SELinux denial logs, and gVisor (`runsc`) sentry logs if the sandbox runs under gVisor.
+- Seccomp, AppArmor, or SELinux denial logs, and, if the sandbox runs under gVisor, gVisor Runtime Monitoring trace sessions (trace points configured via `--pod-init-config`, delivered over a Unix socket) — or `runsc` debug logs, which are off by default. gVisor is not a seccomp-bpf filter and its Sentry emits no denial events: unimplemented syscalls simply return `ENOSYS` to the sandboxed process.
 - Sandbox egress and DNS telemetry (the sandbox should be network-isolated; any egress is signal).
 - Process and file telemetry: process-tree, namespace/cgroup membership, and reads of host credential files (SSH keys, cloud creds, kube service-account tokens).
 - Agent framework traces (Langfuse, LangSmith, OpenTelemetry GenAI spans) showing the tool call or generated code that preceded an escape, and whether a confirmation/safety gate was disabled first.
@@ -52,7 +52,7 @@ This skill is AI-agent-specific escape detection: the agent-turn correlation, th
 ## Workflow
 
 1. **Deploy escape rulesets.** Run Falco/Tetragon/Tracee rules for the known escape classes (below). Any one from inside an agent sandbox is high-severity.
-2. **Treat denials as signal.** A seccomp/AppArmor/gVisor denial from a code-interpreter is near-definitive — that workload should never need those syscalls.
+2. **Treat denials as signal.** A seccomp/AppArmor/SELinux denial from a code-interpreter is near-definitive — that workload should never need those syscalls. Under gVisor there is no denial event to key on; use Runtime Monitoring trace points for the equivalent syscall-level visibility.
 3. **Network-isolation check.** Alert on any outbound connection from an egress-restricted sandbox, especially to cloud metadata, correlated with the agent turn that generated the code.
 4. **Boundary crossing.** Detect a process that started in the container appearing in the host namespace/cgroup, or host-socket access.
 5. **Pre-escape config signal.** Correlate with a just-prior confirmation/safety-gate disable or self-reconfiguration (linkage to agent configuration tampering) — a strong chain indicator.
@@ -117,16 +117,29 @@ Falco-style rule for host-socket and namespace-entry from an agent sandbox (veri
 Network-isolation violation to metadata, correlated with an agent turn (KQL-style; illustrative fields):
 
 ```kql
+// Detection 1 - metadata-endpoint egress from the sandbox
 let meta_ip = "169.254.169.254";
 SandboxNetFlows
 | where src_container has "code-interpreter"
-| where dest_ip == meta_ip or dest_ip !in (dynamic([]))  // sandbox should have no egress
+| where dest_ip == meta_ip
 | join kind=leftouter (
     LLMTraces | where SpanName == "gen_ai.tool_call"
     | project turn_time = Timestamp, session_id, tool_code = ToolInput
   ) on $left.session_id == $right.session_id
-| where FlowTime between (turn_time .. turn_time + 10s)   // verify/tune window
+// keep unmatched flows: a flow with no correlating turn is still a violation
+| where isnull(turn_time) or FlowTime between (turn_time .. turn_time + 10s)  // verify/tune window
 | project FlowTime, src_container, dest_ip, session_id, tool_code
+```
+
+```kql
+// Detection 2 - any egress outside the allowlist (an isolated sandbox should have none).
+// allowed_egress must be a real, non-empty allowlist; an empty array makes this clause match
+// every row and the detection meaningless.
+let allowed_egress = dynamic(["10.0.0.0/8-internal-proxy-ip"]);  // replace with your allowlist
+SandboxNetFlows
+| where src_container has "code-interpreter"
+| where dest_ip !in (allowed_egress)
+| project FlowTime, src_container, dest_ip, dest_port, session_id
 ```
 
 Tetragon/eBPF-style intent: alert on a process whose cgroup/namespace membership leaves the container, or a host process newly parented to the sandbox runtime. Post-escape, alert on reads of host credential files (SSH keys, cloud credential files, kube service-account token paths) and on tampering with the Falco/audit agent itself.
@@ -135,8 +148,8 @@ Tetragon/eBPF-style intent: alert on a process whose cgroup/namespace membership
 
 - **Injected host command.** A prompt-injected agent is coerced into running a host-level command through an allowed shell tool; the syscall leaves the sandbox profile. Signal: escape-primitive rule fires correlated with the generating turn.
 - **Gate-disable then escape.** The agent self-reconfigures to disable a confirmation gate, then a tool call lands on the host. Signal: config-tampering chain into an escape primitive.
-- **Metadata credential theft.** The sandbox reaches the cloud metadata endpoint for instance credentials. Signal: network-isolation violation to the metadata IP (T0106 follow-on).
-- **Defense evasion.** Code probes for sandbox artifacts (hypervisor strings, cgroup paths, `/.dockerenv`) or tampers with the logging agent. Signal: T0097/T0107 behaviors raising confidence.
+- **Metadata credential theft.** The sandbox reaches the cloud metadata endpoint for instance credentials. Signal: network-isolation violation to the metadata IP. This is post-escape credential access by retrieval of an unsecured credential, not exploitation of a software vulnerability.
+- **Defense evasion.** Code probes for sandbox artifacts (hypervisor strings, cgroup paths, `/.dockerenv`) — sandbox-evasion checks, T0097 — or, post-escape with host privileges, tampers with the logging agent, which is defense evasion rather than exploitation. Both raise confidence.
 
 ## Output Format
 

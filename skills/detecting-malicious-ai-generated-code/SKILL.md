@@ -85,11 +85,40 @@ DESTRUCTIVE = [r"\brm\s+-rf\b", r"\bmkfs\b", r"\bdd\s+of=/dev/", r"\bshred\b", r
 REVSHELL    = [r"/dev/tcp/", r"\bnc\s+-e\b", r"socket\.socket\("]
 EXFIL       = [r"curl[^\n]*-(d|-data)[^\n]*https?://", r"wget[^\n]*--post"]
 
+INTERPRETERS = r"\b(ba|z|k|da)?sh\b|\bpython[23]?\b|\bperl\b|\bruby\b|\bnode\b|\benv\b"
+PROSE = [r"^\s*#", r"^\s*echo\b", r"^\s*printf\b"]
+
+def strip_prose(cmd):
+    """Split heredocs out first: a body whose introducing line names an interpreter EXECUTES
+    (`bash <<EOF ... EOF`), so it must be kept and scanned; any other body is prose and is
+    dropped. Returns the command text with non-executing heredoc bodies removed."""
+    out, lines, i = [], cmd.splitlines(), 0
+    while i < len(lines):
+        line = lines[i]
+        m = re.search(r"<<-?\s*[\"']?([A-Za-z_][A-Za-z0-9_]*)[\"']?", line)
+        out.append(line)
+        i += 1
+        if not m:
+            continue
+        delim, body = m.group(1), []
+        while i < len(lines) and lines[i].strip() != delim:
+            body.append(lines[i]); i += 1
+        i += 1                                      # consume the delimiter line
+        if re.search(INTERPRETERS, line):           # interpreter heredoc: body executes, keep it
+            out.extend(body)
+    return "\n".join(out)
+
 def split_clauses(cmd):
     return [c for c in re.split(r"&&|\|\||;|\||&|\(|\)", cmd) if c.strip()]
 
+def is_prose(clause):
+    return any(re.search(p, clause) for p in PROSE)
+
 def verdict(cmd, host_allowlist):
-    for clause in split_clauses(cmd):
+    # split first, strip prose, then sanitise the remaining tokens - in that order
+    for clause in split_clauses(strip_prose(cmd)):
+        if is_prose(clause):
+            continue
         toks = " ".join(shlex.split(clause, posix=True)) if clause.strip() else ""
         for pat in DESTRUCTIVE + REVSHELL:
             if re.search(pat, toks):
@@ -104,7 +133,9 @@ def verdict(cmd, host_allowlist):
 Semgrep over an AI-authored diff for unrequested network/exec sinks (verify rule ids):
 
 ```bash
-semgrep --config p/command-injection --config p/secrets --error ai_generated_diff/
+# confirm ruleset slugs resolve for your Semgrep tier before relying on them; p/default is the
+# safe fallback, and secrets rulesets may require a paid tier (gitleaks below covers that case)
+semgrep --config p/security-audit --config p/python-command-injection --error ai_generated_diff/
 bandit -r ai_generated_diff/ -ll
 gitleaks detect --source ai_generated_diff/ --no-git
 ```

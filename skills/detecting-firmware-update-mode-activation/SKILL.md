@@ -103,13 +103,14 @@ firmware image, use `performing-plc-firmware-security-analysis`.
 
 ## Tools & Systems
 
-Zeek + ICSNPP (`icsnpp-enip`, `icsnpp-bacnet`, GOOSE/`icsnpp-genisys`),
-Suricata, Snort, Dragos Platform, Nozomi Guardian, Claroty CTD/xDome, Microsoft
-Defender for IoT, CISA Malcolm, Wireshark ICS dissectors. Historians:
+Zeek + ICSNPP (`icsnpp-enip`, `icsnpp-bacnet`), Suricata, Snort, Dragos
+Platform, Nozomi Guardian, Claroty CTD/xDome, Microsoft Defender for IoT, CISA Malcolm, Wireshark ICS dissectors. Historians:
 OSIsoft/AVEVA PI, AVEVA Historian. Vendor update tooling as the legitimate
 baseline: Rockwell ControlFLASH / ControlFLASH Plus, Siemens TIA Portal. SIEM:
 Splunk, Microsoft Sentinel. CISA ICS advisories / malware analysis reports for
-SIPROTEC and Industroyer.
+SIPROTEC and Industroyer. There is no official ICSNPP GOOSE parser (`icsnpp-genisys`
+parses the rail-industry Genisys protocol, not IEC 61850), so GOOSE heartbeat
+liveness needs an OT IDS or a dedicated third-party Zeek GOOSE parser.
 
 ## Detection Queries
 
@@ -123,9 +124,13 @@ device-alarm + loss-of-traffic correlation, which is vendor-agnostic.
 # Behavioral signature for the SIPROTEC/Industroyer-style relay DoS pattern.
 # Verify the exact port and payload against the CISA advisory and a live
 # capture for your relay model; the port below is a placeholder to tune.
+# The dsize range is REQUIRED: without a payload constraint this rule alerts on
+# every datagram to the management port, including normal management traffic.
+# Replace the dsize range below (and add a `content:` match) with the trigger
+# datagram size you observe in your own capture - 20<>80 is only a placeholder.
 alert udp any any -> $RELAY_NET $RELAY_MGMT_PORT ( \
   msg:"Possible protection-relay firmware/DoS mode trigger (verify port/pattern)"; \
-  dsize:>0; \
+  dsize:20<>80; \
   threshold:type limit, track by_src, count 1, seconds 60; \
   sid:1000002; rev:1; )
 ```
@@ -145,8 +150,10 @@ index=ot (sourcetype=device_alarm alarm_text="*firmware update*")
 
 ```spl
 index=ot sourcetype=ics_proto
-| bin _time span=60s
-| stats count as msgs by device_id, _time
+/* timechart (not stats) because stats emits no row at all for a silent bucket,
+   so a zero-count minute would never reach the `where` clause below. */
+| timechart span=60s count by device_id
+| untable _time, device_id, msgs
 | eventstats avg(msgs) as baseline by device_id
 | where msgs=0 AND baseline>0   /* silence from a device that normally reports */
 | table _time, device_id, baseline

@@ -58,7 +58,8 @@ app use `detecting-mobile-surveillanceware`. To *deploy* app-protection policy
   class. Without this baseline the detection is noisy — building it is the hard
   part of the skill.
 - Optional: an MTD agent (Lookout, Zimperium zIPS, Microsoft Defender for
-  Endpoint mobile, Wandera) for on-device untrusted-CA / AiTM detection.
+  Endpoint mobile, Jamf Threat Defense — formerly Wandera) for on-device
+  untrusted-CA / AiTM detection.
 - Certificate-transparency search (for example crt.sh) for enriching a rogue
   CA or MDM hostname.
 
@@ -111,11 +112,11 @@ app use `detecting-mobile-surveillanceware`. To *deploy* app-protection policy
 ## Tools & Systems
 
 Microsoft Intune, Jamf Pro, VMware/Omnissa Workspace ONE, Android Enterprise
-(profile + certificate inventory and compliance policy); Apple Configurator and
-the `profiles` MDM commands (`ProfileList`, `CertificateList`); Lookout,
-Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Wandera (on-device
-AiTM / untrusted-CA detection); certificate-transparency search (crt.sh) for
-rogue CA / MDM infrastructure.
+(profile + certificate inventory and compliance policy); the MDM `ProfileList` /
+`CertificateList` query commands (and, on macOS, the `profiles` CLI); Lookout,
+Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Jamf Threat Defense
+(formerly Wandera) for on-device AiTM / untrusted-CA detection;
+certificate-transparency search (crt.sh) for rogue CA / MDM infrastructure.
 
 ## Detection Queries
 

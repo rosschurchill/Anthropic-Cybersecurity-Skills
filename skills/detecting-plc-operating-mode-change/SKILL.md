@@ -52,8 +52,9 @@ use `detecting-plc-program-download`.
 - Passive ICS network sensor on a SPAN/TAP that can see ICS management-protocol
   functions, with an industrial dissector (Zeek + CISA ICSNPP, or a vendor OT IDS).
 - Device application logs and alarms where the controller emits mode transitions
-  (coverage is device-dependent; some devices read the mode state - ATT&CK ICS
-  T0868 - as part of this telemetry).
+  (coverage is device-dependent; device logs may also record mode *reads*.
+  Adversary mode reading is ATT&CK ICS T0868 and is covered by
+  `detecting-operating-mode-enumeration`, not by this skill).
 - An allowlist of hosts permitted to issue mode changes and a change-management
   feed for approved windows.
 - Engineering-workstation telemetry (Sysmon/EDR) and historian access for process
@@ -66,10 +67,13 @@ use `detecting-plc-program-download`.
 1. **Baseline** which hosts may issue mode changes and the normal pattern of
    planned RUN/STOP transitions (maintenance windows).
 2. **Watch management-protocol mode functions.** S7comm carries RUN/STOP via its
-   PI-service start and stop functions; CIP issues Stop/Run/Reset; UMAS over Modbus
-   performs STOP/RUN on Modicon/Unity. Verify the exact per-vendor function/service
-   codes against a live capture and your dissector - never assert a single byte as
-   fact, and remember CIP tag read/write services are not the mode-change service.
+   PI-service start and stop functions. On CIP the generic common services are
+   Reset `0x05`, Start `0x06` and Stop `0x07` - standard ODVA definitions and the
+   illustrative starting point - but note that Logix run/program mode is not set
+   through these generic services: it goes through vendor-specific objects, so map
+   that per platform. UMAS over Modbus performs STOP/RUN on Modicon/Unity; verify
+   its per-vendor sub-function against a live capture and your dissector. CIP tag
+   read/write services are not the mode-change service.
 3. **Score by context.** Alert on any mode-change function from a source that is
    not an allowlisted host, off-hours, or with no change ticket.
 4. **Chain STOP then download.** A STOP transition immediately followed by a
@@ -112,12 +116,18 @@ logs (TIA Portal, Studio 5000 / RSLogix, Unity Pro / EcoStruxure Control Expert)
 ### Suricata -- illustrative S7comm STOP from non-EWS (verify code/offset)
 
 ```
-alert tcp !$EWS any -> $PLC 102 (
-  msg:"ICS-LOCAL S7comm CPU STOP from non-EWS host (verify FC/offset)";
-  flow:to_server,established;
-  # S7comm job header then the PLC-stop PI-service; the exact code and offset
-  # vary by platform - tune against a live capture before deploying.
-  sid:1000004; rev:1;
+# Suricata does not support comments behind or inside a rule body, so the caveats live here
+# and the rule is continued with a trailing backslash.
+# The matches below are ILLUSTRATIVE: protocol-id 0x32 / ROSCTR 0x01 (job) sits just past the
+# TPKT+COTP headers, and 0x29 is the classic S7comm PLC-stop function. Offsets shift with the
+# S7 header variant and the stop request is carried as a PI service string on some platforms,
+# so tune offset/depth/within against a live capture before deploying.
+alert tcp !$EWS any -> $PLC 102 ( \
+  msg:"ICS-LOCAL S7comm CPU STOP from non-EWS host (verify FC/offset)"; \
+  flow:to_server,established; \
+  content:"|32 01|"; offset:7; depth:2; \
+  content:"|29|"; distance:0; within:16; \
+  sid:1000004; rev:1; \
 )
 ```
 

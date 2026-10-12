@@ -106,9 +106,15 @@ Wireshark.
 ### Zeek (icsnpp-opcua-binary) -- browse from an unknown client
 
 ```
+# PSEUDO-CODE, not a real Zeek event. icsnpp-opcua-binary logs service
+# request/response headers carrying a numeric service id and stubs most service
+# details, so key off the Browse service id in its service log rather than a
+# per-service event. Verify the id against your parser version and a live
+# capture before deploying.
 # KNOWN_OPCUA_CLIENTS[resp_h] = set of permitted client hosts for that server.
-event opcua_browse(c: connection) {
-    if ( c$id$orig_h !in KNOWN_OPCUA_CLIENTS[c$id$resp_h] )
+event opcua_service_request(c: connection, service_id: count) {   # pseudo-code
+    if ( service_id == OPCUA_BROWSE_SERVICE_ID &&     # verify id for your parser
+         c$id$orig_h !in KNOWN_OPCUA_CLIENTS[c$id$resp_h] )
         NOTICE([$note=OPCUA::Unexpected_Browse, $conn=c]);
 }
 ```
@@ -119,7 +125,10 @@ event opcua_browse(c: connection) {
 `ot_reads` (protocol=modbus func IN (1,2,3,4)) OR (protocol=opcua op=browse OR op=read)
 | bin _time span=1m
 | stats dc(address) as distinct_points values(dest) as servers by src_ip, _time
-| join type=left src_ip [ search `client_baseline` | eval known="true" ]
+/* bring known / baseline_card / sweep_threshold in from the baseline: none of
+   them is produced by the stats above, so a join on an `eval known="true"`
+   subsearch leaves the comparison below evaluating against nulls. */
+| lookup client_baseline src_ip OUTPUT known baseline_card sweep_threshold
 | where distinct_points > sweep_threshold AND (isnull(known) OR distinct_points > baseline_card*3)
 | table _time, src_ip, servers, distinct_points
 ```
@@ -127,11 +136,21 @@ event opcua_browse(c: connection) {
 ### Suricata -- Modbus read sweep from outside the master net (local SID)
 
 ```
-alert ip !$SCADA_MASTERS any -> $SCADA_SLAVES 502 (
-  msg:"OT-LOCAL Modbus read sweep from unexpected source";
+# Use the modbus app-layer protocol and keyword: an `ip` header with no Modbus
+# keyword alerts on every Modbus request from a non-master. One rule per read
+# function code; keep the distinct-address rate logic in the SIEM.
+# Confirm the rules load with `suricata -T`.
+alert modbus !$SCADA_MASTERS any -> $SCADA_SLAVES any (
+  msg:"OT-LOCAL Modbus FC3 read from unexpected source";
   flow:to_server,established;
-  # FC3/FC4 read; alert, rate on distinct addresses in the SIEM. Tune against a live capture.
+  modbus: function 3;
   sid:1000001; rev:1;
+)
+alert modbus !$SCADA_MASTERS any -> $SCADA_SLAVES any (
+  msg:"OT-LOCAL Modbus FC4 read from unexpected source";
+  flow:to_server,established;
+  modbus: function 4;
+  sid:1000002; rev:1;
 )
 ```
 

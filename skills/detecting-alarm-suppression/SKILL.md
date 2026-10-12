@@ -93,28 +93,39 @@ reference, but keep the trigger distinct.
 - **Transient vs persistent.** Suppression here is run-time muting/blocking/
   non-reporting that may leave no config change — contrast with
   `detecting-alarm-setting-tampering`.
-- **Protocol function values are illustrative.** DNP3 disable-unsolicited,
-  IEC 61850 RCB `RptEna`=false, GOOSE `stNum`/`sqNum`/TTL anomalies, OPC UA
-  subscription removal, and BACnet COV/DeviceCommunicationControl all suppress
-  reporting. Verify the exact function codes and keyword support against your
-  dissector and a live capture before signaturing; prefer the liveness and
-  missing-alarm framing, which does not depend on the exact code.
+- **Protocol function values.** DNP3 disable-unsolicited (function code 21,
+  0x15 - a fixed IEEE 1815 constant), IEC 61850 RCB `RptEna`=false, GOOSE
+  `stNum`/`sqNum`/TTL anomalies, OPC UA subscription removal, and BACnet COV /
+  Notification-class removal all suppress reporting. Vendor-specific objects and
+  your Suricata/Zeek build's keyword support still need verifying against a live
+  capture; prefer the liveness and missing-alarm framing, which does not depend
+  on any one code. Wholesale denial of all traffic to a device (for example
+  BACnet DeviceCommunicationControl) is the scope of
+  `detecting-ics-communication-blocking`, not alarm suppression.
 
 ## Tools & Systems
 
 Zeek + ICSNPP (`icsnpp-dnp3`, `icsnpp-modbus`, `icsnpp-bacnet`,
-`icsnpp-opcua-binary`, GOOSE/`icsnpp-genisys`), Suricata, Snort, Dragos
-Platform, Nozomi Guardian, Claroty CTD/xDome, Microsoft Defender for IoT, CISA
+`icsnpp-opcua-binary`), Suricata, Snort, Dragos Platform, Nozomi Guardian,
+Claroty CTD/xDome, Microsoft Defender for IoT, CISA
 Malcolm, Security Onion, Wireshark ICS dissectors. HMI/historian: FactoryTalk
 A&E, Siemens WinCC, AVEVA, Inductive Automation Ignition, OSIsoft/AVEVA PI.
-SIEM: Splunk, Microsoft Sentinel.
+SIEM: Splunk, Microsoft Sentinel. There is no official ICSNPP GOOSE parser
+(`icsnpp-genisys` parses the rail-industry Genisys protocol, not IEC 61850), so
+GOOSE heartbeat and `stNum`/TTL monitoring needs an OT IDS or a dedicated
+third-party Zeek GOOSE parser.
 
 ## Detection Queries
 
 ### Splunk — missing-expected-alarm (process breach, no alarm) (core)
 
 ```spl
-index=ot sourcetype=historian value>=limit_high
+index=ot sourcetype=historian
+/* field-to-field comparison is not supported in a base search (Splunk would
+   compare `value` to the literal string "limit_high"), so it must be a `where`.
+   If the limit is not on the event, `| lookup point_limits point OUTPUT
+   limit_high` first. */
+| where value>=limit_high
 | join type=left device_id point [ search index=ot sourcetype=alarm_journal | stats count as alarms by device_id point ]
 | where isnull(alarms) OR alarms=0   /* breach with no alarm -> suppression candidate */
 | table _time, device_id, point, value, limit_high
@@ -123,10 +134,12 @@ index=ot sourcetype=historian value>=limit_high
 ### Zeek (ICSNPP) — DNP3 disable-unsolicited from a non-master host
 
 ```
-# Pseudo-Zeek over icsnpp-dnp3. DNP3 disable-unsolicited stops spontaneous
-# event/alarm reporting. Verify the function-code value against your dissector.
-event dnp3_application_request_header(c: connection, fc: count) {
-    if ( fc == 21 && ! is_known_master(c$id$orig_h) )   # disable-unsolicited (verify)
+# Pseudo-Zeek over icsnpp-dnp3 (is_known_master is your own helper). DNP3
+# function code 21 (0x15) is DISABLE_UNSOLICITED - a fixed IEEE 1815 constant -
+# and stops spontaneous event/alarm reporting.
+event dnp3_application_request_header(c: connection, is_orig: bool,
+                                      application: count, fc: count) {
+    if ( is_orig && fc == 21 && ! is_known_master(c$id$orig_h) )
         NOTICE([$note=DNP3_DisableUnsolicited_Suspicious, $conn=c]);
 }
 ```
@@ -135,8 +148,10 @@ event dnp3_application_request_header(c: connection, fc: count) {
 
 ```spl
 index=ot sourcetype=ics_proto
-| bin _time span=60s
-| stats count as msgs by device_id, _time
+/* timechart (not stats) because stats emits no row at all for a silent bucket,
+   so a zero-count minute would never reach the `where` clause below. */
+| timechart span=60s count by device_id
+| untable _time, device_id, msgs
 | eventstats avg(msgs) as baseline by device_id
 | where msgs=0 AND baseline>0   /* a device that normally reports has gone silent */
 | table _time, device_id, baseline
@@ -145,12 +160,13 @@ index=ot sourcetype=ics_proto
 ### Suricata — reporting-control command from an unexpected source (local SID)
 
 ```
-# DNP3 disable-unsolicited or MMS RCB-disable from outside the master set.
-# Verify dnp3/mms keyword support in your Suricata build; tune against a
-# live capture. sid is a local placeholder.
+# DNP3 disable-unsolicited from outside the master set. Without the
+# dnp3_func keyword this rule fires on every DNP3 request from a non-master.
+# Confirm the rule loads with `suricata -T`; sid is a local placeholder.
 alert dnp3 !$MASTERS any -> $OUTSTATIONS 20000 ( \
-  msg:"DNP3 disable-unsolicited from non-master (verify func)"; \
+  msg:"DNP3 disable-unsolicited from non-master"; \
   flow:to_server; \
+  dnp3_func:21; \
   sid:1000001; rev:1; )
 ```
 

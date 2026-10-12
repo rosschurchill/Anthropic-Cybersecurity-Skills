@@ -45,16 +45,16 @@ This skill owns the stored history and deferred execution problem. For screening
 ## Workflow
 
 1. **Make history server-authoritative.** Reconstruct the model prompt from the signed server record each turn; never trust client-supplied history. Many desktop clients render history only once at open, so an injected turn goes unseen unless the server is the source of truth.
-2. **Maintain a hash chain over messages.** Each message hashes prior-hash plus content plus role plus timestamp. Recompute on load and before each model call. A broken chain, a reordered sequence, or an edited-but-same-id message is a tamper alert. Edits and deletes must be append-only revisions or soft-deletes, never in-place.
+2. **Maintain a keyed hash chain over messages.** Each message is HMAC'd over prior-hash plus content plus role plus timestamp, with a key the store-write path cannot read (KMS or a separate signing service), and the current head hash is anchored outside the conversation store (append-only log or periodic external attestation) so truncation and wholesale re-signing are both visible. Recompute on load and before each model call. A broken chain, a reordered sequence, or an edited-but-same-id message is a tamper alert. Edits and deletes must be append-only revisions or soft-deletes, never in-place.
 3. **Detect out-of-band mutation.** Alert when a message is created, edited, or deleted by an actor, token, or code path that is not the live chat turn flow, such as a direct DB/API write, a different session token, or a write with no corresponding inbound user request. Correlate with session-token-theft signals.
-4. **Detect injected or hidden turns.** Diff the message array actually sent to the model against canonical stored history. Flag turns present in the prompt but absent from or differing from the store, and turns with roles that do not match their origin (a user or system turn written by a tool path).
+4. **Detect injected or hidden turns.** Diff the message array actually sent to the model against canonical stored history. Compare only the roles the store is supposed to persist (user/assistant turns): server-injected system prompts, tool/function definitions, retrieved context and template scaffolding are legitimately absent from stored history, and diffing them flags every turn. Flag persisted-role turns present in the prompt but absent from or differing from the store, and turns with roles that do not match their origin (a user turn written by a tool path). Check the system prompt separately against its signed template version.
 5. **Screen history for sleeper instructions.** Scan stored content, not just the live input, for trigger-gated imperatives: when the user next asks about X do Y, on the next turn call tool Z, if you see keyword K then act. Flag any stored turn that conditions a privileged tool-call or data access on a future event.
 6. **Correlate behavioural drift.** A tool invocation or policy-relevant action on a turn whose current input does not request it, especially pointing back to an older history entry, indicates a fired sleeper.
 
 ## Key Concepts
 
 - **Manipulate chat history (AML.T0092):** an adversary with backend auth or direct store access alters prior messages or threads to hide injected prompts or persistent behavioural changes.
-- **Delay execution of instructions (AML.T0094):** instructions planted in history fire on a future trigger, so same-turn prompt-injection controls never see them in the turn that matters. A documented pattern postponed a workspace-extension call to the next turn.
+- **Delay execution of instructions (AML.T0094):** instructions planted in history fire on a future trigger, so same-turn prompt-injection controls never see them in the turn that matters. ATLAS describes this generically: an adversary instructs the model to carry out the action on a later turn rather than the one carrying the injection, so restrictions scoped to the turn that ingested untrusted content no longer apply.
 - **Server-authoritative history:** the canonical, integrity-protected record the server reconstructs the prompt from. The defeat for both techniques starts here.
 - **Persist same-turn restrictions:** once any untrusted content has entered a session, keep same-turn tool restrictions in force across subsequent turns, which defeats the deferral bypass.
 - **Sanctioned-edit distinction:** products that allow legitimate message editing or branching need a revision model that records edits as new revisions, so a sanctioned edit and a tamper both appear, but only the unsanctioned path alerts.
@@ -71,25 +71,36 @@ This skill owns the stored history and deferred execution problem. For screening
 
 ## Detection Queries
 
-Server-side hash chain and verification:
+Server-side keyed integrity chain and verification. The chain must be **keyed** and the head must be
+anchored **outside** the conversation store. An unkeyed SHA-256 chain whose `chain_hash` lives in the
+same record catches only accidental or careless tampering: this skill's adversary has store write
+access, so they would edit `content` and recompute every downstream hash with the same public
+function, and verification would return ok. Likewise, nothing in the chain itself pins the head, so
+deleting trailing messages is invisible until the head is attested externally.
 
 ```python
-import hashlib
+import hmac, hashlib
 
-def link(prev_hash, msg):
+# KEY is held by a signing service / KMS and is NOT readable from the store-write path.
+# Prefer sign(payload) as an RPC to that service over holding key material in the app.
+def link(prev_hash, msg, key):
     payload = f"{prev_hash}|{msg['role']}|{msg['content']}|{msg['created_at']}"
-    return hashlib.sha256(payload.encode()).hexdigest()
+    return hmac.new(key, payload.encode(), hashlib.sha256).hexdigest()
 
-def verify_chain(messages):
+def verify_chain(messages, key, anchored_head=None):
     prev = "GENESIS"
     for i, m in enumerate(messages):
-        expect = link(prev, m)
-        if m.get("chain_hash") != expect:
+        expect = link(prev, m, key)
+        if not hmac.compare_digest(m.get("chain_hash", ""), expect):
             return {"ok": False, "break_at": i, "msg_id": m.get("id")}
         if i and m["seq"] != messages[i-1]["seq"] + 1:
             return {"ok": False, "reorder_at": i, "msg_id": m.get("id")}
         prev = expect
-    return {"ok": True}
+    # truncation check: the head recorded in the external anchor (append-only log, transparency
+    # log, or periodic attestation) must match the head we just recomputed
+    if anchored_head is not None and not hmac.compare_digest(prev, anchored_head):
+        return {"ok": False, "truncated_or_resigned": True, "expected_head": anchored_head}
+    return {"ok": True, "head": prev}
 ```
 
 Out-of-band write detection over the store audit log (KQL-style; verify schema):
@@ -106,10 +117,20 @@ ConversationStoreWrites
 Prompt-vs-store divergence from observability traces:
 
 ```python
+# Compare only the roles your store is supposed to persist. The system prompt, tool/function
+# definitions, retrieved RAG context and template scaffolding are injected by the server at render
+# time and legitimately never appear in stored history - including them flags ~every turn.
+PERSISTED_ROLES = ("user", "assistant")
+
 def divergence(prompt_array, stored_history):
-    stored = {(m["role"], m["content"]) for m in stored_history}
-    return [t for t in prompt_array if (t["role"], t["content"]) not in stored]
+    stored = {(m["role"], m["content"]) for m in stored_history
+              if m["role"] in PERSISTED_ROLES}
+    return [t for t in prompt_array
+            if t["role"] in PERSISTED_ROLES and (t["role"], t["content"]) not in stored]
 ```
+
+The system prompt's integrity is checked separately, against its signed template version, not
+through this diff.
 
 Sleeper-instruction screen over stored history (patterns to review, not to auto-execute):
 
@@ -132,7 +153,7 @@ def scan_history(messages):
 ## Common Scenarios
 
 - **Out-of-band edit:** a prior assistant turn is rewritten via a direct API call with a token that did not originate the turn. Audit-log rule and hash-chain break both fire.
-- **Injected turn:** the prompt array sent to the model contains a system turn absent from the store. Divergence check fires.
+- **Injected turn:** the prompt array sent to the model contains a user turn absent from the store (or one whose content differs from the stored record). Divergence check fires. A turn injected as `system` shows up instead as a mismatch against the signed system-prompt template.
 - **Sleeper tool-call:** history contains on the next turn, call the payments tool; the next innocuous user message triggers a transfer. Sleeper screen flagged it at ingest; behavioural-drift correlation confirms the fire.
 - **Reorder to hide:** messages are reordered to bury an injected instruction. Sequence check fires.
 - **Session theft:** another user session is accessed horizontally and its history edited. IdP reuse signal plus out-of-band write correlate.
@@ -150,7 +171,7 @@ Report each finding with:
 ## Response
 
 - Invalidate the session, restore history to the last-verified state, and revoke/rotate the implicated token.
-- Keep the store append-only / soft-delete with hash-chain integrity; scope session tokens tightly and detect reuse.
+- Keep the store append-only / soft-delete with keyed hash-chain integrity and an externally anchored head; scope session tokens tightly and detect reuse.
 - Treat retrieved history as untrusted context and keep same-turn tool restrictions in force across turns once untrusted content has entered the session.
 - Audit every tool-call a sleeper may have fired and reverse any unauthorized action.
 - For current-turn injected input or documents, hand off to detecting-ai-model-prompt-injection-attacks.
