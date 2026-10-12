@@ -1,14 +1,6 @@
 ---
 name: detecting-suspicious-oauth-application-consent
-description: >-
-  Detect risky OAuth application consent grants in Azure AD / Microsoft Entra ID using the
-  Microsoft Graph API, audit logs, and permission analysis to identify illicit consent grant
-  attacks. Use when investigating a suspected illicit consent grant, hunting over-privileged
-  or attacker-registered applications, reviewing admin-consent and delegated permission
-  grants, or validating detection coverage for consent phishing. Keywords: Entra ID, Microsoft
-  Graph, OAuth consent, illicit consent grant, service principal, delegated permissions, admin
-  consent, audit log. Do not use for detecting stolen or replayed OAuth tokens — use
-  detecting-oauth-token-theft.
+description: 'Detect risky OAuth application consent grants in Azure AD / Microsoft Entra ID using the Microsoft Graph API, audit logs, and permission analysis to identify illicit consent grant attacks. Use when investigating a suspected illicit consent grant, hunting over-privileged or attacker-registered applications, reviewing admin-consent and delegated permission grants, or validating detection coverage for consent phishing. Keywords: Entra ID, Microsoft Graph, OAuth consent, illicit consent grant, service principal, delegated permissions, admin consent, audit log. Do not use for detecting stolen or replayed OAuth tokens — use detecting-oauth-token-theft. Do not use for OAuth app-integration persistence across Microsoft 365, Google Workspace and SaaS - use detecting-malicious-cloud-app-integration.'
 domain: cybersecurity
 subdomain: cloud-security
 tags:

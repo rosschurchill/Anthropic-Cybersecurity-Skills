@@ -69,3 +69,24 @@ mappings. To graduate one:
 
 Authoring the skills is a separate step from this research pass and is not done
 automatically.
+
+## v19.2 Tier A build queue (round 2)
+
+Refreshed against ATT&CK Enterprise v19.2 (coverage 163/222 = 73%). Same
+research -> draft -> gate loop. Status: `research` = sub-research file written;
+`drafted` = SKILL.md authored; `shipped` = merged and passing gates.
+
+| ATT&CK | Technique | Proposed slug | Tactic | Status |
+|--------|-----------|---------------|--------|:------:|
+| T1651 | Cloud Administration Command | `detecting-cloud-administration-command-abuse` | execution | shipped |
+| T1675 | ESXi Administration Command | `detecting-esxi-administration-abuse` | execution | shipped |
+| T1072 | Software Deployment Tools | `detecting-software-deployment-tool-abuse` | execution | shipped |
+| T1176 | Software Extensions | `detecting-malicious-software-extensions` | persistence | shipped |
+| T1671 | Cloud Application Integration | `detecting-malicious-cloud-app-integration` | persistence | shipped |
+| T1569 | System Services | `detecting-malicious-system-service-execution` | execution | shipped |
+| T1189 | Drive-by Compromise | `detecting-drive-by-compromise` | initial-access | shipped |
+| T1115 | Clipboard Data | `detecting-clipboard-data-theft` | collection | shipped |
+| T1113/.123/.125 | Screen/Audio/Video Capture | `detecting-screen-audio-video-capture` | collection | shipped |
+| T1602 | Data from Configuration Repository | `detecting-network-config-repository-theft` | collection | shipped |
+| T1205 | Traffic Signaling | `detecting-traffic-signaling-and-port-knocking` | command-and-control | shipped |
+| T1665 | Hide Infrastructure | `detecting-hidden-c2-infrastructure` | command-and-control | shipped |
