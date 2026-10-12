@@ -7,7 +7,7 @@ description: 'Builds a FIDO2/WebAuthn relying party server with the python-fido2
   password-based authentication to passkeys. Do not use for passwordless or passkey authentication via
   Microsoft Entra - use implementing-passwordless-auth-with-microsoft-entra.'
 domain: cybersecurity
-subdomain: identity-and-access-management
+subdomain: identity-access-management
 tags:
 - FIDO2
 - WebAuthn

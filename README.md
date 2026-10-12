@@ -149,42 +149,42 @@ Existing security tool repos give you wordlists, payloads, or exploit code. None
 
 | Domain | Skills | Key capabilities |
 |---|---|---|
-| Cloud Security | 66 | AWS, Azure, GCP hardening · CSPM · cloud attack emulation · cloud forensics |
-| SOC Operations | 63 | Playbooks · escalation workflows · Graph-log detection · tabletop exercises |
-| Threat Hunting | 58 | Hypothesis-driven hunts · LOTL detection · EVTX hunting · fleet hunting |
-| Threat Intelligence | 52 | STIX/TAXII · MISP · OpenCTI · feed integration · actor profiling |
-| Web Application Security | 46 | OWASP Top 10 · SQLi · XSS · SSRF · deserialization |
-| Network Security | 43 | IDS/IPS · firewall rules · VLAN segmentation · traffic analysis |
-| Digital Forensics | 41 | Disk imaging · memory forensics · Hayabusa/KAPE/Plaso timelines |
-| Identity & Access Management | 40 | Entra ID/ROADtools · device-code phishing · PAM · zero trust identity |
+| Cloud Security | 68 | AWS, Azure, GCP hardening · CSPM · cloud attack emulation · cloud forensics |
+| SOC Operations | 67 | Playbooks · escalation workflows · Graph-log detection · tabletop exercises |
+| Threat Hunting | 60 | Hypothesis-driven hunts · LOTL detection · EVTX hunting · fleet hunting |
+| Threat Intelligence | 50 | STIX/TAXII · MISP · OpenCTI · feed integration · actor profiling |
+| Network Security | 47 | IDS/IPS · firewall rules · VLAN segmentation · traffic analysis |
+| OT/ICS Security | 47 | Modbus · DNP3 · IEC 62443 · historian defense · SCADA |
+| Identity & Access Management | 41 | Entra ID/ROADtools · device-code phishing · PAM · zero trust identity |
+| Web Application Security | 40 | OWASP Top 10 · SQLi · XSS · SSRF · deserialization |
+| Digital Forensics | 39 | Disk imaging · memory forensics · Hayabusa/KAPE/Plaso timelines |
 | Malware Analysis | 39 | Static/dynamic analysis · reverse engineering · sandboxing |
 | Red Teaming | 35 | ADCS/Certipy · BloodHound CE · Sliver/Havoc C2 · NTLM relay |
 | Container Security | 33 | K8s RBAC · image scanning · Falco · container escape |
-| OT/ICS Security | 29 | Modbus · DNP3 · IEC 62443 · historian defense · SCADA |
 | API Security | 28 | GraphQL · REST · OWASP API Top 10 · WAF bypass |
-| Incident Response | 26 | Breach containment · ransomware response · IR playbooks |
+| Incident Response | 28 | Breach containment · ransomware response · IR playbooks |
+| Mobile Security | 27 | Android/iOS analysis · mobile pentesting · MDM forensics |
+| AI Security | 26 | LLM red-teaming (garak/PyRIT) · prompt injection · MCP/agentic security · guardrails |
 | Vulnerability Management | 25 | Nessus · scanning workflows · patch prioritization · CVSS |
 | Penetration Testing | 23 | Network · web · cloud · mobile · NetExec lateral movement |
-| DevSecOps | 18 | CI/CD security · Trivy IaC/image scanning · code signing |
-| Zero Trust Architecture | 18 | BeyondCorp · CISA maturity model · microsegmentation |
-| Endpoint Security | 17 | EDR · LOTL detection · fileless malware · persistence hunting |
-| Phishing Defense | 16 | Email authentication · BEC detection · phishing IR |
+| Endpoint Security | 22 | EDR · LOTL detection · fileless malware · persistence hunting |
+| DevSecOps | 20 | CI/CD security · Trivy IaC/image scanning · code signing |
 | Cryptography | 16 | TLS · Ed25519 · post-quantum migration · key management |
-| AI Security | 14 | LLM red-teaming (garak/PyRIT) · prompt injection · MCP/agentic security · guardrails |
-| Mobile Security | 13 | Android/iOS analysis · mobile pentesting · MDM forensics |
+| Phishing Defense | 16 | Email authentication · BEC detection · phishing IR |
+| Zero Trust Architecture | 16 | BeyondCorp · CISA maturity model · microsegmentation |
 | Ransomware Defense | 13 | Precursor detection · response · recovery · encryption analysis |
-| Compliance & Governance | 10 | NIST 800-30/RMF · CMMC · HIPAA · TPRM · CIS benchmarks |
-| Supply Chain Security | 8 | SBOMs · dependency confusion · malicious-package triage · SLSA/Sigstore |
-| Threat Detection | 7 | Credential dumping · golden-ticket forgery · pass-the-ticket · LOLBAS · UEBA insider signals |
-| Hardware & Firmware Security | 6 | CHIPSEC/UEFI audit · Secure Boot bypass · TPM attestation · bootkit hunting |
+| Compliance & Governance | 12 | NIST 800-30/RMF · CMMC · HIPAA · TPRM · CIS benchmarks |
+| Supply Chain Security | 9 | SBOMs · dependency confusion · malicious-package triage · SLSA/Sigstore |
 | Deception Technology | 6 | Honeytokens · canarytokens · breach detection |
+| Hardware & Firmware Security | 6 | CHIPSEC/UEFI audit · Secure Boot bypass · TPM attestation · bootkit hunting |
+| Threat Detection | 5 | Credential dumping · golden-ticket forgery · pass-the-ticket · LOLBAS · UEBA insider signals |
 | Blockchain Security | 2 | Ethereum smart-contract vulnerabilities · Foundry audit workflows |
-| Wireless Security | 2 | Bluetooth Low Energy attack detection · BLE security assessment |
 | Privacy Compliance | 2 | GDPR data-subject access requests · privacy impact assessments |
+| Wireless Security | 2 | Bluetooth Low Energy attack detection · BLE security assessment |
 | Data Protection | 1 | Data loss prevention with Microsoft Purview |
 | Purple Team | 1 | Atomic Red Team purple-team testing |
 
-*872 skills in total. Counts come from the `subdomain` field in each skill's frontmatter; the table above covers 34 domains and sums to 817, so the 55 skills added since (the ICS/OT, mobile and AI-security gap builds, plus later additions) are not yet broken out per domain. The frontmatter currently holds 45 distinct `subdomain` values, several of them near-duplicate aliases with one or two skills each.*
+*872 skills across 34 domains. Counts come from the `subdomain` field in each skill's frontmatter, which now uses only the 34 canonical values defined in `tools/validate-skill.py` — the older aliases have been consolidated and are no longer in use.*
 
 ## How AI agents use these skills
 

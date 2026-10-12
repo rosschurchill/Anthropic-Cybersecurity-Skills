@@ -7,7 +7,7 @@ description: Implements external attack surface management (EASM) using Shodan, 
   ASM programs or performing external reconnaissance for security assessments. Do not use for
   internal attack-path analysis - use implementing-attack-path-analysis-with-xm-cyber.
 domain: cybersecurity
-subdomain: offensive-security
+subdomain: penetration-testing
 tags:
 - attack-surface
 - reconnaissance

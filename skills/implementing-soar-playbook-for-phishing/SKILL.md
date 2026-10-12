@@ -8,7 +8,7 @@ description: >-
   not use for general Splunk SOAR workflow automation - use
   implementing-soar-automation-with-phantom.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - soar
 - splunk-phantom

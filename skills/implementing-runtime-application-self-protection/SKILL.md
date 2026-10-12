@@ -10,7 +10,7 @@ description: >-
   in-application, Java, Python, attack pattern, block policy. Do not use for perimeter WAF
   rule deployment — use implementing-cloud-waf-rules.
 domain: cybersecurity
-subdomain: application-security
+subdomain: web-application-security
 tags:
 - rasp
 - application-security

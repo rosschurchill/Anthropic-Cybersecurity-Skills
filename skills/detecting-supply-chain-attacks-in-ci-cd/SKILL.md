@@ -7,7 +7,7 @@ description: >-
   pipelines or investigating compromised build systems. Do not use for SIEM/EDR log-based hunting
   for supply-chain compromise - use hunting-for-supply-chain-compromise.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - supply-chain-security
 - ci-cd-security

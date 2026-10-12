@@ -6,7 +6,7 @@ description: 'Deploys and configures Wazuh SIEM/XDR for endpoint detection, cove
   and response, writing or testing custom Wazuh rules, or querying and triaging Wazuh alerts. Do not
   use for deploying a commercial CrowdStrike EDR agent - use deploying-edr-agent-with-crowdstrike.'
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - siem
 - xdr

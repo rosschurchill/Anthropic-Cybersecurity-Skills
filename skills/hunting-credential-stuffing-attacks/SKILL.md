@@ -6,7 +6,7 @@ description: Detects credential stuffing attacks by analyzing authentication log
   campaigns or building detection rules for auth abuse. Do not use for RDP password brute-force
   detection - use detecting-rdp-brute-force-attacks.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - credential-stuffing
 - authentication-logs

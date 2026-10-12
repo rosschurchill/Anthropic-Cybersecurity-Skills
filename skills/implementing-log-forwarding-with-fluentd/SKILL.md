@@ -8,7 +8,7 @@ description: >-
   generating Fluent Bit/Fluentd configuration files for a new log pipeline. Do not use for
   rsyslog-based syslog centralization - use implementing-syslog-centralization-with-rsyslog.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - fluentd
 - fluent-bit

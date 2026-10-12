@@ -8,7 +8,7 @@ description: >-
   breach-and-attack-simulation validation - use
   implementing-continuous-security-validation-with-bas.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - security-chaos-engineering
 - detection-validation

@@ -7,7 +7,7 @@ description: 'Deploys DNS, HTTP, and AWS API key canary tokens across network in
   detection with Canarytokens.org and Thinkst Canary platforms. Do not use for building a deception
   coverage report via the Thinkst Canary API - use implementing-deception-based-detection-with-canarytoken.'
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - canary-tokens
 - intrusion-detection

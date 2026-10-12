@@ -7,7 +7,7 @@ description: >-
   implementing zero-trust service-to-service authentication. Do not use for general TLS 1.3
   transport configuration - use configuring-tls-1-3-for-secure-communications.
 domain: cybersecurity
-subdomain: security-operations
+subdomain: soc-operations
 tags:
 - mtls
 - zero-trust
