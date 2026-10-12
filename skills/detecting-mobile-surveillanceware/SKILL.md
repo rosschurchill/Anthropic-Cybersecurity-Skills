@@ -1,6 +1,6 @@
 ---
 name: detecting-mobile-surveillanceware
-description: 'Detects mobile surveillanceware and stalkerware (T1429 Audio Capture) - an installed app abusing microphone, camera, screen capture (T1513), video (T1512), and location (T1430) permissions to covertly monitor a targeted person. Correlates sensor-permission grants with runtime use that persists while the app is backgrounded or the device is locked, then egress, using the Android Privacy Dashboard and AppOpsManager, iOS App Privacy Report and recording indicators, and MTD stalkerware classification. Flags the RECORD_AUDIO plus background-location permission cluster and MediaProjection abuse. Victim-protective detection and response only. Use when hunting stalkerware, consumer spyware, covert mic or camera recording, or hidden location tracking. Keywords: stalkerware, RECORD_AUDIO, MediaProjection, Privacy Dashboard, App Privacy Report, AppOps, background location, Android, iOS, T1429. Do not use for general mobile malware triage, use detecting-mobile-malware-behavior.'
+description: 'Detects mobile surveillanceware and stalkerware (T1429 Audio Capture) - an installed app abusing microphone, camera, screen capture (T1513), video (T1512), and location (T1430) permissions to covertly monitor a targeted person. Correlates sensor-permission grants with runtime use that persists while the app is backgrounded or the device is locked, then egress, using the Android Privacy Dashboard and AppOpsManager, iOS App Privacy Report and recording indicators, and MTD stalkerware classification. Flags the RECORD_AUDIO plus background-location permission cluster and screen-capture session abuse. Victim-protective detection and response only. Use when hunting stalkerware, consumer spyware, covert mic or camera recording, or hidden location tracking. Keywords: stalkerware, RECORD_AUDIO, MediaProjection, Privacy Dashboard, App Privacy Report, AppOps, background location, Android, iOS, T1429. Do not use for general mobile malware triage, use detecting-mobile-malware-behavior.'
 domain: cybersecurity
 subdomain: mobile-security
 tags:
@@ -70,8 +70,11 @@ escalate risk to the survivor.** Before changing anything:
 ## Prerequisites
 
 - Access to the device's permission and privacy telemetry: Android 12+ **Privacy
-  Dashboard** / permission-usage history and `AppOpsManager` records; iOS **App
-  Privacy Report** (Settings, Privacy & Security) and the mic/camera recording
+  Dashboard** / permission-usage history; `AppOpsManager` records are **not**
+  fleet telemetry — historical app-ops for other packages need privileged access
+  (`GET_APP_OPS_STATS` is signature|privileged), so in practice that path means
+  on-device user review or `adb shell dumpsys appops`. On iOS, the **App Privacy
+  Report** (Settings, Privacy & Security) and the mic/camera recording
   indicators.
 - An MTD with surveillanceware/stalkerware classification (Lookout, Zimperium
   zIPS, Microsoft Defender for Endpoint mobile) and/or Google Play Protect.
@@ -84,11 +87,16 @@ escalate risk to the survivor.** Before changing anything:
 
 1. **Permission-cluster screen.** Enumerate apps holding the sensitive cluster —
    `RECORD_AUDIO` + a location permission (illustrative:
-   `ACCESS_FINE_LOCATION` / `ACCESS_BACKGROUND_LOCATION`), `CAMERA`, or screen
-   capture via `MediaProjection`. Apps with no UI justification for the cluster
-   are candidates. **Verify the exact permission and AppOps op constants against
-   current Android docs** and prefer the behavioral framing (an unexpected,
-   non-allowlisted app holding a powerful sensor grant).
+   `ACCESS_FINE_LOCATION` / `ACCESS_BACKGROUND_LOCATION`) or `CAMERA`. Apps with
+   no UI justification for the cluster are candidates. Screen capture is **not**
+   enumerable this way: `MediaProjection` has no manifest permission and needs
+   per-session user consent via
+   `MediaProjectionManager.createScreenCaptureIntent()`, so the static signals
+   are the declared `foregroundServiceType="mediaProjection"` and, on Android
+   14+, `FOREGROUND_SERVICE_MEDIA_PROJECTION`. **Verify the exact permission and
+   AppOps op constants against current Android docs** and prefer the behavioral
+   framing (an unexpected, non-allowlisted app holding a powerful sensor
+   grant).
 2. **Runtime-use anomaly.** Read mic / camera / `MediaProjection` use timestamps
    from the Privacy Dashboard or App Privacy Report. Flag use that occurs while
    the user was not interacting — backgrounded or screen-locked capture is the
@@ -135,15 +143,21 @@ tune** against current Android/Apple docs.
 CANDIDATE IF app holds RECORD_AUDIO
           AND app holds (ACCESS_BACKGROUND_LOCATION OR ACCESS_FINE_LOCATION)
           AND app NOT IN legitimate_recorder_nav_allowlist
-# Raise priority if the app also holds MediaProjection or an Accessibility service.
+# Raise priority if the app declares foregroundServiceType="mediaProjection"
+# (Android 14+: FOREGROUND_SERVICE_MEDIA_PROJECTION) or an Accessibility service.
+# MediaProjection itself is not a permission and cannot be inventoried.
 ```
 
 ### Android — runtime use while backgrounded (Privacy Dashboard concept)
 
 ```text
-# From permission-usage history / AppOps op records:
-ALERT IF sensor_op IN (mic, camera, MediaProjection)
-      AND app_state == backgrounded OR screen == locked
+# From permission-usage history / AppOps op records. These sources carry per-access
+# TIMESTAMPS, not an interaction state: derive backgrounded / screen-locked by
+# correlating each access timestamp against a screen-on / device-usage timeline
+# (the fields below stand in for that derived state — confirm what your source
+# actually exposes before coding).
+ALERT IF sensor_op IN (mic, camera, screen-capture session)
+      AND (app_state == backgrounded OR screen == locked)
       AND app NOT IN allowlist
 # AppOps op strings vary by Android version — verify before coding.
 ```

@@ -1,6 +1,6 @@
 ---
 name: detecting-mercenary-mobile-spyware-with-mvt
-description: 'Forensically detects targeted mercenary mobile spyware (Pegasus, Predator, Reign) delivered by exploitation for initial access (T1664), including zero-click client-execution exploits (T1658) and drive-by compromise (T1456), using the Mobile Verification Toolkit (MVT) against iOS backups, filesystem dumps, and sysdiagnose, or Android backups, matched to Amnesty and Citizen Lab STIX2 IOCs. Parses DataUsage.sqlite, netusage.sqlite, Shutdown.log, Safari history, and iMessage artifacts, and applies the temporal-correlation attribution method. Victim-protective detection and response only. Use when triaging an at-risk device for state-grade spyware or responding to an Apple threat notification. Keywords: MVT, mvt-ios, Pegasus, Predator, STIX2 IOC, DataUsage.sqlite, Shutdown.log, sysdiagnose, Lockdown Mode, iOS, Android, T1664. Do not use for commercial full-device extraction and case forensics, use performing-mobile-device-forensics-with-cellebrite.'
+description: 'Forensically detects targeted mercenary mobile spyware (Pegasus, Predator, Reign) delivered by exploitation for initial access (T1664), including zero-click client-execution exploits (T1658) and drive-by compromise (T1456), using the Mobile Verification Toolkit (MVT) against iOS backups and filesystem dumps or Android backups, matched to Amnesty and Citizen Lab STIX2 IOCs. MVT has no built-in sysdiagnose modules; Shutdown.log triage uses iShutdown. Parses DataUsage.sqlite, netusage.sqlite, Shutdown.log, Safari history, and iMessage artifacts, and applies the temporal-correlation attribution method. Victim-protective detection and response only. Use when triaging an at-risk device for state-grade spyware or responding to an Apple threat notification. Keywords: MVT, mvt-ios, Pegasus, Predator, STIX2 IOC, DataUsage.sqlite, Shutdown.log, sysdiagnose, Lockdown Mode, iOS, Android, T1664. Do not use for commercial full-device extraction and case forensics, use performing-mobile-device-forensics-with-cellebrite.'
 domain: cybersecurity
 subdomain: mobile-security
 tags:
@@ -81,8 +81,13 @@ extraction and chain-of-custody imaging use
 
 1. **Acquire (evidence first).**
    - iOS: an **encrypted backup** (`idevicebackup2 backup --full`, encryption
-     on), then `mvt-ios decrypt-backup`; or retrieve a **sysdiagnose** archive;
-     a full-filesystem dump if lawfully available.
+     on), then `mvt-ios decrypt-backup`; a full-filesystem dump if lawfully
+     available. These two are MVT's built-in IOC paths (`check-backup`,
+     `check-fs`). A **sysdiagnose** archive is also worth retrieving, but MVT
+     ships **no built-in sysdiagnose modules** — `mvt-ios check-sysdiagnose`
+     only prepares the archive for custom modules, so sysdiagnose analysis means
+     Kaspersky's `iShutdown` scripts (for `Shutdown.log`) or a custom MVT
+     module, not MVT out of the box.
    - Android: `mvt-android check-backup` (an ADB backup) or
      `mvt-android check-adb`.
 2. **Run MVT with the current IOC bundle.**
@@ -105,7 +110,8 @@ extraction and chain-of-custody imaging use
    many hits. Supporting indicators include anomalous process names in
    `DataUsage.sqlite` (iTunes backup) or `netusage.sqlite` (full filesystem),
    suspicious links/attachment metadata in SMS/iMessage, and repeated crashes in
-   process names such as `com.apple.WebKit`, `assertiond`, or IMTransferAgent —
+   process names such as `com.apple.WebKit.WebContent`, `assertiond`, or
+   `IMTransferAgent` —
    **verify these crash-process names against the originating public report
    before asserting them as indicators.**
 6. **Respond** (see *Response*, and the safety note above).
@@ -140,7 +146,11 @@ Artifact names and paths change per campaign — treat them as current-as-of and
 
 ```bash
 # Decrypt an encrypted iOS backup, then check it against Pegasus IOCs
-mvt-ios decrypt-backup --destination decrypted/ --password-file pw.txt <backup>
+# Supply the backup password with -p/--password (prompts if given no value),
+# or export MVT_IOS_BACKUP_PASSWORD to keep it out of shell history.
+# For a raw backup key use -k/--key-file instead (not combinable with -p).
+MVT_IOS_BACKUP_PASSWORD='<backup password>' \
+  mvt-ios decrypt-backup --destination decrypted/ <backup>
 mvt-ios check-backup --iocs pegasus.stix2 --output results/ decrypted/
 # Review results/ for matched processes, domains, and files.
 ```

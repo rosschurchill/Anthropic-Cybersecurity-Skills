@@ -65,11 +65,12 @@ integrity drift use `detecting-plc-logic-modification`.
 
 1. **Baseline** which hosts are engineering stations, the normal download cadence,
    and the approved maintenance windows.
-2. **Watch for program-transfer functions** on the wire. On S7comm the classic
-   job set covers request-download, download-block, and download-ended functions
-   (verify the exact function codes against your protocol dissector and a live
-   capture before trusting any single byte). Downloads are usually bracketed by a
-   STOP then RUN transition.
+2. **Watch for program-transfer functions** on the wire. On classic S7comm the
+   job set is request-download `0x1A`, download-block `0x1B`, and download-ended
+   `0x1C` — the well-established starting set (Wireshark's s7comm dissector parses
+   them, and `icsnpp-s7comm` surfaces them in `s7comm_upload_download.log`). Verify
+   against your dissector and a live capture before pinning byte offsets. Downloads
+   are usually bracketed by a STOP then RUN transition.
 3. **Score by context, not by the code alone.** Raise an alert when a download is
    seen from a source that is not an allowlisted EWS, outside a change window, or
    with no corresponding change ticket.
@@ -116,27 +117,41 @@ RSLogix, Unity Pro / EcoStruxure Control Expert, GX Works).
 ### Suricata -- illustrative Modbus/UMAS program transfer from non-EWS
 
 ```
-alert modbus !$EWS any -> $PLC 502 (
-  msg:"ICS-LOCAL UMAS program/config transfer to PLC from non-EWS (verify FC)";
-  flow:to_server; app-layer-protocol:modbus;
-  # UMAS rides Modbus as a reserved vendor function code; verify the exact
-  # code and byte offset against a live capture and your dissector before use.
-  threshold:type limit, track by_src, count 1, seconds 60;
-  sid:1000001; rev:1;
+# Suricata does not support comments behind or inside a rule body, so the caveats live
+# here and the rule is continued with a trailing backslash.
+# UMAS rides Modbus as reserved vendor function code 0x5A; the sub-function byte that
+# distinguishes a program/config transfer is firmware-dependent. The content match below is
+# ILLUSTRATIVE - tune the offset/depth and add the sub-function byte against a live capture
+# and your dissector before deploying.
+# The modbus app-layer parser must be enabled in suricata.yaml
+# (app-layer.protocols.modbus.enabled: yes) or an `alert modbus` rule never matches.
+alert modbus !$EWS any -> $PLC 502 ( \
+  msg:"ICS-LOCAL UMAS program/config transfer to PLC from non-EWS (verify FC)"; \
+  flow:to_server; \
+  content:"|5a|"; offset:7; depth:1; \
+  threshold:type limit, track by_src, count 1, seconds 60; \
+  sid:1000001; rev:1; \
 )
 ```
 
 ### Splunk -- network download joined to EWS launch and change feed
 
+Sysmon process-create carries `Computer`/`Image`/`User`/`ProcessId` and **no source-IP
+field**, so a join on `src_ip` never matches and the EWS enrichment comes back silently
+null. Map the network IP to the EWS hostname with an asset lookup and join on that,
+renaming `Computer` to the join key inside the subsearch.
+
 ```spl
 `ics_download_events` dest_ip=$PLC
 | where NOT src_ip IN ($EWS_ALLOWLIST)
-| join type=left src_ip [ search `sysmon` EventCode=1
+| lookup asset_inventory ip AS src_ip OUTPUT host AS src_fqdn
+| join type=left src_fqdn [ search `sysmon` EventCode=1
     (Image="*TIA*" OR Image="*RSLogix*" OR Image="*ControlExpert*")
-  | eval ewsLaunch=_time | fields src_ip ewsLaunch ]
+  | rename Computer AS src_fqdn
+  | eval ewsLaunch=_time | fields src_fqdn ewsLaunch ]
 | lookup change_tickets dest_ip OUTPUT ticket_id
 | where isnull(ticket_id)
-| table _time, src_ip, dest_ip, ewsLaunch
+| table _time, src_ip, src_fqdn, dest_ip, ewsLaunch
 ```
 
 ## Common Scenarios

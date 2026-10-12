@@ -101,13 +101,19 @@ def classify_edit(before_text, after_text):
     return {"removed_safety_directive": removed_safety, "added_tool": added_tool}
 ```
 
-Sigma-style rule for auditd reads of agent config / `.env` (verify field names for your pipeline):
+Sigma-style rule for auditd reads of agent config / `.env` (verify field names for your pipeline).
+This rule assumes a pipeline that **merges the auditd SYSCALL and PATH records into one event** —
+auditbeat, the Elastic auditd module, or auditd `-k` keys plus a correlating forwarder. On raw,
+unmerged auditd, `name` (a PATH-record field) and `exe` (a SYSCALL-record field) arrive in separate
+records and the `not filter_known` clause can never match. The allowlist must also cover the agent
+runtime itself, which reads `mcp.json` and `CLAUDE.md` on every launch — without that, the rule
+alerts on baseline behaviour despite its title:
 
 ```yaml
 title: Agent config or secret file read outside baseline
 logsource:
   product: linux
-  service: auditd
+  service: auditd       # requires SYSCALL+PATH merged into a single event (see note above)
 detection:
   open_config:
     type: 'PATH'
@@ -119,6 +125,8 @@ detection:
   filter_known:
     exe:
       - '/usr/bin/approved-deploy'   # verify/tune allowlist of expected readers
+      - '*/claude'                   # the agent runtime's own binary - reads config every launch
+      - '*/node'                     # adjust to the interpreter/comm your agent actually runs as
   condition: open_config and not filter_known
 level: high
 ```

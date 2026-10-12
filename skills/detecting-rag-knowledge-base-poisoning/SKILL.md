@@ -1,6 +1,6 @@
 ---
 name: detecting-rag-knowledge-base-poisoning
-description: 'Detects poisoning of a RAG knowledge base from the ingestion-pipeline and vector-store provenance side: malicious documents planted into the index to surface for targeted queries, false entries hidden inside legitimate sources with spoofed metadata, and recon that maps which sources a RAG system indexes. Uses ingestion-pipeline logs, vector-store write and provenance metadata, document source allowlists, embedding-space and retrieval-frequency anomaly monitoring, ingest-time content screening, and retrieval-context traceback. Use when securing a RAG ingestion pipeline or vector store, vetting a corpus for planted content, or tracing a bad answer back to the responsible chunk. Keywords: RAG poisoning, knowledge base poisoning, false RAG entry, PoisonedRAG, vector store provenance, source allowlist, retrieval anomaly, AML.T0070, AML.T0071, AML.T0064, OWASP LLM08. Do not use for poisoning of an agent persistent memory store rather than a retrieval corpus - use detecting-ai-agent-memory-poisoning.'
+description: 'Detects poisoning of a RAG knowledge base from the ingestion-pipeline and vector-store provenance side: malicious documents planted into the index to surface for targeted queries, false entries hidden inside legitimate sources with spoofed metadata, and recon that maps which sources a RAG system indexes. Uses ingestion-pipeline logs, vector-store write and provenance metadata, document source allowlists, embedding-space and retrieval-frequency anomaly monitoring, chunk-level metadata validation, and retrieval-context traceback. Use when securing a RAG ingestion pipeline or vector store, vetting a corpus for planted content, or tracing a bad answer back to the responsible chunk. Keywords: RAG poisoning, knowledge base poisoning, false RAG entry, PoisonedRAG, vector store provenance, source allowlist, retrieval anomaly, AML.T0070, AML.T0071, AML.T0064, OWASP LLM08. Do not use for poisoning of an agent persistent memory store rather than a retrieval corpus - use detecting-ai-agent-memory-poisoning.'
 domain: cybersecurity
 subdomain: ai-security
 tags:
@@ -34,7 +34,7 @@ atlas_techniques:
 - You see reconnaissance that enumerates which sources your RAG system indexes, used to pick poisoning targets.
 - You need to trace a bad or manipulated answer back to the responsible chunk, then purge and re-index.
 
-Scope is the corpus, pipeline, and provenance. For screening retrieved content at query time, that boundary belongs to a query-time injection control, not this skill. For poisoning of an agent persistent memory store (the running agent remembered-state, a different poisoned store than a retrieval corpus), use detecting-ai-agent-memory-poisoning. The two are complementary: this skill owns the RAG corpus; that sibling owns agent memory.
+Scope is the corpus, pipeline, and provenance. Injection-payload screening of ingested content belongs to detecting-indirect-prompt-injection, which owns that payload taxonomy and pipeline both as a CI/CD pre-ingestion scan and at query time — delegate to it rather than duplicating it here. For poisoning of an agent persistent memory store (the running agent remembered-state, a different poisoned store than a retrieval corpus), use detecting-ai-agent-memory-poisoning. The two are complementary: this skill owns the RAG corpus; that sibling owns agent memory.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ Scope is the corpus, pipeline, and provenance. For screening retrieved content a
 ## Workflow
 
 1. **Enforce source provenance at ingest.** Reject or quarantine any document whose source is off-allowlist, lacks a resolvable origin, or arrives via an unexpected connector. Attach immutable provenance metadata to every vector. Validate at the chunk level, not the document level, which counters a false entry hidden inside a legitimate source.
-2. **Screen content at ingest.** Before a chunk reaches retrieval, scan for prompt-injection/instruction patterns (ignore previous, when asked about X answer Y, tool-invocation imperatives), invisible/zero-width/homoglyph text, and HTML/markdown comment smuggling. This is distinct from query-time screening.
+2. **Hand injection-payload screening to detecting-indirect-prompt-injection.** That skill owns pre-ingestion scanning for instruction patterns, invisible/zero-width/homoglyph text and comment smuggling, both at ingest and at query time; run its pipeline in your ingest path and treat its verdict as the screening gate instead of maintaining a second pattern set here.
 3. **Run embedding and statistical anomaly checks over the corpus.** Flag chunks that are outliers in embedding space relative to their claimed source cluster, chunks with anomalously high similarity to many distinct queries, duplicate/near-duplicate injected texts, and perplexity outliers.
 4. **Monitor retrieval behaviour.** Alert on a newly ingested chunk that suddenly dominates top-k for many unrelated queries, or a sharp shift in which source answers a query class. Poisoned entries are engineered to retrieve broadly.
 5. **Cross-check metadata.** Compare chunk metadata (author, date, title) against the source system of record; mismatches indicate false-entry injection.
@@ -88,19 +88,8 @@ def ingest_gate(chunk, allowlist):
     return {"action": "ACCEPT"}
 ```
 
-Ingest-time content screen for injection and hidden text (patterns to flag, not execute):
-
-```python
-import re
-INJECTION = [r"ignore (all )?previous", r"when asked about .+ (answer|say|reply)",
-             r"\b(call|invoke|run)\s+(the\s+)?\w+\s+tool\b", r"disregard .{0,20}instructions"]
-HIDDEN = [r"[​‌‍﻿]", r"<!--.*?-->", r"\[//\]:\s*#"]
-
-def screen(text):
-    hits = [p for p in INJECTION if re.search(p, text, re.I)]
-    hits += [p for p in HIDDEN if re.search(p, text, re.S)]
-    return {"flagged": bool(hits), "patterns": hits}
-```
+For injection-payload and hidden-text screening of a chunk before it is indexed, call the pipeline in
+detecting-indirect-prompt-injection; this skill does not carry a second copy of that pattern set.
 
 Embedding-space outlier within a claimed source cluster (tune contamination):
 
@@ -134,7 +123,7 @@ HAVING COUNT(DISTINCT query_class) > 10         -- surfaces for many unrelated q
 
 - **Broad-retrieval payload:** a few crafted chunks are engineered to be similar to many queries and dominate top-k. Retrieval-frequency anomaly plus embedding-outlier checks fire.
 - **Hidden false entry:** a malicious passage is embedded inside a legitimate wiki page with spoofed author/date. Chunk-level provenance and metadata cross-check fire where document-level monitoring misses it.
-- **Zero-width injection:** an ingested doc carries a zero-width or HTML-comment instruction. Ingest content screen flags it before indexing.
+- **Zero-width injection:** an ingested doc carries a zero-width or HTML-comment instruction. The pre-ingestion scan owned by detecting-indirect-prompt-injection flags it before indexing; this skill contributes the provenance record and the traceback once it is indexed.
 - **Corpus recon:** a user systematically asks boundary questions to enumerate indexed sources. Recon detection flags the probing pattern.
 - **Bad answer traceback:** a manipulated response is traced via context logs to the responsible chunk, which is purged and the index rebuilt from clean sources.
 
@@ -142,7 +131,7 @@ HAVING COUNT(DISTINCT query_class) > 10         -- surfaces for many unrelated q
 
 Report each finding with:
 
-- Chunk id / doc id, source, and the signal: off-allowlist ingest, missing/forged provenance, content-screen hit, embedding outlier, retrieval-frequency anomaly, metadata mismatch, or recon.
+- Chunk id / doc id, source, and the signal: off-allowlist ingest, missing/forged provenance, injection-screen hit from the delegated pre-ingestion scan, embedding outlier, retrieval-frequency anomaly, metadata mismatch, or recon.
 - Provenance record: who/what ingested it, when, from where, and content hash.
 - For traceback: the query and response the poisoned chunk drove.
 - ATLAS mapping: AML.T0070 (RAG poisoning), AML.T0071 (false entry), AML.T0064 (recon).
@@ -151,7 +140,7 @@ Report each finding with:
 ## Response
 
 - Allowlist sources; provenance-stamp every chunk; make ingest a reviewed, logged pipeline with no direct vector-store writes.
-- Quarantine-then-review off-allowlist or flagged documents; screen content at ingest.
+- Quarantine-then-review off-allowlist or flagged documents; run the delegated pre-ingestion injection scan (detecting-indirect-prompt-injection) in the ingest path.
 - On detection: identify and purge the poisoned chunks via provenance/traceback, re-index from clean sources, and rotate connector credentials if the write was unauthorized.
 - Pair corpus hygiene with query-time indirect-prompt-injection controls as defense in depth; detection-based defenses alone are imperfect.
 - For a poisoned agent memory store rather than a retrieval corpus, use detecting-ai-agent-memory-poisoning.

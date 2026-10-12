@@ -53,11 +53,14 @@ split: root is the device state, hooking is what rides on it inside one app.
 - **Attestation (primary, server-verified).**
   - **Google Play Integrity API** device verdicts, evaluated server-side. A device
     that previously returned a strong/device-integrity verdict and now returns only
-    a weaker one indicates integrity loss. Treat the specific verdict enum names
-    (illustratively `MEETS_DEVICE_INTEGRITY`, `MEETS_STRONG_INTEGRITY`,
-    `MEETS_BASIC_INTEGRITY`) as **verify against current Google docs**; the signal
-    is the *drop in tier*, not the exact string. Legacy SafetyNet Attestation is
-    deprecated — verify status before relying on it.
+    a weaker one indicates integrity loss. The verdict labels are documented and
+    current: `deviceIntegrity.deviceRecognitionVerdict` carries
+    `MEETS_DEVICE_INTEGRITY`, `MEETS_STRONG_INTEGRITY` and
+    `MEETS_BASIC_INTEGRITY`. Still alert on the **drop in tier**, not on the
+    exact string — that is what survives a device changing state. Legacy
+    SafetyNet Attestation was deprecated in 2022 and **fully shut down in
+    January 2025**: `attest()` calls now always fail, so it is a migration
+    reference only, never a fallback.
   - **Apple App Attest** (`DCAppAttestService`) and **DeviceCheck** (`DCDevice`) —
     attest a genuine, unmodified app on genuine hardware. Apple's own caveat: App
     Attest is **not a standalone jailbreak detector** and may not hold on a
@@ -91,9 +94,9 @@ split: root is the device state, hooking is what rides on it inside one app.
 - **Do not trust the device to report on itself.** Root defeats on-device checks,
   so the authoritative signal is a **server-side** attestation verdict and the MDM
   compliance state derived from it.
-- **The drop is the signal.** Verdict enum names change; what matters is a device
-  moving from a strong verdict to a weaker one. Frame rules on the *tier change*,
-  not a hard-coded string.
+- **The drop is the signal.** The verdict enum names are stable, but what matters
+  is a device moving from a strong verdict to a weaker one. Frame rules on the
+  *tier change*, not a hard-coded string.
 - **Attestation is necessary, not sufficient on iOS.** App Attest does not promise
   jailbreak detection; combine it with MDM/MTD state.
 - **Voluntary vs exploited.** A user rooting their own phone is a compliance
@@ -105,7 +108,8 @@ split: root is the device state, hooking is what rides on it inside one app.
 
 ## Tools & Systems
 
-Google Play Integrity API, SafetyNet (legacy — verify deprecation), Apple App
+Google Play Integrity API (SafetyNet Attestation is gone — shut down January
+2025 — and appears here only as a migration note), Apple App
 Attest / DeviceCheck, Microsoft Intune compliance + Entra Conditional Access, Jamf
 Pro, VMware Workspace ONE, Lookout, Zimperium zIPS, Microsoft Defender for Endpoint
 (mobile), ADB/logcat, `bugreport`, MVT. Root/jailbreak tool names for recognition
@@ -113,13 +117,13 @@ only: Magisk, checkra1n, unc0ver, Dopamine.
 
 ## Detection Queries
 
-Treat verdict names, fields and thresholds as **verify/tune**.
+Treat table/column names and thresholds as **verify/tune** for your connectors.
 
 ### Play Integrity server-side gate (concept)
 
 ```
 # Server decodes the signed Play Integrity token at sign-in/enrollment:
-verdict = token.deviceIntegrity.deviceRecognitionVerdict   # verify field path
+verdict = token.deviceIntegrity.deviceRecognitionVerdict
 if required_tier not in verdict:                           # e.g. device-integrity tier absent
     deny_sensitive_access(); mark_noncompliant(device); alert("integrity drop")
 ```
@@ -127,15 +131,21 @@ if required_tier not in verdict:                           # e.g. device-integri
 ### Microsoft Sentinel (KQL) -- rooted/jailbroken compliance or MTD alert
 
 ```kql
-// verify table/column names for your Intune + MTD connectors
-DeviceComplianceOrg
-| where ComplianceState == "NonCompliant"
-| where SettingName has_any ("Jailbroken", "Rooted", "DeviceThreatLevel")   // verify/tune
-| project TimeGenerated, DeviceName, UserPrincipalName, SettingName, ComplianceState
+// Intune compliance in Log Analytics is IntuneDeviceComplianceOrg; it has no
+// per-setting column, and the MTD-driven root/jailbreak signal is
+// DeviceHealthThreatLevel. Verify column names for your connectors.
+IntuneDeviceComplianceOrg
+| where ComplianceState == "Noncompliant"
+| project TimeGenerated, DeviceName, UPN, ComplianceState, DeviceHealthThreatLevel
 | union (
-    DeviceTvmThreatEvents
-    | where ThreatName has_any ("root", "jailbreak", "Magisk", "su binary")  // verify/tune
-    | project TimeGenerated, DeviceName=DeviceId, ThreatName
+    // Mobile threat events surface as ALERTS, not in a DeviceTvm* table: use
+    // AlertInfo/AlertEvidence (Defender XDR advanced hunting, also available in
+    // Sentinel via the XDR connector) or SecurityAlert (Sentinel-native).
+    AlertInfo
+    | where Title has_any ("root", "jailbreak", "Magisk", "su binary")  // verify/tune
+    | join kind=inner (AlertEvidence | where isnotempty(DeviceId)
+                       | project AlertId, DeviceId) on AlertId
+    | project TimeGenerated, DeviceId, ThreatName = Title
   )
 ```
 

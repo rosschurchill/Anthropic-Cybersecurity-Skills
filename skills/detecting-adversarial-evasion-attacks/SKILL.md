@@ -100,7 +100,7 @@ ART ships production detectors you can run inline or on sampled traffic instead 
 ### 4. Corroborate with OOD and confidence anomaly
 Compute an out-of-distribution score in feature space (Mahalanobis distance, energy/ODIN, or max-softmax) plus prediction entropy. An input with a *low* OOD score but *anomalously low or odd* confidence is a classic adversarial signature — it looks in-distribution yet the model is uneasy. Pull drift and confidence-anomaly series from your observability platform (Arize / WhyLabs / Fiddler).
 
-### 5. Measure your own extractability (self red-team)
+### 5. Measure your own evadability (self red-team)
 Under authorization, use ART and Foolbox / CleverHans to generate adversarial examples against your own model in an isolated environment, then confirm your detectors fire. Report the detection rate and the perturbation budget needed to evade, not the attack payloads.
 
 ### 6. Route, rate-limit, and harden

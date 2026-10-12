@@ -122,11 +122,15 @@ if distinct_io_addresses_written(src -> plc, window) > BASELINE_DISTINCT * k
 ### Suricata -- coarse rate backstop (baseline first; tune to the process)
 
 ```
-alert modbus any any -> $PLC 502 (
-  msg:"ICS-LOCAL high-rate Modbus writes (possible brute-force I/O)";
-  flow:to_server; app-layer-protocol:modbus;
-  detection_filter:track by_src, count 50, seconds 10;
-  sid:1000003; rev:1;
+# PREREQUISITE: Suricata's modbus app-layer parser is DISABLED BY DEFAULT, so an
+# `alert modbus` rule silently never matches on a stock install. Set
+# app-layer.protocols.modbus.enabled: yes in suricata.yaml first.
+# (app-layer-protocol:modbus; is redundant once the rule protocol is `modbus`.)
+alert modbus any any -> $PLC 502 ( \
+  msg:"ICS-LOCAL high-rate Modbus writes (possible brute-force I/O)"; \
+  flow:to_server; \
+  detection_filter:track by_src, count 50, seconds 10; \
+  sid:1000003; rev:1; \
 )
 # count/seconds are placeholders - many control loops write fast; use the
 # passive-sensor baseline as primary and this only as a coarse backstop.

@@ -93,13 +93,17 @@ def score_memory_write(write):
     provenance = write.get("provenance", "unknown")
     directive = bool(DIRECTIVE.search(content))
     has_url = bool(re.search(r"https?://", content))
-    suspicious = (provenance != "user") and (directive or has_url)
+    # The directive match is required: a bare URL is not sufficient. Where provenance is
+    # not logged it defaults to "unknown", so URL-alone would flag nearly every
+    # ingested write. contains_url corroborates and raises severity.
+    suspicious = (provenance != "user") and directive
     return {
         "embedding_id": write.get("embedding_id"),
         "provenance": provenance,
         "instruction_shaped": directive,
         "contains_url": has_url,
         "suspected_poison": suspicious,
+        "severity": "high" if suspicious and has_url else ("medium" if suspicious else "none"),
         "source_turn": write.get("source_turn"),
     }
 ```
@@ -127,7 +131,10 @@ FROM agent_actions          a
 JOIN memory_reads           r ON r.turn_id = a.turn_id
 JOIN memory_writes          w ON w.embedding_id = r.embedding_id
 WHERE a.flagged_anomalous = true
-  AND w.provenance <> 'user'          -- poisoned-by-ingestion record steering the action
+  -- NULL provenance means the write path logged none at all (the common case in many
+  -- agent memory layers); it must be TRIAGED, not excluded. A bare `<> 'user'` drops
+  -- those rows under SQL three-valued logic.
+  AND (w.provenance IS NULL OR w.provenance <> 'user')
 ORDER BY a.turn_time DESC;
 ```
 

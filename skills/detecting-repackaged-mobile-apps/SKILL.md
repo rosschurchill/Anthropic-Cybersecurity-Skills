@@ -77,22 +77,23 @@ abuse use `detecting-malicious-mobile-configuration-profiles`.
 3. **Hash / distribution check.** Compare APK/DEX hashes to the baseline; flag
    any package with no trusted distribution path (side-loaded, unknown source,
    non-managed store).
-4. **Consume attestation verdicts.** Server-side, alert on Play Integrity
-   `appIntegrity` recognition that reports the app as an unrecognized version
-   (illustrative enum `UNRECOGNIZED_VERSION`), on a mismatched
-   `certificateSha256Digest`, and on failing `deviceIntegrity` verdicts. **Verify
-   the current Play Integrity response field names and verdict enums against the
-   live Play Integrity docs** — Google has renamed verdict fields across API
-   revisions; prefer the behavioral framing (attestation says "not the published
-   binary") over hard-coding a string.
+4. **Consume attestation verdicts.** Server-side, alert on
+   `appIntegrity.appRecognitionVerdict` reporting the app as an unrecognized
+   version (`UNRECOGNIZED_VERSION`, versus `PLAY_RECOGNIZED` or `UNEVALUATED`),
+   on a mismatched `appIntegrity.certificateSha256Digest`, and on a
+   `deviceIntegrity.deviceRecognitionVerdict` that lacks
+   `MEETS_DEVICE_INTEGRITY`. These field names and enums are current and
+   documented verbatim — re-check the Play Integrity docs before shipping, since
+   fields do get added — but prefer the behavioral framing (attestation says
+   "not the published binary") over hard-coding a string.
 5. **Version-tamper check (T1661).** Flag an out-of-band version bump absent
    from the store release history, or an install that downgrades the APK
    signature scheme.
 6. **Janus awareness.** Janus (CVE-2017-13156) prepends bytes to an APK/DEX
    without breaking a v1 (JAR) signature. Require APK Signature Scheme v2/v3
    verification (which defeats Janus) and flag apps relying on v1-only
-   signatures. Use `apksigner --verbose --print-certs` to see which schemes
-   verified.
+   signatures. Use `apksigner verify --verbose --print-certs` to see which
+   schemes verified.
 7. **Supply-chain (T1474).** Diff the app's dependency / SDK set against a
    known-good build to catch a malicious or compromised embedded SDK.
 8. **Fleet hunt.** Diff the MDM app-version/hash inventory against the official
@@ -122,8 +123,9 @@ hash reputation).
 
 ## Detection Queries
 
-Field names, verdict strings, and thresholds are illustrative — **verify and
-tune** against current Play Integrity docs and your MDM schema.
+MDM schema names and thresholds are illustrative — **verify and tune** against
+your MDM schema; the Play Integrity field and enum names below are documented,
+but re-check the docs before shipping.
 
 ### apksigner — confirm v2/v3 and read the signer
 
@@ -148,9 +150,9 @@ MDMAppInventory
 
 ```text
 # On each integrity-protected request, evaluate the Play Integrity verdict:
-BLOCK / step-up IF appRecognitionVerdict != PLAY_RECOGNIZED      # verify enum
-                OR certificateSha256Digest NOT IN baseline_set
-                OR deviceIntegrity lacks MEETS_DEVICE_INTEGRITY  # verify enum
+BLOCK / step-up IF appIntegrity.appRecognitionVerdict != PLAY_RECOGNIZED
+                OR appIntegrity.certificateSha256Digest NOT IN baseline_set
+                OR deviceIntegrity.deviceRecognitionVerdict lacks MEETS_DEVICE_INTEGRITY
 # Revoke server-side sessions keyed to failing verdicts.
 ```
 

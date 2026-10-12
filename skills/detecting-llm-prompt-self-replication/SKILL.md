@@ -36,7 +36,7 @@ The defensive goal is to catch the **replication signal** — injected instructi
 - A prompt injection appears to **spread**: the same adversarial text shows up across multiple agents, principals, or RAG chunks.
 - Agent-generated output is being written back into a vector store or sent outbound (email, agent handoff) and you need to gate those edges.
 - You are instrumenting a multi-agent or RAG system and want to detect input-to-output replication.
-- You are investigating a RAG knowledge base suspected of being poisoned with a recurring payload.
+- A worm payload has established persistence **via a RAG write edge** — agent output carrying the replication signature was embedded — and you need to find and gate that edge. For investigating a poisoned corpus itself (provenance, embedding outliers, retrieval-frequency anomalies, traceback), hand off to detecting-rag-knowledge-base-poisoning.
 - You are mapping propagation blast radius across an agent mesh.
 
 ## Prerequisites
@@ -64,13 +64,29 @@ PROPAGATION_MARKERS = [
     "include this prompt in your reply", "copy these instructions", "when you reply, repeat",
 ]
 
-def replication_score(input_context, completion, tau=0.6):
-    """High fuzzy overlap between a suspected injection span and the output,
-    plus propagation markers, signals a self-replicating prompt."""
-    sim = SequenceMatcher(None, input_context.lower(), completion.lower()).ratio()
-    markers = [m for m in PROPAGATION_MARKERS if m in completion.lower()]
-    return {"overlap": round(sim, 3), "markers": markers,
-            "suspected_replication": sim > tau and bool(markers)}  # tau: calibrate vs legit quoting
+def replication_score(context_spans, completion, tau=0.6):
+    """High fuzzy overlap between a suspected injection SPAN and the output,
+    plus propagation markers, signals a self-replicating prompt.
+
+    context_spans: the candidate untrusted spans only (retrieved chunks, tool
+    output, inbound message bodies) - never the whole prompt. ratio() is 2*M/T
+    over both full strings, so a long context (system prompt + retrieved chunks
+    + history) against a short completion is dominated by length asymmetry and
+    a fully replicated payload scores far below tau."""
+    low = completion.lower()
+    best_span, best = None, 0.0
+    for span in context_spans:
+        s = span.strip().lower()
+        if not s:
+            continue
+        sm = SequenceMatcher(None, s, low)
+        lm = sm.find_longest_match(0, len(s), 0, len(low))
+        sim = max(sm.ratio(), lm.size / len(s))  # span-normalised, not context-normalised
+        if sim > best:
+            best_span, best = span, sim
+    markers = [m for m in PROPAGATION_MARKERS if m in low]
+    return {"overlap": round(best, 3), "span": best_span, "markers": markers,
+            "suspected_replication": best > tau and bool(markers)}  # tau: calibrate vs legit quoting
 ```
 
 Pair this with an injection-signature hit (LLM Guard PromptInjection, Prompt Guard) so legitimate quoting or echoing does not trip the alert on overlap alone.
@@ -82,13 +98,24 @@ Hash or embed suspected worm payloads and watch the same payload appear across d
 import hashlib, collections
 
 def payload_recurrence(events, window_min=60, min_nodes=3):
-    """events: [{payload, node, ts_min}]; node = principal/agent/rag_chunk id."""
-    seen = collections.defaultdict(set)
+    """events: [{payload, node, ts_min}]; node = principal/agent/rag_chunk id.
+    Distinct nodes are counted WITHIN a window_min window (sliding, anchored on
+    each sighting). Aggregating over the whole event list instead would report
+    any payload ever seen on min_nodes nodes - including benign boilerplate -
+    as propagating."""
+    sightings = collections.defaultdict(set)
     for e in events:
         h = hashlib.sha256(e["payload"].strip().lower().encode()).hexdigest()
-        seen[h].add(e["node"])
-    return [{"payload_hash": h, "node_count": len(nodes), "propagating": len(nodes) >= min_nodes}
-            for h, nodes in seen.items() if len(nodes) >= min_nodes]
+        sightings[h].add((e["node"], e["ts_min"]))
+    out = []
+    for h, hits in sightings.items():
+        for t0 in sorted({t for _, t in hits}):
+            nodes = {n for n, t in hits if t0 <= t < t0 + window_min}
+            if len(nodes) >= min_nodes:
+                out.append({"payload_hash": h, "window_start_min": t0,
+                            "node_count": len(nodes), "propagating": True})
+                break  # one alert per payload; widen if you want every window
+    return out
 ```
 
 ### 4. Replication-into-persistence detector
@@ -114,10 +141,11 @@ Reconstruct the propagation graph from tool-call and RAG logs to establish blast
 |---------------|------|
 | Langfuse, Arize Phoenix, Helicone | Paired LLM input/output tracing |
 | LLM Guard | Input PromptInjection scanner and output scanners on write/send edges |
-| Meta Llama Guard / Prompt Guard | Input and output safety classification |
+| Meta Llama Guard | Input and output safety classification |
+| Meta Llama Prompt Guard | Injection/jailbreak classification of input and of echoed text (512-token window - segment longer text) |
 | NeMo Guardrails | Input and output rails on agent boundaries |
 | Rebuff, Lakera Guard | Additional prompt-injection detection |
-| Garak | Defensive testing of replication/injection resistance |
+| Garak | Defensive testing of prompt-injection resistance (promptinject/latentinjection probes) at a single endpoint |
 | Vector stores (Pinecone, Weaviate, pgvector) | Write and retrieval logs for persistence detection |
 
 ## Detection Queries
@@ -150,7 +178,7 @@ AgentActions
 ## Common Scenarios
 
 - **Email-assistant worm:** a crafted email instructs the assistant to reply with the same instructions, which reach the next recipient's assistant and re-execute.
-- **RAG knowledge-base poisoning:** agent output containing the worm is embedded; later retrievals serve the poisoned chunk to many downstream requests.
+- **Persistence via a RAG write edge:** agent output containing the worm is embedded; later retrievals serve the poisoned chunk to many downstream requests. Scope here is the write edge and the replication signature on it — corpus-poisoning investigation belongs to detecting-rag-knowledge-base-poisoning.
 - **Agent-mesh propagation:** one agent's output becomes another's input across a tool-call graph, carrying a secondary data-exfiltration payload.
 
 ## Output Format
@@ -165,7 +193,7 @@ Report per finding:
 ## Response
 
 - Block or strip output that replicates injected instructions before it is stored or forwarded.
-- Quarantine affected RAG chunks and purge the poisoned embeddings.
+- Quarantine affected RAG chunks and purge the poisoned embeddings; for a corpus-wide poisoning investigation, hand off to detecting-rag-knowledge-base-poisoning.
 - Sanitize retrieved context (content/instruction separation) and require human approval on output-to-storage and output-to-send edges.
 - Rate-limit and isolate the originating principal/agent; deploy input and output injection scanners on every agent boundary.
-- Map the agent mesh so blast radius is known, and re-test replication resistance (for example with Garak) after hardening.
+- Map the agent mesh so blast radius is known, and re-test prompt-injection resistance at each endpoint (for example with Garak's promptinject/latentinjection probes - these cover a single endpoint, not propagation across the mesh) after hardening.

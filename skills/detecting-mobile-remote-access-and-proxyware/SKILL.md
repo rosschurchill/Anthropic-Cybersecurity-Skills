@@ -1,6 +1,6 @@
 ---
 name: detecting-mobile-remote-access-and-proxyware
-description: 'Detects mobile remote-access software and RATs that give an operator control or screen and data access on a managed Android or iOS device (T1663), and residential-proxy and ad-fraud SDKs that relay third-party traffic through the device (T1604) or generate traffic from it for ad fraud and click injection (T1643). Uses MTD app-reputation for RAT, proxyware and ad-fraud classifications, MDM app inventory and VpnService and accessibility role review, network-protection egress telemetry showing the device relaying or bursting traffic, and MobSF detection of embedded proxy SDKs. Use when a device unexpectedly relays traffic, carries a proxy or VPN monetisation SDK, shows ad-fraud network bursts, or runs unapproved remote-control software. Keywords: mobile RAT, proxyware, residential proxy SDK, Proxylib, LumiApps, ad fraud, click injection, VpnService, network protection, T1663, T1604, T1643. Do not use for persistence mechanics or on-device payload behaviour - use detecting-mobile-malware-behavior.'
+description: 'Detects mobile remote-access software and RATs that give an operator control or screen and data access on a managed Android or iOS device (T1663), and residential-proxy and ad-fraud SDKs that relay third-party traffic through the device (T1604) or generate traffic from it for ad fraud and click injection (T1643). Uses MTD app-reputation for RAT, proxyware and ad-fraud classifications, MDM app inventory and VpnService and accessibility role review, network-protection egress telemetry showing the device relaying or bursting traffic, and MobSF detection of embedded proxy SDKs. Use when a device unexpectedly relays traffic, carries a proxy or VPN monetisation SDK, shows ad-fraud network bursts, or runs unapproved remote-control software. Keywords: mobile RAT, proxyware, residential proxy SDK, Proxylib, LumiApps, ad fraud, click injection, VpnService, network protection, T1663, T1604, T1643. Do not use for reboot-survival persistence mechanics, use detecting-mobile-malware-persistence.'
 domain: cybersecurity
 subdomain: mobile-security
 tags:
@@ -48,8 +48,9 @@ legitimate apps. Reach for it when a device **relays traffic it did not
 originate**, carries a proxy/VPN monetisation SDK, shows ad-fraud bursts, or runs
 unapproved remote-control software.
 
-For reboot-survival persistence mechanics, or the broader on-device payload
-behaviour, use `detecting-mobile-malware-behavior`.
+For reboot-survival persistence mechanics use
+`detecting-mobile-malware-persistence`; for the broader on-device payload
+behaviour use `detecting-mobile-malware-behavior`.
 
 ## Prerequisites
 
@@ -57,9 +58,10 @@ Mobile detection has **no raw host agent with syscall telemetry** — it is buil
 from MTD, MDM/UEM, network-egress and app-vetting signals:
 
 - **MTD app-reputation** (Lookout, Zimperium zIPS, Microsoft Defender for
-  Endpoint on mobile, Wandera): RAT / remote-control, proxyware /
-  residential-proxy, and ad-fraud / click-fraud classifications; network-protection
-  alerts on proxy-broker or C2 infrastructure.
+  Endpoint on mobile, Jamf Threat Defense — formerly Wandera): RAT /
+  remote-control, proxyware / residential-proxy, and ad-fraud / click-fraud
+  classifications; network-protection alerts on proxy-broker or C2
+  infrastructure.
 - **MDM/UEM** (Microsoft Intune, Jamf Pro, VMware Workspace ONE, Android
   Enterprise): app inventory and sideload state; apps requesting broad network
   plus always-on VPN or a VPN-service role (verify the exact `BIND_VPN_SERVICE` /
@@ -119,10 +121,10 @@ from MTD, MDM/UEM, network-egress and app-vetting signals:
 
 ## Tools & Systems
 
-Lookout, Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Wandera;
-Microsoft Intune, Jamf Pro, VMware Workspace ONE, Google Android Enterprise +
-Play Protect; MobSF and vendor dynamic-analysis sandboxes; MTD network protection
-/ secure web gateway; Android `bugreport`/`dumpsys netstats`, iOS `sysdiagnose`.
+Lookout, Zimperium zIPS, Microsoft Defender for Endpoint (mobile), Jamf Threat
+Defense (formerly Wandera); Microsoft Intune, Jamf Pro, VMware Workspace ONE,
+Google Android Enterprise + Play Protect; MobSF and vendor dynamic-analysis
+sandboxes; MTD network protection / secure web gateway; Android `bugreport`/`dumpsys netstats`, iOS `sysdiagnose`.
 Campaign/SDK names for recognition only: Proxylib, LumiApps SDK, Oko VPN, Asocks.
 
 ## Detection Queries
@@ -134,7 +136,11 @@ Treat thresholds, field names and API/permission constants as **verify/tune**.
 ```kql
 // verify table/column names against your MTD connector schema
 MobileAppInventory
-| where Permissions has_any ("accessibility","MediaProjection","SYSTEM_ALERT_WINDOW")
+// accessibility capability comes from a service declaring BIND_ACCESSIBILITY_SERVICE;
+// MediaProjection has NO manifest permission, so key on the declarable
+// foregroundServiceType="mediaProjection" / FOREGROUND_SERVICE_MEDIA_PROJECTION instead
+| where Permissions has_any ("BIND_ACCESSIBILITY_SERVICE","FOREGROUND_SERVICE_MEDIA_PROJECTION","SYSTEM_ALERT_WINDOW")
+    or AccessibilityServiceEnabled == true   // separate MTD/MDM-reported signal
 | join kind=inner (MobileThreatInfo
     | where ThreatClass in ("rat","remote-control","proxyware","ad-fraud")
        or AppReputation in ("low","unknown","malicious")) on AppId

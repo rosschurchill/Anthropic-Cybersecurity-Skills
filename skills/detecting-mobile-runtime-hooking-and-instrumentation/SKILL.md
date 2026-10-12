@@ -72,9 +72,11 @@ root is the platform, hooking is the instrumentation that runs on it.
    exact artifact names, thread names and the default port number as **illustrative,
    verify against current tool versions**; the durable signal is an unexpected
    injected agent in the process, not a fixed string.
-2. **Debugger / ptrace detection.** A nonzero `TracerPid` in the process status
+2. **Debugger / ptrace detection.** A nonzero `TracerPid` in `/proc/<pid>/status`
    when no legitimate debugger is expected, or an unexpected trace attach, indicates
-   injection/tracing (T1631 ptrace-based). Verify the exact mechanism per platform.
+   injection/tracing (T1631 ptrace-based). That is an Android/Linux construct; iOS
+   has no procfs, so the equivalent check there is the `P_TRACED` flag read via
+   `sysctl`.
 3. **Hook-framework artifacts.** Xposed/LSPosed hook-bridge classes on the call
    stack, Magisk/Zygisk module traces injecting into the app's zygote, or patched
    function prologues (inline hooks) in native code. Verify package identifiers
@@ -138,10 +140,15 @@ if tracer_pid() != 0 and no_expected_debugger():     # ptrace / debugger attach
 ### Microsoft Sentinel (KQL) -- MTD instrumentation alert with attestation failure
 
 ```kql
-// verify table/column names for your MTD + attestation telemetry
-DeviceTvmThreatEvents
-| where ThreatName has_any ("Frida", "Xposed", "instrumentation", "debugger", "injection")  // verify/tune
-| project TimeGenerated, DeviceId, UserPrincipalName, ThreatName
+// MTD instrumentation detections surface as ALERTS, not in a DeviceTvm* table:
+// use AlertInfo/AlertEvidence (Defender XDR advanced hunting, also available in
+// Sentinel via the XDR connector) or SecurityAlert (Sentinel-native).
+// Verify table/column names for your MTD + attestation telemetry.
+AlertInfo
+| where Title has_any ("Frida", "Xposed", "instrumentation", "debugger", "injection")  // verify/tune
+| join kind=inner (AlertEvidence | where isnotempty(DeviceId)
+                   | project AlertId, DeviceId, AccountUpn) on AlertId
+| project TimeGenerated, DeviceId, UserPrincipalName = AccountUpn, ThreatName = Title
 | join kind=inner (
     AttestationResults                      // your Play Integrity / App Attest sink; verify
     | where VerdictPassed == false

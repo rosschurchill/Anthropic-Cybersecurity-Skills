@@ -49,14 +49,20 @@ malware that steals codes already on the handset, use
 ## Prerequisites
 
 - **Carrier / line-change signal.** One of: a SIM-swap query API (GSMA Open
-  Gateway / CAMARA SIM Swap API, Twilio Lookup SIM Swap reporting a
-  `last_sim_swap` timestamp — verify the field name against current API docs),
-  carrier number-port / port-out notifications, or an MDM-visible ICCID / IMSI /
-  phone-number change.
+  Gateway / CAMARA SIM Swap API, or Twilio Lookup's SIM Swap package), carrier
+  number-port / port-out notifications, or an MDM-visible ICCID / IMSI /
+  phone-number change. In Twilio Lookup v2 `sim_swap` is an **object**, not a
+  timestamp: the portable field is the boolean `swapped_in_period`, evaluated
+  over a `swapped_period` the provider configures, while
+  `last_sim_swap.last_sim_swap_date` is returned only for a limited set of
+  countries (GB, DE, ES, NL). For most fleets — the US included — there is no
+  date to subtract, so the analytic must ask "did a swap happen in the requested
+  period?" rather than compute a local time delta.
 - **MDM/UEM inventory.** Intune, Jamf Pro or VMware Workspace ONE device inventory
-  exposing phone number / ICCID so changes can be diffed. Note privileged-telephony
-  reads (illustratively `READ_PRIVILEGED_PHONE_STATE`) limit IMSI visibility at
-  scale — verify what your platform actually surfaces.
+  exposing phone number / ICCID so changes can be diffed. IMSI visibility is
+  limited at scale because reading it requires `READ_PRIVILEGED_PHONE_STATE`, a
+  signature|privileged permission not available to ordinary apps — so expect to
+  diff ICCID / phone number, not IMSI.
 - **Identity / IAM telemetry.** Entra ID sign-in and Identity Protection, Okta
   System Log, Duo — recovery flows, MFA method changes, SMS-OTP delivery failures,
   new-device enrollment.
@@ -66,13 +72,17 @@ malware that steals codes already on the handset, use
 ## Workflow
 
 1. **SIM change + MFA/recovery burst correlation (the core analytic).** Correlate
-   a recent SIM/line-identifier change (carrier API `last_sim_swap` within N hours,
-   or an MDM ICCID change, or the OS SIM-moved notice plus a cellular drop) with
+   a recent SIM/line-identifier change (a carrier-API swap reported inside the
+   requested period, or an MDM ICCID change, or the OS SIM-moved notice plus a
+   cellular drop) with
    near-term account-recovery / SMS-OTP / password-reset activity for the **same
    identity** — high severity.
 2. **Pre-auth gate at high-risk steps.** At account recovery or a sensitive sign-in,
-   query the SIM-swap API; if the SIM changed within a short window (e.g. 24-72h —
-   tune), step up to a non-SMS factor or hold the recovery.
+   query the SIM-swap API; if it reports a swap inside the period, step up to a
+   non-SMS factor or hold the recovery. What you tune here is the **requested
+   period** sent to (or configured with) the provider — not a local time delta,
+   because outside the few countries that return `last_sim_swap_date` you get
+   only the in-period boolean.
 3. **MDM inventory diff.** Alert on ICCID / phone-number change for a managed
    device that does not match a planned re-provisioning ticket.
 4. **Loss-of-service + enrollment.** A managed device drops cellular while a new
@@ -102,15 +112,20 @@ Log, Duo. Threat actor named for recognition only: Scattered Spider.
 
 ## Detection Queries
 
-Treat field names, API fields and windows as **verify/tune**.
+Treat table/column names and windows as **verify/tune**; the Twilio Lookup
+`sim_swap` fields named below are the documented ones.
 
 ### Pre-auth SIM-swap gate (concept)
 
 ```
 # At account recovery or step-up auth:
 resp = sim_swap_api.lookup(msisdn)          # GSMA/CAMARA or Twilio Lookup
-if resp.last_sim_swap within 72h:           # verify field name; tune window
+# sim_swap is an object. swapped_in_period is the field available everywhere;
+# tune the REQUESTED/provider-configured swapped_period, not a local delta.
+if resp.sim_swap.swapped_in_period:
     hold_recovery(); require_non_sms_factor(); notify_fraud_team()
+# last_sim_swap.last_sim_swap_date exists only for a few countries (GB, DE, ES,
+# NL); do not build the core analytic on it.
 ```
 
 ### Microsoft Sentinel (KQL) -- recovery/MFA burst after a SIM change
@@ -123,8 +138,8 @@ SIMChangeEvents
 | join kind=inner (
     SigninLogs
     | where ResultType != 0 or AuthenticationRequirement == "multiFactorAuthentication"
-    | where AuthenticationDetails has_any ("SMS", "Text message", "Voice call")  // verify/tune
-    | summarize events=count(), methods=make_set(AuthenticationMethod)
+    | where tostring(AuthenticationDetails) has_any ("SMS", "Text message", "Voice call")  // verify/tune
+    | summarize events=count(), methods=make_set(AuthenticationMethodsUsed)
              by UserPrincipalName, bin(TimeGenerated, 1h)
     | where events >= 3                    // tune: recovery/OTP burst threshold
   ) on UserPrincipalName
@@ -145,8 +160,9 @@ SIMChangeEvents
   identity — correlation fires.
 - **eSIM re-provisioning:** attacker provisions the number onto an eSIM; victim
   device loses service and shows the SIM-moved notice.
-- **Pre-auth block:** recovery attempt arrives, SIM-swap API shows `last_sim_swap`
-  3 hours ago, recovery is held pending out-of-band verification.
+- **Pre-auth block:** recovery attempt arrives, SIM-swap API returns
+  `swapped_in_period = true` for the configured period, recovery is held pending
+  out-of-band verification.
 - **False positive:** a planned device upgrade with a matching re-provisioning
   ticket and no recovery burst — excluded.
 
@@ -156,7 +172,7 @@ SIMChangeEvents
 SIM SWAP DETECTION
   Identity:        <user / MSISDN>
   Verdict:         <confirmed | suspected | planned-change-benign>
-  SIM signal:      <last_sim_swap <t> | MDM ICCID change | OS SIM-moved + service drop>
+  SIM signal:      <swapped_in_period true over <period> | MDM ICCID change | OS SIM-moved + service drop>
   Identity burst:  <recovery/OTP/reset events in window, methods used>
   Window:          <SIM change time -> auth/recovery activity>
   ATT&CK:          T1451

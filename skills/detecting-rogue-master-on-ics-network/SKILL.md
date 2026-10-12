@@ -94,8 +94,10 @@ themselves** — the command content — use
   check both.
 - **Protocol function values are illustrative.** Control/write functions include
   Modbus write function codes, DNP3 SELECT / OPERATE / DIRECT-OPERATE and
-  restart, CIP write-tag / forward-open, and S7comm write-var / PLC control /
-  PLC stop. Verify the exact function codes and your Suricata/Zeek keyword
+  restart, CIP Set_Attribute_Single / write-tag, and S7comm write-var / PLC
+  control / PLC stop. CIP ForwardOpen is **not** a control function - it
+  establishes a Class 1/3 connection and carries no write semantics - but a
+  ForwardOpen from an unknown source is still a useful new-flow signal. Verify the exact function codes and your Suricata/Zeek keyword
   support against the deployed dissector and a live capture; prefer the
   authorized-master allowlist framing, which does not depend on the exact code.
   Classic S7comm codes do not apply to encrypted S7comm-plus (S7-1500) — fall
@@ -107,9 +109,10 @@ Dragos Platform, Nozomi Networks Guardian, Claroty CTD/xDome (asset baseline +
 new-device / new-communication alerts), Zeek + ICSNPP (`icsnpp-modbus`,
 `icsnpp-dnp3`, `icsnpp-enip`, `icsnpp-s7comm`, `icsnpp-bacnet`), Suricata,
 Snort, Microsoft Defender for IoT, CISA Malcolm, Security Onion, Wireshark ICS
-dissectors. SIEM: Splunk, Microsoft Sentinel (Fortinet FortiSIEM ships a
-rogue-master correlation rule fed by Dragos/Nozomi). Switch infra: port
-security / 802.1X, dynamic ARP inspection.
+dissectors. SIEM: Splunk, Microsoft Sentinel; some SIEMs ship ICS correlation
+content that can be adapted to this use case - verify what exists in your own
+platform's rule library rather than assuming it. Switch infra: port security /
+802.1X, dynamic ARP inspection.
 
 ## Detection Queries
 
@@ -149,8 +152,15 @@ index=ot sourcetype=ics_proto role=master
 | where first_seen >= relative_time(now(), "-1d@d")
 | lookup authorized_masters src_mac OUTPUT authorized
 | where authorized!="true"
-| append [ search index=ot sourcetype IN (dhcp,arp) event IN ("new_lease","arp_announce","ip_mac_change") vlan IN ($OT_VLANS) ]
-| table first_seen, src_mac, dest_outstation, protocol, event
+/* Correlate on src_mac: `append` would only stack uncorrelated ARP/DHCP rows
+   under the table. $OT_VLANS is Suricata/Snort variable syntax and does not
+   resolve in SPL - list your OT VLANs explicitly or define an `ot_vlans` macro
+   / lookup. */
+| join type=left src_mac
+    [ search index=ot sourcetype IN (dhcp,arp)
+        event IN ("new_lease","arp_announce","ip_mac_change") vlan IN ("10","20")
+    | stats earliest(_time) as host_first_seen values(event) as host_events by src_mac ]
+| table first_seen, src_mac, dest_outstation, protocol, host_first_seen, host_events
 ```
 
 ## Common Scenarios

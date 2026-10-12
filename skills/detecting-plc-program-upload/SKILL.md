@@ -111,13 +111,21 @@ for IoT; Wireshark S7comm/CIP dissectors; vendor engineering software and logs
 ### Suricata -- illustrative S7comm upload from non-EWS (verify codes)
 
 ```
-alert tcp !$EWS any -> $PLC 102 (
-  msg:"ICS-LOCAL S7comm program UPLOAD from non-EWS host (verify FC/offset)";
-  flow:to_server,established;
-  # S7comm job header and the start-upload function; the exact function code
-  # and offset vary by platform - tune against a live capture before use.
-  threshold:type limit, track by_src, count 1, seconds 60;
-  sid:1000002; rev:1;
+# Suricata does not support comments behind or inside a rule body, so the caveats live here
+# and the rule is continued with a trailing backslash.
+# Classic S7comm start-upload is function 0x1D, with upload 0x1E and upload-end 0x1F
+# completing the sequence (Wireshark's s7comm dissector parses them; icsnpp-s7comm surfaces
+# them in s7comm_upload_download.log). The matches below are ILLUSTRATIVE: the protocol-id
+# 0x32 / ROSCTR 0x01 (job) pair sits just past the TPKT+COTP headers, and the function-code
+# offset shifts with the S7 header variant - tune offset/depth/within against a live capture
+# before deploying.
+alert tcp !$EWS any -> $PLC 102 ( \
+  msg:"ICS-LOCAL S7comm program UPLOAD from non-EWS host (verify FC/offset)"; \
+  flow:to_server,established; \
+  content:"|32 01|"; offset:7; depth:2; \
+  content:"|1d|"; distance:0; within:16; \
+  threshold:type limit, track by_src, count 1, seconds 60; \
+  sid:1000002; rev:1; \
 )
 ```
 

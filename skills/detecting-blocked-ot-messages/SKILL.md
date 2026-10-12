@@ -40,7 +40,10 @@ target while the link otherwise appears up (ATT&CK T1691). Blocking **reporting*
 messages hides the attacker's actions and freezes the operator's view; blocking
 **command** messages denies control. ATT&CK's example is the 2015 Ukraine power
 attack, where adversaries used malicious firmware to render serial-to-Ethernet
-converters inoperable. Reach for it when:
+converters inoperable. Note the routing: a bricked converter kills **both**
+directions, which belongs to `detecting-ics-communication-blocking`; T1691
+applies where the converter/gateway still passes some traffic but withholds
+specific messages. Reach for it when:
 
 - Historian tags freeze at last-known value or go stale while the RTU is pingable.
 - A master's poll or Operate is seen on the wire with no matching response.
@@ -64,6 +67,11 @@ reachable**. For wholesale link/medium denial affecting all traffic, use
 - **SCADA/HMI alarm feed:** comms-fail, poll-timeout, stale-data,
   outstation-not-responding events.
 - **L2/L3 reachability probing** (ARP/ICMP) to confirm the host is still live.
+- **A normalised `outstation` field** (and a `source` field naming the feed:
+  zeek notice, SCADA alarm, historian quality) across all three telemetry
+  sources, so protocol gaps, comms-fail alarms and stale-quality flags can be
+  correlated on one key. Without that normalisation the correlation query below
+  silently matches nothing.
 
 ## Workflow
 
@@ -78,9 +86,11 @@ reachable**. For wholesale link/medium denial affecting all traffic, use
    conversation (requests present, responses absent, or vice versa) marks a
    blocked message; **both** directions vanishing is wholesale blocking (route to
    the sibling skill).
-4. **GOOSE stall rule.** Publisher MAC still link-live but sqNum not advancing
-   past timeAllowedToLive indicates suppressed GOOSE — a rule-based check that
-   meets the real-time bound.
+4. **GOOSE stall rule.** No GOOSE republication received (sqNum unchanged)
+   within the publisher's advertised `timeAllowedtoLive`, while the publisher
+   MAC is still link-live, indicates suppressed GOOSE — a rule-based check that
+   meets the real-time bound. (`timeAllowedtoLive` is a validity *interval*
+   carried in the GOOSE PDU, not a counter to compare sqNum against.)
 5. **Correlate and confirm.** Join protocol-gap notices with SCADA comms-fail
    alarms and historian stale-quality flags. A cluster across several outstations
    at once is a strong block/suppression indicator versus one flaky RTU.
@@ -109,12 +119,18 @@ Splunk OT add-ons, Microsoft Sentinel.
 ### Zeek -- per-link heartbeat watchdog (sketch)
 
 ```
+# DNP3-ONLY as written: only the DNP3 response event populates last_seen, so
+# add one handler per monitored protocol (modbus_message, cip_io, mms_*, ...)
+# before iterating EXPECTED_LINKS over non-DNP3 links.
 # CADENCE[k] learned per link; MISS_FACTOR tuned per link.
 global last_seen: table[conn_id] of time;
-event dnp3_application_response(c: connection) { last_seen[c$id] = network_time(); }
+event dnp3_application_response_header(c: connection, is_orig: bool,
+                                       application: count, fc: count, iin: count)
+    { if ( ! is_orig ) last_seen[c$id] = network_time(); }
 event check_cadence() {
     for ( k in EXPECTED_LINKS )
-        if ( network_time() - last_seen[k] > CADENCE[k]*MISS_FACTOR )
+        if ( k in last_seen &&
+             network_time() - last_seen[k] > CADENCE[k]*MISS_FACTOR )
             NOTICE([$note=DNP3::Reporting_Gap]);   # confirm ARP/ICMP liveness before escalating
     schedule 1sec { check_cadence() };
 }
@@ -126,15 +142,20 @@ event check_cadence() {
 (`zeek_notice` note="*Reporting_Gap*") OR (`scada_alarms` alarm="comms-fail")
   OR (`historian_quality` quality IN ("BAD","UNCERTAIN","COMM_FAIL"))
 | bin _time span=60s
-| stats dc(outstation) as affected values(source) as sources by _time
-| where affected >= 2   # zone-wide cluster = block/suppression, not one flaky RTU
+/* requires the normalised `outstation` and `source` fields from Prerequisites */
+| stats dc(outstation) as affected values(source) as sources values(outstation) as outstations by _time
+| eval confidence=if(affected>=2,"high","low")
+| table _time, affected, outstations, sources, confidence
+/* single-link hits are kept at low confidence; a zone-wide cluster
+   (affected >= 2) is the strong block/suppression signal, not one flaky RTU */
 ```
 
 ### GOOSE stall (concept)
 
 ```
-# Publisher MAC still ARP/link-live but sqNum not advancing past
-# timeAllowedToLive => suppressed GOOSE publication. Rule-based, meets real-time bound.
+# Publisher MAC still ARP/link-live, but no GOOSE republication received
+# (sqNum unchanged) within the publisher's advertised timeAllowedtoLive
+# => suppressed GOOSE publication. Rule-based, meets real-time bound.
 ```
 
 ## Common Scenarios
@@ -169,6 +190,7 @@ BLOCKED OT MESSAGE DETECTION
   the SOC.
 - **Verify gateway integrity:** check serial-to-Ethernet converter and
   comms-processor firmware; restore from known-good (the 2015 Ukraine vector was
-  bricked converters).
+  bricked converters — a fully bricked converter is
+  `detecting-ics-communication-blocking` territory).
 - **Harden:** comms allowlists, IEC 62443 conduit segmentation, and hardwired
   safety interlocks that do not depend on the blocked path.

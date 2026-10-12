@@ -63,8 +63,12 @@ Do not use for detecting the program-transfer event itself - use
 1. **Baseline** the approved logic for each controller into the golden-master
    store with a hash, and record the diff cadence (hourly or per shift).
 2. **Diff on a schedule and on any observed edit.** Read the running program
-   through a read-only session and compare its hash to the golden master. Drift
-   with no approved change ticket is the primary alert.
+   through a read-only session and compare it to the golden master **per block,
+   on normalised artifacts** — block checksums, or decompiled block text with
+   volatile fields excluded (timestamps, retained/online data values, block
+   metadata). A hash of the whole program image differs on every re-upload for
+   non-semantic reasons, so it is a constant-false-positive comparison. Drift in a
+   normalised block with no approved change ticket is the primary alert.
 3. **Corroborate on the network.** Flag online-edit or append functions on
    `icsnpp-s7comm` or `cip.log` from a non-EWS host, or an edit without a preceding
    STOP (online edits avoid the STOP/RUN bracket). Verify any per-vendor service
@@ -86,7 +90,8 @@ Do not use for detecting the program-transfer event itself - use
 - **S7comm-plus is encrypted.** On S7-1500 you cannot read raw edit function
   codes; lean on the diff and EWS endpoint telemetry.
 - **Impact is corroboration, not proof.** Historian anomalies strengthen a drift
-  finding but can lag or be masked - the diff is the anchor.
+  finding but can lag or be masked - the diff is the anchor, provided it runs on
+  normalised per-block artifacts rather than a raw program-image hash.
 - **Blind spots:** shared engineering accounts and controllers whose activity is
   not forwarded to central monitoring.
 
@@ -106,8 +111,14 @@ AVEVA PI, Ignition); Wireshark ICS dissectors.
 ```
 on schedule (hourly / per shift) and on any observed download or edit event:
   current = read_program(controller)        # read-only engineering session
-  if hash(current) != hash(golden_master[controller]) and no approved change:
-     ALERT "PLC logic drift" (controller, changed_blocks, last_edit_source)
+  # Compare NORMALISED per-block artifacts, not a raw whole-image hash: strip
+  # timestamps, retained/online data values and block metadata first, then compare
+  # block checksums (or decompiled block text) block by block. A whole-program hash
+  # changes on every re-upload for non-semantic reasons and alerts constantly.
+  for block in current:
+      if normalise(block) != normalise(golden_master[controller][block])
+         and no approved change:
+         ALERT "PLC logic drift" (controller, block, last_edit_source)
 ```
 
 ### Zeek (ICSNPP) -- online edit/append from non-EWS (concept)
@@ -120,14 +131,23 @@ on schedule (hourly / per shift) and on any observed download or edit event:
 
 ### Splunk -- drift joined to EWS launch and change feed
 
+Sysmon process-create carries `Computer`/`Image`/`User`/`ProcessId` and has **no
+`controller` field**, so joining the subsearch on `controller` never matches and the
+EWS enrichment is silently always null. Join on the editing host instead: resolve the
+drift alert's `last_edit_source` to a hostname and rename `Computer` to that key inside
+the subsearch.
+
 ```spl
 `logic_drift_alerts`
-| join type=left controller [ search `sysmon` EventCode=1
+| lookup asset_inventory ip AS last_edit_source OUTPUT host AS ews_host
+| eval ews_host=coalesce(ews_host, last_edit_source)
+| join type=left ews_host [ search `sysmon` EventCode=1
     (Image="*TIA*" OR Image="*RSLogix*" OR Image="*ControlExpert*")
-  | eval ewsLaunch=_time | fields controller ewsLaunch ]
+  | rename Computer AS ews_host
+  | eval ewsLaunch=_time | fields ews_host ewsLaunch ]
 | lookup change_tickets controller OUTPUT ticket_id
 | where isnull(ticket_id)
-| table _time, controller, changed_blocks, ewsLaunch
+| table _time, controller, changed_blocks, ews_host, ewsLaunch
 ```
 
 ## Common Scenarios

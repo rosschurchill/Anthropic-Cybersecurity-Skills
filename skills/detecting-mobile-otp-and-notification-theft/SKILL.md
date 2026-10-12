@@ -50,13 +50,18 @@ number takeover use `detecting-sim-swap-attacks`.
 ## Prerequisites
 
 - **Notification-listener inventory (primary signal).** Which apps hold
-  notification access, from MDM/MTD app inventory, the Android Enterprise
-  permission report, or — for a single device — the Android secure setting listing
-  enabled notification listeners (illustratively `enabled_notification_listeners`;
-  verify the exact key against current Android docs) via `adb shell settings get
-  secure ...` or a `bugreport`.
-- **SMS permission inventory.** Which apps hold SMS read/receive and which app is
-  the default SMS handler (default-SMS-role changes are themselves a signal).
+  notification access. There is no Android Enterprise reporting surface for
+  notification-listener enablement and no allowlist policy analogous to
+  `permittedAccessibilityServices`, so a fleet-wide listener inventory is not
+  generally obtainable from MDM: rely on **on-device MTD agent telemetry**, and
+  for single-device triage read the Android secure setting listing enabled
+  notification listeners (illustratively `enabled_notification_listeners`; this
+  AOSP key is `@hide` and absent from the public developer docs, so verify it for
+  your platform) via `adb shell settings get secure ...` or a `bugreport`.
+- **SMS permission inventory.** Which apps hold SMS read/receive
+  (`READ_SMS` / `RECEIVE_SMS`) and which app is the default SMS handler
+  (default-SMS-role changes are themselves a signal). Unlike notification
+  access, SMS **permission state** is something MDM app inventory can report.
 - **Allowlists** of apps that may legitimately hold each grant: wearable companion
   apps and legitimate automation for notification access; the default SMS app and
   carrier/backup apps for SMS.
@@ -91,9 +96,11 @@ number takeover use `detecting-sim-swap-attacks`.
 
 - **Inbound-secret harvesting, not SMS sending.** This vector reads codes that
   arrive; sending SMS or carrier-side takeover is out of scope.
-- **Two capture paths, one goal.** NotificationListener reads anything rendered in
-  the shade (including authenticator and SMS-OTP notifications); SMS read/receive
-  pulls the message directly. Either lets the attacker satisfy an MFA prompt.
+- **Two capture paths, one goal.** A NotificationListenerService — declared with
+  the `BIND_NOTIFICATION_LISTENER_SERVICE` permission and enabled by the user —
+  reads anything rendered in the shade (including authenticator and SMS-OTP
+  notifications); `READ_SMS` / `RECEIVE_SMS` pull the message directly. Either
+  lets the attacker satisfy an MFA prompt.
 - **Grant audit beats signature.** Exact setting keys and permission constants
   drift; verify them and treat them as illustrative. The durable signal is an
   unexpected app holding notification access or non-default SMS access.
@@ -118,7 +125,7 @@ Treat field names, setting keys and thresholds as **verify/tune**.
 ### Intune / Android Enterprise -- unexpected notification or SMS access (concept)
 
 ```
-# Over MDM app-inventory / permission-report export:
+# Listener set from MTD-agent telemetry; SMS permissions from MDM app inventory:
 notif_listeners - NOTIF_LISTENER_ALLOWLIST            -> raise("unexpected notification access")
 apps_with_sms_read_or_receive - DEFAULT_SMS - CARRIER -> raise("non-default app reads SMS")
 # raise severity if same package also sideloaded or holds an accessibility grant
@@ -129,14 +136,19 @@ apps_with_sms_read_or_receive - DEFAULT_SMS - CARRIER -> raise("non-default app 
 ```kql
 // verify table/column names for your identity + MTD connectors
 SigninLogs
-| mv-expand todynamic(AuthenticationDetails)
-| where AuthenticationDetails.authenticationMethod in ("Text message", "SMS")  // verify/tune
+| mv-expand AuthDetail = todynamic(AuthenticationDetails)
+| where tostring(AuthDetail.authenticationMethod) in ("Text message", "SMS")  // verify/tune
 | where ResultType == 0
 | project TimeGenerated, UserPrincipalName, DeviceDetail, IPAddress
 | join kind=inner (
-    DeviceTvmThreatEvents            // MTD device-threat feed; verify table
-    | where ThreatName has_any ("notification listener", "sms", "otp", "interception")
-    | project ThreatTime=TimeGenerated, UserPrincipalName, DeviceId, ThreatName
+    // MTD threat events surface as ALERTS, not in a DeviceTvm* table: use
+    // AlertInfo/AlertEvidence (Defender XDR advanced hunting, also available in
+    // Sentinel via the XDR connector) or SecurityAlert (Sentinel-native).
+    AlertInfo
+    | where Title has_any ("notification listener", "sms", "otp", "interception")
+    | join kind=inner (AlertEvidence | where isnotempty(AccountUpn)
+                       | project AlertId, DeviceId, AccountUpn) on AlertId
+    | project ThreatTime=TimeGenerated, UserPrincipalName = AccountUpn, DeviceId, ThreatName = Title
   ) on UserPrincipalName
 | where ThreatTime between (TimeGenerated - 24h .. TimeGenerated)
 ```

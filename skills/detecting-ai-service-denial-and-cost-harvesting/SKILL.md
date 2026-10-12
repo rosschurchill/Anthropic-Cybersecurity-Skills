@@ -48,7 +48,7 @@ The exhausted resource is **model compute, inference budget, or the analyst queu
 ## Prerequisites
 
 - Access to inference-API gateway logs: per-principal/per-key request rate, concurrency, input size and token count, billed cost per request, and 429/503 and queue-depth counters.
-- Model-serving and GPU metrics: GPU utilization, compute time and memory per request, output-token count and generation length, batch latency. Sources include vLLM / TGI / Triton serving metrics, the NVIDIA DCGM exporter, and Prometheus/Grafana.
+- Model-serving metrics with **per-request** compute time, output-token count and generation length, and batch latency — from vLLM / TGI / Triton serving metrics and request tracing (Langfuse). Device- and pod-level GPU utilization and memory come from the NVIDIA DCGM exporter via Prometheus/Grafana; DCGM gives you saturation context, not per-request attribution.
 - Observability for token/cost/latency traces (Arize, WhyLabs, Fiddler, Langfuse).
 - Provider usage/billing stream and per-tenant spend-rate (cloud AI-gateway and billing APIs).
 - Guardrail/moderation logs and the HITL queue backlog.
@@ -67,10 +67,16 @@ Watch *compute per request*, not just count. Sponge examples push a model to wor
 ```python
 def cost_harvesting_flags(req, base):
     """req: this request's metrics; base: per-tenant baselines (p99 etc.). Tune all thresholds."""
-    sponge = req["gpu_time_ms"] > base["gpu_time_p99"] and req["output_tokens"] >= 0.95 * req["max_tokens"]
+    # GPU time over baseline p99 is sufficient on its own: a pathological input can
+    # burn worst-case compute WITHOUT a near-max generation (long/adversarial input,
+    # pathological branching). Near-max output tokens corroborates and raises severity.
+    sponge = req["gpu_time_ms"] > base["gpu_time_p99"]
+    near_max_output = req["output_tokens"] >= 0.95 * req["max_tokens"]
     denial_of_wallet = req["principal_spend_rate"] > base["spend_rate_mult"] * base["spend_rate_base"]
     excessive_queries = req["req_rate_per_min"] > base["rate_floor"] and req["input_complexity"] == "low"
     return {"sponge_or_resource_intensive": sponge,
+            "near_max_output": near_max_output,
+            "sponge_severity": "high" if sponge and near_max_output else ("medium" if sponge else "none"),
             "denial_of_wallet": denial_of_wallet,
             "excessive_queries": excessive_queries}
 ```
@@ -104,9 +110,9 @@ Apply the Response controls, then confirm spend-rate and compute anomalies retur
 | Tool / system | Role |
 |---------------|------|
 | Cloud AI-gateway logs and usage/billing APIs | Request rate, per-request cost, spend-rate, billing anomalies |
-| NVIDIA DCGM exporter + Prometheus/Grafana | GPU utilization, compute time, memory per request |
-| vLLM / TGI / Triton serving metrics | Token counts, generation length, batch latency |
-| Arize, WhyLabs, Fiddler, Langfuse | Token/cost/latency observability traces |
+| NVIDIA DCGM exporter + Prometheus/Grafana | GPU utilization, SM activity, and memory at device and pod level (device-level; with `-k` it labels by pod, but it cannot attribute GPU time to an individual request) |
+| vLLM / TGI / Triton serving metrics | Per-request GPU/compute time, token counts, generation length, batch latency |
+| Arize, WhyLabs, Fiddler, Langfuse | Token/cost/latency observability traces, including per-request token counts and compute time from span attributes |
 | NeMo Guardrails, LLM Guard | Input gating, length/complexity rate control |
 | API gateway (Kong/Envoy), Kubernetes HPA | Rate limiting, concurrency caps, autoscaling with a ceiling |
 

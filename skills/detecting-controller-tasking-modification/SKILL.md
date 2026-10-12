@@ -112,6 +112,12 @@ on schedule and on observed download or edit:
 
 ### Log analytic (Splunk/Sentinel) -- task-config edit from engineering sw
 
+Sysmon process-create carries `Computer`/`Image`/`User`/`ProcessId` and emits **no
+`src_host` field**, so the subsearch must rename `Computer` to the join key or the join
+never matches and the EWS enrichment is silently always null. If `src_host` from the
+engineering-tool logs is an IP rather than a hostname, resolve it through an asset
+lookup before joining.
+
 ```spl
 `eng_sw_logs` (event="task_priority_change" OR event="task_schedule_change"
                OR event="task_trigger_change")
@@ -119,6 +125,7 @@ on schedule and on observed download or edit:
 | where isnull(ticket_id)
 | join type=left src_host [ search `sysmon` EventCode=1
     (Image="*TIA*" OR Image="*RSLogix*" OR Image="*ControlExpert*")
+  | rename Computer AS src_host
   | eval ewsLaunch=_time | fields src_host ewsLaunch ]
 | table _time, controller, event, src_host, ewsLaunch
 ```

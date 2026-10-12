@@ -77,10 +77,36 @@ No single commercial "render-exfil" product is standard; detection is composed f
 Scan raw model output for egress markup to non-allowlisted hosts (defensive scanner; tune the allowlist):
 
 ```python
-import re
-from urllib.parse import urlparse
+import base64, binascii, re
+from urllib.parse import urlparse, unquote
 
 ALLOWLIST = {"cdn.example-first-party.com", "assets.example.com"}  # verify/tune per app
+
+def decode_candidates(seg):
+    """Yield the segment and any successful percent/base64/hex decodings of it.
+    The payload is encoded by assumption, so comparing the RAW segment against a
+    plaintext context blob can never match - decode first."""
+    out = [seg]
+    pct = unquote(seg)
+    if pct != seg:
+        out.append(pct)
+    for s in list(out):
+        body = s.strip("=")
+        try:  # base64 / base64url
+            pad = s + "=" * (-len(s) % 4)
+            out.append(base64.urlsafe_b64decode(pad).decode("utf-8", "ignore"))
+        except (binascii.Error, ValueError):
+            pass
+        if len(body) >= 24 and len(body) % 2 == 0 and re.fullmatch(r"[0-9a-fA-F]+", body):
+            try:
+                out.append(bytes.fromhex(body).decode("utf-8", "ignore"))
+            except ValueError:
+                pass
+    return [o for o in out if o and o.strip()]
+
+def shingles(text, n=5):
+    toks = re.findall(r"[a-z0-9]+", text.lower())
+    return {" ".join(toks[i:i + n]) for i in range(max(0, len(toks) - n + 1))}
 
 # markdown image/link, HTML src/href, CSS url()
 URL_MARKUP = re.compile(
@@ -91,6 +117,7 @@ URL_MARKUP = re.compile(
 )
 
 def scan_output(text, context_blob):
+    ctx_shingles = shingles(context_blob)
     findings = []
     for m in URL_MARKUP.finditer(text):
         url = m.group("md") or m.group("attr") or m.group("css")
@@ -98,10 +125,22 @@ def scan_output(text, context_blob):
             continue
         host = (urlparse(url).hostname or "").lower()
         if host and host not in ALLOWLIST:
-            qp = urlparse(url).query + urlparse(url).path
+            parsed = urlparse(url)
+            qp = parsed.query + parsed.path
             # long, encoded, or context-mirroring payload = likely exfil
             encoded = bool(re.search(r"[A-Za-z0-9+/=_%-]{24,}", qp))
-            mirrors_ctx = any(seg and seg in context_blob for seg in qp.split("?"))
+            # Decode each long segment, then compare the DECODED text to the context
+            # (shingle overlap, so re-wrapping/truncation still matches).
+            mirrors_ctx = False
+            for seg in re.split(r"[/?&=;]", qp):
+                if len(seg) < 24:
+                    continue
+                for cand in decode_candidates(seg):
+                    if ctx_shingles & shingles(cand):
+                        mirrors_ctx = True
+                        break
+                if mirrors_ctx:
+                    break
             findings.append({
                 "url": url, "host": host,
                 "non_allowlisted": True,
@@ -124,7 +163,7 @@ LLMTraces
   ) on $left.session_id == $right.client_ip   // map to your session<->client join key
 | where fetch_time between (turn_time .. turn_time + window)
 | where dest_host !in (dynamic(["cdn.example-first-party.com","assets.example.com"]))
-| where output has dest_host
+| where output contains dest_host  // 'contains' not 'has': a dotted hostname is tokenised, so term-based 'has' is unreliable
 | project turn_time, fetch_time, session_id, dest_host, url_full
 ```
 

@@ -56,8 +56,16 @@ describes how to link, pair, or clone someone's account.
 
 - A linked session means message history up to the point of unlink may be
   **already exposed.** Treat the content as compromised.
-- Only the **primary device** can unlink a companion — the attacker cannot lock
-  the owner out, so the owner retains control. Reassure the user of this.
+- **On WhatsApp and Signal** only the **primary device** can unlink a companion
+  — the attacker cannot lock the owner out, so the owner retains control.
+  Reassure the user of this.
+- **This reassurance does NOT hold on Telegram or Matrix/Element.** Those have
+  no primary/companion hierarchy: a QR login creates a full co-equal session and
+  any authorized session can terminate the others, so a hijacked session **can
+  evict the owner**. On those two platforms, terminating all other sessions and
+  changing the account password / 2FA (Telegram two-step verification cloud
+  password; Matrix account password) is **urgent** — do it before the attacker
+  does.
 - In an intimate-partner-abuse context, consider whether removing the link could
   tip off the attacker, and follow safety-planning guidance before acting;
   preserve a screenshot of the linked-device entry (device type, location hint,
@@ -104,8 +112,11 @@ describes how to link, pair, or clone someone's account.
   after-the-fact inventory; the link-attempt alert is the chance to stop it.
 - **QR "invite" that pairs, not joins.** Legitimate flows never ask you to scan
   a QR to "join" or "verify" — a scan that links a device is the tell.
-- **Owner keeps control.** Only the primary phone can unlink companions, so the
-  attacker cannot evict the owner — remediation is always available.
+- **Owner keeps control — on WhatsApp and Signal only.** There, only the primary
+  phone can unlink companions, so the attacker cannot evict the owner and
+  remediation is always available. On **Telegram and Matrix/Element** sessions
+  are co-equal: any session can sign the others out, including the owner's, so
+  remediation is a race and must be done immediately.
 
 ## Tools & Systems
 
@@ -181,8 +192,15 @@ MALICIOUS DEVICE LINKING DETECTION
 
 ## Response
 
-- **Unlink.** From the primary phone, remove the unrecognized linked device
-  (only the primary device can unlink companions).
+- **Unlink / terminate sessions — the procedure differs by platform.**
+  - *WhatsApp, Signal:* from the primary phone, remove the unrecognized linked
+    device (only the primary device can unlink companions; the rogue session
+    cannot remove yours).
+  - *Telegram, Matrix/Element:* sessions are co-equal, so the rogue session can
+    terminate yours first. **Terminate all other sessions** and then immediately
+    change the account password / 2FA (Telegram two-step verification cloud
+    password; Matrix account password) in the same sitting, so a re-authenticated
+    attacker cannot simply return.
 - **Re-verify.** Re-register / re-verify the account; enable WhatsApp two-step
   verification or Signal registration lock — this does not evict an already-
   paired device but blocks account number/email changes and re-registration

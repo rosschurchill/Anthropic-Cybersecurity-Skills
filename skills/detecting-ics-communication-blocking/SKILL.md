@@ -109,8 +109,12 @@ spectrum analyzers for RF, Splunk OT add-ons, Microsoft Sentinel.
 index=ot_syslog ("link-down" OR "carrier lost" OR "line protocol is down")
 | bin _time span=30s
 | stats dc(host) as hosts values(host) as devices by _time
-| where hosts >= N      # simultaneous multi-device loss = blocking, not one flap
-| join type=left [ search index=change_windows | eval planned="true" ]
+| where hosts >= 3      # tune: simultaneous multi-device loss = blocking, not one flap
+/* lookup keyed on the device and its planned-outage window; a join after
+   `stats ... by _time` has no device key to match on. The planned_outages
+   lookup should be time-bounded on _time in its lookup definition. */
+| mvexpand devices
+| lookup planned_outages host AS devices OUTPUT planned
 | where isnull(planned)
 ```
 
@@ -130,7 +134,7 @@ logsource: { product: windows, category: process_creation }
 detection:
   netsh:
     Image|endswith: '\netsh.exe'
-    CommandLine|contains|all: ['interface', 'set', 'interface', 'disable']
+    CommandLine|contains|all: ['interface set interface', 'admin=disable']
   condition: netsh
 level: high
 # Linux equivalent: monitor auditd execve for 'ip link set * down' / 'ifconfig * down'
