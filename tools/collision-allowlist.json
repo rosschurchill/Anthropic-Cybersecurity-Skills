@@ -216,6 +216,13 @@
         "detecting-suspicious-oauth-application-consent"
       ],
       "reason": "Different scope: the app-integration skill detects OAuth/enterprise-app persistence across Microsoft 365, Google Workspace and SaaS (rogue registrations, SP credential adds, admin-consent bypass); the consent skill detects Entra-only illicit consent-grant attacks via Graph; each names the other's scope."
+    },
+    {
+      "pair": [
+        "detecting-plc-program-download",
+        "detecting-plc-program-upload"
+      ],
+      "reason": "Opposite direction of the same engineering operation: the download skill detects logic being written INTO a PLC (program install/online-edit from a non-allowlisted source, the tamper step), the upload skill detects logic being read OFF a PLC (program read/transfer to an engineering host, the reconnaissance step); each names the other's direction."
     }
   ]
 }
