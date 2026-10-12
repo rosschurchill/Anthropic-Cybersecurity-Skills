@@ -238,24 +238,34 @@ FORMAT = timestamp::$1 hostname::$2 fw_action::$3 src_addr::$4 src_port::$5 dst_
 
 ### Step 4: Validate Data Quality
 
+Verify events are arriving:
+
 ```spl
-# Verify events are arriving
 index=new_source earliest=-1h
 | stats count by sourcetype, host, source
+```
 
-# Check field extraction quality
+Check field extraction quality:
+
+```spl
 index=new_source earliest=-1h
 | stats count(src_ip) as has_src count(dest_ip) as has_dest count(action) as has_action count by sourcetype
 | eval src_coverage=round(has_src/count*100,1)
 | eval dest_coverage=round(has_dest/count*100,1)
 | eval action_coverage=round(has_action/count*100,1)
+```
 
-# Verify CIM compliance
+Verify CIM compliance:
+
+```spl
 | datamodel Network_Traffic search
 | search sourcetype=new_sourcetype
 | stats count by source, sourcetype
+```
 
-# Check for timestamp parsing issues
+Check for timestamp parsing issues:
+
+```spl
 index=new_source earliest=-1h
 | eval time_diff=abs(_time - _indextime)
 | stats avg(time_diff) as avg_lag max(time_diff) as max_lag by host
@@ -264,13 +274,17 @@ index=new_source earliest=-1h
 
 ### Step 5: Enable Detection Coverage
 
+Verify existing correlation searches work with the new source:
+
 ```spl
-# Verify existing correlation searches work with new source
 index=new_source sourcetype=new_sourcetype
 | tstats count from datamodel=Authentication by _time span=1h
 | timechart span=1h count
+```
 
-# Create source-specific detection rule
+Create a source-specific detection rule:
+
+```spl
 [New Source - Authentication Anomaly]
 search = index=new_source sourcetype=new_sourcetype action=failure \
 | stats count by src_ip, user \

@@ -126,13 +126,18 @@ level: high
 
 ### Splunk -- reconnect handoff from a new source with no new logon
 
+The join must be `type=left`. The headline case this query is named for is a
+reconnect with **no** matching Logon_Type=10 authentication, which is the
+`isnull(authTime)` branch below -- and a default (inner) join returns only rows
+that matched the subsearch, so it would silently discard exactly that case.
+
 ```spl
 `wineventlog_security` EventCode IN (4778,4779)
 | transaction Account_Name maxspan=5m
 | search EventCode=4779 EventCode=4778
 | eval srcChanged=if(mvcount(mvdedup(Source_Network_Address))>1,1,0)
 | where srcChanged=1
-| join Account_Name Computer [ search `wineventlog_security` EventCode=4624 Logon_Type=10 | eval authTime=_time ]
+| join type=left Account_Name Computer [ search `wineventlog_security` EventCode=4624 Logon_Type=10 | eval authTime=_time ]
 | where isnull(authTime) OR (_time - authTime) > 300
 | table _time, Computer, Account_Name, Source_Network_Address
 ```

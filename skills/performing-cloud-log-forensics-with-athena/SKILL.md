@@ -471,7 +471,7 @@ ORDER BY total_bytes DESC;
 
 ## Examples
 
-```python
+```bash
 # Quick-start: run the forensics agent for a full investigation
 python agent.py \
     --action full_investigation \

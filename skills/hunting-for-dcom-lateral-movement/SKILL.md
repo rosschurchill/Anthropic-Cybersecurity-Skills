@@ -297,10 +297,10 @@ See [references/siem-detection-queries.md](references/siem-detection-queries.md)
 
 ### Step 5: WMI Event Correlation for DCOM Activity
 
-```spl
-# Splunk: Correlate WMI events with DCOM lateral movement
-# WMI-Activity operational log captures DCOM-triggered WMI calls
+Correlate WMI events with DCOM lateral movement in Splunk. The WMI-Activity
+operational log captures DCOM-triggered WMI calls:
 
+```spl
 index=wineventlog source="WinEventLog:Microsoft-Windows-WMI-Activity/Operational"
 | where EventCode IN (5857, 5858, 5859, 5860, 5861)
 | eval event_type=case(

@@ -90,3 +90,97 @@ research -> draft -> gate loop. Status: `research` = sub-research file written;
 | T1602 | Data from Configuration Repository | `detecting-network-config-repository-theft` | collection | shipped |
 | T1205 | Traffic Signaling | `detecting-traffic-signaling-and-port-knocking` | command-and-control | shipped |
 | T1665 | Hide Infrastructure | `detecting-hidden-c2-infrastructure` | command-and-control | shipped |
+
+## Round 3 — ICS/OT Tier A (18 skills, shipped)
+
+Triage: [`../../mappings/ics-attack/coverage-gaps.md`](../../mappings/ics-attack/coverage-gaps.md).
+ATT&CK for ICS v19.2. Coverage went 15/79 (19%) → 33/79 (42%).
+
+| ICS ID | Technique | Slug | Status |
+|---|---|---|:--:|
+| T0843 | Program Download | `detecting-plc-program-download` | shipped |
+| T0845 | Program Upload | `detecting-plc-program-upload` | shipped |
+| T0889 | Modify Program | `detecting-plc-logic-modification` | shipped |
+| T0821 | Modify Controller Tasking | `detecting-controller-tasking-modification` | shipped |
+| T0835 | Manipulate I/O Image | `detecting-io-image-manipulation` | shipped |
+| T0806 | Brute Force I/O | `detecting-brute-force-io-on-plc` | shipped |
+| T0858 | Change Operating Mode | `detecting-plc-operating-mode-change` | shipped |
+| T0868 | Detect Operating Mode | `detecting-operating-mode-enumeration` | shipped |
+| T0800 | Activate Firmware Update Mode | `detecting-firmware-update-mode-activation` | shipped |
+| T1693 | Modify Firmware | `detecting-ot-firmware-modification` | shipped |
+| T0838 | Modify Alarm Settings | `detecting-alarm-setting-tampering` | shipped |
+| T0878 | Alarm Suppression | `detecting-alarm-suppression` | shipped |
+| T0848 | Rogue Master | `detecting-rogue-master-on-ics-network` | shipped |
+| T1692 | Unauthorized Message | `detecting-unauthorized-ics-command-messages` | shipped |
+| T1691 | Block OT Message | `detecting-blocked-ot-messages` | shipped |
+| T1695 | Block Communications | `detecting-ics-communication-blocking` | shipped |
+| T0861 | Point & Tag Identification | `detecting-point-and-tag-enumeration` | shipped |
+| T0881 | Service Stop | `detecting-ics-service-stop` | shipped |
+
+Legacy IDs T0803/T0804/T0855/T0856 are revoked and fold into T1691/T1692 — the
+new IDs are used throughout.
+
+## Round 4 — Mobile Tier A (14 skills, shipped)
+
+Triage: [`../../mappings/mobile-attack/coverage-gaps.md`](../../mappings/mobile-attack/coverage-gaps.md).
+ATT&CK for Mobile v19.2. Coverage went 12/77 (16%) → 47/77 (61%).
+
+| Mobile ID | Technique | Slug | Status |
+|---|---|---|:--:|
+| T1453 | Abuse Accessibility Features | `detecting-android-accessibility-service-abuse` | shipped |
+| T1517 | Access Notifications | `detecting-mobile-otp-and-notification-theft` | shipped |
+| T1451 | SIM Card Swap | `detecting-sim-swap-attacks` | shipped |
+| T1404 | Exploitation for Privilege Escalation | `detecting-mobile-device-rooting-and-jailbreak` | shipped |
+| T1617 | Hooking | `detecting-mobile-runtime-hooking-and-instrumentation` | shipped |
+| T1632 | Subvert Trust Controls | `detecting-malicious-mobile-configuration-profiles` | shipped |
+| T1577 | Compromise Application Executable | `detecting-repackaged-mobile-apps` | shipped |
+| T1429 | Audio Capture (+video/screen/location) | `detecting-mobile-surveillanceware` | shipped |
+| T1664 | Exploitation for Initial Access | `detecting-mercenary-mobile-spyware-with-mvt` | shipped |
+| T1676 | Linked Devices | `detecting-malicious-device-linking` | shipped |
+| T1398 | Boot or Logon Initialization Scripts | `detecting-mobile-malware-persistence` | shipped |
+| T1663 | Remote Access Software | `detecting-mobile-remote-access-and-proxyware` | shipped |
+| T1629 | Impair Defenses | `detecting-mobile-security-control-tampering` | shipped |
+| T1582 | SMS Control | `detecting-mobile-sms-and-call-fraud` | shipped |
+
+Detection is routed through MDM/UEM, Mobile Threat Defense, device attestation,
+Play Protect, carrier/IAM signals and MVT forensics — stock mobile rarely
+exposes host syscall telemetry.
+
+## Round 5 — MITRE ATLAS Tier A (12 skills, shipped)
+
+Triage: [`../../mappings/atlas/coverage-gaps.md`](../../mappings/atlas/coverage-gaps.md).
+ATLAS v5.6.0. Honest coverage is 41/101 (41%) after 200 spurious ATLAS tags were
+stripped from 78 skills with no AI dimension.
+
+| ATLAS ID | Technique | Slug | Status |
+|---|---|---|:--:|
+| AML.T0015 | Evade AI Model | `detecting-adversarial-evasion-attacks` | shipped |
+| AML.T0029 | Denial of AI Service | `detecting-ai-service-denial-and-cost-harvesting` | shipped |
+| AML.T0061 | LLM Prompt Self-Replication | `detecting-llm-prompt-self-replication` | shipped |
+| AML.T0060 | Publish Hallucinated Entities | `detecting-package-hallucination-and-slopsquatting` | shipped |
+| AML.T0077 | LLM Response Rendering | `detecting-llm-output-rendering-exfiltration` | shipped |
+| AML.T0080 | AI Agent Context Poisoning | `detecting-ai-agent-memory-poisoning` | shipped |
+| AML.T0081 | Modify AI Agent Configuration | `detecting-ai-agent-configuration-tampering` | shipped |
+| AML.T0105 | Escape to Host | `detecting-ai-agent-sandbox-escape` | shipped |
+| AML.T0109 | AI Supply Chain Rug Pull | `detecting-ai-model-supply-chain-rug-pull` | shipped |
+| AML.T0102 | Generate Malicious Commands | `detecting-malicious-ai-generated-code` | shipped |
+| AML.T0092 | Manipulate User LLM Chat History | `detecting-llm-chat-history-manipulation` | shipped |
+| AML.T0070 | RAG Poisoning | `detecting-rag-knowledge-base-poisoning` | shipped |
+
+AI-security skills use the `nist_ai_rmf` + `atlas_techniques` frontmatter keys,
+not `nist_csf` + `mitre_attack`.
+
+## Post-ship quality review (rounds 3-5)
+
+All 44 skills above passed the five gates on first submission, and a content
+review then found **11 HIGH and ~68 MEDIUM** defects the gates cannot see —
+mostly detections that silently could never fire (`stats count` with no
+zero-fill, inner joins discarding the negative case, SPL `IN` against a lookup
+name, SQL `<>` dropping NULLs), plus fabricated identifiers
+(`DeviceTvmThreatEvents`, `SetSettingGroupValues`). Fixed in a follow-up pass;
+rewritten detectors were executed against positive and negative cases.
+
+**Lesson for future rounds: gates verify structure, not truth.** Budget a
+content-accuracy review that checks claims against primary sources, and do not
+hedge settled constants — a blanket hedge teaches readers to distrust the
+reliable parts.
