@@ -3,8 +3,12 @@
 Computed against the local ATT&CK for Mobile v19.2 STIX.
 
 - **Base techniques (non-deprecated, non-revoked):** 77
-- **Covered by ≥1 skill:** 12 (16%)
-- **Uncovered:** 65
+- **Covered by ≥1 skill:** 47 (61%)
+- **Uncovered:** 30
+
+All 14 Tier-A skills below are **shipped and merged**; coverage rose from 12/77
+(16%) at review time to 47/77 (61%). The remaining 30 are Tier B/C by the triage
+below, not a backlog.
 
 The existing coverage is almost entirely offense/analysis/forensics
 (`analyzing-android-malware-with-apktool`, `analyzing-ios-app-security-with-objection`,
@@ -28,7 +32,7 @@ forensic spyware triage, carrier/IAM/account telemetry, and app-vetting pipeline
 - **Tier C — atomic primitive / impact outcome.** Not independently detectable, or an outcome rather
   than a behaviour; skip.
 
-## Tier A build queue (14)
+## Tier A build queue (14) — all shipped
 
 | ATT&CK (Mobile) | Technique(s) folded in | Proposed slug |
 |---|---|---|

@@ -284,7 +284,7 @@ for alert in alerts:
 
 ### Full Deployment Script
 
-```python
+```bash
 # Deploy a comprehensive canary token network
 python scripts/agent.py --action full_deploy \
     --email soc@company.com \
@@ -294,7 +294,7 @@ python scripts/agent.py --action full_deploy \
 
 ### Monitor Triggered Tokens
 
-```python
+```bash
 # Check for triggered alerts
 python scripts/agent.py --action monitor \
     --console-domain yourcompany \
@@ -303,7 +303,7 @@ python scripts/agent.py --action monitor \
 
 ### Generate Token Inventory
 
-```python
+```bash
 # Create inventory of all deployed tokens
 python scripts/agent.py --action inventory \
     --output token_inventory.json

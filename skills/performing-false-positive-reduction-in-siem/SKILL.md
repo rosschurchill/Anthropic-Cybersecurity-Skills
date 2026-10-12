@@ -57,8 +57,9 @@ False positive alerts are non-malicious events that trigger security rules, over
 
 ### 1. Identify the Noisiest Rules
 
+Top 10 noisiest correlation searches in Splunk:
+
 ```spl
-# Splunk - Top 10 noisiest correlation searches
 index=notable
 | stats count by rule_name
 | sort -count
@@ -66,8 +67,9 @@ index=notable
 | eval pct=round(count / total * 100, 1)
 ```
 
+False positive rate per rule:
+
 ```spl
-# False positive rate per rule
 index=notable
 | stats count as total
     count(eval(status_label="Closed - False Positive")) as false_positives
@@ -80,13 +82,17 @@ index=notable
 
 ### 2. Threshold Tuning
 
+**Before** - too sensitive, fires on 5 failed logins:
+
 ```spl
-# Before: Too sensitive - fires on 5 failed logins
 index=wineventlog EventCode=4625
 | stats count by src_ip
 | where count > 5
+```
 
-# After: Tuned - requires 20+ failures across 3+ accounts in 10 minutes
+**After** - tuned, requires 20+ failures across 3+ accounts in 10 minutes:
+
+```spl
 index=wineventlog EventCode=4625
 | bin _time span=10m
 | stats count dc(TargetUserName) as unique_accounts by src_ip, _time
@@ -95,12 +101,16 @@ index=wineventlog EventCode=4625
 
 ### 3. Allowlist/Exclusion Management
 
+Create an allowlist lookup for known benign sources:
+
 ```spl
-# Create allowlist lookup for known benign sources
 | inputlookup fp_allowlist.csv
 | fields src_ip, reason, approved_by, expiry_date
+```
 
-# Apply allowlist in detection rule
+Apply the allowlist in the detection rule:
+
+```spl
 index=wineventlog EventCode=4625
 | lookup fp_allowlist src_ip OUTPUT reason as allowlisted_reason
 | where isnull(allowlisted_reason)
@@ -110,12 +120,16 @@ index=wineventlog EventCode=4625
 
 ### 4. Correlation Enhancement
 
+**Before** - single-event detection (noisy):
+
 ```spl
-# Before: Single-event detection (noisy)
 index=wineventlog EventCode=4688 New_Process_Name="*powershell.exe"
 | eval severity="medium"
+```
 
-# After: Multi-signal correlation (precise)
+**After** - multi-signal correlation (precise):
+
+```spl
 index=wineventlog EventCode=4688 New_Process_Name="*powershell.exe"
 | join src_ip type=left [
     search index=wineventlog EventCode=4625
@@ -136,13 +150,17 @@ index=wineventlog EventCode=4688 New_Process_Name="*powershell.exe"
 
 ### 5. Time-Based Exclusions
 
+Exclude known maintenance windows:
+
 ```spl
-# Exclude known maintenance windows
 | eval hour=strftime(_time, "%H")
 | eval day=strftime(_time, "%A")
 | where NOT (hour >= "02" AND hour <= "04" AND day="Sunday")
+```
 
-# Exclude known batch job schedules
+Exclude known batch job schedules:
+
+```spl
 | lookup scheduled_tasks_allowlist process_name, schedule_time
     OUTPUT is_scheduled
 | where isnull(is_scheduled)
@@ -150,8 +168,9 @@ index=wineventlog EventCode=4688 New_Process_Name="*powershell.exe"
 
 ### 6. Behavioral Baseline Integration
 
+Build a baseline for user login patterns:
+
 ```spl
-# Build baseline for user login patterns
 index=wineventlog EventCode=4624
 | bin _time span=1h
 | stats count as logins dc(Computer) as unique_hosts by TargetUserName, _time
@@ -164,12 +183,13 @@ index=wineventlog EventCode=4624
 
 ### 7. Threat Intelligence Filtering
 
+Only alert when the destination matches known threat intelligence. The final
+`where` clause eliminates FPs from flagging connections to benign IPs:
+
 ```spl
-# Only alert when destination matches known threat intelligence
 index=firewall action=allowed direction=outbound
 | lookup ip_threat_intel_lookup ip as dest_ip OUTPUT threat_type, confidence
 | where isnotnull(threat_type) AND confidence > 70
-# This eliminates FPs from flagging connections to benign IPs
 ```
 
 ## Tuning Process Framework
@@ -210,8 +230,9 @@ index=firewall action=allowed direction=outbound
 Invoke-AtomicTest T1110.001 -TestNumbers 1
 ```
 
+Verify the detection still triggers after tuning:
+
 ```spl
-# Verify detection still triggers after tuning
 index=notable rule_name="Brute Force Detection"
 earliest=-24h
 | stats count

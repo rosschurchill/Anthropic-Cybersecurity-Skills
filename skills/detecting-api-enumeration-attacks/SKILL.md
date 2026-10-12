@@ -105,8 +105,9 @@ GET /api/v1/orders?user_id=103
 
 ### Splunk Detection Queries
 
+Detect sequential ID enumeration on API endpoints:
+
 ```spl
-# Detect sequential ID enumeration on API endpoints
 index=api_logs sourcetype=api_access
 | rex field=uri_path "(?<endpoint>/api/v\d+/\w+/)(?<object_id>\d+)"
 | stats count as request_count,
@@ -127,8 +128,11 @@ index=api_logs sourcetype=api_access
 | sort - unique_ids
 | table src_ip, endpoint, unique_ids, request_count, requests_per_second,
         status_codes, severity
+```
 
-# Detect BOLA via authorization failure patterns
+Detect BOLA (Broken Object Level Authorization) via authorization failure patterns:
+
+```spl
 index=api_logs sourcetype=api_access status_code IN (401, 403)
 | bin _time span=5m
 | stats count as failure_count,

@@ -3,15 +3,19 @@
 Content gap review for the **ICS/OT** matrix (MITRE ATT&CK for ICS v19.2).
 Diffs skill `mitre_attack:` IDs against the ICS technique set.
 
-## Headline
-- ICS base techniques: **79** · covered **15** · **uncovered 64** (19% → building up).
+## Headline (current)
+- ICS base techniques: **79** · covered **33** · **uncovered 46** — **42%**.
+
+All 18 Tier-A skills below are **shipped and merged**; coverage rose from 15/79
+(19%) at review time to 33/79 (42%). The remaining 46 are Tier B/C by the triage
+rule below, not a backlog.
 
 Triage follows the catalogue rule: build a skill only for a concretely
 *detectable adversary behavior*. ICS **impact outcomes** (Loss of View/Control,
 Damage to Property…) are consequences, not detection targets; generic techniques
 with an existing Enterprise detection skill are **fold-in**.
 
-## Tier A — OT-specific, detectable, worth a skill (build queue)
+## Tier A — OT-specific, detectable, worth a skill (all shipped)
 
 | ICS ID | Technique | Proposed slug |
 |--------|-----------|---------------|

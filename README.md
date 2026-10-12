@@ -10,7 +10,7 @@
 
 [![GARS-2026 Survey](https://img.shields.io/badge/GARS--2026-Take%20the%20Survey-E8B84B?style=for-the-badge&logo=googleforms&logoColor=black)](https://mahipal.engineer/survey?utm_source=github_badge&utm_medium=readme&utm_campaign=gars2026)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-818-brightgreen?style=flat-square)](#whats-inside--34-security-domains)
+[![Skills](https://img.shields.io/badge/skills-872-brightgreen?style=flat-square)](#whats-inside--34-security-domains)
 [![Frameworks](https://img.shields.io/badge/frameworks-6-orange?style=flat-square)](#six-frameworks-one-skill-library)
 [![MITRE F3](https://img.shields.io/badge/MITRE-F3_v1.1-blue?style=flat-square)](https://ctid.mitre.org/fraud/)
 [![Domains](https://img.shields.io/badge/domains-34-9cf?style=flat-square)](#whats-inside--34-security-domains)
@@ -24,7 +24,7 @@
 [![Hermes Agent](https://img.shields.io/badge/Hermes_Agent-compatible-blueviolet?style=flat)](https://github.com/NousResearch/hermes-agent)
 
 
-**818 production-grade cybersecurity skills · 34 security domains · 6 framework mappings · 26+ AI platforms**
+**872 production-grade cybersecurity skills · 34 security domains · 6 framework mappings · 26+ AI platforms**
 
 [Get Started](#quick-start) · [What's Inside](#whats-inside--34-security-domains) · [Frameworks](#six-frameworks-one-skill-library) · [Platforms](#compatible-platforms) · [Contributing](#contributing)
 
@@ -40,15 +40,15 @@
 
 A junior analyst knows which Volatility3 plugin to run on a suspicious memory dump, which Sigma rules catch Kerberoasting, and how to scope a cloud breach across three providers. **Your AI agent doesn't — unless you give it these skills.**
 
-This repo contains **818 structured cybersecurity skills** spanning **34 security domains**, each following the [agentskills.io](https://agentskills.io) open standard.  The library maps across **six industry frameworks** — MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, and the MITRE Fight Fraud Framework (F3) — with each skill mapped to the frameworks **relevant to its type** (a forensics skill carries ATT&CK + CSF; an AI-security skill adds ATLAS and AI RMF).  Clone it, point your agent at it, and your next security investigation gets expert-level guidance in seconds.
+This repo contains **872 structured cybersecurity skills** spanning **34 security domains**, each following the [agentskills.io](https://agentskills.io) open standard.  The library maps across **six industry frameworks** — MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, and the MITRE Fight Fraud Framework (F3) — with each skill mapped to the frameworks **relevant to its type** (a forensics skill carries ATT&CK + CSF; an AI-security skill adds ATLAS and AI RMF).  Clone it, point your agent at it, and your next security investigation gets expert-level guidance in seconds.
 
 ## Six frameworks, one skill library
 
-Each skill maps to the frameworks that fit its subject — ATT&CK and NIST CSF are near-universal, while ATLAS, AI RMF, D3FEND, and F3 apply where they're relevant. **Framework coverage across the 817 skills:** MITRE ATT&CK **805** · NIST CSF 2.0 **804** · MITRE D3FEND **139** · NIST AI RMF **97** · MITRE F3 **94** · MITRE ATLAS **93**.
+Each skill maps to the frameworks that fit its subject — ATT&CK and NIST CSF are near-universal, while ATLAS, AI RMF, D3FEND, and F3 apply where they're relevant. **Framework coverage across the 872 skills:** MITRE ATT&CK **846** · NIST CSF 2.0 **847** · MITRE D3FEND **130** · MITRE F3 **93** · NIST AI RMF **30** · MITRE ATLAS **27**. (AI RMF and ATLAS fell from 97/93 after spurious mappings were stripped from skills with no AI dimension — see `mappings/atlas/coverage-gaps.md`.)
 
 | Framework | Version | Framework scope | What it maps |
 |---|---|---|---|
-| [MITRE ATT&CK](https://attack.mitre.org) | v19.1 | 15 tactics · Enterprise/Mobile/ICS | Adversary behaviors and TTPs |
+| [MITRE ATT&CK](https://attack.mitre.org) | v19.2 | 15 tactics · Enterprise/Mobile/ICS | Adversary behaviors and TTPs |
 | [NIST CSF 2.0](https://www.nist.gov/cyberframework) | 2.0 | 6 functions · 22 categories · 106 subcategories | Organizational security posture |
 | [MITRE ATLAS](https://atlas.mitre.org) | 2026.07 | 101 techniques · 77 sub-techniques | AI/ML adversarial threats |
 | [MITRE D3FEND](https://d3fend.mitre.org) | v1.4.0 | 270 techniques | Defensive countermeasures |
@@ -74,9 +74,9 @@ F3 v1.1 adds **two fraud-specific tactics** that ATT&CK does not enumerate:
 
 Fraud-specific techniques use `F1XXX` IDs (e.g. `F1005.003` Add Beneficiary, `F1025.003` Wire Transfer, `F1007` Adversary-in-the-Browser); reused ATT&CK techniques keep their `T1XXX` IDs. Mappings live in each skill's `mitre_f3:` frontmatter block — all 123 F3 v1.1 technique IDs were verified against the upstream STIX bundle. See [`docs/mitre-f3-mapping.md`](docs/mitre-f3-mapping.md) for the schema.
 
-### MITRE ATT&CK v19.1 — 805/817 skills mapped
+### MITRE ATT&CK v19.2 — 846/872 skills mapped
 
-Every skill carries a `mitre_attack` frontmatter list validated against **MITRE ATT&CK v19.1** (the latest release) using the official `mitreattack-python` library — 290 distinct techniques and sub-techniques (146 base + 144 sub) across Enterprise, ICS, and Mobile. Zero revoked or deprecated IDs. v19.1's restructured Defense Evasion (now split into **Stealth** and **Defense Impairment**) is reflected below.
+Every skill carries a `mitre_attack` frontmatter list validated against **MITRE ATT&CK v19.2** (the latest release) using the official `mitreattack-python` library — 437 distinct techniques and sub-techniques (239 base + 198 sub) across Enterprise, ICS, and Mobile. Zero revoked or deprecated IDs. v19's restructured Defense Evasion (now split into **Stealth** and **Defense Impairment**) is reflected below.
 
 | Tactic | ID | Skills |
 |--------|----|--------|
@@ -184,18 +184,18 @@ Existing security tool repos give you wordlists, payloads, or exploit code. None
 | Data Protection | 1 | Data loss prevention with Microsoft Purview |
 | Purple Team | 1 | Atomic Red Team purple-team testing |
 
-*817 skills across 34 domains. Counts come from the `subdomain` field in each skill's frontmatter.*
+*872 skills in total. Counts come from the `subdomain` field in each skill's frontmatter; the table above covers 34 domains and sums to 817, so the 55 skills added since (the ICS/OT, mobile and AI-security gap builds, plus later additions) are not yet broken out per domain. The frontmatter currently holds 45 distinct `subdomain` values, several of them near-duplicate aliases with one or two skills each.*
 
 ## How AI agents use these skills
 
-Each skill costs **~30 tokens to scan** (frontmatter only)  and **500–2,000 tokens to fully load** (complete workflow). This progressive disclosure architecture lets agents search all 818 skills in a single pass without blowing context windows. 
+Each skill costs **~30 tokens to scan** (frontmatter only)  and **500–2,000 tokens to fully load** (complete workflow). This progressive disclosure architecture lets agents search all 872 skills in a single pass without blowing context windows. 
 
 ```
 User prompt: "Analyze this memory dump for signs of credential theft"
 
 Agent's internal process:
 
-  1. Scans 818 skill frontmatters (~30 tokens each)
+  1. Scans 872 skill frontmatters (~30 tokens each)
      → identifies 12 relevant skills by matching tags, description, domain
 
   2. Loads top 3 matches:
@@ -384,7 +384,7 @@ All platforms that support the [agentskills.io](https://agentskills.io) standard
 |---|---|---|
 | [v1.0.0](https://github.com/mukul975/Anthropic-Cybersecurity-Skills/releases/tag/v1.0.0) | March 11, 2026 | 734 skills · 26 domains · MITRE ATT&CK + NIST CSF 2.0 mapping · ATT&CK Navigator layer |
 
-Skills have continued to grow on `main` since v1.0.0 — the library now contains **818 skills** with **6-framework mapping**  (MITRE ATLAS, D3FEND, NIST AI RMF, and the MITRE Fight Fraud Framework added post-release).  Check [Releases](https://github.com/mukul975/Anthropic-Cybersecurity-Skills/releases) for the latest tagged version.
+Skills have continued to grow on `main` since v1.0.0 — the library now contains **872 skills** with **6-framework mapping**  (MITRE ATLAS, D3FEND, NIST AI RMF, and the MITRE Fight Fraud Framework added post-release).  Check [Releases](https://github.com/mukul975/Anthropic-Cybersecurity-Skills/releases) for the latest tagged version.
 
 ## Contributing
 
@@ -442,7 +442,7 @@ If you use this project in research or publications:
   year         = {2026},
   url          = {https://github.com/mukul975/Anthropic-Cybersecurity-Skills},
   license      = {Apache-2.0},
-  note         = {818 structured cybersecurity skills for AI agents,
+  note         = {872 structured cybersecurity skills for AI agents,
                   mapped to MITRE ATT\&CK, NIST CSF 2.0, MITRE ATLAS,
                   MITRE D3FEND, and NIST AI RMF}
 }

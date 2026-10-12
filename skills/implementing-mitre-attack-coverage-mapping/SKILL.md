@@ -64,8 +64,9 @@ MITRE ATT&CK coverage mapping gives SOC teams a structured, adversary-centric le
 
 ### Step 1: Export Current Detection Rules
 
+Splunk ES - export all active correlation searches with MITRE mappings:
+
 ```spl
-# Splunk ES - Export all active correlation searches with MITRE mappings
 | rest /services/saved/searches
 | search disabled=0 action.correlationsearch.enabled=1
 | table title, search, action.notable.param.security_domain,
