@@ -19,7 +19,7 @@ author: team-cybersecurity
 license: Apache-2.0
 nist_csf:
 - DE.CM-01
-- DE.CM-07
+- DE.CM-09
 - DE.AE-03
 - PR.IR-01
 - PR.AA-05
