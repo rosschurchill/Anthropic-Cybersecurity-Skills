@@ -34,7 +34,7 @@ and passing gates.
 | T1529 | System Shutdown/Reboot | `detecting-malicious-system-shutdown` | impact | shipped |
 | T1667 | Email Bombing | `detecting-email-bombing-attacks` | impact | shipped |
 | T1111 | MFA Interception | `detecting-mfa-interception-and-bypass` | credential-access | shipped |
-| T1689 | Downgrade Attack | `detecting-protocol-downgrade-attacks` | defense-evasion | research |
+| T1689 | Downgrade Attack | `detecting-protocol-downgrade-attacks` | defense-evasion | shipped |
 | T1686 | Disable or Modify System Firewall | `detecting-host-firewall-tampering` | defense-evasion | research |
 | T1690 | Prevent Command History Logging | `detecting-command-history-tampering` | defense-evasion | research |
 | T1599 | Network Boundary Bridging | `detecting-network-boundary-bridging` | defense-evasion | research |
