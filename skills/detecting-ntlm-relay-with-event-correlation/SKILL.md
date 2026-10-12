@@ -21,11 +21,6 @@ tags:
 version: '1.0'
 author: mukul975
 license: Apache-2.0
-atlas_techniques:
-- AML.T0051
-- AML.T0054
-- AML.T0056
-- AML.T0020
 d3fend_techniques:
 - Application Protocol Command Analysis
 - Network Isolation

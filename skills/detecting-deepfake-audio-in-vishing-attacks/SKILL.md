@@ -19,10 +19,8 @@ version: 1.0.0
 author: mukul975
 license: Apache-2.0
 atlas_techniques:
-- AML.T0088
-- AML.T0043
-- AML.T0018
 - AML.T0052
+- AML.T0088
 nist_ai_rmf:
 - MEASURE-2.7
 - GOVERN-6.2

@@ -25,10 +25,6 @@ nist_ai_rmf:
 - MANAGE-2.4
 - MANAGE-3.1
 - MEASURE-3.1
-atlas_techniques:
-- AML.T0070
-- AML.T0066
-- AML.T0082
 nist_csf:
 - PR.DS-11
 - RS.MA-01

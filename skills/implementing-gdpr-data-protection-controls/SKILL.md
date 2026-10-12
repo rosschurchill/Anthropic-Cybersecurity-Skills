@@ -29,10 +29,6 @@ nist_ai_rmf:
 - MANAGE-2.4
 - MEASURE-2.8
 - MEASURE-2.9
-atlas_techniques:
-- AML.T0070
-- AML.T0066
-- AML.T0082
 mitre_attack:
 - T1078
 - T1530

@@ -25,10 +25,6 @@ nist_ai_rmf:
 - MANAGE-2.4
 - GOVERN-1.1
 - GOVERN-4.2
-atlas_techniques:
-- AML.T0070
-- AML.T0066
-- AML.T0082
 nist_csf:
 - PR.IR-01
 - ID.AM-08
