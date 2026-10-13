@@ -19,9 +19,10 @@ from skill_frontmatter import load_frontmatter, FrontmatterError
 REQUIRED_FIELDS = ["name", "description", "domain", "subdomain", "tags",
                    "version", "author", "license"]
 
-# Canonical subdomain → set of accepted aliases (including canonical itself).
-# When a skill uses an alias, the validator accepts it but the canonical form
-# is the first entry in each group below.  New skills should use the canonical.
+# Canonical subdomain → the retired aliases it absorbed (including canonical itself).
+# The canonical form is the dict key.  Aliases are REJECTED: the whole catalogue was
+# consolidated onto the canonical values, so an alias can only be new drift.  The map
+# is kept so the error message can name the right replacement.
 _SUBDOMAIN_ALIASES = {
     # identity
     "identity-access-management": {"identity-access-management", "identity-and-access-management", "identity-security"},
@@ -65,7 +66,11 @@ _SUBDOMAIN_ALIASES = {
     "ai-security": {"ai-security"},
 }
 
-# Flat set of all accepted subdomain values (canonical + aliases).
+# The only values a skill may use.
+CANONICAL_SUBDOMAINS: set = set(_SUBDOMAIN_ALIASES)
+
+# Every value ever accepted (canonical + retired aliases).  Retained so an alias is
+# recognised and mapped to its replacement rather than reported as simply unknown.
 ALLOWED_SUBDOMAINS: set = {v for group in _SUBDOMAIN_ALIASES.values() for v in group}
 
 # Reverse map: alias → canonical (for warning messages).
@@ -135,18 +140,19 @@ def validate_skill(skill_dir):
     # Validate subdomain.
     subdomain = fm.get("subdomain", "")
     if subdomain:
-        if subdomain not in ALLOWED_SUBDOMAINS:
+        if subdomain in CANONICAL_SUBDOMAINS:
+            pass
+        elif subdomain in _ALIAS_TO_CANONICAL:
+            # Known but retired.  The catalogue is fully consolidated, so this is drift.
             errors.append(
-                f"Unknown subdomain '{subdomain}'. Allowed: {', '.join(sorted(ALLOWED_SUBDOMAINS))}"
+                f"subdomain '{subdomain}' is a retired alias; use"
+                f" '{_ALIAS_TO_CANONICAL[subdomain]}'"
             )
         else:
-            canonical = _ALIAS_TO_CANONICAL.get(subdomain, subdomain)
-            if subdomain != canonical:
-                # Warn (non-blocking) — alias is accepted but canonical is preferred
-                print(
-                    f"{YELLOW}WARN{RESET} subdomain '{subdomain}' is an alias;"
-                    f" canonical form is '{canonical}'"
-                )
+            errors.append(
+                f"Unknown subdomain '{subdomain}'."
+                f" Allowed: {', '.join(sorted(CANONICAL_SUBDOMAINS))}"
+            )
 
     # Validate tags.
     tags = fm.get("tags", [])
