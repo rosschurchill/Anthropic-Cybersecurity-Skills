@@ -148,7 +148,7 @@ The failure mode to guard against is a generated procedure that was never execut
 
 ## Subdomains
 
-Choose the most appropriate subdomain for your skill. `tools/validate-skill.py` is the source of truth; these 34 are the canonical values. A handful of older aliases are still accepted so existing forks and in-flight PRs do not break, and the validator prints a warning for them — but no skill in the catalogue uses one any more, and new skills must use the canonical value.
+Choose the most appropriate subdomain for your skill. `tools/validate-skill.py` is the source of truth; these 34 are the canonical values. A handful of older aliases were absorbed into these 34 and are listed beside their canonical form. They are **rejected** — the catalogue was consolidated onto the canonical values, so an alias can only be new drift, and `tools/validate-skill.py` fails with the replacement named (for example `subdomain 'ot-security' is a retired alias; use 'ot-ics-security'`).
 
 - `ai-security`
 - `api-security`
