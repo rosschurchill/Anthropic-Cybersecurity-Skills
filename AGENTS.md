@@ -16,7 +16,7 @@ Read the description first. If it carries a negative trigger — "Do not use for
 
 ## Changing a skill
 
-Frontmatter is parsed by `tools/skill_frontmatter.py`, which uses PyYAML. Do not write a regex frontmatter parser; CI fails the build if it detects one. Three hand-rolled parsers previously truncated 604 of 817 descriptions to their first line.
+Frontmatter is parsed by `tools/skill_frontmatter.py`, which uses PyYAML. Do not write a regex frontmatter parser; the workflow greps for one and fails the build (once Actions is enabled — see README.md). Three hand-rolled parsers previously truncated 604 of 817 descriptions to their first line.
 
 After changing any `SKILL.md`:
 
@@ -27,9 +27,16 @@ python tools/validate-agentskills.py --strict
 python tools/generate-index.py          # regenerate index.json
 python tools/lint-descriptions.py --all
 python tools/detect-collisions.py
+python tools/generate-attack-coverage.py --check   # ATTACK_COVERAGE.md is generated
+python tools/check-doc-counts.py                   # the skill total, wherever it is quoted
 ```
 
-All five run in CI. `index.json` is generated — never edit it by hand.
+**Run all seven. Nothing runs them for you.** They are defined in
+`.github/workflows/validate-skills.yml`, but GitHub Actions is not enabled on this
+repository — all four workflows show zero runs since it was created. See
+"Validation" in README.md for how to turn it on.
+
+`index.json` and `ATTACK_COVERAGE.md` are both generated — never edit either by hand.
 
 ## Writing a description
 

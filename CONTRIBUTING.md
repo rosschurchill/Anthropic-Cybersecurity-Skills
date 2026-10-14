@@ -63,7 +63,7 @@ The linter enforces the mechanical parts: 1024 characters maximum, terminal punc
 
 ## Before you open a pull request
 
-Run the validators locally. All five run in CI on every push and pull request that touches `skills/` or `tools/` — which any skill PR does — and all five have to be green before I can merge. A PR that changes only documentation does not trigger them at all, so an empty checks list there is not a pass.
+Run the validators locally, and **do not expect CI to catch what you miss.** The seven gates are defined in `.github/workflows/validate-skills.yml`, but **GitHub Actions is not enabled on this repository** — all four workflows show zero runs since it was created, so an empty or absent checks list on your PR means nothing was checked, not that everything passed. I run them by hand before merging. If Actions is enabled later (README.md, "Validation", says how), they start gating automatically and nothing here changes except that the build will tell you first.
 
 ```bash
 pip install pyyaml   # the only external dependency
@@ -73,13 +73,15 @@ python tools/lint-descriptions.py skills/your-skill-name/   # description qualit
 python tools/validate-agentskills.py --strict               # conformance, whole repo
 python tools/detect-collisions.py                           # near-duplicates, whole repo
 python tools/generate-index.py                              # regenerate index.json
+python tools/generate-attack-coverage.py                    # regenerate ATTACK_COVERAGE.md
+python tools/check-doc-counts.py                            # skill total consistency
 ```
 
 Three things that catch people out:
 
 - **Two of those commands are repo-wide.** `validate-agentskills.py` and `detect-collisions.py` have no single-skill mode, so a failure they report may belong to a skill you never touched. Check the slug in the output before assuming it is yours.
-- **`index.json` is generated, and the PR must carry the regenerated file.** It is refreshed automatically on `main`, but not on your branch, and the freshness gate runs at PR time. If you touched a description and did not commit the regenerated `index.json`, the build fails.
-- **The collision gate is a ratchet, currently sitting exactly at its ceiling.** One new near-duplicate pair fails the build. The cap CI enforces lives in `.github/workflows/validate-skills.yml` and gets lowered as disambiguation lands — read it from there rather than memorising a number.
+- **`index.json` and `ATTACK_COVERAGE.md` are generated, and the PR must carry the regenerated files.** `update-index.yml` is meant to refresh `index.json` on `main`, but with Actions disabled it has never run, so nothing refreshes it but you. Run `generate-index.py` and `generate-attack-coverage.py` and commit the results; if you changed a description or added a skill and did not, the catalogue ships inconsistent with its own index.
+- **The collision gate is a ratchet.** One new unreviewed near-duplicate pair fails it. The cap lives in `.github/workflows/validate-skills.yml` and gets lowered as disambiguation lands — read it from there rather than memorising a number. There is currently 1 unreviewed pair against a cap of 24, so there is headroom, but a genuine duplicate is still a duplicate.
 
 ## One skill per pull request
 

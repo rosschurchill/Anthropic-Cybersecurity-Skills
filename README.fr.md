@@ -106,6 +106,38 @@ cd Anthropic-Cybersecurity-Skills
 
 Fonctionne immédiatement avec Claude Code, GitHub Copilot, OpenAI Codex CLI, Cursor, Gemini CLI, et toute plateforme compatible agentskills.io.
 
+## Validation
+
+Sept contrôles protègent le catalogue. Ils sont définis dans `.github/workflows/validate-skills.yml` :
+
+```bash
+pip install pyyaml
+python3 tools/validate-skill.py --all                  # frontmatter, chaque compétence
+python3 tools/validate-agentskills.py --strict         # conformité agentskills.io
+python3 tools/generate-index.py --check                # index.json à jour
+python3 tools/lint-descriptions.py --all               # qualité des descriptions
+python3 tools/detect-collisions.py --max-unreviewed 24 # cliquet des quasi-doublons
+python3 tools/generate-attack-coverage.py --check      # ATTACK_COVERAGE.md à jour
+python3 tools/check-doc-counts.py                      # total, partout où il est cité
+```
+
+**GitHub Actions n'est pas activé sur ce dépôt : aucun de ces contrôles ne s'exécute
+automatiquement.** Les quatre workflows affichent zéro exécution depuis la création du
+dépôt, ce qui explique qu'un total périmé ait subsisté dans six fichiers alors que le
+catalogue avait évolué. Tant qu'Actions n'est pas activé, traitez cette liste comme une
+checklist avant push.
+
+Pour l'activer :
+
+1. **Settings → Actions → General**, mettre *Actions permissions* sur **Allow all actions and reusable workflows**, puis enregistrer.
+2. S'il s'agit d'un fork, cela ne suffit pas. Ouvrir l'onglet **Actions** et cliquer sur **« I understand my workflows, go ahead and enable them »** — une confirmation unique exigée par GitHub pour qu'un fork ne lance pas les workflows du dépôt parent.
+3. **Actions → « Validate SKILL.md files » → Run workflow** pour déclencher la première exécution sans attendre un push.
+
+Deux points à anticiper, pour ne pas confondre un échec avec une régression. Le contrôle
+de fraîcheur d'`index.json` est volontairement limité aux `pull_request` : une exécution
+manuelle ou sur push le saute. Et `update-index.yml` et `update-contributors.yml`
+committent dans le dépôt : leur première exécution ajoute un commit automatisé.
+
 ## 🌍 GARS-2026 — Global Agentic AI Readiness Survey
 
 Je mène une étude académique mondiale mesurant à quel point les professionnels de la sécurité, les développeurs et les équipes d'entreprise sont réellement prêts pour l'IA agentique — serveurs MCP, tool calling, gouvernance, et workflows human-in-the-loop.
