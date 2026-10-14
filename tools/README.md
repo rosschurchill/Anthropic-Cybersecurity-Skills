@@ -25,6 +25,62 @@ python tools/validate-skill.py --all
 - Subdomain is from the allowed list
 - Tags is a list with at least 2 items
 
+### These gates do not run themselves here
+
+`.github/workflows/validate-skills.yml` defines every gate below, and as of
+2026-10-14 **it has never run**: all four workflows in this repository show zero
+Actions runs since it was created on 2026-10-11, while PRs 10-19 merged to main.
+GitHub disables Actions on a fork by default. Until someone enables it under
+*Settings -> Actions -> General*, treat the whole list as a pre-push checklist:
+
+```bash
+python3 tools/validate-skill.py --all
+python3 tools/validate-agentskills.py --strict
+python3 tools/generate-index.py --check
+python3 tools/lint-descriptions.py --all
+python3 tools/detect-collisions.py --max-unreviewed 24
+python3 tools/generate-attack-coverage.py --check
+python3 tools/check-doc-counts.py
+```
+
+This is also the likeliest reason the counts below drifted in the first place:
+the checks existed, and nothing ran them.
+
+### Generated documents, and the gates that keep them honest
+
+Two documents are derived from the catalogue. Both are generated, neither is
+hand-edited, and CI checks both:
+
+| Tool | Owns | Check |
+|---|---|---|
+| `generate-attack-coverage.py` | `ATTACK_COVERAGE.md` | `--check` fails if stale |
+| `check-doc-counts.py` | the skill total wherever it is quoted | fails on any mismatch |
+
+`generate-attack-coverage.py` reads `attack-technique-tactics.json`, a cached
+technique-to-tactic map extracted from the MITRE ATT&CK STIX bundles, so it runs
+offline. Refresh that cache only on a deliberate version bump — the catalogue is
+pinned to **v19.2** and every technique ID in it was verified against that
+release. v20.0 exists upstream; moving to it means revalidating all 437 IDs for
+revocations, not editing a badge.
+
+Both exist because the alternative was tried. `ATTACK_COVERAGE.md` told readers
+to regenerate it with `python3 extract_attack.py`, a script that was never in
+this repository, and it drifted until every number in it was wrong: 291
+techniques across a claimed 817 when the catalogue held 437 across 872, ATLAS
+v5.5.0 after v5.6.0 landed, and 85 NIST AI RMF skills after 460 spurious
+mappings had been stripped. The total was likewise corrected in `README.md` and
+left at 817 in `README.fr.md`, `SCOPE.md`, `CITATION.cff`, `mappings/README.md`
+and `.github/copilot-instructions.md`, so the repository advertised a total of 817
+while shipping 872 — which reads as "the new skills were never merged".
+
+`check-doc-counts.py` matches a number only where it touches the word it counts,
+and strips URLs first: this repository's own links contain the owner name
+`mukul975`, and a loose proximity window read that owner name as a count thirty times.
+Legitimate subsets (846 ATT&CK-mapped, 795 with `references/`, 734 at v1.0.0)
+are declared in `SUBSETS` with a reason; sentences about the past are exempted
+by line in `ALLOW`. Do not add the previous total to `SUBSETS` — that was tried,
+and it silenced the one number that had actually drifted.
+
 ### Requirements
 
 Python 3.8+ and PyYAML (`pip install pyyaml`).

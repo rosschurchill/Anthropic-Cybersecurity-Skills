@@ -10,7 +10,7 @@
 
 [![GARS-2026 Survey](https://img.shields.io/badge/GARS--2026-Take%20the%20Survey-E8B84B?style=for-the-badge&logo=googleforms&logoColor=black)](https://mahipal.engineer/survey?utm_source=github_badge&utm_medium=readme&utm_campaign=gars2026)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-817-brightgreen?style=flat-square)](#ce-quil-contient-29-domaines-de-securite)
+[![Skills](https://img.shields.io/badge/skills-872-brightgreen?style=flat-square)](#ce-quil-contient-29-domaines-de-securite)
 [![Frameworks](https://img.shields.io/badge/frameworks-6-orange?style=flat-square)](#six-frameworks-une-seule-bibliotheque-de-competences)
 [![MITRE F3](https://img.shields.io/badge/MITRE-F3_v1.1-blue?style=flat-square)](https://ctid.mitre.org/fraud/)
 [![Domains](https://img.shields.io/badge/domains-29-9cf?style=flat-square)](#ce-quil-contient-29-domaines-de-securite)
@@ -22,7 +22,7 @@
 [![Hermes Agent](https://img.shields.io/badge/Hermes_Agent-compatible-blueviolet?style=flat)](https://github.com/NousResearch/hermes-agent)
 
 
-**817 compétences cybersécurité de niveau production · 29 domaines de sécurité · 6 correspondances de frameworks · 26+ plateformes IA**
+**872 compétences cybersécurité de niveau production · 29 domaines de sécurité · 6 correspondances de frameworks · 26+ plateformes IA**
 
 [Démarrage rapide](#demarrage-rapide) · [Contenu](#ce-quil-contient-29-domaines-de-securite) · [Frameworks](#six-frameworks-une-seule-bibliotheque-de-competences) · [Plateformes](#plateformes-compatibles) · [Contribuer](#contribuer)
 
@@ -38,7 +38,7 @@
 
 Un analyste junior sait quel plugin Volatility3 exécuter sur un dump mémoire suspect, quelles règles Sigma détectent un Kerberoasting, et comment analyser une compromission cloud sur trois fournisseurs. **Votre agent IA ne le sait pas — à moins que vous ne lui fournissiez ces compétences.**
 
-Ce dépôt contient **817 compétences cybersécurité structurées** couvrant **29 domaines de sécurité**, chacune suivant le standard ouvert agentskills.io. Chaque compétence est mappée à **six frameworks de l'industrie** — MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, et le MITRE Fight Fraud Framework (F3) — ce qui en fait la seule bibliothèque open source de compétences offrant une couverture unifiée inter-framework. Clonez-la, pointez votre agent dessus, et votre prochaine investigation sécurité bénéficiera d'un guidage de niveau expert en quelques secondes.
+Ce dépôt contient **872 compétences cybersécurité structurées** couvrant **29 domaines de sécurité**, chacune suivant le standard ouvert agentskills.io. Chaque compétence est mappée à **six frameworks de l'industrie** — MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, et le MITRE Fight Fraud Framework (F3) — ce qui en fait la seule bibliothèque open source de compétences offrant une couverture unifiée inter-framework. Clonez-la, pointez votre agent dessus, et votre prochaine investigation sécurité bénéficiera d'un guidage de niveau expert en quelques secondes.
 
 ## Six frameworks, une seule bibliothèque de compétences
 
@@ -46,7 +46,7 @@ Aucune autre bibliothèque open source de compétences ne mappe chaque compéten
 
 |Framework|Version|Couverture dans ce dépôt|Ce qui est mappé|
 |--|--|--|--|
-|MITRE ATT&CK|v19.1|15 tactiques · 286 techniques|Comportements adverses et TTP|
+|MITRE ATT&CK|v19.2|15 tactiques · Enterprise/Mobile/ICS|Comportements adverses et TTP|
 |NIST CSF 2.0|2.0|6 fonctions · 22 catégories|Posture de sécurité organisationnelle|
 |MITRE ATLAS|v5.4|16 tactiques · 84 techniques|Menaces adverses sur IA/ML|
 |MITRE D3FEND|v1.3|7 catégories · 267 techniques|Contre-mesures défensives|
@@ -71,9 +71,9 @@ F3 v1.1 ajoute **deux tactiques spécifiques à la fraude** qu'ATT&CK n'énumèr
 
 Les techniques spécifiques à la fraude utilisent des IDs `F1XXX` (par ex. `F1005.003` Add Beneficiary, `F1025.003` Wire Transfer, `F1007` Adversary-in-the-Browser) ; les techniques ATT&CK réutilisées conservent leurs IDs `T1XXX`. Les mappings se trouvent dans chaque bloc de frontmatter `mitre_f3:` — les 123 IDs de techniques F3 v1.1 ont tous été vérifiés à partir du bundle STIX upstream. Voir `docs/mitre-f3-mapping.md` pour le schéma.
 
-### MITRE ATT&CK v19.1 — 817/817 compétences mappées
+### MITRE ATT&CK v19.2 — 846/872 compétences mappées
 
-Chaque compétence contient une liste `mitre_attack` en frontmatter validée contre **MITRE ATT&CK v19.1** (la dernière version) à l'aide de la bibliothèque officielle `mitreattack-python` — 286 techniques distinctes sur les 15 tactiques Enterprise, plus des techniques ICS et Mobile lorsque pertinent. Aucun ID révoqué ou obsolète. La restructuration de Defense Evasion dans v19.1 (désormais séparée en **Stealth** et **Defense Impairment**) est reflétée ci-dessous.
+Chaque compétence contient une liste `mitre_attack` en frontmatter validée contre **MITRE ATT&CK v19.2** (la version sur laquelle le catalogue est figé ; v20.0 existe désormais en amont) à l'aide de la bibliothèque officielle `mitreattack-python` — 286 techniques distinctes sur les 15 tactiques Enterprise, plus des techniques ICS et Mobile lorsque pertinent. Aucun ID révoqué ou obsolète. La restructuration de Defense Evasion dans v19.1 (désormais séparée en **Stealth** et **Defense Impairment**) est reflétée ci-dessous.
 
 |Tactic|ID|Skills|
 |--|--|--|
@@ -179,14 +179,14 @@ Les dépôts d'outils de sécurité existants fournissent des wordlists, des pay
 
 ## Comment les agents IA utilisent ces compétences
 
-Chaque compétence coûte **environ 30 tokens à scanner** (seulement le frontmatter) et **500 à 2 000 tokens à charger entièrement** (workflow complet). Cette architecture de divulgation progressive permet aux agents de parcourir les 817 compétences en une seule passe sans exploser les fenêtres de contexte.
+Chaque compétence coûte **environ 30 tokens à scanner** (seulement le frontmatter) et **500 à 2 000 tokens à charger entièrement** (workflow complet). Cette architecture de divulgation progressive permet aux agents de parcourir les 872 compétences en une seule passe sans exploser les fenêtres de contexte.
 
 ```text
 Prompt utilisateur : "Analyse ce dump mémoire pour des signes de vol d'identifiants"
 
 Processus interne de l'agent :
 
-  1. Scanne les frontmatters des 817 compétences (~30 tokens chacun)
+  1. Scanne les frontmatters des 872 compétences (~30 tokens chacun)
      → identifie 12 compétences pertinentes en faisant correspondre tags, description, domaine
 
   2. Charge les 3 meilleurs résultats :
@@ -354,7 +354,7 @@ Toutes les plateformes supportant le standard agentskills.io peuvent charger ces
 |--|--|--|
 | v1.0.0 | 11 mars 2026 | 734 compétences · 26 domaines · Mappage MITRE ATT&CK + NIST CSF 2.0 · Couche ATT&CK Navigator |
 
-Les compétences continuent de croître sur `main` depuis la v1.0.0 — la bibliothèque contient désormais **817 compétences** avec un **mappage sur 6 frameworks** (MITRE ATLAS, D3FEND, NIST AI RMF, et le MITRE Fight Fraud Framework ajoutés après la release). Consultez les Releases pour la dernière version taguée.
+Les compétences continuent de croître sur `main` depuis la v1.0.0 — la bibliothèque contient désormais **872 compétences** avec un **mappage sur 6 frameworks** (MITRE ATLAS, D3FEND, NIST AI RMF, et le MITRE Fight Fraud Framework ajoutés après la release). Consultez les Releases pour la dernière version taguée.
 
 ## Contribuer
 
@@ -387,7 +387,7 @@ Si vous utilisez ce projet dans des recherches ou publications :
   year         = {2026},
   url          = {https://github.com/mukul975/Anthropic-Cybersecurity-Skills},
   license      = {Apache-2.0},
-  note         = {817 compétences cybersécurité structurées pour agents IA,
+  note         = {872 compétences cybersécurité structurées pour agents IA,
                   mappées à MITRE ATT\&CK, NIST CSF 2.0, MITRE ATLAS,
                   MITRE D3FEND et NIST AI RMF}
 }

@@ -1,11 +1,11 @@
 # Copilot Instructions for Anthropic-Cybersecurity-Skills
 
-**Anthropic-Cybersecurity-Skills** is the largest open-source cybersecurity skills library for AI agents, containing 817 production-grade skills mapped to 6 industry frameworks (MITRE ATT&CK, NIST CSF, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, MITRE F3). This document guides Copilot agents contributing new skills and framework mappings.
+**Anthropic-Cybersecurity-Skills** is the largest open-source cybersecurity skills library for AI agents, containing 872 production-grade skills mapped to 6 industry frameworks (MITRE ATT&CK, NIST CSF, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, MITRE F3). This document guides Copilot agents contributing new skills and framework mappings.
 
 ## Quick Facts
 
 - **Type**: Open-source cybersecurity skills library + framework mapping hub
-- **Skills**: 817 across 29 security domains
+- **Skills**: 872 across 29 security domains
 - **Frameworks**: 6 (MITRE ATT&CK v14, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, MITRE F3)
 - **Format**: agentskills.io standard (YAML frontmatter + Markdown)
 - **License**: Apache 2.0 (ethical use required)
@@ -15,7 +15,7 @@
 
 ```
 Anthropic-Cybersecurity-Skills/
-├── skills/                    # 817 skill directories (kebab-case)
+├── skills/                    # 872 skill directories (kebab-case)
 │   ├── abusing-dpapi-for-credential-access/
 │   │   ├── SKILL.md          # Frontmatter + detailed instructions
 │   │   ├── LICENSE

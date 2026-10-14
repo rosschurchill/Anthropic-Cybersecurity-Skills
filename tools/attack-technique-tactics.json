@@ -1,0 +1,11922 @@
+{
+ "_generated": "2026-10-14",
+ "_note": "technique id -> name, tactic shortnames, matrix, status. Cached so CI needs no network.",
+ "_source": "MITRE ATT&CK STIX (attack-stix-data)",
+ "_url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/{matrix}-attack/{matrix}-attack-19.2.json",
+ "_version": "19.2",
+ "techniques": {
+  "T0800": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Activate Firmware Update Mode",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0801": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Monitor Process State",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0802": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Automated Collection",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0803": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Block Command Message",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0804": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Block Reporting Message",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0805": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Block Serial COM",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0806": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Brute Force I/O",
+   "sub": false,
+   "tactics": [
+    "impair-process-control"
+   ]
+  },
+  "T0807": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Command-Line Interface",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T0809": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Data Destruction",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0811": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Data from Information Repositories",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0812": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Default Credentials",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T0813": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Denial of Control",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0814": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Denial of Service",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0815": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Denial of View",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0816": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Device Restart/Shutdown",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0817": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Drive-by Compromise",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0819": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Exploit Public-Facing Application",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0820": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Exploitation for Evasion",
+   "sub": false,
+   "tactics": [
+    "evasion"
+   ]
+  },
+  "T0821": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Modify Controller Tasking",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T0822": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "External Remote Services",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0823": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Graphical User Interface",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T0826": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Loss of Availability",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0827": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Loss of Control",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0828": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Loss of Productivity and Revenue",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0829": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Loss of View",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0830": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Adversary-in-the-Middle",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0831": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Manipulation of Control",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0832": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Manipulation of View",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0834": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Native API",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T0835": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Manipulate I/O Image",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0836": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Modify Parameter",
+   "sub": false,
+   "tactics": [
+    "impair-process-control"
+   ]
+  },
+  "T0837": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Loss of Protection",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0838": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Modify Alarm Settings",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0839": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Module Firmware",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "impair-process-control"
+   ]
+  },
+  "T0840": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Network Connection Enumeration",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T0842": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Network Sniffing",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T0843": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Program Download",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T0843.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Download All",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T0843.002": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Online Edit",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T0843.003": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Program Append",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T0845": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Program Upload",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0846": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Remote System Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T0846.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Port Scan",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T0846.002": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Broadcast Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T0846.003": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Multicast Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T0847": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Replication Through Removable Media",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0848": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Rogue Master",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0849": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Masquerading",
+   "sub": false,
+   "tactics": [
+    "evasion"
+   ]
+  },
+  "T0851": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Rootkit",
+   "sub": false,
+   "tactics": [
+    "evasion",
+    "inhibit-response-function"
+   ]
+  },
+  "T0852": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Screen Capture",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0853": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Scripting",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T0855": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Unauthorized Command Message",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impair-process-control"
+   ]
+  },
+  "T0856": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Spoof Reporting Message",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "evasion",
+    "impair-process-control"
+   ]
+  },
+  "T0857": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "System Firmware",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "inhibit-response-function"
+   ]
+  },
+  "T0858": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Change Operating Mode",
+   "sub": false,
+   "tactics": [
+    "execution",
+    "evasion"
+   ]
+  },
+  "T0859": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Valid Accounts",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "lateral-movement"
+   ]
+  },
+  "T0860": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Wireless Compromise",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0861": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Point & Tag Identification",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0862": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Supply Chain Compromise",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0863": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "User Execution",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T0864": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Transient Cyber Asset",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0865": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Spearphishing Attachment",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0866": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Exploitation of Remote Services",
+   "sub": false,
+   "tactics": [
+    "initial-access",
+    "lateral-movement"
+   ]
+  },
+  "T0867": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Lateral Tool Transfer",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T0868": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Detect Operating Mode",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0869": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Standard Application Layer Protocol",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T0871": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Execution through API",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T0872": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Indicator Removal on Host",
+   "sub": false,
+   "tactics": [
+    "evasion"
+   ]
+  },
+  "T0873": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Project File Infection",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T0873.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Siemens Project File Format",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T0874": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Hooking",
+   "sub": false,
+   "tactics": [
+    "execution",
+    "privilege-escalation"
+   ]
+  },
+  "T0877": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "I/O Image",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0878": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Alarm Suppression",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0879": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Damage to Property",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0880": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Loss of Safety",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0881": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Service Stop",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0882": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Theft of Operational Information",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T0883": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Internet Accessible Device",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T0884": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Connection Proxy",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T0885": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Commonly Used Port",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T0886": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Remote Services",
+   "sub": false,
+   "tactics": [
+    "initial-access",
+    "lateral-movement"
+   ]
+  },
+  "T0887": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Wireless Sniffing",
+   "sub": false,
+   "tactics": [
+    "discovery",
+    "collection"
+   ]
+  },
+  "T0888": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Remote System Information Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T0889": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Modify Program",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T0890": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Exploitation for Privilege Escalation",
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T0891": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Hardcoded Credentials",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement",
+    "persistence"
+   ]
+  },
+  "T0892": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Change Credential",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T0893": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Data from Local System",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T0894": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "System Binary Proxy Execution",
+   "sub": false,
+   "tactics": [
+    "evasion"
+   ]
+  },
+  "T0895": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Autorun Image",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Obfuscation",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1001.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Junk Data",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1001.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Steganography",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1001.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Protocol or Service Impersonation",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Compressed",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "OS Credential Dumping",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LSASS Memory",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Security Account Manager",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "NTDS",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LSA Secrets",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cached Domain Credentials",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DCSync",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Proc Filesystem",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1003.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "/etc/passwd and /etc/shadow",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Winlogon Helper DLL",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data from Local System",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Direct Volume Access",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Service Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Fallback Channels",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Binary Padding",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Window Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Other Network Medium",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1011.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Bluetooth",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Query Registry",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Port Monitors",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Rootkit",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1015": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Accessibility Features",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1016": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Network Configuration Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1016.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Internet Connection Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1016.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Wi-Fi Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1017": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Deployment Software",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1018": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote System Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1019": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Firmware",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1020": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Automated Exfiltration",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1020.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Traffic Duplication",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1021": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Services",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Desktop Protocol",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SMB/Windows Admin Shares",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Distributed Component Object Model",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SSH",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "VNC",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Remote Management",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Services",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1021.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Direct Cloud VM Connections",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1022": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Encrypted",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1023": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Shortcut Modification",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1024": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Custom Cryptographic Protocol",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1025": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data from Removable Media",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1026": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multiband Communication",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1027": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Obfuscated Files or Information",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Binary Padding",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Software Packing",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Steganography",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compile After Delivery",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Indicator Removal from Tools",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "HTML Smuggling",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dynamic API Resolution",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Stripped Payloads",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Embedded Payloads",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Command Obfuscation",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Fileless Storage",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LNK Icon Smuggling",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Encrypted/Encoded File",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Polymorphic Code",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.015": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compression",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.016": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Junk Code Insertion",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.017": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SVG Smuggling",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1027.018": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Invisible Unicode",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1028": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Remote Management",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution",
+    "lateral-movement"
+   ]
+  },
+  "T1029": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Scheduled Transfer",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1030": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Transfer Size Limits",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1031": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify Existing Service",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1032": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Standard Cryptographic Protocol",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1033": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Owner/User Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1034": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Path Interception",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1035": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Service Execution",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1036": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Masquerading",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Invalid Code Signature",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Right-to-Left Override",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Rename Legitimate Utilities",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Masquerade Task or Service",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Match Legitimate Resource Name or Location",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Space after Filename",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Double File Extension",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Masquerade File Type",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Break Process Trees",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Masquerade Account Name",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Overwrite Process Arguments",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1036.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Browser Fingerprint",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1037": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Boot or Logon Initialization Scripts",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1037.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Logon Script (Windows)",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1037.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Login Hook",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1037.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Logon Script",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1037.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "RC Scripts",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1037.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Startup Items",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1038": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DLL Search Order Hijacking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation",
+    "stealth"
+   ]
+  },
+  "T1039": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data from Network Shared Drive",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1040": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Sniffing",
+   "sub": false,
+   "tactics": [
+    "credential-access",
+    "discovery"
+   ]
+  },
+  "T1041": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over C2 Channel",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1042": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Change Default File Association",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1043": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Commonly Used Port",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1044": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "File System Permissions Weakness",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1045": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Software Packing",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1046": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Service Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1047": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Management Instrumentation",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1048": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Alternative Protocol",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1048.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Symmetric Encrypted Non-C2 Protocol",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1048.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1048.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1049": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Network Connections Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1050": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "New Service",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1051": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Shared Webroot",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1052": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Physical Medium",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1052.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration over USB",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1053": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Scheduled Task/Job",
+   "sub": false,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1053.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "At (Linux)",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1053.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "At",
+   "sub": true,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1053.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cron",
+   "sub": true,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1053.004": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Launchd",
+   "sub": true,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1053.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Scheduled Task",
+   "sub": true,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1053.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Systemd Timers",
+   "sub": true,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1053.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Container Orchestration Job",
+   "sub": true,
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1054": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Indicator Blocking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1055": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Process Injection",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dynamic-link Library Injection",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Portable Executable Injection",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Thread Execution Hijacking",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Asynchronous Procedure Call",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Thread Local Storage",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Ptrace System Calls",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Proc Memory",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Extra Window Memory Injection",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Process Hollowing",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Process Doppelg\u00e4nging",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "VDSO Hijacking",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1055.015": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "ListPlanting",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1056": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Input Capture",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1056.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Keylogging",
+   "sub": true,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1056.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "GUI Input Capture",
+   "sub": true,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1056.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Portal Capture",
+   "sub": true,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1056.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credential API Hooking",
+   "sub": true,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1057": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Process Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1058": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Service Registry Permissions Weakness",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1059": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Command and Scripting Interpreter",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "PowerShell",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AppleScript",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Command Shell",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Unix Shell",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Visual Basic",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Python",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "JavaScript",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Device CLI",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud API",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AutoHotKey & AutoIT",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Lua",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hypervisor CLI",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1059.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Container CLI/API",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1060": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Registry Run Keys / Startup Folder",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1061": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Graphical User Interface",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1062": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hypervisor",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1063": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Security Software Discovery",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1064": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Scripting",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1065": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Uncommonly Used Port",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1066": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Indicator Removal from Tools",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1067": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bootkit",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1068": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploitation for Privilege Escalation",
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1069": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Permission Groups Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1069.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Groups",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1069.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Groups",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1069.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Groups",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1070": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Indicator Removal",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Windows Event Logs",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Linux or Mac System Logs",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Command History",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "File Deletion",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Share Connection Removal",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Timestomp",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Network Connection History and Configurations",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Mailbox Data",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Persistence",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1070.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Relocate Malware",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1071": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Layer Protocol",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1071.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Protocols",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1071.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "File Transfer Protocols",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1071.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Mail Protocols",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1071.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DNS",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1071.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Publish/Subscribe Protocols",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1072": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Software Deployment Tools",
+   "sub": false,
+   "tactics": [
+    "execution",
+    "lateral-movement"
+   ]
+  },
+  "T1073": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DLL Side-Loading",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1074": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Staged",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1074.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Data Staging",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1074.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Data Staging",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1075": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Pass the Hash",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1076": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Desktop Protocol",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1077": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Admin Shares",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1078": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Valid Accounts",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  "T1078.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Default Accounts",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  "T1078.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Accounts",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  "T1078.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Accounts",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  "T1078.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Accounts",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  "T1079": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multilayer Encryption",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1080": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Taint Shared Content",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1081": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials in Files",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1082": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Information Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1083": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "File and Directory Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1084": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Management Instrumentation Event Subscription",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1085": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Rundll32",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1086": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "PowerShell",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1087": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Account Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1087.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Account",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1087.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Account",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1087.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Account",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1087.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Account",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1088": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bypass User Account Control",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1089": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disabling Security Tools",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1090": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Proxy",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1090.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Internal Proxy",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1090.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "External Proxy",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1090.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multi-hop Proxy",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1090.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Fronting",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1091": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Replication Through Removable Media",
+   "sub": false,
+   "tactics": [
+    "lateral-movement",
+    "initial-access"
+   ]
+  },
+  "T1092": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Communication Through Removable Media",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1093": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Process Hollowing",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1094": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Custom Command and Control Protocol",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1095": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Non-Application Layer Protocol",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1096": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "NTFS File Attributes",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1097": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Pass the Ticket",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1098": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Account Manipulation",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1098.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Additional Cloud Credentials",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1098.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Additional Email Delegate Permissions",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1098.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Additional Cloud Roles",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1098.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SSH Authorized Keys",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1098.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Device Registration",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1098.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Additional Container Cluster Roles",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1098.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Additional Local or Domain Groups",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1099": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Timestomp",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1100": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Shell",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1101": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Security Support Provider",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1102": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Service",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1102.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dead Drop Resolver",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1102.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bidirectional Communication",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1102.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "One-Way Communication",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1103": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AppInit DLLs",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1104": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multi-Stage Channels",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1105": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Ingress Tool Transfer",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1106": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Native API",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1107": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "File Deletion",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1108": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Redundant Access",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1109": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Component Firmware",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1110": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Brute Force",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1110.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Password Guessing",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1110.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Password Cracking",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1110.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Password Spraying",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1110.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credential Stuffing",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1111": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multi-Factor Authentication Interception",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1112": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify Registry",
+   "sub": false,
+   "tactics": [
+    "defense-impairment",
+    "persistence"
+   ]
+  },
+  "T1113": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Screen Capture",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1114": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Collection",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1114.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Email Collection",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1114.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Email Collection",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1114.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Forwarding Rule",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1115": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clipboard Data",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1116": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Code Signing",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1117": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Regsvr32",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1118": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "InstallUtil",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1119": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Automated Collection",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1120": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Peripheral Device Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1121": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Regsvcs/Regasm",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1122": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Component Object Model Hijacking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1123": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Audio Capture",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1124": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Time Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1125": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Video Capture",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1126": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Share Connection Removal",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1127": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Trusted Developer Utilities Proxy Execution",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1127.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "MSBuild",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1127.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "ClickOnce",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1127.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "JamPlus",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1128": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Netsh Helper DLL",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1129": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Shared Modules",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1130": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Install Root Certificate",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1131": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Authentication Package",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1132": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Encoding",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1132.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Standard Encoding",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1132.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Non-Standard Encoding",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1133": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "External Remote Services",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "initial-access"
+   ]
+  },
+  "T1134": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Access Token Manipulation",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1134.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Token Impersonation/Theft",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1134.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Create Process with Token",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1134.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Make and Impersonate Token",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1134.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Parent PID Spoofing",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1134.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SID-History Injection",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1135": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Share Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1136": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Create Account",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1136.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Account",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1136.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Account",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1136.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Account",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1137": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Office Application Startup",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1137.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Office Template Macros",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1137.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Office Test",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1137.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Outlook Forms",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1137.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Outlook Home Page",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1137.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Outlook Rules",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1137.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Add-ins",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1138": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Shimming",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1139": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bash History",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1140": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Deobfuscate/Decode Files or Information",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1141": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Input Prompt",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1142": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Keychain",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1143": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hidden Window",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1144": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Gatekeeper Bypass",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1145": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Private Keys",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1146": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Command History",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1147": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hidden Users",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1148": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "HISTCONTROL",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1149": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LC_MAIN Hijacking",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1150": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Plist Modification",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1151": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Space after Filename",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1152": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Launchctl",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution",
+    "persistence"
+   ]
+  },
+  "T1153": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Source",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1154": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Trap",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution",
+    "persistence"
+   ]
+  },
+  "T1155": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AppleScript",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1156": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malicious Shell Modification",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1157": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dylib Hijacking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1158": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hidden Files and Directories",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1159": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Launch Agent",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1160": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Launch Daemon",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1161": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LC_LOAD_DYLIB Addition",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1162": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Login Item",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1163": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Rc.common",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1164": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Re-opened Applications",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1165": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Startup Items",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1166": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Setuid and Setgid",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1167": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Securityd Memory",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1168": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Job Scheduling",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "execution"
+   ]
+  },
+  "T1169": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Sudo",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1170": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Mshta",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1171": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LLMNR/NBT-NS Poisoning and Relay",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1172": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Fronting",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1173": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dynamic Data Exchange",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1174": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Password Filter DLL",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1175": {
+   "deprecated": true,
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Component Object Model and Distributed COM",
+   "sub": false,
+   "tactics": [
+    "lateral-movement",
+    "execution"
+   ]
+  },
+  "T1176": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Software Extensions",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1176.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Browser Extensions",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1176.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "IDE Extensions",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1177": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LSASS Driver",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution",
+    "persistence"
+   ]
+  },
+  "T1178": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SID-History Injection",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1179": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hooking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation",
+    "credential-access"
+   ]
+  },
+  "T1180": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Screensaver",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1181": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Extra Window Memory Injection",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1182": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AppCert DLLs",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1183": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Image File Execution Options Injection",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "privilege-escalation",
+    "persistence",
+    "stealth"
+   ]
+  },
+  "T1184": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SSH Hijacking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1185": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Browser Session Hijacking",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1186": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Process Doppelg\u00e4nging",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1187": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Forced Authentication",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1188": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multi-hop Proxy",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1189": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Drive-by Compromise",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1190": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploit Public-Facing Application",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1191": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "CMSTP",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1192": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Link",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1193": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Attachment",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1194": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing via Service",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1195": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Supply Chain Compromise",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1195.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compromise Software Dependencies and Development Tools",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1195.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compromise Software Supply Chain",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1195.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compromise Hardware Supply Chain",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1196": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Control Panel Items",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1197": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "BITS Jobs",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "execution"
+   ]
+  },
+  "T1198": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SIP and Trust Provider Hijacking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1199": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Trusted Relationship",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1200": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hardware Additions",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1201": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Password Policy Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1202": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Indirect Command Execution",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1203": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploitation for Client Execution",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1204": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "User Execution",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1204.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malicious Link",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1204.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malicious File",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1204.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malicious Image",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1204.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malicious Copy and Paste",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1204.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malicious Library",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1205": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Traffic Signaling",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "command-and-control"
+   ]
+  },
+  "T1205.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Port Knocking",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "command-and-control"
+   ]
+  },
+  "T1205.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Socket Filters",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence",
+    "command-and-control"
+   ]
+  },
+  "T1206": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Sudo Caching",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1207": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Rogue Domain Controller",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1208": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Kerberoasting",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1209": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Time Providers",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1210": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploitation of Remote Services",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1211": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploitation for Stealth",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1212": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploitation for Credential Access",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1213": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data from Information Repositories",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1213.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Confluence",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1213.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Sharepoint",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1213.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Code Repositories",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1213.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Customer Relationship Management Software",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1213.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Messaging Applications",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1213.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Databases",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1214": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials in Registry",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1215": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Kernel Modules and Extensions",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1216": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Script Proxy Execution",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1216.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "PubPrn",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1216.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SyncAppvPublishingServer",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1217": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Browser Information Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1218": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Binary Proxy Execution",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compiled HTML File",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Control Panel",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "CMSTP",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "InstallUtil",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Mshta",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Msiexec",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Odbcconf",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Regsvcs/Regasm",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Regsvr32",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Rundll32",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Verclsid",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Mavinject",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "MMC",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1218.015": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Electron Applications",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1219": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Access Tools",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1219.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "IDE Tunneling",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1219.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Desktop Software",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1219.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Access Hardware",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1220": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "XSL Script Processing",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1221": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Template Injection",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1222": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "File and Directory Permissions Modification",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1222.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Permissions",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1222.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Linux and Mac Permissions",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1223": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compiled HTML File",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1398": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Boot or Logon Initialization Scripts",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1399": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Modify Trusted Execution Environment",
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "persistence"
+   ]
+  },
+  "T1400": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Modify System Partition",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "persistence",
+    "impact"
+   ]
+  },
+  "T1401": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Device Administrator Permissions",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1402": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Broadcast Receivers",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "execution"
+   ]
+  },
+  "T1403": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Modify Cached Executable Code",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1404": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploitation for Privilege Escalation",
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1405": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploit TEE Vulnerability",
+   "sub": false,
+   "tactics": [
+    "credential-access",
+    "privilege-escalation"
+   ]
+  },
+  "T1406": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Obfuscated Files or Information",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1406.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Steganography",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1406.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Software Packing",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1407": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Download New Code at Runtime",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1408": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Disguise Root/Jailbreak Indicators",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1409": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Stored Application Data",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1410": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Network Traffic Capture or Redirection",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1411": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Input Prompt",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1412": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Capture SMS Messages",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1413": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Access Sensitive Data in Device Logs",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1414": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Clipboard Data",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1415": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "URL Scheme Hijacking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1416": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "URI Hijacking",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1417": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Input Capture",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1417.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Keylogging",
+   "sub": true,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1417.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "GUI Input Capture",
+   "sub": true,
+   "tactics": [
+    "credential-access",
+    "collection"
+   ]
+  },
+  "T1418": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Software Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1418.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Security Software Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1419": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Device Type Discovery",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1420": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "File and Directory Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1421": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "System Network Connections Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1422": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "System Network Configuration Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1422.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Internet Connection Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1422.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Wi-Fi Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1423": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Network Service Scanning",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1424": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Process Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1426": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "System Information Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1427": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Attack PC via USB Connection",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1428": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploitation of Remote Services",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1429": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Audio Capture",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1430": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Location Tracking",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "discovery"
+   ]
+  },
+  "T1430.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Remote Device Management Services",
+   "sub": true,
+   "tactics": [
+    "collection",
+    "discovery"
+   ]
+  },
+  "T1430.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Impersonate SS7 Nodes",
+   "sub": true,
+   "tactics": [
+    "collection",
+    "discovery"
+   ]
+  },
+  "T1432": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Access Contact List",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1433": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Access Call Log",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1435": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Access Calendar Entries",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1436": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Commonly Used Port",
+   "sub": false,
+   "tactics": [
+    "command-and-control",
+    "exfiltration"
+   ]
+  },
+  "T1437": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Application Layer Protocol",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1437.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Web Protocols",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1438": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exfiltration Over Other Network Medium",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1439": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Eavesdrop on Insecure Network Communication",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "network-effects"
+   ]
+  },
+  "T1444": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Masquerade as Legitimate Application",
+   "sub": false,
+   "tactics": [
+    "initial-access",
+    "defense-evasion"
+   ]
+  },
+  "T1446": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Device Lockout",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact",
+    "defense-evasion"
+   ]
+  },
+  "T1447": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Delete Device Data",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact",
+    "defense-evasion"
+   ]
+  },
+  "T1448": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Carrier Billing Fraud",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1449": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploit SS7 to Redirect Phone Calls/SMS",
+   "sub": false,
+   "tactics": [
+    "network-effects"
+   ]
+  },
+  "T1450": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploit SS7 to Track Device Location",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "network-effects"
+   ]
+  },
+  "T1451": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "SIM Card Swap",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1452": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Manipulate App Store Rankings or Ratings",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1453": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Abuse Accessibility Features",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1454": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Malicious SMS Message",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1456": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Drive-By Compromise",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1458": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Replication Through Removable Media",
+   "sub": false,
+   "tactics": [
+    "initial-access",
+    "lateral-movement"
+   ]
+  },
+  "T1461": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Lockscreen Bypass",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1463": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Manipulate Device Communication",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "network-effects"
+   ]
+  },
+  "T1464": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Network Denial of Service",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1465": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Rogue Wi-Fi Access Points",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "network-effects"
+   ]
+  },
+  "T1466": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Downgrade to Insecure Protocols",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "network-effects"
+   ]
+  },
+  "T1467": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Rogue Cellular Base Station",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "network-effects"
+   ]
+  },
+  "T1468": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Remotely Track Device Without Authorization",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "remote-service-effects"
+   ]
+  },
+  "T1469": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Remotely Wipe Data Without Authorization",
+   "sub": false,
+   "tactics": [
+    "remote-service-effects"
+   ]
+  },
+  "T1470": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Obtain Device Cloud Backups",
+   "sub": false,
+   "tactics": [
+    "remote-service-effects"
+   ]
+  },
+  "T1471": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Data Encrypted for Impact",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1472": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Generate Fraudulent Advertising Revenue",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1474": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Supply Chain Compromise",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1474.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Compromise Software Dependencies and Development Tools",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1474.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Compromise Hardware Supply Chain",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1474.003": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Compromise Software Supply Chain",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1475": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Deliver Malicious App via Authorized App Store",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1476": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Deliver Malicious App via Other Means",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1477": {
+   "deprecated": true,
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploit via Radio Interfaces",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1478": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Install Insecure or Malicious Configuration",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "initial-access"
+   ]
+  },
+  "T1480": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Execution Guardrails",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1480.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Environmental Keying",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1480.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Mutual Exclusion",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1481": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Web Service",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1481.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Dead Drop Resolver",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1481.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Bidirectional Communication",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1481.003": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "One-Way Communication",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1482": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Trust Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1483": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Generation Algorithms",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1484": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain or Tenant Policy Modification",
+   "sub": false,
+   "tactics": [
+    "defense-impairment",
+    "privilege-escalation"
+   ]
+  },
+  "T1484.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Group Policy Modification",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "privilege-escalation"
+   ]
+  },
+  "T1484.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Trust Modification",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "privilege-escalation"
+   ]
+  },
+  "T1485": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Destruction",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1485.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Lifecycle-Triggered Deletion",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1486": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Encrypted for Impact",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1487": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disk Structure Wipe",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1488": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disk Content Wipe",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1489": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Service Stop",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1490": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Inhibit System Recovery",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1491": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Defacement",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1491.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Internal Defacement",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1491.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "External Defacement",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1492": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Stored Data Manipulation",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1493": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Transmitted Data Manipulation",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1494": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Runtime Data Manipulation",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1495": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Firmware Corruption",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1496": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Resource Hijacking",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1496.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compute Hijacking",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1496.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bandwidth Hijacking",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1496.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SMS Pumping",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1496.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Service Hijacking",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1497": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Virtualization/Sandbox Evasion",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "discovery"
+   ]
+  },
+  "T1497.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Checks",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "discovery"
+   ]
+  },
+  "T1497.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "User Activity Based Checks",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "discovery"
+   ]
+  },
+  "T1497.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Time Based Checks",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "discovery"
+   ]
+  },
+  "T1498": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Denial of Service",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1498.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Direct Network Flood",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1498.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Reflection Amplification",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1499": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Endpoint Denial of Service",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1499.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "OS Exhaustion Flood",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1499.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Service Exhaustion Flood",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1499.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Exhaustion Flood",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1499.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application or System Exploitation",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1500": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compile After Delivery",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1501": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Systemd Service",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1502": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Parent PID Spoofing",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "privilege-escalation"
+   ]
+  },
+  "T1503": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials from Web Browsers",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1504": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "PowerShell Profile",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1505": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Server Software Component",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1505.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SQL Stored Procedures",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1505.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Transport Agent",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1505.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Shell",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1505.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "IIS Components",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1505.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Terminal Services DLL",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1505.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "vSphere Installation Bundles",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1506": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Session Cookie",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "lateral-movement"
+   ]
+  },
+  "T1507": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Network Information Discovery",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1508": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Suppress Application Icon",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1509": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Non-Standard Port",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1510": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Clipboard Modification",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1512": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Video Capture",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1513": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Screen Capture",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1514": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Elevated Execution with Prompt",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1516": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Input Injection",
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "impact"
+   ]
+  },
+  "T1517": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Access Notifications",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "credential-access"
+   ]
+  },
+  "T1518": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Software Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1518.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Security Software Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1518.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Backup Software Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1519": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Emond",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1520": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Domain Generation Algorithms",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1521": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Encrypted Channel",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1521.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Symmetric Cryptography",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1521.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Asymmetric Cryptography",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1521.003": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "SSL Pinning",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1522": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Instance Metadata API",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1523": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Evade Analysis Environment",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "discovery"
+   ]
+  },
+  "T1525": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Implant Internal Image",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1526": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Service Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1527": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Access Token",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "lateral-movement"
+   ]
+  },
+  "T1528": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Steal Application Access Token",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1529": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Shutdown/Reboot",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1530": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data from Cloud Storage",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1531": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Account Access Removal",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1532": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Archive Collected Data",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1533": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Data from Local System",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1534": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Internal Spearphishing",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1535": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Unused/Unsupported Cloud Regions",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1536": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Revert Cloud Instance",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1537": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Transfer Data to Cloud Account",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1538": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Service Dashboard",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1539": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Steal Web Session Cookie",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1540": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Code Injection",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation",
+    "defense-evasion"
+   ]
+  },
+  "T1541": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Foreground Persistence",
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "persistence"
+   ]
+  },
+  "T1542": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Pre-OS Boot",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1542.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Firmware",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1542.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Component Firmware",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1542.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bootkit",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1542.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "ROMMONkit",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1542.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "TFTP Boot",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "persistence"
+   ]
+  },
+  "T1543": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Create or Modify System Process",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1543.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Launch Agent",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1543.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Systemd Service",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1543.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Service",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1543.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Launch Daemon",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1543.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Container Service",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1544": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Ingress Tool Transfer",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1546": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Event Triggered Execution",
+   "sub": false,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Change Default File Association",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Screensaver",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Management Instrumentation Event Subscription",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Unix Shell Configuration Modification",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Trap",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LC_LOAD_DYLIB Addition",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Netsh Helper DLL",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Accessibility Features",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AppCert DLLs",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AppInit DLLs",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Shimming",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Image File Execution Options Injection",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "PowerShell Profile",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Emond",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.015": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Component Object Model Hijacking",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.016": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Installer Packages",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  "T1546.017": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Udev Rules",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1546.018": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Python Startup Hooks",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Boot or Logon Autostart Execution",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Registry Run Keys / Startup Folder",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Authentication Package",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Time Providers",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Winlogon Helper DLL",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Security Support Provider",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Kernel Modules and Extensions",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Re-opened Applications",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "LSASS Driver",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Shortcut Modification",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Port Monitors",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Plist Modification",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Print Processors",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "XDG Autostart Entries",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Active Setup",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1547.015": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Login Items",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  "T1548": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Abuse Elevation Control Mechanism",
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1548.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Setuid and Setgid",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1548.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bypass User Account Control",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1548.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Sudo and Sudo Caching",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1548.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Elevated Execution with Prompt",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1548.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Temporary Elevated Cloud Access",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1548.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "TCC Manipulation",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1550": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Use Alternate Authentication Material",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1550.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Application Access Token",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1550.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Pass the Hash",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1550.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Pass the Ticket",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1550.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Session Cookie",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1552": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Unsecured Credentials",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials In Files",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials in Registry",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Shell History",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Private Keys",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Instance Metadata API",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Group Policy Preferences",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Container API",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1552.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Chat Messages",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1553": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Subvert Trust Controls",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1553.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Gatekeeper Bypass",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1553.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Code Signing",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1553.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SIP and Trust Provider Hijacking",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1553.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Install Root Certificate",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1553.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Mark-of-the-Web Bypass",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1553.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Code Signing Policy Modification",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1554": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compromise Host Software Binary",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1555": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials from Password Stores",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1555.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Keychain",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1555.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Securityd Memory",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1555.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials from Web Browsers",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1555.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Credential Manager",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1555.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Password Managers",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1555.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Secrets Management Stores",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1556": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify Authentication Process",
+   "sub": false,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Controller Authentication",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Password Filter DLL",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Pluggable Authentication Modules",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Device Authentication",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Reversible Encryption",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multi-Factor Authentication",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hybrid Identity",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Provider DLL",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1556.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Conditional Access Policies",
+   "sub": true,
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  "T1557": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Adversary-in-the-Middle",
+   "sub": false,
+   "tactics": [
+    "credential-access",
+    "collection"
+   ]
+  },
+  "T1557.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Name Resolution Poisoning and SMB Relay",
+   "sub": true,
+   "tactics": [
+    "credential-access",
+    "collection"
+   ]
+  },
+  "T1557.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "ARP Cache Poisoning",
+   "sub": true,
+   "tactics": [
+    "credential-access",
+    "collection"
+   ]
+  },
+  "T1557.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DHCP Spoofing",
+   "sub": true,
+   "tactics": [
+    "credential-access",
+    "collection"
+   ]
+  },
+  "T1557.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Evil Twin",
+   "sub": true,
+   "tactics": [
+    "credential-access",
+    "collection"
+   ]
+  },
+  "T1558": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Steal or Forge Kerberos Tickets",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1558.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Golden Ticket",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1558.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Silver Ticket",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1558.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Kerberoasting",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1558.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AS-REP Roasting",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1558.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Ccache Files",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1559": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Inter-Process Communication",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1559.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Component Object Model",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1559.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dynamic Data Exchange",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1559.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "XPC Services",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1560": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Archive Collected Data",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1560.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Archive via Utility",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1560.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Archive via Library",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1560.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Archive via Custom Method",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1561": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disk Wipe",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1561.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disk Content Wipe",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1561.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disk Structure Wipe",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1562": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Impair Defenses",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Tools",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable Windows Event Logging",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Impair Command History Logging",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify System Firewall",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Indicator Blocking",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Cloud Firewall",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Cloud Logs",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Safe Mode Boot",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Downgrade Attack",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spoof Security Alerting",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Linux Audit System",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1562.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Network Device Firewall",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1563": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Remote Service Session Hijacking",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1563.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SSH Hijacking",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1563.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "RDP Hijacking",
+   "sub": true,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1564": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hide Artifacts",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hidden Files and Directories",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hidden Users",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hidden Window",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "NTFS File Attributes",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hidden File System",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Run Virtual Instance",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "VBA Stomping",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Hiding Rules",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Resource Forking",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Process Argument Spoofing",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Ignore Process Interrupts",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "File/Path Exclusions",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Bind Mounts",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1564.014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Extended Attributes",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1565": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data Manipulation",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1565.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Stored Data Manipulation",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1565.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Transmitted Data Manipulation",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1565.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Runtime Data Manipulation",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1566": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Phishing",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1566.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Attachment",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1566.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Link",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1566.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing via Service",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1566.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Voice",
+   "sub": true,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1567": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Web Service",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1567.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration to Code Repository",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1567.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration to Cloud Storage",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1567.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration to Text Storage Sites",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1567.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exfiltration Over Webhook",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1568": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dynamic Resolution",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1568.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Fast Flux DNS",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1568.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Generation Algorithms",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1568.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DNS Calculation",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1569": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Services",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1569.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Launchctl",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1569.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Service Execution",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1569.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Systemctl",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1570": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Lateral Tool Transfer",
+   "sub": false,
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  "T1571": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Non-Standard Port",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1572": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Protocol Tunneling",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1573": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Encrypted Channel",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1573.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Symmetric Cryptography",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1573.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Asymmetric Cryptography",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1574": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hijack Execution Flow",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DLL",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DLL Side-Loading",
+   "revoked": true,
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dylib Hijacking",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Executable Installer File Permissions Weakness",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Dynamic Linker Hijacking",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Path Interception by PATH Environment Variable",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Path Interception by Search Order Hijacking",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.009": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Path Interception by Unquoted Path",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.010": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Services File Permissions Weakness",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.011": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Services Registry Permissions Weakness",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.012": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "COR_PROFILER",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.013": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "KernelCallbackTable",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1574.014": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "AppDomainManager",
+   "sub": true,
+   "tactics": [
+    "stealth",
+    "execution"
+   ]
+  },
+  "T1575": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Native API",
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "execution"
+   ]
+  },
+  "T1576": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Uninstall Malicious Application",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1577": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Compromise Application Executable",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1578": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify Cloud Compute Infrastructure",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1578.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Create Snapshot",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1578.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Create Cloud Instance",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1578.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Delete Cloud Instance",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1578.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Revert Cloud Instance",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1578.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify Cloud Compute Configurations",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1579": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Keychain",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1580": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Infrastructure Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1581": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Geofencing",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1582": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "SMS Control",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1583": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Acquire Infrastructure",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domains",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DNS Server",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Virtual Private Server",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Server",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Botnet",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Services",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Serverless",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1583.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malvertising",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compromise Infrastructure",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domains",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DNS Server",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Virtual Private Server",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Server",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Botnet",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Services",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Serverless",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1584.008": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Devices",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1585": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Establish Accounts",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1585.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Social Media Accounts",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1585.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Accounts",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1585.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Accounts",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1586": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Compromise Accounts",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1586.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Social Media Accounts",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1586.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Accounts",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1586.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Accounts",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1587": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Develop Capabilities",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1587.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malware",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1587.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Code Signing Certificates",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1587.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Digital Certificates",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1587.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploits",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Obtain Capabilities",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Malware",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Tool",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Code Signing Certificates",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Digital Certificates",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploits",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Vulnerabilities",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1588.007": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Artificial Intelligence",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1589": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Gather Victim Identity Information",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1589.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Credentials",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1589.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Addresses",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1589.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Employee Names",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1590": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Gather Victim Network Information",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1590.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Domain Properties",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1590.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DNS",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1590.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Trust Dependencies",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1590.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Topology",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1590.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "IP Addresses",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1590.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Security Appliances",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1591": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Gather Victim Org Information",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1591.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Determine Physical Locations",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1591.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Business Relationships",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1591.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Identify Business Tempo",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1591.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Identify Roles",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1592": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Gather Victim Host Information",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1592.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hardware",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1592.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Software",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1592.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Firmware",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1592.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Client Configurations",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1593": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Search Open Websites/Domains",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1593.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Social Media",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1593.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Search Engines",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1593.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Code Repositories",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1594": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Search Victim-Owned Websites",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1595": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Active Scanning",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1595.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Scanning IP Blocks",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1595.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Vulnerability Scanning",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1595.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Wordlist Scanning",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1596": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Search Open Technical Databases",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1596.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "DNS/Passive DNS",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1596.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "WHOIS",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1596.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Digital Certificates",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1596.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "CDNs",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1596.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Scan Databases",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1597": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Search Closed Sources",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1597.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Threat Intel Vendors",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1597.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Purchase Technical Data",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1598": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Phishing for Information",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1598.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Service",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1598.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Attachment",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1598.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Link",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1598.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Spearphishing Voice",
+   "sub": true,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1599": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Boundary Bridging",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1599.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Address Translation Traversal",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1600": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Weaken Encryption",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1600.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Reduce Key Space",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1600.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable Crypto Hardware",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1601": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify System Image",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1601.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Patch System Image",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1601.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Downgrade System Image",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1602": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Data from Configuration Repository",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1602.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SNMP (MIB Dump)",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1602.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Device Configuration Dump",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1603": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Scheduled Task/Job",
+   "sub": false,
+   "tactics": [
+    "execution",
+    "persistence"
+   ]
+  },
+  "T1604": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Proxy Through Victim",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1605": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Command-Line Interface",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1606": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Forge Web Credentials",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1606.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Web Cookies",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1606.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SAML Tokens",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1608": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Stage Capabilities",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1608.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Upload Malware",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1608.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Upload Tool",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1608.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Install Digital Certificate",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1608.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Drive-by Target",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1608.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Link Target",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1608.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "SEO Poisoning",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1609": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Container Administration Command",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1610": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Deploy Container",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1611": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Escape to Host",
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1612": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Build Image on Host",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1613": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Container and Resource Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1614": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Location Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1614.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "System Language Discovery",
+   "sub": true,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1615": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Group Policy Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1616": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Call Control",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "impact",
+    "command-and-control"
+   ]
+  },
+  "T1617": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Hooking",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1618": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "User Evasion",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1619": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Storage Object Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1620": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Reflective Code Loading",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1621": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Multi-Factor Authentication Request Generation",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1622": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Debugger Evasion",
+   "sub": false,
+   "tactics": [
+    "stealth",
+    "discovery"
+   ]
+  },
+  "T1623": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Command and Scripting Interpreter",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1623.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Unix Shell",
+   "sub": true,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1624": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Event Triggered Execution",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1624.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Broadcast Receivers",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1625": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Hijack Execution Flow",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1625.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "System Runtime API Hijacking",
+   "sub": true,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1626": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Abuse Elevation Control Mechanism",
+   "sub": false,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1626.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Device Administrator Permissions",
+   "sub": true,
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  "T1627": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Execution Guardrails",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1627.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Geofencing",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1628": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Hide Artifacts",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1628.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Suppress Application Icon",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1628.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "User Evasion",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1628.003": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Conceal Multimedia Files",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1629": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Impair Defenses",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1629.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Prevent Application Removal",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1629.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Device Lockout",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1629.003": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Disable or Modify Tools",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1630": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Indicator Removal on Host",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1630.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Uninstall Malicious Application",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1630.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "File Deletion",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1630.003": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Disguise Root/Jailbreak Indicators",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1631": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Process Injection",
+   "sub": false,
+   "tactics": [
+    "defense-evasion",
+    "privilege-escalation"
+   ]
+  },
+  "T1631.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Ptrace System Calls",
+   "sub": true,
+   "tactics": [
+    "defense-evasion",
+    "privilege-escalation"
+   ]
+  },
+  "T1632": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Subvert Trust Controls",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1632.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Code Signing Policy Modification",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1633": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Virtualization/Sandbox Evasion",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1633.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "System Checks",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1634": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Credentials from Password Store",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1634.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Keychain",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1635": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Steal Application Access Token",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1635.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "URI Hijacking",
+   "sub": true,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1636": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Protected User Data",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1636.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Calendar Entries",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1636.002": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Call Log",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1636.003": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Contact List",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1636.004": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "SMS Messages",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1636.005": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Accounts",
+   "sub": true,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1637": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Dynamic Resolution",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1637.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Domain Generation Algorithms",
+   "sub": true,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1638": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Adversary-in-the-Middle",
+   "sub": false,
+   "tactics": [
+    "collection"
+   ]
+  },
+  "T1639": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exfiltration Over Alternative Protocol",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1639.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+   "sub": true,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1640": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Account Access Removal",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1641": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Data Manipulation",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1641.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Transmitted Data Manipulation",
+   "sub": true,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1642": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Endpoint Denial of Service",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1643": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Generate Traffic from Victim",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1644": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Out of Band Data",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1645": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Compromise Client Software Binary",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1646": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exfiltration Over C2 Channel",
+   "sub": false,
+   "tactics": [
+    "exfiltration"
+   ]
+  },
+  "T1647": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Plist File Modification",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1648": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Serverless Execution",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1649": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Steal or Forge Authentication Certificates",
+   "sub": false,
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  "T1650": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Acquire Access",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1651": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Administration Command",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1652": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Device Driver Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1653": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Power Settings",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1654": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Log Enumeration",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1655": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Masquerading",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1655.001": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Match Legitimate Name or Location",
+   "sub": true,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1656": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Impersonation",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1657": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Financial Theft",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1658": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploitation for Client Execution",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1659": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Content Injection",
+   "sub": false,
+   "tactics": [
+    "initial-access",
+    "command-and-control"
+   ]
+  },
+  "T1660": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Phishing",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1661": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Application Versioning",
+   "sub": false,
+   "tactics": [
+    "initial-access",
+    "defense-evasion"
+   ]
+  },
+  "T1662": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Data Destruction",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1663": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Remote Access Software",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1664": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Exploitation for Initial Access",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1665": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Hide Infrastructure",
+   "sub": false,
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  "T1666": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify Cloud Resource Hierarchy",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1667": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Bombing",
+   "sub": false,
+   "tactics": [
+    "impact"
+   ]
+  },
+  "T1668": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exclusive Control",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1669": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Wi-Fi Networks",
+   "sub": false,
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  "T1670": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Virtualization Solution",
+   "sub": false,
+   "tactics": [
+    "defense-evasion"
+   ]
+  },
+  "T1671": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Application Integration",
+   "sub": false,
+   "tactics": [
+    "persistence"
+   ]
+  },
+  "T1672": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Spoofing",
+   "revoked": true,
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1673": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Virtual Machine Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1674": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Input Injection",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1675": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "ESXi Administration Command",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1676": {
+   "matrix": [
+    "mobile"
+   ],
+   "name": "Linked Devices",
+   "sub": false,
+   "tactics": [
+    "collection",
+    "persistence"
+   ]
+  },
+  "T1677": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Poisoned Pipeline Execution",
+   "sub": false,
+   "tactics": [
+    "execution"
+   ]
+  },
+  "T1678": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Delay Execution",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1679": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Selective Exclusion",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1680": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Local Storage Discovery",
+   "sub": false,
+   "tactics": [
+    "discovery"
+   ]
+  },
+  "T1681": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Search Threat Vendor Data",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1682": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Query Public AI Services",
+   "sub": false,
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  "T1683": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Generate Content",
+   "sub": false,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1683.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Written Content",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1683.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Audio-Visual Content",
+   "sub": true,
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  "T1684": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Social Engineering",
+   "sub": false,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1684.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Impersonation",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1684.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Email Spoofing",
+   "sub": true,
+   "tactics": [
+    "stealth"
+   ]
+  },
+  "T1685": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Tools",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1685.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Windows Event Log",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1685.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Cloud Log",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1685.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Modify or Spoof Tool UI",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1685.004": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify Linux Audit System Log",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1685.005": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Windows Event Logs",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1685.006": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Clear Linux or Mac System Logs",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1686": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Disable or Modify System Firewall",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1686.001": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Cloud Firewall",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1686.002": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Network Device Firewall",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1686.003": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Windows Host Firewall",
+   "sub": true,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1687": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Exploitation for Defense Impairment",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1688": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Safe Mode Boot",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1689": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Downgrade Attack",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1690": {
+   "matrix": [
+    "enterprise"
+   ],
+   "name": "Prevent Command History Logging",
+   "sub": false,
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  "T1691": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Block Operational Technology Message",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T1691.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Command Message",
+   "sub": true,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T1691.002": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Reporting Message",
+   "sub": true,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T1692": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Unauthorized Message",
+   "sub": false,
+   "tactics": [
+    "evasion",
+    "impair-process-control"
+   ]
+  },
+  "T1692.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Command Message",
+   "sub": true,
+   "tactics": [
+    "evasion",
+    "impair-process-control"
+   ]
+  },
+  "T1692.002": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Reporting Message",
+   "sub": true,
+   "tactics": [
+    "evasion",
+    "impair-process-control"
+   ]
+  },
+  "T1693": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Modify Firmware",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "inhibit-response-function",
+    "impair-process-control"
+   ]
+  },
+  "T1693.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "System Firmware",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "inhibit-response-function",
+    "impair-process-control"
+   ]
+  },
+  "T1693.002": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Module Firmware",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "inhibit-response-function",
+    "impair-process-control"
+   ]
+  },
+  "T1694": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Insecure Credentials",
+   "sub": false,
+   "tactics": [
+    "persistence",
+    "lateral-movement"
+   ]
+  },
+  "T1694.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Default Credentials",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "lateral-movement"
+   ]
+  },
+  "T1694.002": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Hardcoded Credentials",
+   "sub": true,
+   "tactics": [
+    "persistence",
+    "lateral-movement"
+   ]
+  },
+  "T1695": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Block Communications",
+   "sub": false,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T1695.001": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Serial COM",
+   "sub": true,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T1695.002": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Ethernet",
+   "sub": true,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  },
+  "T1695.003": {
+   "matrix": [
+    "ics"
+   ],
+   "name": "Wi-Fi",
+   "sub": true,
+   "tactics": [
+    "inhibit-response-function"
+   ]
+  }
+ }
+}
