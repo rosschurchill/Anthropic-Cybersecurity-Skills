@@ -76,7 +76,7 @@ Fraud-specific techniques use `F1XXX` IDs (e.g. `F1005.003` Add Beneficiary, `F1
 
 ### MITRE ATT&CK v19.2 — 846/872 skills mapped
 
-Every skill carries a `mitre_attack` frontmatter list validated against **MITRE ATT&CK v19.2** (the latest release) using the official `mitreattack-python` library — 437 distinct techniques and sub-techniques (239 base + 198 sub) across Enterprise, ICS, and Mobile. Zero revoked or deprecated IDs. v19's restructured Defense Evasion (now split into **Stealth** and **Defense Impairment**) is reflected below.
+Every skill carries a `mitre_attack` frontmatter list validated against **MITRE ATT&CK v19.2** (the release this catalogue is pinned to; v20.0 now exists upstream) using the official `mitreattack-python` library — 437 distinct techniques and sub-techniques (239 base + 198 sub) across Enterprise, ICS, and Mobile. Zero revoked or deprecated IDs. v19's restructured Defense Evasion (now split into **Stealth** and **Defense Impairment**) is reflected below.
 
 | Tactic | ID | Skills |
 |--------|----|--------|

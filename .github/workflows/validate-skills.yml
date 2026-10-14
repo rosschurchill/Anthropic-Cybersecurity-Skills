@@ -6,11 +6,21 @@ on:
       - 'skills/**'
       - 'tools/**'
       - '.github/workflows/validate-skills.yml'
+      # The count and coverage gates below read these, so a doc-only edit must
+      # still run them. Without these paths a stale count could land unchecked.
+      - '*.md'
+      - '*.cff'
+      - 'mappings/**'
+      - '.github/copilot-instructions.md'
   pull_request:
     paths:
       - 'skills/**'
       - 'tools/**'
       - '.github/workflows/validate-skills.yml'
+      - '*.md'
+      - '*.cff'
+      - 'mappings/**'
+      - '.github/copilot-instructions.md'
   workflow_dispatch:
 
 jobs:
@@ -64,6 +74,20 @@ jobs:
       # never increase. Lower this cap as disambiguation lands.
       - name: Detect skill collisions
         run: python3 tools/detect-collisions.py --max-unreviewed 24
+
+      # ATTACK_COVERAGE.md is generated. It used to say "To regenerate: python3
+      # extract_attack.py" and that script was not in the repository, so it
+      # drifted until every number in it was wrong - 291 techniques across 817
+      # skills, when the catalogue held 437 across 872. Same contract as
+      # index.json now: generated, never hand-edited, and checked here.
+      - name: Check ATTACK_COVERAGE.md is current
+        run: python3 tools/generate-attack-coverage.py --check
+
+      # The catalogue total appears in 9 documents. It was corrected in README.md
+      # and left at 817 in README.fr.md, SCOPE.md, CITATION.cff and others, so the
+      # repository advertised 817 skills while shipping 872.
+      - name: Check documented skill counts
+        run: python3 tools/check-doc-counts.py
 
       - name: Check for duplicate skill names
         run: |
