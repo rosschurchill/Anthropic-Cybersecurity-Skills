@@ -25,6 +25,27 @@ python tools/validate-skill.py --all
 - Subdomain is from the allowed list
 - Tags is a list with at least 2 items
 
+### These gates do not run themselves here
+
+`.github/workflows/validate-skills.yml` defines every gate below, and as of
+2026-10-14 **it has never run**: all four workflows in this repository show zero
+Actions runs since it was created on 2026-10-11, while PRs 10-19 merged to main.
+GitHub disables Actions on a fork by default. Until someone enables it under
+*Settings -> Actions -> General*, treat the whole list as a pre-push checklist:
+
+```bash
+python3 tools/validate-skill.py --all
+python3 tools/validate-agentskills.py --strict
+python3 tools/generate-index.py --check
+python3 tools/lint-descriptions.py --all
+python3 tools/detect-collisions.py --max-unreviewed 24
+python3 tools/generate-attack-coverage.py --check
+python3 tools/check-doc-counts.py
+```
+
+This is also the likeliest reason the counts below drifted in the first place:
+the checks existed, and nothing ran them.
+
 ### Generated documents, and the gates that keep them honest
 
 Two documents are derived from the catalogue. Both are generated, neither is

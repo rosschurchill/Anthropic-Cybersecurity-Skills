@@ -9,6 +9,10 @@ WHY THIS EXISTS
     reads exactly like "the new skills were never merged" - which is how it was
     eventually reported. Counting is not the hard part; noticing is.
 
+    RUN THIS BEFORE YOU PUSH. It is wired into validate-skills.yml, but GitHub
+    Actions is not executing in this repository - see the note at the top of
+    tools/README.md - so the workflow will not catch you.
+
 HOW IT WORKS - and why it is boring on purpose
     It looks only at a number DIRECTLY against the word it counts: "872 skills",
     "872 compétences", "skills-872" in a badge. URLs are stripped first, because

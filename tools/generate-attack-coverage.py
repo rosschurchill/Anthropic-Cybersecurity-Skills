@@ -10,8 +10,14 @@ WHY THIS EXISTS
     mappings had been removed. A hand-maintained derived document is a document
     that will be wrong.
 
-    Same contract as generate-index.py: generated, never hand-edited, and CI
-    runs --check so a stale copy fails the build instead of shipping.
+    Same contract as generate-index.py: generated, never hand-edited, and
+    --check is wired into .github/workflows/validate-skills.yml.
+
+    BUT RUN IT BEFORE YOU PUSH. As of 2026-10-14 this repository has had zero
+    GitHub Actions runs across all four of its workflows since it was created,
+    while PRs 10-19 merged to main. Actions is not executing here (forks have it
+    disabled by default), so every gate in that workflow is a pre-push check a
+    human has to run, not something that will catch you.
 
 USAGE
     python3 tools/generate-attack-coverage.py            # write ATTACK_COVERAGE.md
