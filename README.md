@@ -109,6 +109,37 @@ cd Anthropic-Cybersecurity-Skills
 
 Works immediately with Claude Code, GitHub Copilot, OpenAI Codex CLI, Cursor, Gemini CLI, and any [agentskills.io](https://agentskills.io)-compatible platform. 
 
+## Validation
+
+Seven gates guard the catalogue. They are defined in `.github/workflows/validate-skills.yml`:
+
+```bash
+pip install pyyaml
+python3 tools/validate-skill.py --all                  # frontmatter, every skill
+python3 tools/validate-agentskills.py --strict         # agentskills.io conformance
+python3 tools/generate-index.py --check                # index.json is current
+python3 tools/lint-descriptions.py --all               # description quality
+python3 tools/detect-collisions.py --max-unreviewed 24 # near-duplicate ratchet
+python3 tools/generate-attack-coverage.py --check      # ATTACK_COVERAGE.md is current
+python3 tools/check-doc-counts.py                      # skill total, wherever quoted
+```
+
+**GitHub Actions is not enabled on this repository, so none of them run automatically.**
+All four workflows report zero runs since the repo was created, which is why a stale
+figure once sat in six files while the catalogue had moved on. Until Actions is on,
+treat the list above as a pre-push checklist.
+
+To enable it:
+
+1. **Settings → Actions → General**, set *Actions permissions* to **Allow all actions and reusable workflows**, and save.
+2. If this is a fork, that is not sufficient on its own. Open the **Actions** tab and click **"I understand my workflows, go ahead and enable them"** — a one-time confirmation GitHub requires so a fork does not start running the parent's workflows.
+3. **Actions → "Validate SKILL.md files" → Run workflow** to trigger the first run without waiting for a push.
+
+Two things to expect, so a red run is not mistaken for a regression. The `index.json`
+freshness check is deliberately scoped to `pull_request`, so a manual or push run skips
+it. And `update-index.yml` and `update-contributors.yml` commit back to the repo, so
+their first run adds an automated commit.
+
 ## 🌍 GARS-2026 — Global Agentic AI Readiness Survey
 
 I'm running a global academic study measuring how ready security professionals,
